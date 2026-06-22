@@ -1,0 +1,63 @@
+name: Update match data
+
+# Live match-data refresh.
+#
+# Wakes every 5 minutes during the UTC hours that cover US Eastern match time,
+# runs the schedule guard (scripts/should-build.mjs), and only builds and commits
+# data.json when a match is actually due. When nothing is due the run exits in a
+# couple of seconds. You can also trigger it by hand from the Actions tab.
+on:
+  schedule:
+    - cron: '*/5 15-23 * * *'   # 15:00-23:59 UTC
+    - cron: '*/5 0-6 * * *'     # 00:00-06:59 UTC
+  workflow_dispatch:
+
+# the job pushes data.json back to the repo, so it needs write access
+permissions:
+  contents: write
+
+# never let two builds overlap; let an in-progress one finish before the next
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Decide whether a match is due
+        id: guard
+        run: node scripts/should-build.mjs
+
+      - name: Build data.json
+        if: steps.guard.outputs.build == 'true'
+        env:
+          # YT_API_KEY is the only one you need (highlight links). The others are
+          # optional: leave the secrets unset and results, lineups and stats still
+          # build. Set them later in Settings > Secrets and they take effect on the
+          # next run, no edit to this file required.
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/build-data.mjs
+
+      - name: Commit data.json if it changed
+        if: steps.guard.outputs.build == 'true'
+        run: |
+          if [ -n "$(git status --porcelain data.json)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data.json
+            git commit -m "data: auto-update $(date -u +'%Y-%m-%dT%H:%MZ')"
+            git push
+          else
+            echo "data.json unchanged; nothing to commit."
+          fi

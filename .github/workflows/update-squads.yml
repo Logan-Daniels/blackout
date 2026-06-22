@@ -1,0 +1,73 @@
+name: Rebuild squads, photos and player bios
+
+# Occasional, manual rebuild of the squad data:
+#   fox-urls.json   resolved Fox player-page URLs   (build-rosters.mjs)
+#   players.json    squad + photo dictionary        (build-players.mjs)
+#   team-info.json  player bios                      (fox_team_spider.py)
+#
+# This is the slow job, kept separate from the live updater. The bio spider
+# crawls ~48 squads politely and Fox rate-limits bursts, so a run can take a
+# while and may leave a few gaps; just run it again to fill them in. All three
+# scripts merge with the files already in the repo, so a partial run never wipes
+# good data. Run it from the Actions tab ("Run workflow").
+#
+# Note: Fox can block datacentre IPs, so a CI run may fetch less than running it
+# on your Mac. If a rebuild comes back thin, the local route in DEPLOY.md step 10
+# is the reliable fallback.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-squads
+  cancel-in-progress: false
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Scrapy
+        run: pip install scrapy
+
+      - name: Resolve Fox player URLs (fox-urls.json)
+        run: node scripts/build-rosters.mjs
+
+      - name: Build squad and photo dictionary (players.json)
+        run: node scripts/build-players.mjs
+
+      - name: Scrape player bios (team-info.json)
+        run: |
+          mkdir -p out
+          # seed the spider's working copy from the committed file so a re-run
+          # keeps prior progress and only refetches the gaps
+          if [ -f team-info.json ]; then cp team-info.json out/team-info.json; fi
+          scrapy runspider scripts/fox_team_spider.py
+          cp out/team-info.json team-info.json
+
+      - name: Commit rebuilt data if it changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fox-urls.json players.json team-info.json photos-extra.json
+          if git diff --cached --quiet; then
+            echo "nothing changed; nothing to commit."
+          else
+            git commit -m "squads: rebuild $(date -u +'%Y-%m-%d')"
+            git push
+          fi

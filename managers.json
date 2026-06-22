@@ -1,0 +1,356 @@
+{
+  "teams": {
+    "Argentina": [
+      {
+        "name": "Lionel Scaloni",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Brazil": [
+      {
+        "name": "Carlo Ancelotti",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "France": [
+      {
+        "name": "Didier Deschamps",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Germany": [
+      {
+        "name": "Julian Nagelsmann",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Spain": [
+      {
+        "name": "Luis de la Fuente",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Netherlands": [
+      {
+        "name": "Ronald Koeman",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Belgium": [
+      {
+        "name": "Rudi Garcia",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Portugal": [
+      {
+        "name": "Roberto Martinez",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "England": [
+      {
+        "name": "Thomas Tuchel",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Croatia": [
+      {
+        "name": "Zlatko Dalic",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Italy": [
+      {
+        "name": "Luciano Spalletti",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Canada": [
+      {
+        "name": "Jesse Marsch",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "United States": [
+      {
+        "name": "Mauricio Pochettino",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Mexico": [
+      {
+        "name": "Javier Aguirre",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Morocco": [
+      {
+        "name": "Walid Regragui",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Japan": [
+      {
+        "name": "Hajime Moriyasu",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Senegal": [
+      {
+        "name": "Pape Thiaw",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Uruguay": [
+      {
+        "name": "Marcelo Bielsa",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Switzerland": [
+      {
+        "name": "Murat Yakin",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Scotland": [
+      {
+        "name": "Steve Clarke",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Norway": [
+      {
+        "name": "Stale Solbakken",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Austria": [
+      {
+        "name": "Ralf Rangnick",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Ecuador": [
+      {
+        "name": "Sebastian Beccacece",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Egypt": [
+      {
+        "name": "Hossam Hassan",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Iran": [
+      {
+        "name": "Amir Ghalenoei",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Australia": [
+      {
+        "name": "Tony Popovic",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "South Korea": [
+      {
+        "name": "Hong Myung-bo",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Paraguay": [
+      {
+        "name": "Gustavo Alfaro",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Cote d'Ivoire": [
+      {
+        "name": "Emerse Fae",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Bosnia and Herzegovina": [
+      {
+        "name": "Sergej Barbarez",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Czechia": [
+      {
+        "name": "Ivan Hasek",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Sweden": [
+      {
+        "name": "Jon Dahl Tomasson",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "South Africa": [
+      {
+        "name": "Hugo Broos",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "New Zealand": [
+      {
+        "name": "Darren Bazeley",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Cabo Verde": [
+      {
+        "name": "Bubista",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Curacao": [
+      {
+        "name": "Dick Advocaat",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Iraq": [
+      {
+        "name": "Graham Arnold",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Turkiye": [
+      {
+        "name": "Vincenzo Montella",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ],
+    "Algeria": [
+      {
+        "name": "Vladimir Petkovic",
+        "from": null,
+        "to": null,
+        "photo": "",
+        "url": ""
+      }
+    ]
+  },
+  "cards": []
+}

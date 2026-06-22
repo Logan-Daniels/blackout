@@ -1,0 +1,11 @@
+node_modules/
+.venv/
+out/
+cache/
+.scrapy/
+.fox_cache/
+.photo-cache/
+.logo-cache/
+__pycache__/
+*.log
+.DS_Store
