@@ -141,6 +141,8 @@ table.lb td.lb-sh{background:rgba(255,255,255,.022)}
 .lb-cardh{display:inline-block;width:12px;height:16px;border-radius:2px;vertical-align:-3px}
 .lb-cardh-y{background:var(--gold)}
 .lb-cardh-r{background:#E5484D}
+.lb-goalh{font-size:13px;line-height:1;vertical-align:-2px}
+.lb-assisth{font-family:var(--mono);font-weight:800;font-size:12px;color:#7fb2ff;vertical-align:0}
 .lb-wrap thead th[data-tip]{cursor:help}
 .lb-tip{position:fixed;z-index:9999;background:var(--surface2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:5px 9px;font-size:12px;font-weight:600;line-height:1.2;white-space:nowrap;pointer-events:none;box-shadow:0 6px 18px rgba(0,0,0,.45);opacity:0;transform:translateY(-3px);transition:opacity .08s ease,transform .08s ease}
 .lb-tip.on{opacity:1;transform:none}
@@ -1460,6 +1462,7 @@ const PLAYERS_URL='./players.json';
 const CLUBS_URL='./clubs.json';
 const PCLUBS_URL='./players-clubs.json';
 const PHOTOX_URL='./photos-extra.json';
+var PHOTOX={}, PHOTOX_NT={};   // retained photos-extra "photos" map + bare-name->teams index, so a card/popup opened outside a lineup can still see an override
 const TEAMINFO_URL='./team-info.json';
 const MANAGERS_URL='./managers.json';
 const FIFASQUADS_URL='./fifa-squads.json';
@@ -1569,6 +1572,7 @@ function applyPhotoFallback(map){
   // index: normalised player name -> set of teams that field someone with that name
   var nameTeams={};
   Object.keys(DETAIL).forEach(function(k){ var d=DETAIL[k]; ['home','away'].forEach(function(sk){ var s=d[sk]; if(!s) return; var tk=nrm(s.name); (s.xi||[]).concat(s.subs||[]).forEach(function(pl){ if(!pl||!pl.name) return; var nm=nrm(pl.name); (nameTeams[nm]=nameTeams[nm]||{})[tk]=1; }); }); });
+  PHOTOX=map; PHOTOX_NT=nameTeams;   // retain for cards/popups opened outside a lineup
   function pick(teamName, name){
     var nm=nrm(name);
     var scoped=map[nrm(teamName)+'|'+nm]; if(scoped) return {url:scoped, scoped:true};   // team-scoped key: authoritative correction, always wins
@@ -1585,6 +1589,8 @@ function applyPhotoFallback(map){
     });
   });
 }
+function photoxScoped(team,name){ return PHOTOX[nrm(team||'')+'|'+nrm(name||'')]||''; }
+function photoxBare(name){ var nm=nrm(name||''); var b=PHOTOX[nm]; if(!b) return ''; var t=PHOTOX_NT[nm]; if(t && Object.keys(t).length>1) return ''; return b; }
 function coachCell(side, nm){ if(!nm) return '<span></span>'; var label=esc(t('coach'))+': '+esc(nm), url=side&&side.coachStats; return '<span>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>':label)+'</span>'; }
 async function loadData(){
   let videosFromFeed=false;
@@ -2332,7 +2338,9 @@ function pcRenderBody(d){
   // Position priority: FIFA official > Fox bio > lineup feed > squad. The lineup feed
   // often mislabels players as midfielders, so a real source always wins.
   var pos=(fifa&&fifa.pos)||(ti&&ti.pos)||d.pos||px.pos||'';
-  var photo=d.photo||(ti&&ti.photo)||px.photo||'';
+  var pxScoped=photoxScoped(d.team,d.name), pxBare=photoxBare(d.name);
+  var photoChain=d.photo||(ti&&ti.photo)||px.photo||'';
+  var photo=pxScoped||((!photoChain||/espncdn\.com/i.test(photoChain))?(pxBare||photoChain):photoChain)||'';
   var dob=(fifa&&fifa.dob)||(ti&&ti.dob), age=ageFromDob(dob);
   var hi=ti&&ti.height_in, hcm=(fifa&&fifa.height_cm)||null, wl=ti&&ti.weight_lb;
   var foxUrl=d.stats||'', isFox=/foxsports\.com/i.test(foxUrl);
@@ -3499,7 +3507,7 @@ var SHOW_CLUB=true;   // Club Nation / League / Club columns + Club/League/Team 
 var IND_COLS=[
   {k:'pic',lbl:'',cls:'lb-l',kind:'pic'},{k:'cc',lbl:'Team',t:'National team (sort A\u2013Z)',cls:'lb-cc',kind:'flag'},{k:'surname',lbl:'Player',cls:'lb-l',kind:'pname'},
   {k:'gp',lbl:'GP',t:'Games played'},{k:'min',lbl:'Min',t:"Minutes played (approx, 90' per appearance)"},
-  {k:'g',lbl:'G',t:'Goals (own goals excluded)'},{k:'a',lbl:'A',t:'Assists'},
+  {k:'g',lbl:'G',t:'Goals (own goals excluded)',sym:'g'},{k:'a',lbl:'A',t:'Assists',sym:'a'},
   {k:'yel',lbl:'Yel',t:'Yellow cards',card:'y'},{k:'red',lbl:'Red',t:'Red cards',card:'r'},{k:'conduct',lbl:'Cond',t:'Fair-play conduct (FIFA): yellow -1, second yellow -3, direct red -4, yellow + direct red -5; starts at 0, closer to 0 is cleaner',adv:true},
   {k:'g90',lbl:'G/90',t:'Goals per 90 minutes',fmt:2,adv:true},{k:'a90',lbl:'A/90',t:'Assists per 90 minutes',fmt:2,adv:true},
   {k:'clubFlag',lbl:'Club Nation',t:'Country of current club',cls:'lb-cc',kind:'cflag',club:true},{k:'clubTier',lbl:'League',t:'Current club\u2019s league',cls:'lb-cc',kind:'league',club:true},{k:'clubName',lbl:'Club',t:'Current club (opens FBref)',cls:'lb-cc',kind:'club',club:true}
@@ -3542,7 +3550,7 @@ function lbTable(keepPage){
   LB.page=isPaged?Math.max(0,Math.min(LB.page,pages-1)):0;
   var start=isPaged?LB.page*per:0, shown=rows.slice(start, isPaged?start+per:total);
   var sc=0, shade=cols.map(function(c){ return c.kind ? '' : ((sc++ %2)?'lb-sh':''); });
-  var thead='<tr><th class="lb-l lb-rank"></th>'+cols.map(function(c,ci){ var sortable=!!c.k&&c.kind!=='pic'; var on=sort&&sort.k===c.k; var lbl=c.card?'<span class="lb-cardh lb-cardh-'+c.card+'"></span>':esc(c.lbl); return '<th class="'+(c.cls||'')+(shade[ci]?' '+shade[ci]:'')+(on?' on':'')+'"'+(sortable?' data-k="'+c.k+'"':'')+(c.t?' data-tip="'+esc(c.t)+'" aria-label="'+esc(c.t)+'"':'')+'>'+lbl+(on?'<span class="lb-ar">'+(sort.dir==='asc'?'\u25B2':'\u25BC')+'</span>':'')+'</th>'; }).join('')+'</tr>';
+  var thead='<tr><th class="lb-l lb-rank"></th>'+cols.map(function(c,ci){ var sortable=!!c.k&&c.kind!=='pic'; var on=sort&&sort.k===c.k; var lbl=c.card?'<span class="lb-cardh lb-cardh-'+c.card+'"></span>':c.sym==='g'?'<span class="lb-goalh">\u26BD</span>':c.sym==='a'?'<span class="lb-assisth">A</span>':esc(c.lbl); return '<th class="'+(c.cls||'')+(shade[ci]?' '+shade[ci]:'')+(on?' on':'')+'"'+(sortable?' data-k="'+c.k+'"':'')+(c.t?' data-tip="'+esc(c.t)+'" aria-label="'+esc(c.t)+'"':'')+'>'+lbl+(on?'<span class="lb-ar">'+(sort.dir==='asc'?'\u25B2':'\u25BC')+'</span>':'')+'</th>'; }).join('')+'</tr>';
   var tb=shown.map(function(r,i){
     var tds=cols.map(function(c,ci){
       if(c.kind==='flag') return '<td class="lb-cc"><span class="lb-natwrap">'+flag(r.cc, 'lb-flag')+crestImg(r.cc,'lb-crest')+'</span></td>';
