@@ -1,0 +1,353 @@
+{
+ "_README": "Country names by ISO code for i18n + non-English highlight-title matching. Extensible: add more language keys (es, de, ...) per code. FIFA 3-letter codes stay Latin/constant and live in the app CODES map, not here. \"fr\" is complete and verified; add further languages here as they are vetted.",
+ "codes": {
+  "ae": {
+   "en": "United Arab Emirates",
+   "fr": "Émirats arabes unis"
+  },
+  "ar": {
+   "en": "Argentina",
+   "fr": "Argentine"
+  },
+  "at": {
+   "en": "Austria",
+   "fr": "Autriche"
+  },
+  "au": {
+   "en": "Australia",
+   "fr": "Australie"
+  },
+  "ba": {
+   "en": "Bosnia and Herzegovina",
+   "fr": "Bosnie-Herzégovine"
+  },
+  "be": {
+   "en": "Belgium",
+   "fr": "Belgique"
+  },
+  "bg": {
+   "en": "Bulgaria",
+   "fr": "Bulgarie"
+  },
+  "bh": {
+   "en": "Bahrain",
+   "fr": "Bahreïn"
+  },
+  "bo": {
+   "en": "Bolivia",
+   "fr": "Bolivie"
+  },
+  "br": {
+   "en": "Brazil",
+   "fr": "Brésil"
+  },
+  "ca": {
+   "en": "Canada",
+   "fr": "Canada"
+  },
+  "cd": {
+   "en": "DR Congo",
+   "fr": "RD Congo"
+  },
+  "ch": {
+   "en": "Switzerland",
+   "fr": "Suisse"
+  },
+  "ci": {
+   "en": "Côte d'Ivoire",
+   "fr": "Côte d'Ivoire"
+  },
+  "cl": {
+   "en": "Chile",
+   "fr": "Chili"
+  },
+  "cn": {
+   "en": "China",
+   "fr": "Chine"
+  },
+  "co": {
+   "en": "Colombia",
+   "fr": "Colombie"
+  },
+  "cr": {
+   "en": "Costa Rica",
+   "fr": "Costa Rica"
+  },
+  "cv": {
+   "en": "Cabo Verde",
+   "fr": "Cap-Vert"
+  },
+  "cw": {
+   "en": "Curaçao",
+   "fr": "Curaçao"
+  },
+  "cy": {
+   "en": "Cyprus",
+   "fr": "Chypre"
+  },
+  "cz": {
+   "en": "Czechia",
+   "fr": "Tchéquie"
+  },
+  "de": {
+   "en": "Germany",
+   "fr": "Allemagne"
+  },
+  "dk": {
+   "en": "Denmark",
+   "fr": "Danemark"
+  },
+  "dz": {
+   "en": "Algeria",
+   "fr": "Algérie"
+  },
+  "ec": {
+   "en": "Ecuador",
+   "fr": "Équateur"
+  },
+  "eg": {
+   "en": "Egypt",
+   "fr": "Égypte"
+  },
+  "es": {
+   "en": "Spain",
+   "fr": "Espagne"
+  },
+  "fr": {
+   "en": "France",
+   "fr": "France"
+  },
+  "gb-eng": {
+   "en": "England",
+   "fr": "Angleterre"
+  },
+  "gb-nir": {
+   "en": "Northern Ireland",
+   "fr": "Irlande du Nord"
+  },
+  "gb-sct": {
+   "en": "Scotland",
+   "fr": "Écosse"
+  },
+  "gb-wls": {
+   "en": "Wales",
+   "fr": "Pays de Galles"
+  },
+  "gh": {
+   "en": "Ghana",
+   "fr": "Ghana"
+  },
+  "gr": {
+   "en": "Greece",
+   "fr": "Grèce"
+  },
+  "hn": {
+   "en": "Honduras",
+   "fr": "Honduras"
+  },
+  "hr": {
+   "en": "Croatia",
+   "fr": "Croatie"
+  },
+  "ht": {
+   "en": "Haiti",
+   "fr": "Haïti"
+  },
+  "hu": {
+   "en": "Hungary",
+   "fr": "Hongrie"
+  },
+  "ie": {
+   "en": "Ireland",
+   "fr": "Irlande"
+  },
+  "il": {
+   "en": "Israel",
+   "fr": "Israël"
+  },
+  "in": {
+   "en": "India",
+   "fr": "Inde"
+  },
+  "iq": {
+   "en": "Iraq",
+   "fr": "Irak"
+  },
+  "ir": {
+   "en": "Iran",
+   "fr": "Iran"
+  },
+  "it": {
+   "en": "Italy",
+   "fr": "Italie"
+  },
+  "jm": {
+   "en": "Jamaica",
+   "fr": "Jamaïque"
+  },
+  "jo": {
+   "en": "Jordan",
+   "fr": "Jordanie"
+  },
+  "jp": {
+   "en": "Japan",
+   "fr": "Japon"
+  },
+  "kr": {
+   "en": "South Korea",
+   "fr": "Corée du Sud"
+  },
+  "kw": {
+   "en": "Kuwait",
+   "fr": "Koweït"
+  },
+  "kz": {
+   "en": "Kazakhstan",
+   "fr": "Kazakhstan"
+  },
+  "lb": {
+   "en": "Lebanon",
+   "fr": "Liban"
+  },
+  "ma": {
+   "en": "Morocco",
+   "fr": "Maroc"
+  },
+  "md": {
+   "en": "Moldova",
+   "fr": "Moldavie"
+  },
+  "mm": {
+   "en": "Myanmar",
+   "fr": "Birmanie"
+  },
+  "mx": {
+   "en": "Mexico",
+   "fr": "Mexique"
+  },
+  "my": {
+   "en": "Malaysia",
+   "fr": "Malaisie"
+  },
+  "ng": {
+   "en": "Nigeria",
+   "fr": "Nigéria"
+  },
+  "nl": {
+   "en": "Netherlands",
+   "fr": "Pays-Bas"
+  },
+  "no": {
+   "en": "Norway",
+   "fr": "Norvège"
+  },
+  "nz": {
+   "en": "New Zealand",
+   "fr": "Nouvelle-Zélande"
+  },
+  "om": {
+   "en": "Oman",
+   "fr": "Oman"
+  },
+  "pa": {
+   "en": "Panama",
+   "fr": "Panama"
+  },
+  "pe": {
+   "en": "Peru",
+   "fr": "Pérou"
+  },
+  "pl": {
+   "en": "Poland",
+   "fr": "Pologne"
+  },
+  "pt": {
+   "en": "Portugal",
+   "fr": "Portugal"
+  },
+  "py": {
+   "en": "Paraguay",
+   "fr": "Paraguay"
+  },
+  "qa": {
+   "en": "Qatar",
+   "fr": "Qatar"
+  },
+  "ro": {
+   "en": "Romania",
+   "fr": "Roumanie"
+  },
+  "rs": {
+   "en": "Serbia",
+   "fr": "Serbie"
+  },
+  "ru": {
+   "en": "Russia",
+   "fr": "Russie"
+  },
+  "sa": {
+   "en": "Saudi Arabia",
+   "fr": "Arabie saoudite"
+  },
+  "sd": {
+   "en": "Sudan",
+   "fr": "Soudan"
+  },
+  "se": {
+   "en": "Sweden",
+   "fr": "Suède"
+  },
+  "si": {
+   "en": "Slovenia",
+   "fr": "Slovénie"
+  },
+  "sk": {
+   "en": "Slovakia",
+   "fr": "Slovaquie"
+  },
+  "sn": {
+   "en": "Senegal",
+   "fr": "Sénégal"
+  },
+  "th": {
+   "en": "Thailand",
+   "fr": "Thaïlande"
+  },
+  "tn": {
+   "en": "Tunisia",
+   "fr": "Tunisie"
+  },
+  "tr": {
+   "en": "Türkiye",
+   "fr": "Turquie"
+  },
+  "ua": {
+   "en": "Ukraine",
+   "fr": "Ukraine"
+  },
+  "us": {
+   "en": "United States",
+   "fr": "États-Unis"
+  },
+  "uy": {
+   "en": "Uruguay",
+   "fr": "Uruguay"
+  },
+  "uz": {
+   "en": "Uzbekistan",
+   "fr": "Ouzbékistan"
+  },
+  "ve": {
+   "en": "Venezuela",
+   "fr": "Venezuela"
+  },
+  "vn": {
+   "en": "Vietnam",
+   "fr": "Viêt Nam"
+  },
+  "za": {
+   "en": "South Africa",
+   "fr": "Afrique du Sud"
+  }
+ }
+}

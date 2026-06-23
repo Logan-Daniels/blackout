@@ -1,0 +1,236 @@
+{
+ "_README": "Filter-only aliases for the leaderboard search. Keys are Wikidata QIDs (clubs) matching clubs.json / the Team filter values. Never displayed; only used so typing e.g. \"psg\" or \"spurs\" finds the club. Country and most league aliases are built into the app.",
+ "club": {
+  "Q483020": [
+   "psg",
+   "paris sg",
+   "paris st-germain",
+   "paris st germain"
+  ],
+  "Q18656": [
+   "man utd",
+   "man united",
+   "manu",
+   "mufc",
+   "red devils"
+  ],
+  "Q50602": [
+   "man city",
+   "mcfc",
+   "citizens",
+   "man. city"
+  ],
+  "Q15789": [
+   "bayern",
+   "fc bayern",
+   "bayern munich",
+   "fcb munich"
+  ],
+  "Q8682": [
+   "real madrid",
+   "los blancos",
+   "rmcf",
+   "real"
+  ],
+  "Q7156": [
+   "barca",
+   "barça",
+   "fcb",
+   "blaugrana",
+   "barcelona"
+  ],
+  "Q631": [
+   "inter",
+   "internazionale",
+   "nerazzurri",
+   "inter milan"
+  ],
+  "Q1543": [
+   "ac milan",
+   "milan",
+   "rossoneri",
+   "acm"
+  ],
+  "Q1422": [
+   "juve",
+   "juventus",
+   "bianconeri",
+   "old lady"
+  ],
+  "Q2641": [
+   "napoli",
+   "naples",
+   "ssc napoli"
+  ],
+  "Q2739": [
+   "roma",
+   "as roma",
+   "giallorossi"
+  ],
+  "Q18741": [
+   "spurs",
+   "thfc",
+   "tottenham",
+   "hotspur"
+  ],
+  "Q18716": [
+   "newcastle",
+   "nufc",
+   "magpies",
+   "toon"
+  ],
+  "Q19453": [
+   "brighton",
+   "bhafc",
+   "seagulls"
+  ],
+  "Q19500": [
+   "wolves",
+   "wwfc",
+   "wolverhampton"
+  ],
+  "Q81888": [
+   "ajax",
+   "afc ajax"
+  ],
+  "Q11938": [
+   "psv",
+   "psv eindhoven"
+  ],
+  "Q131499": [
+   "benfica",
+   "slb",
+   "sl benfica"
+  ],
+  "Q75729": [
+   "sporting",
+   "scp",
+   "sporting lisbon",
+   "sporting cp"
+  ],
+  "Q132885": [
+   "marseille",
+   "olympique marseille",
+   "om marseille"
+  ],
+  "Q702455": [
+   "leipzig",
+   "rbl",
+   "rb leipzig"
+  ],
+  "Q41420": [
+   "dortmund",
+   "bvb",
+   "borussia dortmund"
+  ],
+  "Q101959": [
+   "gladbach",
+   "bmg",
+   "monchengladbach",
+   "mönchengladbach"
+  ],
+  "Q8780": [
+   "espanyol",
+   "rcd espanyol"
+  ],
+  "Q73965": [
+   "al hilal",
+   "al-hilal",
+   "hilal"
+  ],
+  "Q16836317": [
+   "atlanta",
+   "atlanta united",
+   "atl utd"
+  ],
+  "Q8701": [
+   "atletico",
+   "atlético",
+   "atleti"
+  ],
+  "Q1130849": [
+   "liverpool",
+   "lfc",
+   "reds"
+  ],
+  "Q9616": [
+   "chelsea",
+   "cfc",
+   "blues"
+  ],
+  "Q9617": [
+   "arsenal",
+   "afc",
+   "gunners"
+  ],
+  "Q18711": [
+   "aston villa",
+   "avfc",
+   "villa"
+  ],
+  "Q18747": [
+   "west ham",
+   "whufc",
+   "hammers"
+  ],
+  "Q104761": [
+   "leverkusen",
+   "bayer leverkusen",
+   "b04"
+  ],
+  "Q38245": [
+   "frankfurt",
+   "sge",
+   "eintracht"
+  ],
+  "Q495299": [
+   "galatasaray",
+   "gala",
+   "cimbom"
+  ],
+  "Q6601875": [
+   "fenerbahce",
+   "fenerbahçe",
+   "fener"
+  ],
+  "Q17479": [
+   "flamengo",
+   "mengao",
+   "fla"
+  ],
+  "Q80964": [
+   "palmeiras",
+   "verdao",
+   "porco"
+  ],
+  "Q170703": [
+   "boca",
+   "boca juniors",
+   "xeneize"
+  ],
+  "Q15799": [
+   "river",
+   "river plate",
+   "millonarios"
+  ],
+  "Q19593": [
+   "celtic",
+   "celtic fc",
+   "bhoys"
+  ],
+  "Q19597": [
+   "rangers",
+   "gers"
+  ],
+  "Q134241": [
+   "feyenoord"
+  ],
+  "Q128446": [
+   "porto",
+   "fc porto",
+   "dragoes"
+  ]
+ },
+ "league": {},
+ "country": {}
+}

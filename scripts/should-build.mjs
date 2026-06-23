@@ -1,22 +1,29 @@
 #!/usr/bin/env node
 // should-build.mjs - decide whether the live match-data build should run now.
 //
-// Rule (from the brief): poll from 110 minutes after a scheduled kickoff until
-// that match's data is present in data.json.
-//   - Group stage: exact per-fixture kickoff times (wc-fixtures.json). A match
-//     stops being polled the moment its id appears in data.json `detail`.
-//   - Knockout stage: per-match kickoff times are NOT in the repo, so each round
-//     is gated by koRoundStart[round]; it polls from round-start + 110 min until
-//     every match in that round has a final score (or the next round begins).
+// Rule: poll from 110 minutes after a scheduled kickoff until that match has BOTH
+// its detail (result/lineups) AND its highlight links in data.json. Highlights are
+// published by broadcasters well after the final whistle, so polling that stops the
+// moment a result lands (the old behaviour) never collects the YouTube links. We now
+// keep a match "pending" until its videos entry is populated too, capped so a match
+// that simply never gets highlights does not poll forever.
+//   - Group stage: exact per-fixture kickoff times (wc-fixtures.json). A match is
+//     pollable from kickoff+110min until it has detail AND >=1 highlight link, or the
+//     hard cap (GROUP_CAP_MIN) elapses.
+//   - Knockout stage: per-match kickoff times are not in the repo, so each round is
+//     gated by koRoundStart[round]; it polls from round-start+110min until every match
+//     in that round has a final score AND (where the match number is known) highlights,
+//     or the next round begins / the tail window elapses.
 //
 // Emits `build=true|false` to $GITHUB_OUTPUT and prints a one-line decision.
 // Accepts --now=<ISO> for testing. Always exits 0.
 import { readFileSync, appendFileSync } from 'node:fs';
 import process from 'node:process';
 
-const OFFSET_MIN = 110;       // start polling this long after kickoff
-const GROUP_CAP_MIN = 360;    // safety: stop polling a single group match after 6h
-const KO_TAIL_HOURS = 48;     // how long the last rounds (3P/F) stay pollable
+const OFFSET_MIN = 110;        // start polling this long after kickoff
+const GROUP_CAP_MIN = 1440;    // keep polling a single group match up to 24h after kickoff
+                               // (covers late highlight uploads; was 360 = 6h, which cut highlights off)
+const KO_TAIL_HOURS = 60;      // how long the last rounds (3P/F) stay pollable for late highlights
 
 const nowArg = (process.argv.slice(2).find(a => a.startsWith('--now=')) || '').split('=')[1];
 const NOW = nowArg ? new Date(nowArg) : new Date();
@@ -25,17 +32,27 @@ const readJSON = (p, d) => { try { return JSON.parse(readFileSync(p, 'utf8')); }
 const fx = readJSON('wc-fixtures.json', {});
 const data = readJSON('data.json', {});
 const detail = data.detail || {};
+const videos = data.videos || {};
 const ofMatches = data.ofMatches || [];
 const minsSince = iso => (NOW - new Date(iso)) / 60000;
 const reasons = [];
+
+// A match "has highlights" once its videos entry holds at least one broadcaster link.
+const hasHL = key => {
+  const v = key != null ? videos[key] : null;
+  return !!(v && Object.values(v).some(src => src && Object.keys(src).length > 0));
+};
 
 // group stage
 for (const f of (fx.fixtures || [])) {
   const [id, home, away, ko] = f;
   if (!ko) continue;
   const m = minsSince(ko);
-  if (m >= OFFSET_MIN && m <= GROUP_CAP_MIN && !detail[id]) {
-    reasons.push(`${id} ${home} v ${away} (+${Math.round(m)} min, no detail yet)`);
+  if (m < OFFSET_MIN || m > GROUP_CAP_MIN) continue;
+  const noDetail = !detail[id];
+  const noHL = !hasHL(id);
+  if (noDetail || noHL) {
+    reasons.push(`${id} ${home} v ${away} (+${Math.round(m)} min, ${noDetail ? 'no detail yet' : 'awaiting highlights'})`);
   }
 }
 
@@ -54,8 +71,18 @@ for (let i = 0; i < ORDER.length; i++) {
   if (!end) end = new Date(start.getTime() + KO_TAIL_HOURS * 3600e3);
   const open = NOW >= new Date(start.getTime() + OFFSET_MIN * 60000) && NOW <= end;
   if (!open) continue;
-  const pending = list.filter(m => !(m.score && m.score.ft));
-  if (pending.length) reasons.push(`${key}: ${pending.length}/${list.length} results still missing`);
+  // A knockout match is still pending if it has no final score, or (when we can map it
+  // to a video key via its openfootball match number) it has no highlights yet.
+  const pending = list.filter(m => {
+    const noResult = !(m.score && m.score.ft);
+    const vk = (m.num != null) ? String(m.num) : null;
+    const noHL = vk ? !hasHL(vk) : false;
+    return noResult || noHL;
+  });
+  if (pending.length) {
+    const noRes = pending.filter(m => !(m.score && m.score.ft)).length;
+    reasons.push(`${key}: ${noRes} result(s) missing, ${pending.length - noRes} awaiting highlights (of ${list.length})`);
+  }
 }
 
 const build = reasons.length > 0;

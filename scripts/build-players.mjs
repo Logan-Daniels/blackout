@@ -168,7 +168,7 @@ for (const w of want) {
     if (!rxPrev || rxPrev.url === ex.stats) { if (w.num != null) ex.num = w.num; if (w.pos) ex.pos = w.pos; continue; }  // stored photo already matches the roster (or no roster URL) - keep it
     // a roster URL now exists and differs from the stored (guessed) one -> fall through and re-resolve to correct photo + link
   }
-  let photo = w.espnPhoto, stats = FBREF(w.name), src = w.espnPhoto ? 'espn' : 'none';
+  let photo = null, stats = FBREF(w.name), src = 'none';   // ESPN fallback removed: no photo unless Fox resolves it (front end shows clean initials otherwise)
   const rx = resolveExact(w.team, w.name);
   if (rx && (rx.head || rx.fid)) {                       // roster gave a photo (or an id to build one): no fetch needed
     photo = rx.head || (HEAD_BASE + rx.fid + '.png'); stats = rx.url; src = 'fox'; foxHits++;

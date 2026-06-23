@@ -444,53 +444,75 @@
  },
  "aliases": {
   "Mexico": [
-   "mexico"
+   "mexico",
+   "mexique",
+   "méxico"
   ],
   "South Africa": [
    "south africa",
-   "rsa"
+   "rsa",
+   "afrique du sud",
+   "sudáfrica"
   ],
   "South Korea": [
    "south korea",
    "korea republic",
    "korea",
-   "republic of korea"
+   "republic of korea",
+   "corée du sud",
+   "corea del sur",
+   "corea"
   ],
   "Czechia": [
    "czechia",
    "czech republic",
-   "czech"
+   "czech",
+   "tchéquie",
+   "chequia",
+   "república checa"
   ],
   "Canada": [
-   "canada"
+   "canada",
+   "canadá"
   ],
   "Bosnia and Herzegovina": [
    "bosnia and herzegovina",
    "bosnia & herzegovina",
    "bosnia",
    "bih",
-   "bosnia herzegovina"
+   "bosnia herzegovina",
+   "bosnie-herzégovine",
+   "bosnia y herzegovina"
   ],
   "Qatar": [
-   "qatar"
+   "qatar",
+   "catar"
   ],
   "Switzerland": [
    "switzerland",
-   "swiss"
+   "swiss",
+   "suisse",
+   "suiza"
   ],
   "Brazil": [
    "brazil",
-   "brasil"
+   "brasil",
+   "brésil"
   ],
   "Morocco": [
    "morocco",
-   "maroc"
+   "maroc",
+   "marruecos"
   ],
   "Haiti": [
-   "haiti"
+   "haiti",
+   "haïti",
+   "haití"
   ],
   "Scotland": [
-   "scotland"
+   "scotland",
+   "écosse",
+   "escocia"
   ],
   "United States": [
    "united states",
@@ -498,27 +520,35 @@
    "u.s.",
    "us men",
    "usmnt",
-   "u s a"
+   "u s a",
+   "états-unis",
+   "estados unidos"
   ],
   "Paraguay": [
    "paraguay"
   ],
   "Australia": [
    "australia",
-   "socceroos"
+   "socceroos",
+   "australie"
   ],
   "Türkiye": [
    "turkiye",
    "türkiye",
-   "turkey"
+   "turkey",
+   "turquie",
+   "turquía"
   ],
   "Germany": [
    "germany",
-   "deutschland"
+   "deutschland",
+   "allemagne",
+   "alemania"
   ],
   "Curaçao": [
    "curacao",
-   "curaçao"
+   "curaçao",
+   "curazao"
   ],
   "Côte d'Ivoire": [
    "cote d'ivoire",
@@ -526,79 +556,113 @@
    "ivory coast",
    "cote divoire",
    "cote d ivoire",
-   "ivorycoast"
+   "ivorycoast",
+   "costa de marfil"
   ],
   "Ecuador": [
-   "ecuador"
+   "ecuador",
+   "équateur"
   ],
   "Netherlands": [
    "netherlands",
    "holland",
-   "dutch"
+   "dutch",
+   "pays-bas",
+   "países bajos",
+   "holanda"
   ],
   "Japan": [
-   "japan"
+   "japan",
+   "japon",
+   "japón"
   ],
   "Sweden": [
-   "sweden"
+   "sweden",
+   "suède",
+   "suecia"
   ],
   "Tunisia": [
-   "tunisia"
+   "tunisia",
+   "tunisie",
+   "túnez"
   ],
   "Belgium": [
-   "belgium"
+   "belgium",
+   "belgique",
+   "bélgica"
   ],
   "Egypt": [
-   "egypt"
+   "egypt",
+   "égypte",
+   "egipto"
   ],
   "Iran": [
    "iran",
-   "ir iran"
+   "ir iran",
+   "irán"
   ],
   "New Zealand": [
    "new zealand",
-   "nz"
+   "nz",
+   "nouvelle-zélande",
+   "nueva zelanda"
   ],
   "Spain": [
    "spain",
    "espana",
-   "españa"
+   "españa",
+   "espagne"
   ],
   "Cabo Verde": [
    "cabo verde",
-   "cape verde"
+   "cape verde",
+   "cap-vert"
   ],
   "Saudi Arabia": [
    "saudi arabia",
    "saudi",
-   "ksa"
+   "ksa",
+   "arabie saoudite",
+   "arabia saudita",
+   "arabia saudí"
   ],
   "Uruguay": [
    "uruguay"
   ],
   "France": [
-   "france"
+   "france",
+   "francia"
   ],
   "Senegal": [
-   "senegal"
+   "senegal",
+   "sénégal"
   ],
   "Iraq": [
-   "iraq"
+   "iraq",
+   "irak"
   ],
   "Norway": [
-   "norway"
+   "norway",
+   "norvège",
+   "noruega"
   ],
   "Argentina": [
-   "argentina"
+   "argentina",
+   "argentine"
   ],
   "Algeria": [
-   "algeria"
+   "algeria",
+   "algérie",
+   "argelia"
   ],
   "Austria": [
-   "austria"
+   "austria",
+   "autriche"
   ],
   "Jordan": [
-   "jordan"
+   "jordan",
+   "jordanie",
+   "jordania"
   ],
   "Portugal": [
    "portugal"
@@ -609,25 +673,36 @@
    "democratic republic of congo",
    "drc",
    "d.r. congo",
-   "congo"
+   "congo",
+   "rd congo",
+   "rd del congo",
+   "república democrática del congo"
   ],
   "Uzbekistan": [
-   "uzbekistan"
+   "uzbekistan",
+   "ouzbékistan",
+   "uzbekistán"
   ],
   "Colombia": [
-   "colombia"
+   "colombia",
+   "colombie"
   ],
   "England": [
-   "england"
+   "england",
+   "angleterre",
+   "inglaterra"
   ],
   "Croatia": [
-   "croatia"
+   "croatia",
+   "croatie",
+   "croacia"
   ],
   "Ghana": [
    "ghana"
   ],
   "Panama": [
-   "panama"
+   "panama",
+   "panamá"
   ]
  },
  "playlists": {
@@ -636,7 +711,9 @@
   "fox_x": "PLSoN6Th-EepMUaxmTobuR_SBwVkdkxdfO",
   "fox_r": "PLSoN6Th-EepOFVmy3h3p9DufTZpD9C60E",
   "itv": "PLRhC9EroPISmLz78Pne2Ekjii5fz0iVeD",
-  "rds": "PLZksgcDwQNGLDRj2OqvyV8TnosW5HVVj8"
+  "rds": "PLZksgcDwQNGLDRj2OqvyV8TnosW5HVVj8",
+  "bein": "PLQLPXA3TgtrAAeKwxuzbIDwvfhHw3BymM",
+  "telemundo": "PLXHZm5xDlEdQ"
  },
  "tsdbLeagueId": "4429",
  "afLeagueId": "1",

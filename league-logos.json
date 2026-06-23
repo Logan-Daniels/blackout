@@ -1,0 +1,680 @@
+{
+ "_README": "Normalised league store built from blackout_sheets_-_all-clubs.csv. Keyed by Wikidata QID where known, else a stable n:<slug> id. Each: {name, country(cc), logo, light(true=white card), tier?}. Clubs reference these ids via club-overrides.json leagueQid.",
+ "leagues": {
+  "Q647746": {
+   "name": "Algerian Ligue Professionnelle 1",
+   "country": "dz",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ligue_1_Mobilis_%28logo%29.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:armenian premier league": {
+   "name": "Armenian Premier League",
+   "country": "am",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/FASTEX_PREMIER_LEAGUE.png/500px-FASTEX_PREMIER_LEAGUE.png",
+   "light": true
+  },
+  "Q223170": {
+   "name": "Argentine Primera División",
+   "country": "ar",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Primera_Nacional_Logo.svg/250px-Primera_Nacional_Logo.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q219586": {
+   "name": "A-League Men",
+   "country": "au",
+   "logo": "https://i.logos-download.com/113824/28933-767d5a183a20c0fb37594c3ba3b79a78.png/A-League_Men_Logo_2021.png?dl",
+   "light": false,
+   "tier": 1
+  },
+  "Q4646905": {
+   "name": "A-League",
+   "country": "au",
+   "logo": "https://gfr1.b-cdn.net/GFR%20League%20Logos/AUS%20A-League.png",
+   "light": false,
+   "tier": 2
+  },
+  "n:austrian bundesliga": {
+   "name": "Austrian Bundesliga",
+   "country": "at",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/vcgyu71686617925.png",
+   "light": false
+  },
+  "n:azerbaijan premier league": {
+   "name": "Azerbaijan Premier League",
+   "country": "az",
+   "logo": "https://gfr1.b-cdn.net/GFR%20League%20Logos/Azerbaijan%20Premier%20League.png",
+   "light": true
+  },
+  "Q216022": {
+   "name": "Belgian Pro League",
+   "country": "be",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/mjit7n1593634474.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q23925620": {
+   "name": "Challenger Pro League",
+   "country": "be",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/7idotc1688120253.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q391006": {
+   "name": "Premier League of Bosnia and Herzegovina",
+   "country": "ba",
+   "logo": "https://cdn.footystats.org/img/competitions/austria-regionalliga.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q206813": {
+   "name": "Campeonato Brasileiro Série A",
+   "country": "br",
+   "logo": "https://gfr1.b-cdn.net/GFR%20League%20Logos/BRA1%20Serie%20A.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q1348155": {
+   "name": "Campeonato Paulista de Futebol",
+   "country": "br",
+   "logo": "https://upload.wikimedia.org/wikipedia/pt/7/71/Federa%C3%A7%C3%A3o_Paulista_de_Futebol_logo.png",
+   "light": false,
+   "tier": "NA"
+  },
+  "Q12837728": {
+   "name": "First Professional Football League",
+   "country": "bg",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/a/ae/Efbet_Liga_logo.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:second professional football league": {
+   "name": "Second Professional Football League",
+   "country": "bg",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/1/10/Second_Professional_Football_League_%28Bulgaria%29_logo.jpeg",
+   "light": false
+  },
+  "Q18543": {
+   "name": "Major League Soccer",
+   "country": "us",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Major%20League%20Soccer%20logo.svg?width=120",
+   "light": false,
+   "tier": 1
+  },
+  "Q606832": {
+   "name": "Chilean Primera División",
+   "country": "cl",
+   "logo": "https://assets.football-logos.cc/logos/chile/1500x1500/liga-de-primera--no-text.3e983283.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:campeonato nacional primera b": {
+   "name": "Campeonato Nacional Primera B",
+   "country": "cl",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/1/14/Campeonato_primera_B.png",
+   "light": false
+  },
+  "Q209318": {
+   "name": "Chinese Super League",
+   "country": "cn",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Chinese_Super_League.svg/500px-Chinese_Super_League.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "n:liga dimayor": {
+   "name": "Liga DIMAYOR",
+   "country": "co",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/BetPlay-Dimayor_logo.svg/500px-BetPlay-Dimayor_logo.svg.png",
+   "light": true
+  },
+  "n:liga promerica": {
+   "name": "Liga Promerica",
+   "country": "cr",
+   "logo": "https://assets.football-logos.cc/logos/costa-rica/700x700/primera-division.fcfbbe74.png",
+   "light": true
+  },
+  "Q162604": {
+   "name": "Croatian Football League",
+   "country": "hr",
+   "logo": "https://1000logos.net/wp-content/uploads/2022/01/Prva-Hrvatska-Nogometna-Liga-logo-1992.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q155965": {
+   "name": "Cypriot First Division",
+   "country": "cy",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/4/48/Cyprus_Football_Association_logo.svg",
+   "light": false,
+   "tier": 1
+  },
+  "Q217016": {
+   "name": "Czech First League",
+   "country": "cz",
+   "logo": "https://sportzoo.s15.cdn-upgates.com/_cache/a/d/adfdb3894b5e28c5412d7f23658a8b88-loga-sportzoo-ligy10.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q204752": {
+   "name": "Danish Superliga",
+   "country": "dk",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Superliga_2010.svg/500px-Superliga_2010.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q2289847": {
+   "name": "Ecuador Serie A",
+   "country": "ec",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Football%20of%20Ecuador%20-%20Liga%20Pro%20logo%20(mini).svg?width=121",
+   "light": true,
+   "tier": 1
+  },
+  "Q680619": {
+   "name": "Egyptian Premier League",
+   "country": "eg",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20Premier%20League%20logo%202023.png?width=121",
+   "light": true,
+   "tier": 1
+  },
+  "Q9448": {
+   "name": "Premier League",
+   "country": "gb-eng",
+   "logo": "https://assets.football-logos.cc/logos/england/700x700/english-premier-league--no-text.a4faae06.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q19565": {
+   "name": "EFL League One",
+   "country": "gb-eng",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/EFL_League_One_Logo.svg/960px-EFL_League_One_Logo.svg.png",
+   "light": false,
+   "tier": 3
+  },
+  "n:efl championship": {
+   "name": "EFL Championship",
+   "country": "gb-eng",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/EFL_Championship_Logo.svg/330px-EFL_Championship_Logo.svg.png",
+   "light": false
+  },
+  "Q58916": {
+   "name": "National League",
+   "country": "gb-eng",
+   "logo": "https://assets.football-logos.cc/logos/england/700x700/national-league.5d22b0fd.png",
+   "light": false,
+   "tier": 5
+  },
+  "Q48837": {
+   "name": "EFL League Two",
+   "country": "gb-eng",
+   "logo": "https://upload.wikimedia.org/wikipedia/fr/d/d2/EFL_League_Two_Logo.png",
+   "light": false,
+   "tier": 4
+  },
+  "n:veikkausliiga": {
+   "name": "Veikkausliiga",
+   "country": "fi",
+   "logo": "https://assets.football-logos.cc/logos/finland/1500x1500/veikkausliiga.e1cfd702.png",
+   "light": true
+  },
+  "Q13394": {
+   "name": "Ligue 1",
+   "country": "fr",
+   "logo": "https://fantasy-goal.com/liga-france.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q217374": {
+   "name": "Ligue 2",
+   "country": "fr",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Ligue_2_2024_Logo.png",
+   "light": true,
+   "tier": 2
+  },
+  "Q219592": {
+   "name": "Bundesliga",
+   "country": "de",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/df/Bundesliga_logo_%282017%29.svg/1280px-Bundesliga_logo_%282017%29.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "n:rheinlandliga": {
+   "name": "Rheinlandliga",
+   "country": "de",
+   "logo": "https://upload.wikimedia.org/wikipedia/de/thumb/e/ec/Logo_Fu%C3%9Fballverband_Rheinland.svg/250px-Logo_Fu%C3%9Fballverband_Rheinland.svg.png",
+   "light": false
+  },
+  "Q152665": {
+   "name": "2. Bundesliga",
+   "country": "de",
+   "logo": "https://assets.football-logos.cc/logos/germany/1500x1500/2-bundesliga.a2e42082.png",
+   "light": true,
+   "tier": 2
+  },
+  "Q154069": {
+   "name": "3. Liga",
+   "country": "de",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bc/3._Liga_logo_%282019%29.svg/1280px-3._Liga_logo_%282019%29.svg.png",
+   "light": true,
+   "tier": 3
+  },
+  "n:ghana premier league": {
+   "name": "Ghana Premier League",
+   "country": "gh",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badgearchive/721nke1757922340.png",
+   "light": false
+  },
+  "Q235114": {
+   "name": "Super League Greece",
+   "country": "gr",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/d/de/Super_League_Greece.png",
+   "light": true,
+   "tier": 1
+  },
+  "n:super league greece 2": {
+   "name": "Super League Greece 2",
+   "country": "gr",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/8/8b/Super_League_Greece_2_official_logo.png",
+   "light": true
+  },
+  "n:haitian football league": {
+   "name": "Haitian Football League",
+   "country": "ht",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/f/f8/Digicel_Championnat_Haitien.png",
+   "light": false
+  },
+  "Q276085": {
+   "name": "Nemzeti Bajnokság I",
+   "country": "hu",
+   "logo": "https://assets.football-logos.cc/logos/hungary/1500x1500/nemzeti-bajnoksag.bd684103.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:super league (indonesia)": {
+   "name": "Super League (Indonesia)",
+   "country": "id",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/BRI_Super_League_2026.svg/500px-BRI_Super_League_2026.svg.png",
+   "light": true
+  },
+  "Q194641": {
+   "name": "Persian Gulf Pro League",
+   "country": "ir",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/8/80/Persian_Gulf_Pro_League_Logo.svg",
+   "light": true,
+   "tier": 1
+  },
+  "n:league 2 (iran)": {
+   "name": "League 2 (Iran)",
+   "country": "ir",
+   "logo": "https://tmssl.akamaized.net//images/logo/header/irn3.png?lm=1539472125",
+   "light": true
+  },
+  "Q108265766": {
+   "name": "Iraqi First Division League",
+   "country": "iq",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/3/31/Iraqi_First_Division_League_logo.png",
+   "light": true,
+   "tier": 2
+  },
+  "Q248512": {
+   "name": "Iraq Stars League",
+   "country": "iq",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Iraq_Stars_League_logo.svg/1280px-Iraq_Stars_League_logo.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q831202": {
+   "name": "League of Ireland Premier Division",
+   "country": "ie",
+   "logo": "https://assets.football-logos.cc/logos/republic-of-ireland/1500x1500/league-of-ireland-premier-division.bbd4823a.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q477309": {
+   "name": "Israeli Premier League",
+   "country": "il",
+   "logo": "https://upload.wikimedia.org/wikipedia/lt/c/c4/Israeli_Premier_League.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q15804": {
+   "name": "Serie A",
+   "country": "it",
+   "logo": "https://i.ibb.co/xK6sR65m/Serie-A.png",
+   "light": true
+  },
+  "Q3957692": {
+   "name": "Serie C1",
+   "country": "it",
+   "logo": "https://assets.football-logos.cc/logos/italy/700x700/serie-c.d2666270.png",
+   "light": false,
+   "tier": 3
+  },
+  "Q194052": {
+   "name": "Serie B",
+   "country": "it",
+   "logo": "https://upload.wikimedia.org/wikipedia/it/e/e3/Logo_Serie_B.png",
+   "light": true,
+   "tier": 2
+  },
+  "Q276445": {
+   "name": "J1 League",
+   "country": "jp",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e5/J.League.svg",
+   "light": true,
+   "tier": 1
+  },
+  "n:jordanian pro league": {
+   "name": "Jordanian Pro League",
+   "country": "jo",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/9/96/Logo_of_the_Jordanian_Pro_League.png",
+   "light": true
+  },
+  "n:kazakhstan premier league (kazakhstan)": {
+   "name": "Kazakhstan Premier League (Kazakhstan)",
+   "country": "kz",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/bjknzb1751500167.png",
+   "light": false
+  },
+  "Q194180": {
+   "name": "Malaysia Super League",
+   "country": "my",
+   "logo": "https://upload.wikimedia.org/wikipedia/fr/thumb/9/9f/Logo_Liga_Super_Malaysia.svg/500px-Logo_Liga_Super_Malaysia.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q764690": {
+   "name": "Liga MX",
+   "country": "mx",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/MX_logo.png/960px-MX_logo.png?_=20160302173109",
+   "light": false,
+   "tier": 1
+  },
+  "Q92292023": {
+   "name": "MX Expansion League",
+   "country": "mx",
+   "logo": "https://i.redd.it/liga-de-expansi%C3%B3n-mx-logo-v0-cf2lvg2racad1.png?width=1772&format=png&auto=webp&s=fb72ec673815806e4696c6de0da7a2992d20d443",
+   "light": false,
+   "tier": 2
+  },
+  "Q570246": {
+   "name": "Botola Pro 1",
+   "country": "ma",
+   "logo": "https://assets.football-logos.cc/logos/morocco/700x700/botola-pro.e108cb44.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q167541": {
+   "name": "Eredivisie",
+   "country": "nl",
+   "logo": "https://assets.fclogo.top/png/Eredivisie-v2022.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q610823": {
+   "name": "Eerste Divisie",
+   "country": "nl",
+   "logo": "https://assets.football-logos.cc/logos/netherlands/700x700/eerste-divisie.7625a293.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q201671": {
+   "name": "Eliteserien",
+   "country": "no",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/owo80l1512822583.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:liga lpf": {
+   "name": "Liga LPF",
+   "country": "pa",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/b/b2/Liga_Paname%C3%B1a_de_F%C3%BAtbol_%282018%29.png",
+   "light": true
+  },
+  "Q954911": {
+   "name": "Paraguayan Primera División",
+   "country": "py",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/k1sbmx1652126723.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q44763": {
+   "name": "Ekstraklasa",
+   "country": "pl",
+   "logo": "https://assets.football-logos.cc/logos/poland/700x700/ekstraklasa.007755e8.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q163046": {
+   "name": "I liga",
+   "country": "pl",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/5/5c/I_liga_logo.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q182994": {
+   "name": "Liga Portugal",
+   "country": "pt",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/5/5a/S%C3%ADmbolo_da_Liga_Portuguesa_de_Futebol_Profissional.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q754488": {
+   "name": "Liga Portugal 2",
+   "country": "pt",
+   "logo": "https://assets.football-logos.cc/logos/portugal/700x700/liga-portugal-2.1ef19ad5.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q168018": {
+   "name": "Kuwaiti Premier League",
+   "country": "qa",
+   "logo": "https://upload.wikimedia.org/wikipedia/de/thumb/c/c6/Fed_koweit.svg/1280px-Fed_koweit.svg.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q60681": {
+   "name": "Qatar Stars League",
+   "country": "qa",
+   "logo": "https://assets.football-logos.cc/logos/qatar/1500x1500/qatar-stars-league--no-text.11d1db8b.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q237753": {
+   "name": "Liga I",
+   "country": "ro",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/x9ordh1662657856.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q182165": {
+   "name": "Russian Premier League",
+   "country": "ru",
+   "logo": "https://assets.football-logos.cc/logos/russia/1500x1500/russian-premier-league.e60b701c.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q2656109": {
+   "name": "Saudi First Division League",
+   "country": "sa",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Saudi_First_Division_League_Logo.svg/330px-Saudi_First_Division_League_Logo.svg.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q255633": {
+   "name": "Saudi Pro League",
+   "country": "sa",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Saudi_Pro_League_Logo.svg/500px-Saudi_Pro_League_Logo.svg.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q14377162": {
+   "name": "Scottish Premiership",
+   "country": "gb-sct",
+   "logo": "https://i.ibb.co/G4rQv3Cf/scottish-premiership.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q2261276": {
+   "name": "Scottish Football League",
+   "country": "gb-sct",
+   "logo": "https://i.ibb.co/G4rQv3Cf/scottish-premiership.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q235307": {
+   "name": "Serbian SuperLiga",
+   "country": "rs",
+   "logo": "https://www.sportmonks.com/wp-content/uploads/2024/12/Superliga-Serbia-Logo.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:2. liga (slovakia)": {
+   "name": "2. Liga (Slovakia)",
+   "country": "sk",
+   "logo": "https://images.fotmob.com/image_resources/logo/leaguelogo/8973.png",
+   "light": true
+  },
+  "Q238113": {
+   "name": "Slovak First Football League",
+   "country": "sk",
+   "logo": "https://assets.football-logos.cc/logos/slovakia/700x700/slovak-first-football-league.a99a3f18.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q275005": {
+   "name": "Slovenian PrvaLiga",
+   "country": "si",
+   "logo": "https://gfr1.b-cdn.net/GFR%20League%20Logos/Prva%20Liga.png",
+   "light": true,
+   "tier": 1
+  },
+  "n:south african premiership": {
+   "name": "South African Premiership",
+   "country": "za",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/7/72/Premier_Soccer_League_logo.svg",
+   "light": false
+  },
+  "Q2217353": {
+   "name": "National First Division",
+   "country": "za",
+   "logo": "https://i.ibb.co/PZZtpnd5/National-First-Division-South-Africa.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q2386334": {
+   "name": "K League 1",
+   "country": "kr",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/zaw2cj1628430843.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q324867": {
+   "name": "La Liga",
+   "country": "es",
+   "logo": "https://assets.laliga.com/assets/logos/LL_RGB_h_color/LL_RGB_h_color.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q35615": {
+   "name": "LaLiga 2",
+   "country": "es",
+   "logo": "https://assets.football-logos.cc/logos/spain/1500x1500/la-liga-2--no-text.00f8d142.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q100146559": {
+   "name": "Primera Federación",
+   "country": "es",
+   "logo": "https://assets.football-logos.cc/logos/spain/700x700/primera-federacion--no-text.9d1d3aaa.png",
+   "light": false,
+   "tier": 3
+  },
+  "Q202243": {
+   "name": "Allsvenskan",
+   "country": "se",
+   "logo": "https://r2.thesportsdb.com/images/media/league/badge/denok11707459183.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q692009": {
+   "name": "Superettan",
+   "country": "se",
+   "logo": "https://images.fotmob.com/image_resources/logo/leaguelogo/168.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q202699": {
+   "name": "Swiss Super League",
+   "country": "ch",
+   "logo": "https://i.ibb.co/TxSvFF7M/Swiss-Football-League.png",
+   "light": true,
+   "tier": 1
+  },
+  "Q669073": {
+   "name": "Challenge League",
+   "country": "ch",
+   "logo": "https://upload.wikimedia.org/wikipedia/it/2/22/Challenge_League-Logo.png",
+   "light": false,
+   "tier": 2
+  },
+  "Q1874074": {
+   "name": "Thai League 1",
+   "country": "th",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/4/45/2024_Thai_League_1_logo.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q794235": {
+   "name": "Tunisian Ligue Professionnelle 1",
+   "country": "tn",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/e/e8/Ligue_1_Pro.png",
+   "light": false,
+   "tier": 1
+  },
+  "Q485568": {
+   "name": "Süper Lig",
+   "country": "tr",
+   "logo": "https://commons.wikimedia.org/wiki/Special:FilePath/S%C3%BCper%20Lig%20logo.svg?width=120",
+   "light": true,
+   "tier": 1
+  },
+  "Q1141692": {
+   "name": "TFF First League",
+   "country": "tr",
+   "logo": "https://upload.wikimedia.org/wikipedia/en/e/ec/TFF_1.Lig_logo.png",
+   "light": true,
+   "tier": 2
+  },
+  "Q5334350": {
+   "name": "UAE Pro League",
+   "country": "ae",
+   "logo": "https://brandlogos.net/wp-content/uploads/2026/01/uae_pro_league-logo_brandlogos.net_2xkd7-512x612.png",
+   "light": false,
+   "tier": 1
+  },
+  "n:usl championship": {
+   "name": "USL Championship",
+   "country": "us",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/USL_Championship_abbr_light_logo.svg/500px-USL_Championship_abbr_light_logo.svg.png",
+   "light": false
+  },
+  "n:uzbekistan pro league": {
+   "name": "Uzbekistan Pro League",
+   "country": "uz",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/PFL_new.png/960px-PFL_new.png",
+   "light": true
+  },
+  "n:uzbekistan super league": {
+   "name": "Uzbekistan Super League",
+   "country": "uz",
+   "logo": "https://assets.football-logos.cc/logos/uzbekistan/1500x1500/uzbekistan-super-league.d56222d2.png",
+   "light": true
+  },
+  "n:liga futve": {
+   "name": "Liga FUTVE",
+   "country": "ve",
+   "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Liga_FUTVE_2023.png",
+   "light": true
+  }
+ }
+}

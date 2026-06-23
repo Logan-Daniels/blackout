@@ -1,0 +1,2693 @@
+{
+ "_README": "Normalised club overrides built from blackout_sheets_-_all-clubs.csv. Each club: {crest, light(true=white card), leagueQid(-> league-logos.json), cc}. League name/logo/country/bg live once in league-logos.json keyed by this leagueQid.",
+ "clubs": {
+  "JS Kabylie": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20JS%20Kabylie.svg?width=120",
+   "light": false,
+   "leagueQid": "Q647746",
+   "cc": "dz"
+  },
+  "USM Alger": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/4/48/USMA_2023.png",
+   "light": false,
+   "leagueQid": "Q647746",
+   "cc": "dz"
+  },
+  "FC Noah": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/FC_Noah_logo_%282024%29.svg/960px-FC_Noah_logo_%282024%29.svg.png",
+   "light": false,
+   "leagueQid": "n:armenian premier league",
+   "cc": "am"
+  },
+  "CA Boca Juniors": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boca_Juniors_logo18.svg/500px-Boca_Juniors_logo18.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Huracán": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg/330px-Emblema_oficial_del_Club_Atl%C3%A9tico_Hurac%C3%A1n.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Independiente": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/500px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Lanús": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Escudo_de_Lan%C3%BAs_%28sin_estrellas%29.svg/500px-Escudo_de_Lan%C3%BAs_%28sin_estrellas%29.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA River Plate": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Club_Atl%C3%A9tico_River_Plate_logo.svg/500px-Club_Atl%C3%A9tico_River_Plate_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Rosario Central": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Rosario_Central_logo.svg/500px-Rosario_Central_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA San Lorenzo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Sanlorenzo_almagro_logo2026.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Talleres": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Escudo_Talleres_2015.svg/500px-Escudo_Talleres_2015.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CA Vélez Sarsfield": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg/500px-Escudo_del_Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "CS Independiente Rivadavia": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Escudo_del_Club_Independiente_Rivadavia.svg/500px-Escudo_del_Club_Independiente_Rivadavia.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "Estudiantes LP": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Estudiantes_de_la_Plata_crest_%282025%29_cropped.svg/330px-Estudiantes_de_la_Plata_crest_%282025%29_cropped.svg.png",
+   "light": false,
+   "leagueQid": "Q223170",
+   "cc": "ar"
+  },
+  "Melbourne City FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/rkeqme1603301840.png",
+   "light": false,
+   "leagueQid": "Q219586",
+   "cc": "au"
+  },
+  "Melbourne Victory FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/wwvsqx1473454564.png",
+   "light": false,
+   "leagueQid": "Q219586",
+   "cc": "au"
+  },
+  "Newcastle United Jets FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Newcastle_United_Jets_Logo.svg/500px-Newcastle_United_Jets_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q4646905",
+   "cc": "au"
+  },
+  "Sydney FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Sydney_FC_Logo.svg/330px-Sydney_FC_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219586",
+   "cc": "au"
+  },
+  "WS Wanderers FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Western_Sydney_Wanderers_FC.svg/500px-Western_Sydney_Wanderers_FC.svg.png",
+   "light": true,
+   "leagueQid": "Q4646905",
+   "cc": "au"
+  },
+  "FC Red Bull Salzburg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/FC_Red_Bull_Salzburg_logo.svg/500px-FC_Red_Bull_Salzburg_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "FK Austria Wien": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FK%20Austria%20Wien%20logo.svg?width=120",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "Grazer AK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GAK_1902_Logo_Rund.svg/500px-GAK_1902_Logo_Rund.svg.png",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "LASK Linz": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/LASK-Logo%202023.svg?width=120",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "SK Sturm Graz": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/SK_Sturm_Graz_logo.svg/250px-SK_Sturm_Graz_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "Wolfsberger AC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/xcwuqt1568668946.png",
+   "light": false,
+   "leagueQid": "n:austrian bundesliga",
+   "cc": "at"
+  },
+  "Turan Tovuz": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/b/b3/Turan_Tovuz_logo.png",
+   "light": true,
+   "leagueQid": "n:azerbaijan premier league",
+   "cc": "az"
+  },
+  "Cercle Brugge": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_Cercle_Brugge_2022.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "Club Brugge": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Club_Brugge_KV_logo.svg/500px-Club_Brugge_KV_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "FCV Dender EH": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/9/98/FCVDenderEH.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "KAA Gent": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/KAA_Gent_logo.svg/500px-KAA_Gent_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "KRC Genk": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Logo_KRC_Genk.png/500px-Logo_KRC_Genk.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "KV Mechelen": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/KV_Mechelen_logo.svg/500px-KV_Mechelen_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "Royal Antwerp FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Royal_Antwerp_Football_Club_logo.svg/330px-Royal_Antwerp_Football_Club_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "Royale Union Saint-Gilloise": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/11/Royale_Union_Saint-Gilloise_logo.svg/500px-Royale_Union_Saint-Gilloise_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "RSC Anderlecht": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/R.S.C._Anderlecht.svg/500px-R.S.C._Anderlecht.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "Sint-Truiden VV": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/f/f1/K._Sint-Truidense_V.V._logo.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "SK Beveren": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/SK_Beveren_logo.svg/500px-SK_Beveren_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q23925620",
+   "cc": "be"
+  },
+  "Sporting Charleroi": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Royal_Charleroi_Sporting_Club_logo.svg/500px-Royal_Charleroi_Sporting_Club_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "Standard Liège": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Standard_Li%C3%A8ge_logo.svg/330px-Standard_Li%C3%A8ge_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "SV Zulte Waregem": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Zulte-Waregem_logo.svg/500px-Zulte-Waregem_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q216022",
+   "cc": "be"
+  },
+  "FK Borac Banja Luka": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FK%20Borac%20Banja%20Luka%20logo.png?width=120",
+   "light": false,
+   "leagueQid": "Q391006",
+   "cc": "ba"
+  },
+  "Athletico Paranaense": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/irzu1u1554237406.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "Atlético Mineiro": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Logo_of_Clube_Atl%C3%A9tico_Mineiro.svg/500px-Logo_of_Clube_Atl%C3%A9tico_Mineiro.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "Botafogo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Botafogo_de_Futebol_e_Regatas_logo.svg/500px-Botafogo_de_Futebol_e_Regatas_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "CR Flamengo": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/syptwx1473538074.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "CR Vasco Da Gama": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Club_de_Regatas_Vasco_da_Gama_logo_%282021%29.svg/500px-Club_de_Regatas_Vasco_da_Gama_logo_%282021%29.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "Fluminense FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Fluminense_Football_Club.svg/500px-Fluminense_Football_Club.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "Grêmio FBPA": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gremio_logo.svg/500px-Gremio_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "Red Bull Bragantino": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Red_Bull_Bragantino_logo.svg/500px-Red_Bull_Bragantino_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q1348155",
+   "cc": "br"
+  },
+  "São Paulo FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/S%C3%A3o_Paulo_Futebol_Clube_logo_%282022%29.svg/500px-S%C3%A3o_Paulo_Futebol_Clube_logo_%282022%29.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "SC Corinthians": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Sport_Club_Corinthians_Paulista_crest.svg/500px-Sport_Club_Corinthians_Paulista_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "SC Internacional": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Sport_Club_Internacional_logo.svg/500px-Sport_Club_Internacional_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "SE Palmeiras": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/SE_Palmeiras_2025_crest.png/500px-SE_Palmeiras_2025_crest.png",
+   "light": false,
+   "leagueQid": "Q206813",
+   "cc": "br"
+  },
+  "PFC Ludogorets Razgrad": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/eb/PFC_Ludogorets_Razgrad_logo.png",
+   "light": false,
+   "leagueQid": "Q12837728",
+   "cc": "bg"
+  },
+  "PFC Montana": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/ee/PFC_Montana_logo.png",
+   "light": false,
+   "leagueQid": "n:second professional football league",
+   "cc": "bg"
+  },
+  "Toronto FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Toronto_FC_Logo.svg/330px-Toronto_FC_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "ca"
+  },
+  "Vancouver Whitecaps FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Vancouver_Whitecaps_logo.svg/500px-Vancouver_Whitecaps_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "ca"
+  },
+  "CD Cobresal": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/5/54/CD_Cobresal.png",
+   "light": false,
+   "leagueQid": "Q606832",
+   "cc": "cl"
+  },
+  "CD Universidad De Concepción": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/ec/Universidad_concepcion.png",
+   "light": false,
+   "leagueQid": "n:campeonato nacional primera b",
+   "cc": "cl"
+  },
+  "Zhejiang FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Zhejiang_Professional_F.C.svg/500px-Zhejiang_Professional_F.C.svg.png",
+   "light": false,
+   "leagueQid": "Q209318",
+   "cc": "cn"
+  },
+  "Atlético Nacional": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Atletico_Nacional_Logo.svg/330px-Atletico_Nacional_Logo.svg.png",
+   "light": false,
+   "leagueQid": "n:liga dimayor",
+   "cc": "co"
+  },
+  "Deportivo Saprissa": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Escudo_Saprissa_2012.svg/500px-Escudo_Saprissa_2012.svg.png",
+   "light": false,
+   "leagueQid": "n:liga promerica",
+   "cc": "cr"
+  },
+  "GNK Dinamo Zagreb": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Logo_GNK_Dinamo_Zagreb_%282019%29.svg/330px-Logo_GNK_Dinamo_Zagreb_%282019%29.svg.png",
+   "light": false,
+   "leagueQid": "Q162604",
+   "cc": "hr"
+  },
+  "HNK Hajduk Split": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/HNK%20Hajduk%20Split%20logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q162604",
+   "cc": "hr"
+  },
+  "HNK Rijeka": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/z8bxvi1603310975.png",
+   "light": false,
+   "leagueQid": "Q162604",
+   "cc": "hr"
+  },
+  "AC Omonia": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/AC_Omonia_logo.svg/500px-AC_Omonia_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "AEK Larnaca FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/AEK_Larnaca_logo.svg/330px-AEK_Larnaca_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "AEL Limassol": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/AEL%20Limassol%20logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "APOEL FC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/APOEL%20(logo%20with%20stars).svg?width=120",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "Apollon Limassol": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/0/0e/Apollon_Limassol_Logo.png",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "Aris Limassol FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Aris_Limassol_FC_logo.svg/500px-Aris_Limassol_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "Pafos FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9b/Pafos_FC_crest.svg/500px-Pafos_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q155965",
+   "cc": "cy"
+  },
+  "AC Sparta Praha": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/AC-Sparta-LOGO2021.svg?width=120",
+   "light": false,
+   "leagueQid": "Q217016",
+   "cc": "cz"
+  },
+  "FC Hradec Králové": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/d/d5/FC_Hradec_Kralove.png",
+   "light": false,
+   "leagueQid": "Q217016",
+   "cc": "cz"
+  },
+  "FC Slovan Liberec": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/f/ff/Slovan_Liberec_logo_since_2024.png",
+   "light": false,
+   "leagueQid": "Q217016",
+   "cc": "cz"
+  },
+  "FC Viktoria Plzeň": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/Viktoria_Plzen_logo.svg/330px-Viktoria_Plzen_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q217016",
+   "cc": "cz"
+  },
+  "SK Slavia Praha": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Slavia-symbol-nowordmark-RGB.png?width=120",
+   "light": false,
+   "leagueQid": "Q217016",
+   "cc": "cz"
+  },
+  "Aarhus GF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ac/AGF_Aarhus_logo.svg/330px-AGF_Aarhus_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "Brøndby IF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/Brondby_IF_logo.svg/330px-Brondby_IF_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "FC København": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/26/FC_Copenhagen_logo.svg/500px-FC_Copenhagen_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "FC Midtjylland": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/FC_Midtjylland_logo.svg/500px-FC_Midtjylland_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "FC Nordsjælland": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/23/FC_Nordsj%C3%A6lland_logo.svg/330px-FC_Nordsj%C3%A6lland_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "Randers FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Randers_FC_logo.svg/500px-Randers_FC_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "Silkeborg IF": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/tpxvvp1473535560.png",
+   "light": false,
+   "leagueQid": "Q204752",
+   "cc": "dk"
+  },
+  "CD Universidad Católica": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/UCat%C3%B3lica.png/500px-UCat%C3%B3lica.png",
+   "light": false,
+   "leagueQid": "Q2289847",
+   "cc": "ec"
+  },
+  "Independiente Del Valle": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Escudoindependientedelvalle2023.png/500px-Escudoindependientedelvalle2023.png",
+   "light": true,
+   "leagueQid": "Q2289847",
+   "cc": "ec"
+  },
+  "LDU Quito": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Liga_de_Quito_deportiva.png",
+   "light": false,
+   "leagueQid": "Q2289847",
+   "cc": "ec"
+  },
+  "Al Ahly FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/70/Al_Ahly_SC_logo.svg/500px-Al_Ahly_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q680619",
+   "cc": "eg"
+  },
+  "El Gouna FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/6vdj631589807310.png",
+   "light": false,
+   "leagueQid": "Q680619",
+   "cc": "eg"
+  },
+  "Pyramids FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/8liy611607352549.png",
+   "light": false,
+   "leagueQid": "Q680619",
+   "cc": "eg"
+  },
+  "Zamalek SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/Zamalek_SC_logo.svg/500px-Zamalek_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q680619",
+   "cc": "eg"
+  },
+  "ZED FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/3/39/ZED_FC_logo.png",
+   "light": false,
+   "leagueQid": "Q680619",
+   "cc": "eg"
+  },
+  "AFC Bournemouth": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/AFC_Bournemouth_%282013%29.svg/330px-AFC_Bournemouth_%282013%29.svg.png",
+   "light": true,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Arsenal FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/500px-Arsenal_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Aston Villa FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/9/9a/Aston_Villa_FC_new_crest.svg",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Barnsley": {
+   "crest": "https://www.thesportsdb.com/images/media/team/badge/glbmdm1781719675.png",
+   "light": false,
+   "leagueQid": "Q19565",
+   "cc": "gb-eng"
+  },
+  "Birmingham City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Birmingham_City_FC_logo.svg/330px-Birmingham_City_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Braintree Town FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b5/Braintree_Town_FC_crest.svg/500px-Braintree_Town_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q58916",
+   "cc": "gb-eng"
+  },
+  "Brentford FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/Brentford_FC_crest.svg/250px-Brentford_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Brighton & Hove Albion FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/sco/thumb/f/fd/Brighton_%26_Hove_Albion_logo.svg/3840px-Brighton_%26_Hove_Albion_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Burnley FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/Burnley_FC_Logo.svg/500px-Burnley_FC_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Charlton Athletic FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Charlton_Athletic_FC_crest.svg/500px-Charlton_Athletic_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Chelsea FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/250px-Chelsea_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Coventry City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Coventry_City_FC_crest.svg/330px-Coventry_City_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Crystal Palace FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/Crystal_Palace_FC_logo_%282022%29.svg/330px-Crystal_Palace_FC_logo_%282022%29.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Derby County FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Derby_County_crest.svg/500px-Derby_County_crest.svg.png",
+   "light": true,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Everton FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Everton_FC_logo.svg/330px-Everton_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Fulham FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Fulham_FC_%28shield%29.svg/330px-Fulham_FC_%28shield%29.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Hull City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Hull_City_A.F.C._logo.svg/330px-Hull_City_A.F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Ipswich Town FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Ipswich_Town.svg/250px-Ipswich_Town.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Leeds United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/330px-Leeds_United_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Leicester City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/330px-Leicester_City_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q19565",
+   "cc": "gb-eng"
+  },
+  "Liverpool FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/330px-Liverpool_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Luton Town FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/Luton_Town_logo.svg/500px-Luton_Town_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q19565",
+   "cc": "gb-eng"
+  },
+  "Manchester City FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/vwpvry1467462651.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Manchester United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/330px-Manchester_United_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Middlesbrough FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Middlesbrough_FC_crest.svg/330px-Middlesbrough_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Millwall FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Millwall_FC_crest.svg/500px-Millwall_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Newcastle United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/330px-Newcastle_United_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Norwich City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/17/Norwich_City_FC_logo.svg/500px-Norwich_City_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Nottingham Forest FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Nottingham_Forest_F.C._logo.svg/330px-Nottingham_Forest_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Port Vale FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Port_Vale_logo.svg/500px-Port_Vale_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q48837",
+   "cc": "gb-eng"
+  },
+  "Portsmouth FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/Portsmouth_FC_logo.svg/500px-Portsmouth_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-eng"
+  },
+  "Rotherham United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/42/Rotherham_United_F.C._svg.svg/330px-Rotherham_United_F.C._svg.svg.png",
+   "light": false,
+   "leagueQid": "Q48837",
+   "cc": "gb-eng"
+  },
+  "Sheffield United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9c/Sheffield_United_FC_logo.svg/330px-Sheffield_United_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Southampton FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/330px-FC_Southampton.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Stoke City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Stoke_City_FC_crest_2001.svg/330px-Stoke_City_FC_crest_2001.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Sunderland AFC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/Logo_Sunderland.svg/960px-Logo_Sunderland.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Tottenham Hotspur FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tottenham_Hotspur.svg/250px-Tottenham_Hotspur.svg.png",
+   "light": true,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Watford FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/Watford.svg/250px-Watford.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "West Ham United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/330px-West_Ham_United_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "Wolverhampton Wanderers FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Wolverhampton_Wanderers_FC_crest.svg/250px-Wolverhampton_Wanderers_FC_crest.svg.png",
+   "light": true,
+   "leagueQid": "Q9448",
+   "cc": "gb-eng"
+  },
+  "SJK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/Seinajoen_Jalkapallokerho_logo.svg/500px-Seinajoen_Jalkapallokerho_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:veikkausliiga",
+   "cc": "fi"
+  },
+  "AJ Auxerre": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/51/AJAuxerreLogo.svg/330px-AJAuxerreLogo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Angers SCO": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Angers_Sporting_Club_de_l%27Ouest_logo.svg/330px-Angers_Sporting_Club_de_l%27Ouest_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "AS Monaco": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/LogoASMonacoFC2021.svg/330px-LogoASMonacoFC2021.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "AS Nancy": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/AS_Nancy_logo.svg/500px-AS_Nancy_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "AS Saint-Etienne": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20AS%20Saint-%C3%89tienne.svg?width=120",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "FC Lorient": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/sxsttw1473504748.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "FC Nantes": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Logo_FC_Nantes_%28avec_fond%29_-_2019.svg/250px-Logo_FC_Nantes_%28avec_fond%29_-_2019.svg.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "FC Sochaux-Montbéliard": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/FC_Sochaux-Montbeliard_logo.svg/330px-FC_Sochaux-Montbeliard_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "Le Havre AC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Le_Havre_AC_logo.svg/330px-Le_Havre_AC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Lille OSC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Lille_OSC_2018_logo.svg/330px-Lille_OSC_2018_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Montpellier HSC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Montpellier_HSC_logo.svg/500px-Montpellier_HSC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "OGC Nice": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/OGC_Nice_logo.svg/330px-OGC_Nice_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Olympique Lyonnais": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/Olympique_Lyonnais_logo.svg/330px-Olympique_Lyonnais_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Olympique Marseille": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Olympique_de_Marseille_2026_logo.svg/330px-Olympique_de_Marseille_2026_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Paris FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/yuvtsy1447594254.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Paris Saint-Germain": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/1280px-Paris_Saint-Germain_F.C..svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "RC Lens": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/RC_Lens_logo.svg/330px-RC_Lens_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "RC Strasbourg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Racing_Club_de_Strasbourg_logo.svg/330px-Racing_Club_de_Strasbourg_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "SC Bastia": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/mv09b91754278549.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "Stade Reims": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Stade_de_Reims_logo.svg/330px-Stade_de_Reims_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q217374",
+   "cc": "fr"
+  },
+  "Stade Rennais FC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Stade%20Rennais%20(logo%201960).svg?width=120",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "Toulouse FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/63/Toulouse_FC_2018_logo.svg/330px-Toulouse_FC_2018_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q13394",
+   "cc": "fr"
+  },
+  "1. FC Union Berlin": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/1._FC_Union_Berlin_Logo.svg/330px-1._FC_Union_Berlin_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "1. FSV Mainz 05": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/1._FSV_Mainz_05_logo.svg/330px-1._FSV_Mainz_05_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Bayer 04 Leverkusen": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/59/Bayer_04_Leverkusen_logo.svg/500px-Bayer_04_Leverkusen_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Borussia Dortmund": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/330px-Borussia_Dortmund_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Borussia Mönchengladbach": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Borussia_M%C3%B6nchengladbach_logo.svg/330px-Borussia_M%C3%B6nchengladbach_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Eintracht Frankfurt": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Eintracht_Frankfurt_crest.svg/330px-Eintracht_Frankfurt_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "FC Augsburg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c5/FC_Augsburg_logo.svg/250px-FC_Augsburg_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "FC Bayern München": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FC%20Bayern%20M%C3%BCnchen%20logo%20(2024).svg?width=120",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "FC Cosmos Koblenz": {
+   "crest": "https://image.fupa.net/club/sbz7FlwSXtLt/800x800.png",
+   "light": false,
+   "leagueQid": "n:rheinlandliga",
+   "cc": "de"
+  },
+  "FC Schalke 04": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/FC_Schalke_04_Logo.svg/330px-FC_Schalke_04_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "FC St. Pauli": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Fc_st_pauli_logo.svg/960px-Fc_st_pauli_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Fortuna Düsseldorf": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Fortuna_D%C3%BCsseldorf.svg/250px-Fortuna_D%C3%BCsseldorf.svg.png",
+   "light": false,
+   "leagueQid": "Q152665",
+   "cc": "de"
+  },
+  "Hamburger SV": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Hamburger_SV_logo.svg/330px-Hamburger_SV_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "Hannover 96": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Hannover%2096%20Logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q152665",
+   "cc": "de"
+  },
+  "Holstein Kiel": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Holstein_Kiel_Logo.svg/330px-Holstein_Kiel_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q152665",
+   "cc": "de"
+  },
+  "Karlsruher SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Karlsruher_SC_Logo_2.svg/330px-Karlsruher_SC_Logo_2.svg.png",
+   "light": false,
+   "leagueQid": "Q154069",
+   "cc": "de"
+  },
+  "RB Leipzig": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/04/RB_Leipzig_2014_logo.svg/330px-RB_Leipzig_2014_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "SC Freiburg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6d/SC_Freiburg_logo.svg/330px-SC_Freiburg_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "SV Werder Bremen": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/330px-SV-Werder-Bremen-Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "TSG Hoffenheim": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/TSG%20Logo-Standard%204c.png?width=120",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "VfB Stuttgart": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/VfB_Stuttgart_1893_Logo.svg/330px-VfB_Stuttgart_1893_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q219592",
+   "cc": "de"
+  },
+  "VfL Wolfsburg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/VfL_Wolfsburg_logo_2026.svg/330px-VfL_Wolfsburg_logo_2026.svg.png",
+   "light": false,
+   "leagueQid": "Q152665",
+   "cc": "de"
+  },
+  "Hearts Of Oak SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/0/01/Accra_hearts_of_oak_sc.png",
+   "light": false,
+   "leagueQid": "n:ghana premier league",
+   "cc": "gh"
+  },
+  "AE Kifisia FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/d64tyn1727198332.png",
+   "light": false,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "AEK Athens": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/4nogst1602773624.png",
+   "light": false,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "AEL FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/25/Athlitiki_Enosi_Larissa_F.C._logo.svg/330px-Athlitiki_Enosi_Larissa_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "n:super league greece 2",
+   "cc": "gr"
+  },
+  "Atromitos FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/e9/Atromitos.png",
+   "light": true,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "Olympiacos FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/Olympiacos_FC_crest.svg/330px-Olympiacos_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "Panathinaikos FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Panathinaikos_F.C._logo.svg/250px-Panathinaikos_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "PAOK Saloniki": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/e6/PAOK_FC_EMBLEM.png",
+   "light": false,
+   "leagueQid": "Q235114",
+   "cc": "gr"
+  },
+  "Violette AC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/b/b9/Violette_AC_2.png",
+   "light": false,
+   "leagueQid": "n:haitian football league",
+   "cc": "ht"
+  },
+  "Ferencvárosi TC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Ferencvarosi_TC.svg/500px-Ferencvarosi_TC.svg.png",
+   "light": false,
+   "leagueQid": "Q276085",
+   "cc": "hu"
+  },
+  "Györi ETO FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/d/de/ETO_FC_Gy%C5%91r.png",
+   "light": false,
+   "leagueQid": "Q276085",
+   "cc": "hu"
+  },
+  "Puskás Akadémia FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/44/Pusk%C3%A1s_Akad%C3%A9mia_FC_logo.svg/500px-Pusk%C3%A1s_Akad%C3%A9mia_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q276085",
+   "cc": "hu"
+  },
+  "Persib Bandung": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/8/85/Persib_Bandung_Football_Logo.png",
+   "light": false,
+   "leagueQid": "n:super league (indonesia)",
+   "cc": "id"
+  },
+  "Esteghlal Tehran FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/tu1o951756536150.png",
+   "light": false,
+   "leagueQid": "Q194641",
+   "cc": "ir"
+  },
+  "Foolad Khuzestan FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Foolad_F.C._Logo.svg/1280px-Foolad_F.C._Logo.svg.png",
+   "light": false,
+   "leagueQid": "n:league 2 (iran)",
+   "cc": "ir"
+  },
+  "Malavan Anzali FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Malavan_F.C._Logo.svg/500px-Malavan_F.C._Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q194641",
+   "cc": "ir"
+  },
+  "Persepolis FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/tzqvmg1725936631.png",
+   "light": false,
+   "leagueQid": "Q194641",
+   "cc": "ir"
+  },
+  "Sepahan SC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/ehx9kf1580934615.png",
+   "light": false,
+   "leagueQid": "Q194641",
+   "cc": "ir"
+  },
+  "Tractor Sazi Tabriz FC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Tractor-logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q194641",
+   "cc": "ir"
+  },
+  "Al Karma SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/d/d0/Al-Karma_SC_logo.png",
+   "light": false,
+   "leagueQid": "Q108265766",
+   "cc": "iq"
+  },
+  "Al Shorta SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/0/04/Al-Shorta_Sports_Club_%28Iraq%29_Crest.png",
+   "light": false,
+   "leagueQid": "Q248512",
+   "cc": "iq"
+  },
+  "Al Talaba SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/34/Al-Talaba_SC_logo.svg/500px-Al-Talaba_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q248512",
+   "cc": "iq"
+  },
+  "Al Zawra'a SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/Al-Zawraa_SC_logo.svg/500px-Al-Zawraa_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q248512",
+   "cc": "iq"
+  },
+  "Al-Quwa Al-Jawiya": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/Al-Quwa_Al-Jawiya_Crest.png/330px-Al-Quwa_Al-Jawiya_Crest.png",
+   "light": false,
+   "leagueQid": "Q248512",
+   "cc": "iq"
+  },
+  "Shamrock Rovers FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/u1zowj1491504381.png",
+   "light": false,
+   "leagueQid": "Q831202",
+   "cc": "ie"
+  },
+  "St Patrick's Athletic FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/St._Patrick%27s_Athletic_F.C._crest.svg/500px-St._Patrick%27s_Athletic_F.C._crest.svg.png",
+   "light": false,
+   "leagueQid": "Q831202",
+   "cc": "ie"
+  },
+  "Hapoel Kiryat Shmona FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/d/d1/Hapoel_Ironi_Kiryat_Shmona_badge.png",
+   "light": false,
+   "leagueQid": "Q477309",
+   "cc": "il"
+  },
+  "Maccabi Haifa FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/t73b501639433206.png",
+   "light": false,
+   "leagueQid": "Q477309",
+   "cc": "il"
+  },
+  "Maccabi Tel-Aviv FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/e/e9/Maccabi_Tel_Aviv.png",
+   "light": false,
+   "leagueQid": "Q477309",
+   "cc": "il"
+  },
+  "AC Milan": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/ac-milan.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "ACF Fiorentina": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/fiorentina.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "AS Roma": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/AS_Roma_logo_%282017%29.svg/250px-AS_Roma_logo_%282017%29.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Atalanta Bergamo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Atalanta_BC_new_logo.svg/250px-Atalanta_BC_new_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Bologna FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Bologna_F.C._1909_logo.svg/250px-Bologna_F.C._1909_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Cagliari": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/61/Cagliari_Calcio_1920.svg/500px-Cagliari_Calcio_1920.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Como": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Calcio_Como_-_logo_%28Italy%2C_2019-%29.svg/330px-Calcio_Como_-_logo_%28Italy%2C_2019-%29.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "FC Internazionale Milano": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FC%20Internazionale%20Milano%202021.svg?width=120",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Frosinone": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Frosinone_Calcio_logo.svg/330px-Frosinone_Calcio_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Genoa CFC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/52s8dn1655553600.png",
+   "light": false,
+   "leagueQid": "Q3957692",
+   "cc": "it"
+  },
+  "Hellas Verona FC": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/verona.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q194052",
+   "cc": "it"
+  },
+  "Juventus FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg/250px-Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg.png",
+   "light": true,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Parma": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Logo_Parma_Calcio_1913_%28adozione_2016%29.svg/330px-Logo_Parma_Calcio_1913_%28adozione_2016%29.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Pisa SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6b/Pisa_SC_crest.svg/500px-Pisa_SC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q194052",
+   "cc": "it"
+  },
+  "SSC Napoli": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/SSC_Neapel.svg/250px-SSC_Neapel.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Torino FC": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/torino.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "UC Sampdoria": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/sampdoria.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q194052",
+   "cc": "it"
+  },
+  "Udinese": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Udinese_Calcio_logo.svg/500px-Udinese_Calcio_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "US Cremonese": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/US_Cremonese_logo.svg/500px-US_Cremonese_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q194052",
+   "cc": "it"
+  },
+  "US Sassuolo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/1c/US_Sassuolo_Calcio_logo.svg/330px-US_Sassuolo_Calcio_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q15804",
+   "cc": "it"
+  },
+  "Venezia FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Venezia_FC_crest.svg/500px-Venezia_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q194052",
+   "cc": "it"
+  },
+  "Albirex Niigata": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/l16fvz1590070788.png",
+   "light": false,
+   "leagueQid": "Q276445",
+   "cc": "jp"
+  },
+  "FC Machida Zelvia": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FC%20Machida%20Zelvia%20(logo).svg?width=120",
+   "light": false,
+   "leagueQid": "Q276445",
+   "cc": "jp"
+  },
+  "FC Tokyo": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/9ls6lr1698754779.png",
+   "light": true,
+   "leagueQid": "Q276445",
+   "cc": "jp"
+  },
+  "Kashima Antlers": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/2s8ady1578238881.png",
+   "light": false,
+   "leagueQid": "Q276445",
+   "cc": "jp"
+  },
+  "Sanfrecce Hiroshima": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/gsgkxj1590068965.png",
+   "light": false,
+   "leagueQid": "Q276445",
+   "cc": "jp"
+  },
+  "Al Faisaly SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/5/5d/Al-Faisaly_SC_%28logo%29.png",
+   "light": false,
+   "leagueQid": "n:jordanian pro league",
+   "cc": "jo"
+  },
+  "Al Hussein SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/0/0e/Shabab_Al-Hussein_SC_logo.png",
+   "light": false,
+   "leagueQid": "n:jordanian pro league",
+   "cc": "jo"
+  },
+  "Al Wahdat SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/4/43/Al-Wehdat_SC_%28logo%29.png",
+   "light": false,
+   "leagueQid": "n:jordanian pro league",
+   "cc": "jo"
+  },
+  "FC Astana": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/FC_Astana_Logo.svg/250px-FC_Astana_Logo.svg.png",
+   "light": false,
+   "leagueQid": "n:kazakhstan premier league (kazakhstan)",
+   "cc": "kz"
+  },
+  "Selangor FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/Selangor_FC_logo.svg/500px-Selangor_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q194180",
+   "cc": "my"
+  },
+  "Terengganu FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Terengganu_FC_logo.svg/500px-Terengganu_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q194180",
+   "cc": "my"
+  },
+  "Atlas FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/F%C3%BAtbol_Club_Atlas.svg/500px-F%C3%BAtbol_Club_Atlas.svg.png",
+   "light": true,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "CD Guadalajara": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Guadalajara_CD.svg/330px-Guadalajara_CD.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "CF Cruz Azul": {
+   "crest": "https://b.fssta.com/uploads/application/soccer/team-logos/cruz-azul.vresize.350.350.medium.0.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "CF Monterrey": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Club_de_F%C3%BAtbol_Monterrey_logo.svg/330px-Club_de_F%C3%BAtbol_Monterrey_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "CF Pachuca": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/Pachuca_Tuzos_logo.svg/330px-Pachuca_Tuzos_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Club América": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Club_Am%C3%A9rica_crest.svg/330px-Club_Am%C3%A9rica_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q92292023",
+   "cc": "mx"
+  },
+  "Club León": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Club_Leon_Logo.svg/330px-Club_Leon_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Club Santos Laguna": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Santos_Laguna_logo.svg/330px-Santos_Laguna_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Club Tijuana": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Club_Tijuana_logo.svg/250px-Club_Tijuana_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Deportivo Toluca FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Club_Toluca_Logo.svg/250px-Club_Toluca_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "FC Juárez": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9d/FC_Ju%C3%A1rez_logo.svg/500px-FC_Ju%C3%A1rez_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Mazatlán FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/da/Mazatl%C3%A1n_F.C._logo.svg/500px-Mazatl%C3%A1n_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Pumas UNAM": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Club_Universidad_Nacional_logo.svg/330px-Club_Universidad_Nacional_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "Tigres UANL": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Tigres_UANL_logo_%28crest%29.svg/250px-Tigres_UANL_logo_%28crest%29.svg.png",
+   "light": false,
+   "leagueQid": "Q764690",
+   "cc": "mx"
+  },
+  "ASFAR": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/AS_FAR_logo.png/500px-AS_FAR_logo.png",
+   "light": true,
+   "leagueQid": "Q570246",
+   "cc": "ma"
+  },
+  "Raja Casablanca": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/b/bd/Raja_CA_logo.png",
+   "light": false,
+   "leagueQid": "Q570246",
+   "cc": "ma"
+  },
+  "RS Berkane": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/f296p91743053568.png",
+   "light": false,
+   "leagueQid": "Q570246",
+   "cc": "ma"
+  },
+  "AFC Ajax": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Logo_AFC_Ajax_%281928-1991%2C_2025-%29.png/330px-Logo_AFC_Ajax_%281928-1991%2C_2025-%29.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "Almere City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Almere_City_FC_logo.svg/500px-Almere_City_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "AZ Alkmaar": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/AZ_Alkmaar.svg/330px-AZ_Alkmaar.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "FC Den Bosch": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/FC_Den_Bosch_logo.svg/500px-FC_Den_Bosch_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "FC Twente": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/FC_Twente.svg/330px-FC_Twente.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "FC Utrecht": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_FC_Utrecht.svg/330px-Logo_FC_Utrecht.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "FC Volendam": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/3/35/FC_Volendam_logo.png",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "Feyenoord Rotterdam": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Feyenoord_logo_since_2024.svg/330px-Feyenoord_logo_since_2024.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "NEC Nijmegen": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/NEC_Nijmegen_logo.svg/500px-NEC_Nijmegen_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "PEC Zwolle": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/PEC_Zwolle_logo.svg/330px-PEC_Zwolle_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "PSV Eindhoven": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/330px-PSV_Eindhoven.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "RKC Waalwijk": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/RKC_Waalwijk_logo.svg/330px-RKC_Waalwijk_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "SC Heracles Almelo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Heracles_Almelo_logo.svg/330px-Heracles_Almelo_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "SC Telstar": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4d/SC_Telstar_logo.svg/500px-SC_Telstar_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "Sparta Rotterdam": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Sparta_Rotterdam_logo.svg/330px-Sparta_Rotterdam_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q167541",
+   "cc": "nl"
+  },
+  "VVV Venlo": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/VVV%20Venlo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q610823",
+   "cc": "nl"
+  },
+  "Auckland FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/f36lst1730017502.png",
+   "light": false,
+   "leagueQid": "Q219586",
+   "cc": "nz"
+  },
+  "Wellington Phoenix FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/4uj8271759632738.png",
+   "light": false,
+   "leagueQid": "Q219586",
+   "cc": "nz"
+  },
+  "FK Bodø/Glimt": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/FK_Bodo_Glimt_logo.svg/500px-FK_Bodo_Glimt_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q201671",
+   "cc": "no"
+  },
+  "Molde FK": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Molde%20Fotball%20Logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q201671",
+   "cc": "no"
+  },
+  "Sarpsborg 08 FF": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/pxrf831534869388.png",
+   "light": false,
+   "leagueQid": "Q201671",
+   "cc": "no"
+  },
+  "Viking Stavanger": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Viking_FK_logo_2020.svg/500px-Viking_FK_logo_2020.svg.png",
+   "light": false,
+   "leagueQid": "Q201671",
+   "cc": "no"
+  },
+  "CD Plaza Amador": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Cd_plaza_amador_logo.png/250px-Cd_plaza_amador_logo.png",
+   "light": false,
+   "leagueQid": "n:liga lpf",
+   "cc": "pa"
+  },
+  "Cerro Porteño": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Escudo_Club_Cerro_Porte%C3%B1o_2023-Actual.svg/330px-Escudo_Club_Cerro_Porte%C3%B1o_2023-Actual.svg.png",
+   "light": false,
+   "leagueQid": "Q954911",
+   "cc": "py"
+  },
+  "Club Olimpia": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Club_Olimpia_logo.svg/330px-Club_Olimpia_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q954911",
+   "cc": "py"
+  },
+  "Jagiellonia Białystok": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Jagiellonia%20Bia%C5%82ystok%20Logo%201.png?width=120",
+   "light": false,
+   "leagueQid": "Q44763",
+   "cc": "pl"
+  },
+  "KS Cracovia": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Cracovia_%28football_club%29_logo.svg/500px-Cracovia_%28football_club%29_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q44763",
+   "cc": "pl"
+  },
+  "Lechia Gdańsk": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/Lechia_Gda%C5%84sk_logo.svg/500px-Lechia_Gda%C5%84sk_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q163046",
+   "cc": "pl"
+  },
+  "Pogoń Szczecin": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Pogon_Szczecin_logo.svg/250px-Pogon_Szczecin_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q44763",
+   "cc": "pl"
+  },
+  "Widzew Łódź": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Widzew_Lodz.svg/500px-Widzew_Lodz.svg.png",
+   "light": false,
+   "leagueQid": "Q44763",
+   "cc": "pl"
+  },
+  "Casa Pia AC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Casa_Pia_A.C._logo.svg/330px-Casa_Pia_A.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "CD Tondela": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/C.D._Tondela.png/330px-C.D._Tondela.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "CF Estrela Da Amadora": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/S%C3%ADmbolo_Estrela_da_Amadora.svg/500px-S%C3%ADmbolo_Estrela_da_Amadora.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "FC Porto": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/FC_Porto.svg/330px-FC_Porto.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "FC Vizela": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/F.C._Vizela_logo.svg/330px-F.C._Vizela_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q754488",
+   "cc": "pt"
+  },
+  "GD Chaves": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/0e88hj1628850708.png",
+   "light": false,
+   "leagueQid": "Q754488",
+   "cc": "pt"
+  },
+  "Gil Vicente FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/8/8f/Gil_Vicente_F.C.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "SC Braga": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/79/S.C._Braga_logo.svg/330px-S.C._Braga_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "SC Farense": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/0a09qc1690493592.png",
+   "light": false,
+   "leagueQid": "Q754488",
+   "cc": "pt"
+  },
+  "SCU Torreense": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/byn6c21659694982.png",
+   "light": false,
+   "leagueQid": "Q754488",
+   "cc": "pt"
+  },
+  "SL Benfica": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/SL_Benfica_logo.svg/330px-SL_Benfica_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "Sporting CP": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Sporting_CP_crest.svg/330px-Sporting_CP_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "Vitória SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Vit%C3%B3ria_Guimar%C3%A3es.svg/250px-Vit%C3%B3ria_Guimar%C3%A3es.svg.png",
+   "light": false,
+   "leagueQid": "Q182994",
+   "cc": "pt"
+  },
+  "Al Arabi SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/22/Al-Arabi_SC_Qatar_logo.svg/500px-Al-Arabi_SC_Qatar_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q168018",
+   "cc": "qa"
+  },
+  "Al Duhail SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/Al-Duhail_SC_%28logo%29.svg/500px-Al-Duhail_SC_%28logo%29.svg.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Gharafa SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/79/Al-Gharafa_SC_logo.svg/500px-Al-Gharafa_SC_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Rayyan SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Al-Rayyan_SC_logo.svg/500px-Al-Rayyan_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Sadd SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Al_Sadd_SC_logo.svg/330px-Al_Sadd_SC_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Sailiya SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/b/b1/Al-Sailiya_SC_logo.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Shamal SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Al-Shamal_SC_logo.svg/500px-Al-Shamal_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Al Wakrah SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/26/Al-Wakrah_SC_logo.svg/500px-Al-Wakrah_SC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "Qatar SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/QSC-Emblem-RGB.svg/500px-QSC-Emblem-RGB.svg.png",
+   "light": false,
+   "leagueQid": "Q60681",
+   "cc": "qa"
+  },
+  "FC FCSB": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Fcsb-logo.svg/500px-Fcsb-logo.svg.png",
+   "light": false,
+   "leagueQid": "Q237753",
+   "cc": "ro"
+  },
+  "Universitatea Cluj": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20Universitatea%20Cluj.svg?width=120",
+   "light": false,
+   "leagueQid": "Q237753",
+   "cc": "ro"
+  },
+  "FC Akron Tolyatti": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Akron_Togliatti.png/500px-Akron_Togliatti.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Dynamo Makhachkala": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/FC_Dynamo_Makhachkala_logo.svg/500px-FC_Dynamo_Makhachkala_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Dynamo Moscow": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/Dynamo_Moscow_logo.svg/330px-Dynamo_Moscow_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Krasnodar": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/30/FC_Krasnodar_logo.svg/500px-FC_Krasnodar_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Lokomotiv Moscow": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/93/FC_Lokomotiv_Moscow_logo.svg/330px-FC_Lokomotiv_Moscow_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Pari Nizhny Novgorod": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/FC_Nizhny_Novgorod_emblem.svg/330px-FC_Nizhny_Novgorod_emblem.svg.png",
+   "light": true,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Rostov": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/FC_Rostov_logo.svg/500px-FC_Rostov_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Spartak Moscow": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/zpj2el1754674286.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "FC Zenit St. Petersburg": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/FC_Zenit_Saint_Petersburg_crest.svg/330px-FC_Zenit_Saint_Petersburg_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q182165",
+   "cc": "ru"
+  },
+  "Abha Club": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Abha_Club_Logo.svg/960px-Abha_Club_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q2656109",
+   "cc": "sa"
+  },
+  "Al Ahli FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/1bbtgb1755192301.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Ettifaq FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/34/Al-Ettifaq_FC_logo.svg/330px-Al-Ettifaq_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Fateh SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/fr/thumb/a/ae/Logo_Al-Fateh_SC.svg/1280px-Logo_Al-Fateh_SC.svg.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Fayha FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Al-Fayha_FC.svg/500px-Al-Fayha_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Hilal SC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Al%20Hilal%20SFC%20Logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Ittihad": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Al-Ittihad_Club_%28Jeddah%29_logo.svg/500px-Al-Ittihad_Club_%28Jeddah%29_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Najmah SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Al-Najmah_SC_Logo.svg/500px-Al-Najmah_SC_Logo.svg.png",
+   "light": true,
+   "leagueQid": "Q2656109",
+   "cc": "sa"
+  },
+  "Al Nassr FC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Nassr%20FC%20Logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Qadsiah FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/ok63wb1719134839.png",
+   "light": false,
+   "leagueQid": "Q2656109",
+   "cc": "sa"
+  },
+  "Al Shabab FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Al_Shabab_FC_%28Riyadh%29.svg/500px-Al_Shabab_FC_%28Riyadh%29.svg.png",
+   "light": false,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Al Ula Saudi FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Al-Ula_FC_Logo.svg/500px-Al-Ula_FC_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q2656109",
+   "cc": "sa"
+  },
+  "Neom SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/4/4a/Neom_SC_Logo.png",
+   "light": true,
+   "leagueQid": "Q255633",
+   "cc": "sa"
+  },
+  "Celtic FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/71/Celtic_FC_crest.svg/330px-Celtic_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q14377162",
+   "cc": "gb-sct"
+  },
+  "Heart Of Midlothian FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/twqvyt1447597939.png",
+   "light": false,
+   "leagueQid": "Q2261276",
+   "cc": "gb-sct"
+  },
+  "Hibernian FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/37/Hibernian_FC_logo.svg/250px-Hibernian_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q14377162",
+   "cc": "gb-sct"
+  },
+  "Kilmarnock FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/xssqtu1447596951.png",
+   "light": false,
+   "leagueQid": "Q2261276",
+   "cc": "gb-sct"
+  },
+  "Motherwell FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Motherwell_FC_crest.svg/330px-Motherwell_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q14377162",
+   "cc": "gb-sct"
+  },
+  "Rangers FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Rangers_FC.svg/330px-Rangers_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q14377162",
+   "cc": "gb-sct"
+  },
+  "FK Crvena Zvezda": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/osgmbz1781157114.png",
+   "light": false,
+   "leagueQid": "Q235307",
+   "cc": "rs"
+  },
+  "FC Tatran Prešov": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/7/7e/1FC_Tatran.png",
+   "light": false,
+   "leagueQid": "n:2. liga (slovakia)",
+   "cc": "sk"
+  },
+  "ŠK Slovan Bratislava": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/SK_Slovan_Bratislava_logo.svg/500px-SK_Slovan_Bratislava_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q238113",
+   "cc": "sk"
+  },
+  "NK Maribor": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/titlog1776705066.png",
+   "light": false,
+   "leagueQid": "Q275005",
+   "cc": "si"
+  },
+  "Kaizer Chiefs FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Kaizer_Chiefs_logo.svg/500px-Kaizer_Chiefs_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:south african premiership",
+   "cc": "za"
+  },
+  "Mamelodi Sundowns FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/uswgw01642709783.png",
+   "light": false,
+   "leagueQid": "n:south african premiership",
+   "cc": "za"
+  },
+  "Orlando Pirates FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/y6dbv61583616330.png",
+   "light": false,
+   "leagueQid": "n:south african premiership",
+   "cc": "za"
+  },
+  "Polokwane City FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/c3nz0z1583616439.png",
+   "light": false,
+   "leagueQid": "Q2217353",
+   "cc": "za"
+  },
+  "Siwelele FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Siwelele_F.C._logo.svg/330px-Siwelele_F.C._logo.svg.png",
+   "light": false,
+   "leagueQid": "n:south african premiership",
+   "cc": "za"
+  },
+  "Daejeon Hana Citizen FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/o9z6eq1589558557.png",
+   "light": false,
+   "leagueQid": "Q2386334",
+   "cc": "kr"
+  },
+  "FC Seoul": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FC%20Seoul%20logotype.png?width=120",
+   "light": false,
+   "leagueQid": "Q2386334",
+   "cc": "kr"
+  },
+  "Gangwon FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fe/Gangwon_FC.svg/500px-Gangwon_FC.svg.png",
+   "light": false,
+   "leagueQid": "Q2386334",
+   "cc": "kr"
+  },
+  "Jeonbuk Hyundai Motors FC": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeonbuk%20Hyundai%20Motors%20FC%20logotype.png?width=120",
+   "light": false,
+   "leagueQid": "Q2386334",
+   "cc": "kr"
+  },
+  "Ulsan HD": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/0wooic1706533767.png",
+   "light": false,
+   "leagueQid": "Q2386334",
+   "cc": "kr"
+  },
+  "Athletic Club": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/98/Club_Athletic_Bilbao_logo.svg/250px-Club_Athletic_Bilbao_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Atlético De Madrid": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/0ulh3q1719984315.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "CA Osasuna": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/CA_Osasuna_2024_crest.svg/330px-CA_Osasuna_2024_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "CD Castellón": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Logo_of_CD_Castell%C3%B3n.svg/330px-Logo_of_CD_Castell%C3%B3n.svg.png",
+   "light": false,
+   "leagueQid": "Q35615",
+   "cc": "es"
+  },
+  "Cultural Leonesa": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Logo_of_Cultural_y_Deportiva_Leonesa.svg/500px-Logo_of_Cultural_y_Deportiva_Leonesa.svg.png",
+   "light": false,
+   "leagueQid": "Q100146559",
+   "cc": "es"
+  },
+  "Elche CF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Elche_CF_logo.svg/330px-Elche_CF_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "FC Barcelona": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/330px-FC_Barcelona_%28crest%29.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Girona FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/Girona_FC_Logo.svg/330px-Girona_FC_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Granada CF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Logo_of_Granada_Club_de_F%C3%BAtbol.svg/330px-Logo_of_Granada_Club_de_F%C3%BAtbol.svg.png",
+   "light": false,
+   "leagueQid": "Q35615",
+   "cc": "es"
+  },
+  "Levante UD": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Levante_Uni%C3%B3n_Deportiva%2C_S.A.D._logo.svg/330px-Levante_Uni%C3%B3n_Deportiva%2C_S.A.D._logo.svg.png",
+   "light": true,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Racing Santander": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f5/Racing_de_Santander_logo.svg/330px-Racing_de_Santander_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Rayo Vallecano": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Rayo_Vallecano_logo.svg/330px-Rayo_Vallecano_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "RC Celta Vigo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/12/RC_Celta_de_Vigo_logo.svg/330px-RC_Celta_de_Vigo_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "RCD Espanyol": {
+   "crest": "https://upload.wikimedia.org/wikipedia/fr/archive/a/a5/20221110213237%21Rcd_espanyol_de_barcelona.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "RCD Mallorca": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/330px-Rcd_mallorca.svg.png",
+   "light": false,
+   "leagueQid": "Q35615",
+   "cc": "es"
+  },
+  "Real Betis": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Real_betis_logo.svg/330px-Real_betis_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Real Madrid C. F.": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/330px-Real_Madrid_CF.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Real Oviedo": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6e/Real_Oviedo_logo.svg/330px-Real_Oviedo_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q35615",
+   "cc": "es"
+  },
+  "Real Sociedad": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Real_Sociedad_logo.svg/330px-Real_Sociedad_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Sevilla FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Sevilla_FC_logo.svg/330px-Sevilla_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Valencia CF": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/dm8l6o1655594864.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "Villarreal CF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Villarreal_CF_logo-en.svg/330px-Villarreal_CF_logo-en.svg.png",
+   "light": false,
+   "leagueQid": "Q324867",
+   "cc": "es"
+  },
+  "AIK Stockholm": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/AIK_Fotboll_%28shield%29.svg/500px-AIK_Fotboll_%28shield%29.svg.png",
+   "light": false,
+   "leagueQid": "Q202243",
+   "cc": "se"
+  },
+  "IFK Norrköping FK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/IFK_Norrkoping_logo.svg/500px-IFK_Norrkoping_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q692009",
+   "cc": "se"
+  },
+  "Malmö FF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Malmo_FF_logo.svg/330px-Malmo_FF_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q202243",
+   "cc": "se"
+  },
+  "Mjällby AIF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Mjallby_AIF_logo.svg/500px-Mjallby_AIF_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q202243",
+   "cc": "se"
+  },
+  "BSC Young Boys": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/BSC_Young_Boys.svg/330px-BSC_Young_Boys.svg.png",
+   "light": false,
+   "leagueQid": "Q202699",
+   "cc": "ch"
+  },
+  "FC Lugano": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20FC%20Lugano%202025.svg?width=120",
+   "light": false,
+   "leagueQid": "Q202699",
+   "cc": "ch"
+  },
+  "FC St. Gallen": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/FC%20St.%20Gallen%20logo.svg?width=120",
+   "light": false,
+   "leagueQid": "Q202699",
+   "cc": "ch"
+  },
+  "FC Stade Nyonnais": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/8/89/FC_Stade_Nyonnais_logo.png",
+   "light": false,
+   "leagueQid": "Q669073",
+   "cc": "ch"
+  },
+  "FC Zürich": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/FC_Zurich_Logo_2022.svg/330px-FC_Zurich_Logo_2022.svg.png",
+   "light": false,
+   "leagueQid": "Q202699",
+   "cc": "ch"
+  },
+  "Servette FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Servette_FC_crest.svg/330px-Servette_FC_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q202699",
+   "cc": "ch"
+  },
+  "Port FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fc/Port_FC_logo.svg/500px-Port_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q1874074",
+   "cc": "th"
+  },
+  "Club Africain": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20Club%20Africain%20officiel.png?width=120",
+   "light": false,
+   "leagueQid": "Q794235",
+   "cc": "tn"
+  },
+  "CS Sfaxien": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/1/17/CS_Sfaxien_logo.svg/330px-CS_Sfaxien_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q794235",
+   "cc": "tn"
+  },
+  "Espérance De Tunisie": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/f/fb/Esp%C3%A9rance_Sportive_de_Tunis_logo.png",
+   "light": false,
+   "leagueQid": "Q794235",
+   "cc": "tn"
+  },
+  "Étoile Du Sahel": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Logo_Etoile_du_Sahel.svg/500px-Logo_Etoile_du_Sahel.svg.png",
+   "light": false,
+   "leagueQid": "Q794235",
+   "cc": "tn"
+  },
+  "US Monastir": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/v1mr1z1777247628.png",
+   "light": false,
+   "leagueQid": "Q794235",
+   "cc": "tn"
+  },
+  "Alanyaspor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Alanyaspor_logo.svg/330px-Alanyaspor_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Başakşehir FK": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/895mqt1685993958.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Beşiktaş JK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/BesiktasJK-Logo.svg/330px-BesiktasJK-Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Çaykur Rizespor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Caykur_Rizespor_logo.svg/330px-Caykur_Rizespor_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Fenerbahçe SK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Fenerbah%C3%A7e.svg/330px-Fenerbah%C3%A7e.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Galatasaray SK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Galatasaray_Sports_Club_Logo.svg/330px-Galatasaray_Sports_Club_Logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Gaziantep FK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c6/Gazi%C5%9Fehir_Gaziantep_logo.svg/330px-Gazi%C5%9Fehir_Gaziantep_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Iğdır FK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/6/61/I%C4%9Fd%C4%B1r_F.K._crest.png",
+   "light": false,
+   "leagueQid": "Q1141692",
+   "cc": "tr"
+  },
+  "Kasımpaşa SK": {
+   "crest": "https://commons.wikimedia.org/wiki/Special:FilePath/Former%20logo%20of%20Kas%C4%B1mpa%C5%9Fa%20SK%20(1996-2012).png?width=120",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Kayserispor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f4/Kayserispor_logo.svg/330px-Kayserispor_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Konyaspor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Konyaspor_logo.svg/330px-Konyaspor_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Samsunspor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/83/Samsunspor_crest.svg/500px-Samsunspor_crest.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Trabzonspor": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/d/de/Trabzonspor_Amblem.svg/330px-Trabzonspor_Amblem.svg.png",
+   "light": false,
+   "leagueQid": "Q485568",
+   "cc": "tr"
+  },
+  "Al Ain FC": {
+   "crest": "https://r2.thesportsdb.com/images/media/team/badge/0w2bk51747334688.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Bataeh Club": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/c/ca/Al_Bataeh_FC.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Dhafra SCC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/Al_Dhafra_FC_logo.svg/500px-Al_Dhafra_FC_logo.svg.png",
+   "light": true,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Ittihad Kalba SCC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/c/c0/Kalba_FC_logo.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Jazira": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Al_Jazira_Club_logo_en_%282021%29.svg/500px-Al_Jazira_Club_logo_en_%282021%29.svg.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Nasr SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/a/aa/AL_Nasr_SC_Logo.png",
+   "light": true,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Al Wahda SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/Al_Wahda_FC_logo.svg/500px-Al_Wahda_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Baniyas Club": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/a/a5/Baniyas_%282%29.png",
+   "light": true,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Dibba FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/b/be/Dibba_club_logo.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Shabab Al Ahli Club": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/02/Shabab_Al_Ahli_logo.svg/500px-Shabab_Al_Ahli_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q5334350",
+   "cc": "ae"
+  },
+  "Atlanta United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Atlanta_MLS.svg/330px-Atlanta_MLS.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Austin FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/85/Austin_FC_logo.svg/330px-Austin_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Charlotte FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Charlotte_FC_logo.svg/330px-Charlotte_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Chicago Fire FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Chicago_Fire_logo%2C_2021.svg/330px-Chicago_Fire_logo%2C_2021.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Colorado Rapids": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2b/Colorado_Rapids_logo.svg/330px-Colorado_Rapids_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Colorado Springs Switchbacks FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/2025_Colorado_Springs_Switchbacks_FC_Logo.png/500px-2025_Colorado_Springs_Switchbacks_FC_Logo.png",
+   "light": false,
+   "leagueQid": "n:usl championship",
+   "cc": "us"
+  },
+  "Columbus Crew": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Columbus_Crew_logo_2021.svg/330px-Columbus_Crew_logo_2021.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "El Paso Locomotive FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/El_Paso_Locomotive_FC_logo.svg/500px-El_Paso_Locomotive_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:usl championship",
+   "cc": "us"
+  },
+  "FC Cincinnatti": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/78/FC_Cincinnati_primary_logo_2018.svg/500px-FC_Cincinnati_primary_logo_2018.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "FC Dallas": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Dallas_logo.svg/330px-FC_Dallas_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Inter Miami CF": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Inter_Miami_CF_logo.svg/330px-Inter_Miami_CF_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "LAFC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Los_Angeles_Football_Club.svg/330px-Los_Angeles_Football_Club.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Miami FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Miami_FC_logo.svg/330px-Miami_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:usl championship",
+   "cc": "us"
+  },
+  "Minnesota United FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Minnesota_United_FC_%28MLS%29_Primary_logo.svg/330px-Minnesota_United_FC_%28MLS%29_Primary_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Nashville SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Nashville_SC_logo%2C_2020.svg/330px-Nashville_SC_logo%2C_2020.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "New England Revolution": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Logo_of_New_England_Revolution_%282021%29.svg/330px-Logo_of_New_England_Revolution_%282021%29.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "New York City FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_New_York_City_FC_2025.svg/330px-Logo_New_York_City_FC_2025.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Orlando City SC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Orlando_City_2014.svg/330px-Orlando_City_2014.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Philadelphia Union": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/4/46/Philadelphia_Union_2018_logo.svg/330px-Philadelphia_Union_2018_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Portland Timbers": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Portland_Timbers_logo.svg/330px-Portland_Timbers_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Real Salt Lake": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Real_Salt_Lake_2010.svg/330px-Real_Salt_Lake_2010.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "San Diego FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/San_Diego_FC_logo.svg/500px-San_Diego_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Seattle Sounders FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Seattle_Sounders_logo.svg/330px-Seattle_Sounders_logo.svg.png",
+   "light": false,
+   "leagueQid": "Q18543",
+   "cc": "us"
+  },
+  "Club Nacional": {
+   "crest": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Club_Nacional_de_Paraguay.png/330px-Club_Nacional_de_Paraguay.png",
+   "light": false,
+   "leagueQid": "Q954911",
+   "cc": "uy"
+  },
+  "FK Buxoro": {
+   "crest": "https://assets.football-logos.cc/logos/uzbekistan/1500x1500/buxoro.8f0c4576.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan pro league",
+   "cc": "uz"
+  },
+  "FK Dinamo Samarkand": {
+   "crest": "https://assets.football-logos.cc/logos/uzbekistan/700x700/dinamo-samarkand.dd77a938.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "FK Neftchi Farg'ona": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/7/71/Neftchi-2022-08.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "Nasaf Qarshi FC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/FC_Nasaf_logo.svg/500px-FC_Nasaf_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "OKMK FK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/9/99/FC_AGMK_logo.svg/500px-FC_AGMK_logo.svg.png",
+   "light": true,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "Pakhtakor Tashkent FK": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/7/78/Pakhtakor_FC_logo.svg/500px-Pakhtakor_FC_logo.svg.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "PFC Navbahor Namangan": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/a/ae/PFC_Navbahor_Namangan_logo.png",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "Surkhon FK": {
+   "crest": "https://tmssl.akamaized.net//images/wappen/head/65036.png?lm=1646226663",
+   "light": false,
+   "leagueQid": "n:uzbekistan super league",
+   "cc": "uz"
+  },
+  "Deportivo La Guaira": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/f/fa/Deportivo_La_Guaira_logo.png",
+   "light": false,
+   "leagueQid": "n:liga futve",
+   "cc": "ve"
+  },
+  "Puerto Cabello CF": {
+   "crest": "https://assets.football-logos.cc/logos/venezuela/700x700/academia-puerto-cabello.3e4ecaa7.png",
+   "light": false,
+   "leagueQid": "n:liga futve",
+   "cc": "ve"
+  },
+  "Swansea City AFC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Swansea_City_AFC_logo.svg/500px-Swansea_City_AFC_logo.svg.png",
+   "light": true,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-wls"
+  },
+  "Wrexham AFC": {
+   "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Wrexham_A.F.C._Logo.svg/330px-Wrexham_A.F.C._Logo.svg.png",
+   "light": true,
+   "leagueQid": "n:efl championship",
+   "cc": "gb-wls"
+  }
+ }
+}

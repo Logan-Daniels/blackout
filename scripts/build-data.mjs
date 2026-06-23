@@ -111,6 +111,8 @@ const FEEDS = [
   { pl: 'tsn',   src: 'tsn'  },
   { pl: 'rds',   src: 'rds'  },
   { pl: 'itv',   src: 'itv'  },
+  { pl: 'bein',      src: 'bein'      },
+  { pl: 'telemundo', src: 'telemundo' },
   { pl: 'fox_x', src: 'fox', forceExtended: true },
   { pl: 'fox_r', src: 'fox' },
 ];
@@ -121,7 +123,8 @@ if (existsSync(join(ROOT, 'data.json'))) { try { prev = JSON.parse(readFileSync(
 const videos = prev.videos || {};
 const detail = prev.detail || {};
 const afState = prev.afState || { date: '', used: 0, map: {}, tried: {} };
-const deep = !prev.lastDeep || (now - Date.parse(prev.lastDeep)) > DEEP_EVERY_MS;
+const DEEP_FORCE = /^(1|true|yes)$/i.test(process.env.DEEP || '');
+const deep = DEEP_FORCE || !prev.lastDeep || (now - Date.parse(prev.lastDeep)) > DEEP_EVERY_MS;
 
 /* ---------- name matching ---------- */
 const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');

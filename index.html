@@ -332,15 +332,33 @@ kbd{font-family:var(--mono);background:var(--bg);border:1px solid var(--line2);b
 .pc{position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;background:rgba(4,6,11,.74);backdrop-filter:blur(6px);padding:24px 16px;overflow:auto}
 .pc.open{display:flex}
 .pc-card{position:relative;width:100%;max-width:420px;background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 24px 60px rgba(0,0,0,.5);overflow:hidden}
+.mc-row{display:flex;gap:10px;padding:16px}
+.mc-cell{flex:1 1 0;min-width:0}
+.mc-cell-r{text-align:right}
+.mc-ten{font:800 18px/1.1 var(--disp);color:var(--text)}
+.mc-nat{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--text)}
+.mc-cell-r .mc-nat{justify-content:flex-end}
+.flag.mc-natflag{height:16px;width:auto;border-radius:2px;display:inline-block}
+.flag.mc-natflag img{height:100%;width:auto;border-radius:2px;display:block}
+.mc-role{color:var(--dim);font-size:11.5px;margin-left:8px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.pc-teamline{display:inline-flex;align-items:center;gap:7px}
 .pc-x{position:absolute;top:10px;right:12px;z-index:2;width:30px;height:30px;border:0;border-radius:8px;background:rgba(255,255,255,.06);color:var(--dim);font-size:20px;line-height:1;cursor:pointer}
 .pc-x:hover{background:rgba(255,255,255,.12);color:#fff}
 .pc-hd{position:relative;display:flex;align-items:center;gap:14px;padding:20px 18px 16px;background:radial-gradient(120% 140% at 0% 0%,rgba(70,166,255,.14),transparent 60%);border-bottom:1px solid var(--line)}
+/* When a federation crest is shown it floats top-right; reserve room so a long name/country
+   row (e.g. "Bosnia and Herzegovina #8") never slides underneath it. */
+.pc-hd-crest{padding-right:110px}
 .pc-av{width:74px;height:74px;border-radius:50%;flex:none;background:#0c1424;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 0 1px var(--line2)}
 .pc-av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
 .pc-av .pc-ini{font:800 24px var(--disp);color:rgba(255,255,255,.82)}
 .pc-ht{min-width:0}
 .pc-nm{font:800 21px/1.1 var(--disp);color:var(--text);letter-spacing:.01em;overflow-wrap:break-word}
-.pc-team{display:flex;align-items:center;gap:8px;margin-top:6px;color:var(--dim);font-size:13px}
+.pc-team{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin-top:6px;color:var(--dim);font-size:13px}
+.pc-teamlink{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border-radius:6px;padding:2px 6px;margin:-2px -6px;transition:background .12s}
+.pc-teamlink:hover{background:rgba(255,255,255,.12)}
+.pc-fedcrest[data-team-pop]{cursor:pointer}
+.mm-teamlink{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;border-radius:10px;padding:4px 8px;margin:-4px -8px;transition:background .12s}
+.mm-teamlink:hover{background:rgba(70,166,255,.10)}
 .pc-team .flag{height:14px;width:auto;border-radius:2px}
 .pc-tnum{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--dim);background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:5px;padding:1px 6px;letter-spacing:.01em}
 .pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
@@ -366,8 +384,11 @@ kbd{font-family:var(--mono);background:var(--bg);border:1px solid var(--line2);b
 .pc-bio .b-shirt{flex-grow:1.5}
 .pc-fedcrest{position:absolute;top:50%;right:52px;transform:translateY(-50%);max-width:55px;max-height:66px;width:auto;height:auto;object-fit:contain;z-index:2;filter:drop-shadow(0 1px 4px rgba(0,0,0,.55))}
 .site-foot{text-align:center;padding:34px 16px 48px;margin-top:10px}
-.bmc-wrap{display:flex;justify-content:center;align-items:center;min-height:50px}
-.bmc-note{margin-top:9px;font-size:12px;color:#fff;text-align:center}
+.bmc-wrap{display:flex;justify-content:center;align-items:center;min-height:0}
+.bmc-btn{display:inline-flex;align-items:center;gap:6px;background:#FFDD00;color:#0a0a0a;font:700 13px/1 var(--ui,inherit);padding:7px 13px;border-radius:8px;text-decoration:none;border:1px solid rgba(0,0,0,.25);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.bmc-btn:hover{filter:brightness(1.05)}
+.bmc-emoji{font-size:14px;line-height:1}
+.bmc-note{margin-top:8px;font-size:11px;color:#fff;text-align:center;opacity:.7}
 .pc-club{display:flex;align-items:center;gap:9px}
 .pc-club img{width:22px;height:22px;object-fit:contain;flex:none}
 .pc-ft{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 16px}
@@ -381,7 +402,7 @@ kbd{font-family:var(--mono);background:var(--bg);border:1px solid var(--line2);b
 .pc-srclogo--fox{height:25.5px}
 .pc-srclogo--fb{height:25.5px;border-radius:6px}
 .pc-srcarrow{font:600 12px var(--disp);color:var(--dim)}
-@media(max-width:420px){ .pc-nm{font-size:19px} .pc-av{width:64px;height:64px} .pc-fedcrest{max-width:48px;max-height:58px} }
+@media(max-width:420px){ .pc-nm{font-size:19px} .pc-av{width:64px;height:64px} .pc-fedcrest{max-width:48px;max-height:58px} .pc-hd-crest{padding-right:90px} }
 /* player-card club crest + stats */
 .pc-club{display:flex;align-items:center;gap:11px}
 .pc-clublink{text-decoration:none;color:inherit}
@@ -617,6 +638,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .su-h .flag svg,.su-h .flag img{height:100%;width:auto;border-radius:3px;object-fit:contain}
 .su-row{display:flex;align-items:center;gap:7px;padding:5px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);text-decoration:none;color:inherit;cursor:pointer}
 .su-mgr{margin-top:7px;border-top:1px solid var(--line);border-bottom:none;padding-top:9px;cursor:default}
+.lu-mgrs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+.lu-mgrs .su-mgr{margin-top:0}
+.su-mgr[data-mgr-pop]{cursor:pointer;border-radius:8px;transition:background .12s}
+.su-mgr[data-mgr-pop]:hover{background:var(--surface2)}
+.su-mgr[data-mgr-pop]:hover .su-nm{text-decoration:underline}
+@media(max-width:560px){ .lu-mgrs{grid-template-columns:1fr;gap:8px} }
 .su-mgr-tag{margin-left:auto;font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint);flex:none}
 .su-row:hover .su-nm{color:#fff}
 .su-av{width:26px;height:26px;border-radius:50%;background:#11151d;overflow:hidden;flex:none;position:relative;display:flex;align-items:center;justify-content:center}
@@ -775,6 +802,73 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .round{min-width:170px;flex-basis:170px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---------- team-squad popup (#tm) ---------- */
+.tm{position:fixed;inset:0;z-index:79;display:none;align-items:flex-start;justify-content:center;background:rgba(4,6,11,.74);backdrop-filter:blur(6px);padding:24px 16px;overflow:auto}
+.tm.open{display:flex}
+.tm-card{position:relative;width:100%;max-width:760px;margin:auto;background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 24px 60px rgba(0,0,0,.5);overflow:hidden}
+.tm-x{position:absolute;top:10px;right:12px;z-index:3;width:30px;height:30px;border:0;border-radius:8px;background:rgba(255,255,255,.06);color:var(--dim);font-size:20px;line-height:1;cursor:pointer}
+.tm-x:hover{background:rgba(255,255,255,.12);color:#fff}
+.tm-hd{position:relative;display:flex;align-items:center;gap:14px;padding:20px 56px 16px 18px;background:radial-gradient(120% 140% at 0% 0%,rgba(70,166,255,.14),transparent 60%);border-bottom:1px solid var(--line)}
+.tm-fedcrest{height:46px;width:auto;flex:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.45))}
+.tm-flag .flag{height:30px;width:auto;border-radius:4px}
+.tm-flag .flag img{height:100%;width:auto;border-radius:4px}
+.tm-ht{min-width:0;flex:1 1 auto}
+.tm-nm{font:800 22px/1.05 var(--disp);color:var(--text);letter-spacing:.01em;overflow-wrap:break-word}
+.tm-sub{margin-top:5px;color:var(--dim);font-size:12.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tm-mgr{display:inline-flex;align-items:center;gap:6px}
+.tm-mgr[data-mgr-pop]{cursor:pointer}
+.tm-mgr[data-mgr-pop]:hover .tm-mgr-nm{text-decoration:underline}
+.tm-mgr-av{width:20px;height:20px;border-radius:50%;overflow:hidden;background:#11151d;flex:none;display:inline-flex}
+.tm-mgr-av img{width:100%;height:100%;object-fit:cover}
+.flag.tm-mgr-flag{height:13px;width:auto;border-radius:2px;display:inline-block}
+.flag.tm-mgr-flag img{height:100%;width:auto;border-radius:2px;display:block}
+.tm-bar{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:10px 18px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.tm-bar .tm-barlabel{margin-right:auto;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.tm-toggle{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--dim);font:600 12px var(--sans);padding:5px 11px;border-radius:999px;cursor:pointer}
+.tm-toggle:hover{background:rgba(255,255,255,.09);color:#fff}
+.tm-toggle.on{background:var(--accent);border-color:var(--accent);color:#04121f}
+.tm-toggle .tm-dot{width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.7}
+/* Results toggle relocated into the header (under the X, label to its left). */
+.tm-hd-res{padding-right:164px}
+.tm-res{position:absolute;top:50px;right:18px;display:flex;align-items:center;gap:9px;z-index:3}
+.tm-res-lbl{font:700 12px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--dim)}
+.tm-res .tm-sw{margin-left:0}
+/* Sortable column headers in the squad table. */
+.tm-sh{cursor:pointer;user-select:none;white-space:nowrap}
+.tm-sh:hover{color:var(--text)}
+.tm-sh.on{color:var(--text)}
+.tm-ar{margin-left:3px;font-size:9px;opacity:.85;vertical-align:1px}
+@media(max-width:560px){.tm-hd-res{padding-right:14px;padding-bottom:48px}.tm-res{top:auto;bottom:12px;right:14px}}
+.tm-tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tm-roster{width:100%;border-collapse:collapse;font-size:13px}
+.tm-roster th{position:sticky;top:0;z-index:1;background:var(--surface2);color:var(--faint);font:700 10px var(--sans);letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:9px 7px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tm-roster th.tm-lh{text-align:left}
+.tm-roster td{padding:7px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle;white-space:nowrap}
+.tm-roster tbody tr:hover{background:rgba(255,255,255,.03)}
+.tm-num{font-family:var(--mono);font-size:12px;color:var(--dim);width:30px}
+.tm-ava,.tm-ini{width:30px;height:30px;border-radius:50%;flex:none;vertical-align:middle}
+.tm-ava{object-fit:cover;background:var(--surface2)}
+.tm-ini{display:inline-flex;align-items:center;justify-content:center;background:var(--surface2);color:var(--dim);font-size:9px;font-weight:700}
+.tm-plcell{display:flex;align-items:center;gap:9px;text-align:left;color:var(--text);text-decoration:none;min-width:0}
+.tm-plcell:hover .tm-plnm{color:var(--accent)}
+.tm-plnm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:230px}
+.tm-th-pl{text-align:left}
+.tm-cf .flag{height:18px;width:auto;border-radius:3px;vertical-align:middle}
+.tm-clogo .lb-logo-wrap,.tm-llogo .lb-logo-wrap{vertical-align:middle}
+.tm-clink{display:inline-flex;align-items:center;text-decoration:none}
+.tm-goalh{font-size:13px;line-height:1}
+.tm-assisth{font-family:var(--mono);font-weight:800;font-size:12px;color:#7fb2ff}
+.tm-cardh{display:inline-block;width:11px;height:15px;border-radius:2px;vertical-align:-2px}
+.tm-cardh-y{background:var(--gold)}
+.tm-cardh-r{background:#E5484D}
+.tm-stat{font-family:var(--mono);font-size:12.5px;color:var(--text)}
+.tm-stat.tm-z{color:var(--faint)}
+.tm-trow td{font-weight:800;color:var(--text);border-top:2px solid var(--line2);background:rgba(255,255,255,.02)}
+.tm-trow .tm-tlabel{text-align:right;font:700 11px var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--dim)}
+.tm-empty{padding:26px 18px;color:var(--dim);text-align:center}
+.lb-natwrap[data-team-pop],.teamcell[data-team-pop]{cursor:pointer;border-radius:6px;transition:background .12s}
+.lb-natwrap[data-team-pop]:hover,.teamcell[data-team-pop]:hover{background:rgba(70,166,255,.10)}
+@media(max-width:560px){.tm-card{max-width:none}.tm-plnm{max-width:120px}.tm-hd{padding:18px 50px 14px 14px}.tm-nm{font-size:19px}}
 </style>
 </head>
 <body>
@@ -908,21 +1002,20 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <div class="selrow"><label data-i18n="set_language">Language</label><select id="set-lang"></select></div>
     </div>
     <div class="panel">
-      <h3>Units</h3>
-      <p style="margin:0 0 2px">Height and weight units. Defaults to imperial in the US, Canada, UK, Ireland and Liberia, metric elsewhere.</p>
+      <h3 data-i18n="set_units_h">Units</h3>
       <div class="selrow uni-row">
-        <label>Measurements</label>
+        <label data-i18n="set_measurements">Measurements</label>
         <div class="uni-main">
           <div class="seg" id="uni-both" role="group" aria-label="Units for height and weight">
-            <button type="button" data-uni-both="imp">Imperial</button>
-            <button type="button" data-uni-both="met">Metric</button>
+            <button type="button" data-uni-both="imp" data-i18n="uni_imp">Imperial</button>
+            <button type="button" data-uni-both="met" data-i18n="uni_met">Metric</button>
           </div>
           <button type="button" class="uni-exp" id="uni-exp" aria-expanded="false" aria-label="Set height and weight separately" title="Set each separately">&#x2304;</button>
         </div>
       </div>
       <div class="uni-detail" id="uni-detail" hidden>
-        <div class="selrow"><label>Height</label><div class="seg" role="group" aria-label="Height units"><button type="button" data-uni-ht="imp">Imperial</button><button type="button" data-uni-ht="met">Metric</button></div></div>
-        <div class="selrow"><label>Weight</label><div class="seg" role="group" aria-label="Weight units"><button type="button" data-uni-wt="imp">Imperial</button><button type="button" data-uni-wt="met">Metric</button></div></div>
+        <div class="selrow"><label data-i18n="set_height">Height</label><div class="seg" role="group" aria-label="Height units"><button type="button" data-uni-ht="imp" data-i18n="uni_imp">Imperial</button><button type="button" data-uni-ht="met" data-i18n="uni_met">Metric</button></div></div>
+        <div class="selrow"><label data-i18n="set_weight">Weight</label><div class="seg" role="group" aria-label="Weight units"><button type="button" data-uni-wt="imp" data-i18n="uni_imp">Imperial</button><button type="button" data-uni-wt="met" data-i18n="uni_met">Metric</button></div></div>
       </div>
     </div>
     <div class="panel">
@@ -934,9 +1027,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <footer class="site-foot">
   <div class="bmc-wrap">
-    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="logandaniels" data-color="#40DCA5" data-emoji="" data-font="Poppins" data-text="Buy me a covfefe?" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00"></script>
+    <a class="bmc-btn" href="https://www.buymeacoffee.com/logandaniels" target="_blank" rel="noopener noreferrer"><span class="bmc-emoji">&#x2615;</span><span data-i18n="bmc">Buy me a coffee</span></a>
   </div>
-  <div class="bmc-note">(no pressure)</div>
+  <div class="bmc-note" data-i18n="bmc_note">(no pressure)</div>
 </footer>
 
 <div class="mm" id="mm" aria-hidden="true">
@@ -959,6 +1052,13 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   <div class="pc-card" role="dialog" aria-modal="true" aria-label="Player">
     <button class="pc-x" id="pc-close" aria-label="Close">×</button>
     <div class="pc-body" id="pc-body"></div>
+  </div>
+</div>
+
+<div class="tm" id="tm" aria-hidden="true">
+  <div class="tm-card" role="dialog" aria-modal="true" aria-label="Squad">
+    <button class="tm-x" id="tm-close" aria-label="Close">×</button>
+    <div class="tm-body" id="tm-body"></div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -1466,6 +1566,9 @@ var PHOTOX={}, PHOTOX_NT={};   // retained photos-extra "photos" map + bare-name
 const TEAMINFO_URL='./team-info.json';
 const MANAGERS_URL='./managers.json';
 const FIFASQUADS_URL='./fifa-squads.json';
+const FOXURLS_URL='./fox-urls.json';
+var FIDURL={};   // Fox player id (fid) -> Fox player-page URL. Recovers the Fox profile + bio for players whose players.json `stats` is still an FBref search URL (Fox name-slug never resolved); their photo carries the fid, which we join to the URL here.
+var MD_FOX={"cabo verde|diney borges":"https://www.foxsports.com/soccer/diney-borges-player", "cabo verde|marcio rosa":"https://www.foxsports.com/soccer/marcio-rosa-player", "cote d'ivoire|amad diallo":"https://www.foxsports.com/soccer/amad-diallo-player", "egypt|hamdy fathy":"https://www.foxsports.com/soccer/hamdy-fathy-player", "egypt|mohamed el shenawy":"https://www.foxsports.com/soccer/mohamed-el-shenawy-player", "egypt|mostafa zico":"https://www.foxsports.com/soccer/mostafa-zico-player", "egypt|nabil donga":"https://www.foxsports.com/soccer/nabil-donga-player", "egypt|omar marmoush":"https://www.foxsports.com/soccer/omar-marmoush-player", "egypt|ramy rabia":"https://www.foxsports.com/soccer/ramy-rabia-player", "egypt|trezeguet":"https://www.foxsports.com/soccer/trezeguet-player", "egypt|zizo":"https://www.foxsports.com/soccer/zizo-player", "france|rayan cherki":"https://www.foxsports.com/soccer/rayan-cherki-player", "germany|malick thiaw":"https://www.foxsports.com/soccer/malick-thiaw-player", "haiti|derrick etienne jr.":"https://www.foxsports.com/soccer/derrick-etienne-jr-player", "iraq|ahmed qasim":"https://www.foxsports.com/soccer/ahmed-qasim-player", "iraq|ali jasim":"https://www.foxsports.com/soccer/ali-jasim-player", "iraq|amir al-ammari":"https://www.foxsports.com/soccer/amir-al-ammari-player", "iraq|munaf younus":"https://www.foxsports.com/soccer/munaf-younus-player", "iraq|zaid ismael":"https://www.foxsports.com/soccer/zaid-ismael-player", "mexico|israel reyes":"https://www.foxsports.com/soccer/israel-reyes-player", "morocco|yassine bounou":"https://www.foxsports.com/soccer/yassine-bounou-player", "morocco|zakaria el ouahdi":"https://www.foxsports.com/soccer/zakaria-el-ouahdi-player", "new zealand|ben old":"https://www.foxsports.com/soccer/ben-old-player", "norway|alexander s\u00f8rloth":"https://www.foxsports.com/soccer/alexander-s-rloth-player", "norway|fredrik andre bj\u00f8rkan":"https://www.foxsports.com/soccer/fredrik-andre-bj-rkan-player", "norway|leo \u00f8stigard":"https://www.foxsports.com/soccer/leo-stigard-player", "norway|martin \u00f8degaard":"https://www.foxsports.com/soccer/martin-degaard-player", "paraguay|orlando gil":"https://www.foxsports.com/soccer/orlando-gil-player", "qatar|ahmed fathy":"https://www.foxsports.com/soccer/ahmed-fathy-player", "qatar|al-hashmi al-hussain":"https://www.foxsports.com/soccer/al-hashmi-al-hussain-player", "qatar|assim madibo":"https://www.foxsports.com/soccer/assim-madibo-player", "qatar|ayoub al-oui":"https://www.foxsports.com/soccer/ayoub-al-oui-player", "saudi arabia|abdullah al-khaibari":"https://www.foxsports.com/soccer/abdullah-al-khaibari-player", "saudi arabia|ahmed al-kassar":"https://www.foxsports.com/soccer/ahmed-al-kassar-player", "saudi arabia|ala al-hajji":"https://www.foxsports.com/soccer/ala-al-hajji-player", "saudi arabia|hassan kadish":"https://www.foxsports.com/soccer/hassan-kadish-player", "saudi arabia|mohammed abu al-shamat":"https://www.foxsports.com/soccer/mohammed-abu-al-shamat-player", "saudi arabia|mohammed al-owais":"https://www.foxsports.com/soccer/mohammed-al-owais-player", "saudi arabia|musab al-juwayr":"https://www.foxsports.com/soccer/musab-al-juwayr-player", "saudi arabia|nawaf boushal":"https://www.foxsports.com/soccer/nawaf-boushal-player", "saudi arabia|saleh al-shehri":"https://www.foxsports.com/soccer/saleh-al-shehri-player", "saudi arabia|salem al-dawsari":"https://www.foxsports.com/soccer/salem-al-dawsari-player", "south korea|bae jun-ho":"https://www.foxsports.com/soccer/bae-jun-ho-player", "south korea|cho gue-sung":"https://www.foxsports.com/soccer/cho-gue-sung-player", "south korea|cho wi-je":"https://www.foxsports.com/soccer/cho-wi-je-player", "south korea|eom ji-sung":"https://www.foxsports.com/soccer/eom-ji-sung-player", "south korea|jo hyeon-woo":"https://www.foxsports.com/soccer/jo-hyeon-woo-player", "south korea|kim min-jae":"https://www.foxsports.com/soccer/kim-min-jae-player", "south korea|lee han-beom":"https://www.foxsports.com/soccer/lee-han-beom-player", "south korea|lee jae-sung":"https://www.foxsports.com/soccer/lee-jae-sung-player", "south korea|lee kang-in":"https://www.foxsports.com/soccer/lee-kang-in-player", "south korea|lee tae-seok":"https://www.foxsports.com/soccer/lee-tae-seok-player", "south korea|paik seung-ho":"https://www.foxsports.com/soccer/paik-seung-ho-player", "south korea|park jin-seop":"https://www.foxsports.com/soccer/park-jin-seop-player", "south korea|yang hyun-jun":"https://www.foxsports.com/soccer/yang-hyun-jun-player", "spain|pedri":"https://www.foxsports.com/soccer/pedri-player", "spain|rodri":"https://www.foxsports.com/soccer/rodri-player", "spain|yeremy pino":"https://www.foxsports.com/soccer/yeremy-pino-player", "switzerland|ardon jashari":"https://www.foxsports.com/soccer/ardon-jashari-player", "switzerland|eray comert":"https://www.foxsports.com/soccer/eray-comert-player"};   // curated name->Fox URL fallback (from missing-fox-players.md), only consulted when the fid chain fails or is rejected
 const FEDERATIONS_URL='./federations.json';
 const LEAGUELOGOS_URL='./league-logos.json';
 const CLUBOVERRIDE_URL='./club-overrides.json';
@@ -1475,9 +1578,11 @@ var FIFA={};        // exact players.json `stats` URL -> {team,pos,dob,height_cm
 var FIFACOACH={};   // nrm(team) -> {name,nationality} from the FIFA squad list
 var FED={};         // nrm(country) -> {crest, colors:[primary,secondary,tertiary]}
 var LEAGUELOGO={};  // Wikidata QID -> {logo,name,tier,cc}
-var MANAGERS={};            // nrm(team) -> manager name, from ./managers.json (fallback when the match feed has no coach)
+var MANAGERS={};            // nrm(team) -> [{name,nationality,photo,from,to}] manager history from ./managers.json (newest changes appended); fallback when the match feed has no coach
 const OF_NAME={'Czech Republic':'Czechia','Bosnia & Herzegovina':'Bosnia and Herzegovina','Cape Verde':'Cabo Verde','Ivory Coast':"Côte d'Ivoire",'Turkey':'Türkiye','USA':'United States'};
 function nrm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+// Photo hygiene: ESPN headshots are dropped (they 404/redirect and do more harm than good, leaving a broken image), and Fox's resized "vresize" variant URLs are reduced to the plain base headshot, which is the reliable one Fox actually serves. Returns '' when there is no usable photo, so callers fall back to initials.
+function cleanPhoto(u){ u=u||''; if(!u||/espncdn\.com/i.test(u)) return ''; return u.replace(/\.vresize\.\d+\.\d+\.[a-z]+\.\d+(\.png)(\?.*)?$/i, '$1'); }
 /* Display-only name overrides, keyed by nrm(full name). Data files and ESPN events keep the original name (used for photo/event/url matching); only the shown text changes. */
 var DISP_NAMES={'yassine bounou':'Bono','zakaria el ouahdi':'Zakaria El-Ouahdi'};
 function dispName(n){ var d=DISP_NAMES[nrm(String(n==null?'':n).trim())]; return d||n; }
@@ -1493,6 +1598,7 @@ var DISP_SURNAME={'jan paul van hecke':'van Hecke'};
 /* ---- player-card data layer (team-info.json from fox_team_spider.py) ---- */
 var TEAMINFO=null;          // ./team-info.json (Fox club/league/bio); optional, card works without it
 var PIDX={};                // nrm(team) -> nrm(name) -> {photo,stats,num,pos} from players.json (card fallback)
+var SQUADS={};              // nrm(team) -> {name, players:[{name,photo,stats,num,pos}], manager} — ordered roster for the team-squad popup
 /* Units. Height and weight are chosen independently; default is by location
    (imperial for the US, Canada, UK, Ireland, Liberia; metric elsewhere) and the
    choice lives on the Settings page. A legacy 'bo_units' value is honoured. */
@@ -1513,6 +1619,39 @@ var UNITS_HT, UNITS_WT;
 function setUnit(kind,val){ val=(val==='met')?'met':'imp'; if(kind==='wt'){ UNITS_WT=val; try{localStorage.setItem('bo_units_wt',val);}catch(e){} } else { UNITS_HT=val; try{localStorage.setItem('bo_units_ht',val);}catch(e){} } }
 function tiCanon(u){ return (u||'').split('#')[0].split('?')[0].replace(/\/+$/,''); }
 function tiPlayer(stats){ if(!TEAMINFO||!TEAMINFO.players||!stats) return null; return TEAMINFO.players[tiCanon(stats)]||TEAMINFO.players[stats]||null; }
+// --- Fox link/bio recovery -------------------------------------------------
+// Many players never matched a Fox name-slug, so players.json keeps an FBref
+// search URL in `stats`. Their photo (a photos-extra override) still carries the
+// Fox `fid`, which fox-urls.json maps to the real Fox page; team-info.json is
+// keyed by that page. We resolve the URL from the fid at runtime (no data-file
+// edits, so it survives every rebuild) and validate the slug against the name so
+// a wrong photo override (e.g. one player's headshot on another's card) can't
+// drag in the wrong bio.
+function foxSlugTokens(url){ return nrm((url||'').split('/').pop().replace(/-player$/,'').replace(/-\d+$/,'').replace(/-/g,' ')).replace(/[0-9]/g,'').split(/\s+/).filter(Boolean); }
+function foxSlugMatchesName(url, name, disp){
+  var st=foxSlugTokens(url); if(!st.length) return false;
+  function pfx(a,b){ return a===b || (a.length>=4 && b.indexOf(a.slice(0,4))===0) || (b.length>=4 && a.indexOf(b.slice(0,4))===0); }
+  function ok(nm){ var nt=nrm(nm||'').replace(/-/g,' ').split(/\s+/).filter(function(x){return x.length>=3;}); if(!nt.length) return false;
+    if(st.some(function(b){ return pfx(nt[0], b); })) return true;            // given name lines up
+    return nt.every(function(a){ return st.some(function(b){ return pfx(a,b); }); }); // or every name token appears
+  }
+  return ok(name) || (!!disp && ok(disp));
+}
+function foxUrlOf(team, name, photo, stats){
+  if(/foxsports\.com/i.test(stats||'')) return tiCanon(stats);             // already a Fox URL
+  var disp=DISP_NAMES[nrm(String(name||'').trim())];
+  var m=(photo||'').match(/\/headshots\/(\d+)\./);
+  if(m){ var u=FIDURL[m[1]]; if(u && foxSlugMatchesName(u, name, disp)) return tiCanon(u); }  // fid -> URL (validated)
+  // Fallback: the curated Fox URL from missing-fox-players.md, for players whose fid is
+  // mislabelled in fox-urls.json (e.g. Amad Diallo's fid points at Josip Ilicic) or whose
+  // page was never indexed. Still validated against the name so a bad row can't slip through.
+  var md=MD_FOX[nrm(String(team||'').trim())+'|'+nrm(String(name||'').trim())];
+  if(md && foxSlugMatchesName(md, name, disp)) return tiCanon(md);
+  return '';
+}
+function tiResolve(team, name, photo, stats){ return tiPlayer(stats) || (function(){ var u=foxUrlOf(team,name,photo,stats); return u?tiPlayer(u):null; })(); }
+function clubCore(s){ return nrm(s||'').replace(/\b(fc|cf|afc|sc|ac|cd|ud|club|de)\b/g,'').replace(/\s+/g,' ').trim(); }
+function clubNamesMatch(a,b){ var x=clubCore(a), y=clubCore(b); if(!x||!y) return false; return x===y||x.indexOf(y)>=0||y.indexOf(x)>=0; }
 function pidxGet(team,name){ var m=PIDX[nrm(team||'')]; return (m&&m[nrm(name||'')])||null; }
 function ageFromDob(d){ if(!d||d.year==null) return null; var now=new Date(), a=now.getFullYear()-d.year, m=(now.getMonth()+1)-(d.month||1); if(m<0||(m===0&&now.getDate()<(d.date||1))) a--; return (a>=0&&a<120)?a:null; }
 var _MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -1553,10 +1692,11 @@ function applyPlayers(teams){
     idx[nrm(tm)]=m;
   });
   PIDX=idx;
+  var sq={}; Object.keys(teams||{}).forEach(function(tm){ var t=teams[tm]||{}; sq[nrm(tm)]={name:tm, players:(t.players||[]).slice(), manager:t.manager||null}; }); SQUADS=sq;
   Object.keys(DETAIL).forEach(function(k){
     var d=DETAIL[k]; ['home','away'].forEach(function(sk){
       var side=d[sk]; if(!side) return; var m=idx[nrm(side.name||'')]; if(!m) return;
-      (side.xi||[]).concat(side.subs||[]).forEach(function(pl){ var e=m[nrm(pl.name)]; if(e){ if(e.photo) pl.photo=e.photo; if(e.stats) pl.stats=e.stats; } });
+      (side.xi||[]).concat(side.subs||[]).forEach(function(pl){ var e=m[nrm(pl.name)]; if(e){ if(e.photo) pl.photo=e.photo; if(e.stats) pl.stats=e.stats; } pl.photo=cleanPhoto(pl.photo)||null; });
     });
   });
 }
@@ -1574,23 +1714,23 @@ function applyPhotoFallback(map){
   Object.keys(DETAIL).forEach(function(k){ var d=DETAIL[k]; ['home','away'].forEach(function(sk){ var s=d[sk]; if(!s) return; var tk=nrm(s.name); (s.xi||[]).concat(s.subs||[]).forEach(function(pl){ if(!pl||!pl.name) return; var nm=nrm(pl.name); (nameTeams[nm]=nameTeams[nm]||{})[tk]=1; }); }); });
   PHOTOX=map; PHOTOX_NT=nameTeams;   // retain for cards/popups opened outside a lineup
   function pick(teamName, name){
-    var nm=nrm(name);
-    var scoped=map[nrm(teamName)+'|'+nm]; if(scoped) return {url:scoped, scoped:true};   // team-scoped key: authoritative correction, always wins
-    var bare=map[nm]; if(!bare) return null;
-    var teams=nameTeams[nm];                                          // bare key: trust only if name is unambiguous
+    var tk=nrm(teamName), nm=nrm(name), nt=nm.trim();
+    var scoped=map[tk+'|'+nm]||map[tk+'|'+nt]; if(scoped) return {url:scoped, scoped:true};   // team-scoped key: authoritative correction, always wins (trailing-space tolerant)
+    var bare=map[nm]||map[nt]; if(!bare) return null;
+    var teams=nameTeams[nm]||nameTeams[nt];                          // bare key: trust only if name is unambiguous
     if(teams && Object.keys(teams).length>1) return null;            // shared name across teams -> skip (avoid wrong photo)
     return {url:bare, scoped:false};
   }
   Object.keys(DETAIL).forEach(function(k){
     var d=DETAIL[k]; ['home','away'].forEach(function(sk){
       var side=d[sk]; if(!side) return;
-      (side.xi||[]).concat(side.subs||[]).forEach(function(pl){ if(pl){ var u=pick(side.name, pl.name); if(u && (u.scoped || !pl.photo || /espncdn\.com/i.test(pl.photo))) pl.photo=u.url; } });
-      if(side.coach){ var cu=pick(side.name, side.coach); if(cu && (cu.scoped || !side.coachPhoto)) side.coachPhoto=cu.url; }
+      (side.xi||[]).concat(side.subs||[]).forEach(function(pl){ if(pl){ var u=pick(side.name, pl.name); if(u && (u.scoped || !pl.photo || /espncdn\.com/i.test(pl.photo))) pl.photo=cleanPhoto(u.url)||u.url; } });
+      if(side.coach){ var cu=pick(side.name, side.coach); if(cu && (cu.scoped || !side.coachPhoto)) side.coachPhoto=cleanPhoto(cu.url)||cu.url; }
     });
   });
 }
-function photoxScoped(team,name){ return PHOTOX[nrm(team||'')+'|'+nrm(name||'')]||''; }
-function photoxBare(name){ var nm=nrm(name||''); var b=PHOTOX[nm]; if(!b) return ''; var t=PHOTOX_NT[nm]; if(t && Object.keys(t).length>1) return ''; return b; }
+function photoxScoped(team,name){ var t=nrm(team||''), n=nrm(name||''); return PHOTOX[t+'|'+n]||PHOTOX[t+'|'+n.trim()]||''; }
+function photoxBare(name){ var nm=nrm(name||''), nt=nm.trim(); var b=PHOTOX[nm]||PHOTOX[nt]; if(!b) return ''; var t=PHOTOX_NT[nm]||PHOTOX_NT[nt]; if(t && Object.keys(t).length>1) return ''; return b; }
 function coachCell(side, nm){ if(!nm) return '<span></span>'; var label=esc(t('coach'))+': '+esc(nm), url=side&&side.coachStats; return '<span>'+(url?'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>':label)+'</span>'; }
 async function loadData(){
   let videosFromFeed=false;
@@ -1624,6 +1764,12 @@ async function loadData(){
     if(fq && fq.players){ FIFA={}; Object.keys(fq.players).forEach(function(k){ var e=fq.players[k]; if(e&&e.stats) FIFA[e.stats]=e; }); }
     if(fq && fq.coaches){ Object.keys(fq.coaches).forEach(function(tn){ FIFACOACH[nrm(tn)]=fq.coaches[tn]; }); }
   }catch(e){ /* no fifa-squads.json: cards fall back to Fox/ESPN data */ }
+  // 1b-iv-b) Fox player-page index (fid -> URL). Lets a card/leaderboard recover the
+  // Fox profile + bio for players whose `stats` never resolved past an FBref search URL.
+  try{
+    const fu=await fetchJSON(FOXURLS_URL+'?t='+Date.now());
+    if(fu && fu.teams){ Object.keys(fu.teams).forEach(function(tn){ var ps=(fu.teams[tn]&&fu.teams[tn].players)||[]; ps.forEach(function(e){ if(e&&e.fid&&e.url) FIDURL[String(e.fid)]=e.url; }); }); }
+  }catch(e){ /* no fox-urls.json: players without a resolved slug keep FBref-only links */ }
   // 1b-v) national federation crests + colour palettes, keyed by country name.
   try{
     const fd=await fetchJSON(FEDERATIONS_URL+'?t='+Date.now());
@@ -1647,9 +1793,9 @@ async function loadData(){
   // no photos/urls, so the card shows initials. Feed coach always wins when present.
   try{
     const mj=await fetchJSON(MANAGERS_URL+'?t='+Date.now());
-    if(mj && mj.teams){ Object.keys(mj.teams).forEach(function(tn){ var a=mj.teams[tn]; if(a && a[0] && a[0].name) MANAGERS[nrm(tn)]=a[0].name; }); }
+    if(mj && mj.teams){ Object.keys(mj.teams).forEach(function(tn){ var a=mj.teams[tn]; if(Array.isArray(a)&&a.length&&a[0]&&a[0].name) MANAGERS[nrm(tn)]=a; }); }
   }catch(e){ /* no managers.json: managers still show for played games from the feed */ }
-  try{ Object.keys(DETAIL).forEach(function(k){ var d=DETAIL[k]; ['home','away'].forEach(function(sk){ var s=d&&d[sk]; if(s && !s.coach){ var m=MANAGERS[nrm(s.name||'')]; if(m) s.coach=m; } }); }); }catch(e){}
+  try{ Object.keys(DETAIL).forEach(function(k){ var d=DETAIL[k]; ['home','away'].forEach(function(sk){ var s=d&&d[sk]; if(s && !s.coach){ var m=MANAGERS[nrm(s.name||'')]; if(m&&m[0]&&m[0].name) s.coach=m[0].name; } }); }); }catch(e){}
   // optional alias file (clubs/countries/leagues) used only to match while filtering
   try{ const aj=await fetchJSON('./aliases.json?t='+Date.now()); if(aj){ if(aj.club) FILTER_ALIASES.club=aj.club; if(aj.country) FILTER_ALIASES.country=Object.assign({}, FILTER_ALIASES.country, aj.country); if(aj.league) FILTER_ALIASES.league=Object.assign({}, FILTER_ALIASES.league, aj.league); } }catch(e){ /* no aliases.json: built-in country/league aliases still apply */ }
   _univ=null; _ldMap=null;
@@ -1677,6 +1823,41 @@ function flag(name, cls){
 function flagByCode(cc, cls){ var c='flag'+(cls?(' '+cls):''); if(!cc) return '<span class="'+c+' flag-x"></span>'; return '<span class="'+c+'"><img src="'+FLAG_BASE+cc+'.png" alt="" loading="lazy" onerror="this.parentNode.classList.add(\'flag-x\')"></span>'; }
 /* ---- National federation crests + colour palettes (./federations.json), keyed by nrm(country) ---- */
 function fedFor(name){ return name?FED[nrm(name)]:null; }
+// Resolve the manager to show for a team: the one in charge as of the revealed cutoff
+// (so a mid-tournament change, e.g. Tunisia, only surfaces once that period is revealed).
+// Name/photo come from managers.json history; nationality falls back to the FIFA squad coach.
+function mgrFor(team){
+  var key=nrm(team);
+  var arr=(typeof MANAGERS!=='undefined'&&MANAGERS)?MANAGERS[key]:null;
+  var fc=(typeof FIFACOACH!=='undefined'&&FIFACOACH)?FIFACOACH[key]:null;
+  var sqm=(typeof SQUADS!=='undefined'&&SQUADS&&SQUADS[key])?SQUADS[key].manager:null;
+  // Effective date: the latest revealed match date, else the first match date (so pre-reveal
+  // shows the manager in charge at kick-off, never a not-yet-revealed mid-tournament change).
+  var cut=(typeof revealCutoff==='function')?revealCutoff():null;
+  var firstM=(typeof MATCH_DATES!=='undefined'&&MATCH_DATES&&MATCH_DATES.length)?MATCH_DATES[0]:null;
+  var D=cut||firstM||new Date().toISOString().slice(0,10);
+  var pick=null;
+  if(arr&&arr.length){
+    for(var i=0;i<arr.length;i++){ var m=arr[i], f=(m.from||'').slice(0,10), t=(m.to||'').slice(0,10); if((!f||f<=D)&&(!t||D<=t)){ pick=m; break; } }   // interval [from,to] containing D
+    if(!pick){ for(var j=0;j<arr.length;j++){ var mm=arr[j], f2=(mm.from||'').slice(0,10); if(f2<=D&&(!pick||f2>(pick.from||'').slice(0,10))) pick=mm; } }   // else latest started on/before D
+    if(!pick) pick=arr.slice().sort(function(a,b){return (a.from||'')<(b.from||'')?-1:1;})[0];   // else earliest
+  }
+  var name=(pick&&pick.name)||(sqm&&sqm.name)||(fc&&fc.name)||null;
+  if(!name) return null;
+  var nat=(pick&&pick.nationality)||(fc&&fc.nationality)||null;
+  var ph=(pick&&pick.photo)||(sqm&&sqm.photo)||'';
+  return {name:name, nationality:nat, photo:(typeof cleanPhoto==='function'?cleanPhoto(ph):ph)||ph||'', from:(pick&&pick.from)||null, to:(pick&&pick.to)||null, effDate:D};
+}
+// Tenure as "Xy Ym" (years + months, rounded down; a month counted as 30.5 days), measured
+// from the appointment date to the effective date (or to the manager's end date if earlier).
+function mgrTenure(from, effDate, to){
+  if(!from) return '';
+  var end=(to&&String(to).slice(0,10)<effDate)?String(to).slice(0,10):effDate;
+  var ms=Date.parse(end)-Date.parse(String(from).slice(0,10)); if(isNaN(ms)||ms<0) return '';
+  var days=ms/86400000, years=Math.floor(days/365.25), months=Math.floor((days-years*365.25)/30.5);
+  if(years<=0&&months<=0) return '< 1 mo';
+  return (years>0?(years+' yr'):'')+(years>0&&months>0?' ':'')+(months>0?(months+' mo'):'');
+}
 function fedCrestURL(name){ var f=fedFor(name); return (f&&f.crest)||null; }
 function crestImg(name, cls){ var u=fedCrestURL(name); if(!u) return ''; return '<img class="crest'+(cls?(' '+cls):'')+'" src="'+esc(u)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'; }
 function fedColors(name){ var f=fedFor(name); return (f&&Array.isArray(f.colors)&&f.colors.length)?f.colors:null; }
@@ -1706,6 +1887,12 @@ function fedTheme(name){ var key=nrm(name); if(key in _fedThemeCache) return _fe
       var wash=hslToHex(pick.h, Math.min(0.55,pick.s*0.75), 0.20);  // subtle header tint
       var deep=hslToHex(pick.h, Math.min(0.6,pick.s*0.7), 0.13);    // deeper edge of the tint
       out={accent:accent, wash:wash, deep:deep};
+    } else {
+      // All-achromatic palette (e.g. New Zealand's white/black): no chromatic hue to
+      // theme from, so use a neutral silver accent with a dark wash that keeps white
+      // text legible, rather than leaving the header untinted like every other team.
+      var hasLight=false; for(var k=0;k<cols.length;k++){ var h3=toHsl(cols[k]); if(h3 && h3.l>0.6){ hasLight=true; break; } }
+      if(hasLight) out={accent:'#e6ecf4', wash:'#1b2027', deep:'#11151b'};
     }
   }
   _fedThemeCache[key]=out; return out;
@@ -1758,8 +1945,10 @@ var CLUB_FIX={
 };
 function clubGeoFallback(clubName, league){ var nk=nrm(clubName||''); var fx=CLUB_FIX[nk]; if(fx) return {cc:fx.cc, league:league||fx.league}; var lg=league||CLUB_LEAGUE[nk]||null; var cc=lg?(LEAGUE_CC[nrm(lg)]||null):null; return {cc:cc, league:lg}; }
 // Capitalise stand-alone "FC"/"SC" inside a club name (e.g. "Los Angeles Fc" -> "Los Angeles FC").
+var CLUB_RESPELL={'fc cincinnatti':'FC Cincinnati'};   // correct known source-data club misspellings (FIFA squad typos) for DISPLAY only; override/FIFA lookups still key on the original string
 function fixClubCaps(s){
   if(!s) return '';
+  var _rs=CLUB_RESPELL[nrm(s)]; if(_rs) return _rs;
   return String(s).split(/(\s+)/).map(function(w){
     if(!w||/^\s+$/.test(w)) return w;
     if(/^afc$/i.test(w)) return 'AFC';
@@ -1774,6 +1963,23 @@ function fixClubCaps(s){
 // McDonald's logo. Add clean transparent-background URLs here as you confirm them.
 var LEAGUE_LOGO_OVERRIDE={ 'ligue 1':null, 'ligue 1 uber eats':null };
 function leagueLogoClean(leagueName, wikiLogo){ var k=nrm(leagueName||''); return (k in LEAGUE_LOGO_OVERRIDE)?LEAGUE_LOGO_OVERRIDE[k]:wikiLogo; }
+// Recover a league QID from a display name when FIFA/clubs.json give only a name and no QID
+// (e.g. some MLS clubs carry "MLS", which never matched the curated "Major League Soccer"
+// logo keyed by QID). Aliases handle abbreviations; otherwise we match the name against the
+// league sheet (./league-logos.json) and clubs.json leagues. Recovering the QID also restores
+// the curated logo, the proper label, and league filtering.
+var LEAGUE_ALIAS={ 'mls':'Q18543','major league soccer':'Q18543' };
+var _leagueNameIdx=null;
+function leagueQidByName(name){
+  var k=nrm(name||''); if(!k) return null;
+  if(LEAGUE_ALIAS[k]) return LEAGUE_ALIAS[k];
+  if(!_leagueNameIdx){
+    _leagueNameIdx={};
+    try{ Object.keys(LEAGUELOGO||{}).forEach(function(q){ var nm=nrm((LEAGUELOGO[q]&&LEAGUELOGO[q].name)||''); if(nm && !_leagueNameIdx[nm]) _leagueNameIdx[nm]=q; }); }catch(e){}
+    try{ Object.keys(LEAGUES||{}).forEach(function(q){ var nm=nrm((LEAGUES[q]&&LEAGUES[q].name)||''); if(nm && !_leagueNameIdx[nm]) _leagueNameIdx[nm]=q; }); }catch(e){}
+  }
+  return _leagueNameIdx[k]||null;
+}
 // Prefer the curated league logo keyed by Wikidata QID (./league-logos.json) over the
 // clubs.json/Wikidata value. Falls back to the cleaned Wikidata logo when the QID is
 // missing from the sheet (see missing-leagues.json).
@@ -1782,24 +1988,109 @@ function leagueLogoByQid(qid, fallback){ var L=qid?LEAGUELOGO[qid]:null; return 
 // dark/monochrome league marks here to keep a light chip behind them instead.
 var DARK_LEAGUES={ 'bundesliga':1 };
 function isDarkLeague(name){ return !!DARK_LEAGUES[nrm(name||'')]; }
+// Per-league background from league-logos.json (Logan's CSV light/dark column):
+// "light" => the logo wants a white-ish pill (the default lb-logo-wrap); "dark" => the
+// logo has its own transparent background, so render it bare (no pill). Returns null when
+// a league carries no explicit flag, so callers fall back to the legacy treatment.
+function leagueBg(qid){ var L=qid?LEAGUELOGO[qid]:null; if(L&&typeof L.light==='boolean') return L.light?'light':'dark'; return null; }
+function leagueLogoCell(qid, logo, name, legacyLight, bgOverride){
+  var bg=(bgOverride==='light'||bgOverride==='dark')?bgOverride:leagueBg(qid);
+  var isLight=(bg===null)?(!!legacyLight && !isDarkLeague(name)):false;   // legacy dark-pill only when no CSV flag
+  var extra=(bg==='dark')?'lb-bare':'';                                   // CSV "dark" => transparent
+  return lbLogo(logo, initials(name||''), isLight, extra);
+}
+// Club crest background. bg ('light'=white pill, 'dark'=transparent) comes from the clubs CSV
+// (per-club, via club-overrides.json). When a club has no explicit flag, fall back to the
+// curated dark-crest list (isDarkCrest) so previously-light crests (Juventus etc.) stay light.
+function crestCell(name, logo, legacyLight, bg){
+  if(bg==='light') return lbLogo(logo, initials(name||''), false, '');
+  if(bg==='dark')  return lbLogo(logo, initials(name||''), false, 'lb-bare');
+  return lbLogo(logo, initials(name||''), !!legacyLight, isDarkCrest(name)?'':'lb-bare');
+}
+// SINGLE source of truth for a player's club marks (crest, nation flag, league + logos,
+// backgrounds, links). Used by BOTH the player card and the team-popup / leaderboard so they
+// never diverge (previously the popup ignored FIFA's club data — e.g. Koné's Serie A/Italy).
+// FIFA's squad-list club is authoritative; clubs.json (ci) is only trusted when it is the SAME
+// club FIFA names (a loanee's clubs.json row is often the PARENT club, e.g. de Fougerolles ->
+// Fulham/Premier League, which must NOT leak in). Fox's crest is preferred when it agrees.
+// Look up a club override tolerant of casing/accents/punctuation. The audit CSV showed Logan
+// the DISPLAY name (caps-fixed), but FIFA's raw name is what we match on, so "FC ST. Pauli" in
+// the sheet must still match FIFA's "FC St. Pauli". Exact key first, then a normalized index.
+var _coNorm=null;
+function clubOverrideFor(name){
+  if(typeof CLUBOVERRIDE==='undefined' || !CLUBOVERRIDE || !name) return null;
+  var useful=function(o){ return !!(o && (o.crest||o.league||o.leagueQid||o.leagueLogo)); };
+  var ex=CLUBOVERRIDE[name]; if(useful(ex)) return ex;          // exact, with real data
+  if(!_coNorm){ _coNorm={}; try{ Object.keys(CLUBOVERRIDE).forEach(function(k){ var n=nrm(k), v=CLUBOVERRIDE[k]; if(!n) return; if(!_coNorm[n] || (useful(v) && !useful(_coNorm[n]))) _coNorm[n]=v; }); }catch(e){} }
+  var nx=_coNorm[nrm(name)];                                    // normalized (casing/accents), prefer useful
+  return useful(nx)?nx:(ex||nx||null);
+}
+function resolveClubMarks(team, name, stats, photo){
+  var fifa=(typeof FIFA!=='undefined'&&FIFA)?(FIFA[stats]||null):null;
+  var ti=tiResolve(team, name, photo, stats);
+  var tiClubId=ti&&ti.club, tiClub=(tiClubId&&TEAMINFO&&TEAMINFO.clubs)?TEAMINFO.clubs[tiClubId]:null;
+  var ci=clubInfoFor(team, name);
+  var isUrl=function(s){ return typeof s==='string'&&/^https?:\/\//i.test(s); };
+  var R={ clubName:null, clubLogo:null, clubLogoLight:false, clubLogoBg:null, clubFlag:null,
+          leagueLogo:null, leagueLight:false, leagueBg:null, clubLeague:null, clubLeagueQid:null,
+          clubLink:null, clubFoxUrl:(ti&&isUrl(ti.club))?ti.club:null, clubFbref:null, clubQid:ci?ci.qid:null, clubTier:null };
+  var fifaClub=(fifa&&fifa.fifa_club_name)||null;
+  if(fifaClub){
+    var ov=clubOverrideFor(fifaClub), cb=(fifa&&fifa.club)||null;
+    var ciSame=!!ci && ci.name && clubNamesMatch(ci.name, fifaClub);   // loan/parent-club guard
+    R.clubName=fixClubCaps(fifaClub);
+    R.clubFlag=fifa.fifa_club_iso2||(ov&&ov.cc)||(ciSame?ci.flag:null)||null;
+    R.clubLogo=(ov&&ov.crest)||(cb&&cb.crest)||(ciSame?ci.logo:null)||null;          // CSV crest is authoritative
+    R.clubLogoLight=(ov&&ov.crest)?false:((cb&&cb.crest)?!!(cb&&cb.cdark):(ciSame&&ci.logo?!!ci.logoLight:false));
+    R.clubLogoBg=(ov&&typeof ov.light==='boolean')?(ov.light?'light':'dark'):null;   // CSV per-club crest bg
+    R.clubFbref=(ciSame?ci.fbref:null); R.clubTier=(ciSame?ci.tier:null);
+    var lq=(ov&&ov.leagueQid)||(cb&&cb.lq)||(ciSame?ci.leagueQid:null)||null;          // CSV league assignment is authoritative
+    var lname=(cb&&cb.league)||(ov&&ov.league)||(ciSame?ci.league:null)||null;
+    R.clubLeague=leagueLabel(lq, lname);
+    if(R.clubLeague && /^Q\d+$/.test(R.clubLeague)) R.clubLeague=null;
+    if(!R.clubLeague){ var g0=clubGeoFallback(R.clubName, null); R.clubLeague=g0.league; if(!R.clubFlag) R.clubFlag=g0.cc; }
+    if(!lq && R.clubLeague){ var rq=leagueQidByName(R.clubLeague); if(rq){ lq=rq; R.clubLeague=leagueLabel(rq, R.clubLeague); } }  // name-only league ("MLS"->Q18543, "Serie A"->Q15804) -> curated QID + label + logo
+    R.clubLeagueQid=lq;
+    R.leagueLogo=leagueLogoByQid(lq, leagueLogoClean(R.clubLeague, (cb&&cb.llogo)||(ov&&ov.leagueLogo)||(ciSame?ci.leagueLogo:null)||null));
+    R.leagueLight=!!(cb&&cb.ldark);
+    R.leagueBg=leagueBg(lq); if(R.leagueBg===null && ov && typeof ov.leagueLight==='boolean') R.leagueBg=ov.leagueLight?'light':'dark';
+    R.clubLink=(cb&&cb.fb)||(ciSame?ci.fbref:null)||fbrefUrl(fifaClub)||null;
+    if(tiClub && tiClub.crest && !(ov&&ov.crest) && (!tiClub.name || clubNamesMatch(tiClub.name, fifaClub) || !R.clubLogo)){
+      R.clubLogo=tiClub.crest; R.clubLogoLight=false;
+      if(isUrl(tiClubId)) R.clubLink=tiClubId;
+    }
+  } else {
+    var foxName=tiClub&&tiClub.name;
+    R.clubName=foxName||(ci&&ci.name)||null; if(R.clubName) R.clubName=fixClubCaps(R.clubName);
+    var ov2=clubOverrideFor(R.clubName);          // players with no FIFA squad entry still honour manual overrides
+    var sameClub=!!ci&&(!foxName||(ci.name&&nrm(ci.name)===nrm(foxName)));
+    R.clubLogo=(ov2&&ov2.crest)||(tiClub&&tiClub.crest)||(ci&&ci.logo)||null;
+    R.clubLogoLight=(ov2&&ov2.crest)?false:((tiClub&&tiClub.crest)?false:(ci?ci.logoLight:false));
+    R.clubLogoBg=(ov2&&typeof ov2.light==='boolean')?(ov2.light?'light':'dark'):null;
+    R.clubFlag=(ov2&&ov2.cc)||(sameClub?ci.flag:null); R.clubTier=sameClub?ci.tier:null; R.clubFbref=ci?ci.fbref:null;
+    R.clubLink=(isUrl(tiClubId)?tiClubId:null)||(ci&&ci.fbref)||null;
+    var lq2=(ov2&&ov2.leagueQid)||(sameClub?(ci&&ci.leagueQid):null)||null;
+    var lname2=(ov2&&ov2.league)||(sameClub?(ci&&ci.league):null)||null;
+    R.clubLeague=leagueLabel(lq2, lname2);
+    if(R.clubLeague && /^Q\d+$/.test(R.clubLeague)) R.clubLeague=null;
+    var geo=clubGeoFallback(R.clubName, R.clubLeague);
+    if(!R.clubLeague) R.clubLeague=geo.league;
+    if(!R.clubFlag) R.clubFlag=geo.cc;
+    if(!lq2 && R.clubLeague){ var rq2=leagueQidByName(R.clubLeague); if(rq2){ lq2=rq2; R.clubLeague=leagueLabel(rq2, R.clubLeague); } }
+    R.clubLeagueQid=lq2;
+    R.leagueLogo=leagueLogoByQid(lq2, leagueLogoClean(R.clubLeague, (ov2&&ov2.leagueLogo)||(sameClub?ci.leagueLogo:null)||null));
+    R.leagueLight=!!(sameClub&&ci.leagueLight);
+    R.leagueBg=leagueBg(lq2); if(R.leagueBg===null && ov2 && typeof ov2.leagueLight==='boolean') R.leagueBg=ov2.leagueLight?'light':'dark';
+  }
+  return R;
+}
+// Thin wrapper: stamp the shared marks onto a leaderboard / popup row object.
 function attachClub(P){
-  var ci=clubInfoFor(P.team,P.name);
-  var ti=tiPlayer(P.stats), tiClub=(ti&&ti.club&&TEAMINFO&&TEAMINFO.clubs)?TEAMINFO.clubs[ti.club]:null;
-  var foxName=tiClub&&tiClub.name;
-  P.clubName=fixClubCaps(foxName||(ci?ci.name:null)||'')||null;
-  P.clubLogo=(tiClub&&tiClub.crest)||(ci?ci.logo:null);
-  P.clubLogoLight=(tiClub&&tiClub.crest)?false:(ci?ci.logoLight:false);
-  P.clubFoxUrl=(ti&&typeof ti.club==='string'&&/^https?:\/\//i.test(ti.club))?ti.club:null;
-  P.clubQid=ci?ci.qid:null; P.clubFbref=ci?ci.fbref:null;
-  // Only trust Wikidata league/flag when it is the same club Fox shows (loan/stale guard).
-  var sameClub = !!ci && (!foxName || (ci.name && nrm(ci.name)===nrm(foxName)));
-  P.clubFlag=sameClub?ci.flag:null;
-  P.clubTier=sameClub?ci.tier:null; P.clubLeague=sameClub?ci.league:null; P.clubLeagueLogo=sameClub?ci.leagueLogo:null; P.clubLeagueLight=sameClub?ci.leagueLight:false; P.clubLeagueQid=sameClub?ci.leagueQid:null;
-  // fallback club nation/league (Wikidata gaps + loaned players' current club)
-  var geo=clubGeoFallback(P.clubName, P.clubLeague);
-  if(!P.clubLeague) P.clubLeague=geo.league;
-  if(!P.clubFlag) P.clubFlag=geo.cc;
-  P.clubLeagueLogo=leagueLogoClean(P.clubLeague, P.clubLeagueLogo);
+  var R=resolveClubMarks(P.team, P.name, P.stats, P.photo);
+  P.clubName=R.clubName; P.clubLogo=R.clubLogo; P.clubLogoLight=R.clubLogoLight; P.clubLogoBg=R.clubLogoBg;
+  P.clubFlag=R.clubFlag; P.clubLeague=R.clubLeague; P.clubLeagueQid=R.clubLeagueQid;
+  P.clubLeagueLogo=R.leagueLogo; P.clubLeagueLight=R.leagueLight; P.clubLeagueBg=R.leagueBg;
+  P.clubFoxUrl=R.clubFoxUrl; P.clubFbref=R.clubFbref; P.clubQid=R.clubQid; P.clubTier=R.clubTier;
 }
 var COUNTRY_NAME={ae:'United Arab Emirates',ar:'Argentina',at:'Austria',au:'Australia',ba:'Bosnia and Herzegovina',be:'Belgium',bg:'Bulgaria',bh:'Bahrain',bo:'Bolivia',br:'Brazil',ca:'Canada',cd:'DR Congo',ch:'Switzerland',ci:"Côte d'Ivoire",cl:'Chile',cn:'China',co:'Colombia',cr:'Costa Rica',cv:'Cabo Verde',cw:'Curaçao',cy:'Cyprus',cz:'Czechia',de:'Germany',dk:'Denmark',dz:'Algeria',ec:'Ecuador',eg:'Egypt',es:'Spain',fr:'France','gb-eng':'England','gb-nir':'Northern Ireland','gb-sct':'Scotland','gb-wls':'Wales',gh:'Ghana',gr:'Greece',hn:'Honduras',hr:'Croatia',ht:'Haiti',hu:'Hungary',ie:'Ireland',il:'Israel','in':'India',iq:'Iraq',ir:'Iran',it:'Italy',jm:'Jamaica',jo:'Jordan',jp:'Japan',kr:'South Korea',kw:'Kuwait',kz:'Kazakhstan',lb:'Lebanon',ma:'Morocco',md:'Moldova',mm:'Myanmar',mx:'Mexico',my:'Malaysia',ng:'Nigeria',nl:'Netherlands',no:'Norway',nz:'New Zealand',om:'Oman',pa:'Panama',pe:'Peru',pl:'Poland',pt:'Portugal',py:'Paraguay',qa:'Qatar',ro:'Romania',rs:'Serbia',ru:'Russia',sa:'Saudi Arabia',sd:'Sudan',se:'Sweden',si:'Slovenia',sk:'Slovakia',sn:'Senegal',th:'Thailand',tn:'Tunisia',tr:'Türkiye',ua:'Ukraine',us:'United States',uy:'Uruguay',uz:'Uzbekistan',ve:'Venezuela',vn:'Vietnam',za:'South Africa' };
 function ccName(cc){ return COUNTRY_NAME[cc]||(cc||'').toUpperCase(); }
@@ -1808,8 +2099,8 @@ function lbLogo(url, fallbackText, isLight, extraCls){ var t=esc(fallbackText||'
 // Crests that are dark/monochrome and vanish on the dark card unless given a light
 // chip behind them. Everything else renders transparent so the crest itself is
 // bigger (no wasted background). Keyed by normalised club name; extend as needed.
-var DARK_CRESTS={ 'juventus':1, 'sporting cp':1, 'sporting':1, 'eintracht frankfurt':1, 'fc st. pauli':1, 'st pauli':1, 'lask':1, 'udinese':1, 'fc midtjylland':1 };
-function isDarkCrest(name){ return !!DARK_CRESTS[nrm(name||'')]; }
+var DARK_CRESTS={ 'juventus':1, 'sporting cp':1, 'sporting':1, 'eintracht frankfurt':1, 'fc st. pauli':1, 'st pauli':1, 'lask':1, 'lask linz':1, 'udinese':1, 'fc midtjylland':1 };
+function isDarkCrest(name){ var n=nrm(name||''); return !!DARK_CRESTS[n] || !!DARK_CRESTS[clubCore(name)]; }
 var _univ=null;
 function clubUniverse(){ if(_univ) return _univ; var byClub={}; for(var tm in PCLUBS){ var T=PCLUBS[tm]; for(var pn in T){ var q=bestClubQid(T[pn]); if(!q||!CLUBS[q]) continue; var c=CLUBS[q]; if(byClub[q]) continue; var cl=c.currentLeague||{}; byClub[q]={qid:q, name:c.name||q, cc:c.flag||null, league:cl.league||null, leagueQid:cl.leagueQid||(cl.league?('n:'+nrm(cl.league)):null)}; } } _univ={clubs:Object.keys(byClub).map(function(k){return byClub[k];})}; return _univ; }
 function uniNations(){ var seen={}; clubUniverse().clubs.forEach(function(c){ if(c.cc) seen[c.cc]=1; }); return Object.keys(seen).map(function(cc){ return {value:cc,label:ccName(cc)}; }).sort(function(a,b){ return a.label<b.label?-1:(a.label>b.label?1:0); }); }
@@ -1817,7 +2108,7 @@ function uniNations(){ var seen={}; clubUniverse().clubs.forEach(function(c){ if
 function uniCountries(){ var seen={}, agg=LB._agg; var rows=agg?((LB.sub==='ind')?(agg.players||[]):(agg.teams||[])):[]; rows.forEach(function(r){ if(r.cc) seen[r.cc]=1; }); return Object.keys(seen).map(function(cc){ return {value:cc, label:cc, sub:(TEAM_CODE[cc]||'')}; }).sort(function(a,b){ return a.label<b.label?-1:(a.label>b.label?1:0); }); }
 var LEAGUE_RENAME={ 'bundesliga|at':'Austrian Bundesliga', 'ligue 1|ci':'Ligue 1 (C\u00f4te d\u2019Ivoire)' };
 var _ldMap=null;
-function leagueCountry(qid){ var L=LEAGUES[qid]; return (L&&L.country)||null; }
+function leagueCountry(qid){ var L=(typeof LEAGUELOGO!=='undefined'&&LEAGUELOGO)?LEAGUELOGO[qid]:null; if(L&&L.country) return L.country; var W=LEAGUES[qid]; return (W&&W.country)||null; }
 function leagueDisplayMap(){
   if(_ldMap) return _ldMap;
   var info={};
@@ -1829,8 +2120,12 @@ function leagueDisplayMap(){
   Object.keys(byLabel).forEach(function(k){ var qs=byLabel[k]; if(qs.length>1) qs.forEach(function(q){ var nm=ccName(info[q].cc); if(nm) label[q]=label[q]+' ('+nm+')'; }); });
   _ldMap=label; return _ldMap;
 }
-function leagueLabel(qid, fallback){ var m=leagueDisplayMap(); return (qid&&m[qid])||fallback||''; }
-function uniLeagues(){ var nat=LB.nations, seen={}, dm=leagueDisplayMap(); clubUniverse().clubs.forEach(function(c){ if(!c.leagueQid||!c.league) return; if(nat.size&&!(c.cc&&nat.has(c.cc))) return; if(!seen[c.leagueQid]) seen[c.leagueQid]={value:c.leagueQid,label:(dm[c.leagueQid]||c.league),sub:ccName(leagueCountry(c.leagueQid)||c.cc)}; }); return Object.keys(seen).map(function(k){return seen[k];}).sort(function(a,b){ return a.label<b.label?-1:(a.label>b.label?1:0); }); }
+function leagueLabel(qid, fallback){ var m=leagueDisplayMap(); if(qid&&m[qid]) return m[qid]; var LL=(typeof LEAGUELOGO!=='undefined'&&LEAGUELOGO)?LEAGUELOGO[qid]:null; if(LL&&LL.name) return LL.name; var W=LEAGUES[qid]; if(W&&W.name) return W.name; return fallback||''; }
+function uniLeagues(){ var nat=LB.nations, seen={}, agg=LB._agg, players=(agg&&agg.players)||null;
+  if(players){ // build from the actual revealed rows so the filter matches what rows show (override-driven leagues included)
+    players.forEach(function(p){ if(!p.clubLeagueQid||!p.clubLeague) return; if(nat.size&&!(p.clubFlag&&nat.has(p.clubFlag))) return; if(!seen[p.clubLeagueQid]) seen[p.clubLeagueQid]={value:p.clubLeagueQid,label:leagueLabel(p.clubLeagueQid,p.clubLeague),sub:ccName(leagueCountry(p.clubLeagueQid)||p.clubFlag)}; });
+  } else { var dm=leagueDisplayMap(); clubUniverse().clubs.forEach(function(c){ if(!c.leagueQid||!c.league) return; if(nat.size&&!(c.cc&&nat.has(c.cc))) return; if(!seen[c.leagueQid]) seen[c.leagueQid]={value:c.leagueQid,label:(dm[c.leagueQid]||c.league),sub:ccName(leagueCountry(c.leagueQid)||c.cc)}; }); }
+  return Object.keys(seen).map(function(k){return seen[k];}).sort(function(a,b){ return a.label<b.label?-1:(a.label>b.label?1:0); }); }
 function uniTeams(){ var nat=LB.nations, lg=LB.leagues; var arr=clubUniverse().clubs.filter(function(c){ if(nat.size&&!(c.cc&&nat.has(c.cc))) return false; if(lg.size&&!(c.leagueQid&&lg.has(c.leagueQid))) return false; return true; }).map(function(c){ return {value:c.qid,label:c.name,sub:(c.league||''),cc:c.cc}; }); var byName={}; arr.forEach(function(o){ var k=nrm(o.label); (byName[k]=byName[k]||[]).push(o); }); Object.keys(byName).forEach(function(k){ var g=byName[k]; if(g.length>1) g.forEach(function(o){ var nm=ccName(o.cc); if(nm) o.label=o.label+' ('+nm+')'; }); }); return arr.sort(function(a,b){ return a.label<b.label?-1:(a.label>b.label?1:0); }); }
 function lbPruneCascade(){ var lset={}; uniLeagues().forEach(function(o){ lset[o.value]=1; }); [].slice.call(LB.leagues).forEach(function(v){ if(!lset[v]) LB.leagues.delete(v); }); var tset={}; uniTeams().forEach(function(o){ tset[o.value]=1; }); [].slice.call(LB.teams).forEach(function(v){ if(!tset[v]) LB.teams.delete(v); }); }
 const fmtDay = new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric'});
@@ -1863,13 +2158,14 @@ var SOURCES = {
   tsn:{ name:'TSN', tint:'#e2231a', country:'CA', lang:'en' },
   rds:{ name:'RDS', tint:'#ed1c24', country:'CA', lang:'fr' },
   fox:{ name:'Fox Sports', tint:'#1c2330', country:'US' },
-  itv:{ name:'ITV Sport', tint:'#1e7a4f', country:'GB' }
+  itv:{ name:'ITV Sport', tint:'#1e7a4f', country:'GB' },
+  bein:{ name:'beIN Sports', tint:'#5e2a8c', country:'FR', lang:'fr' },
+  telemundo:{ name:'Telemundo', tint:'#6b1d8f', country:'US', lang:'es' }
 };
 function regionSources(country, lang){
-  var out=[];
-  Object.keys(SOURCES).forEach(function(k){ if(k==='fifa') return; var s=SOURCES[k];
-    if(s.country && s.country!==country) return; if(s.lang && s.lang!==lang) return; out.push(k); });
-  return out;
+  var inCountry=Object.keys(SOURCES).filter(function(k){ if(k==='fifa') return false; var s=SOURCES[k]; return !s.country || s.country===country; });
+  var byLang=inCountry.filter(function(k){ var s=SOURCES[k]; return !s.lang || s.lang===lang; });
+  return byLang.length ? byLang : inCountry;   // no source in the user's language -> every source in the country
 }
 function allSources(country, lang){ var pri=regionSources(country,lang); return pri.concat(Object.keys(SOURCES).filter(function(k){return pri.indexOf(k)<0;})); }
 
@@ -1884,6 +2180,7 @@ var I18N = {
    set_h:'Settings', set_sub:'Set where you are and your language. Everything else is automatic, with no account or key needed.',
    set_region_h:'Region & language', set_region_p:"Your country decides which broadcasters' highlights you see. It's detected automatically, but you can change it any time.",
    set_country:'Country', set_language:'Language',
+   set_units_h:'Units', set_measurements:'Measurements', set_height:'Height', set_weight:'Weight', uni_imp:'Imperial', uni_met:'Metric', bmc:'Buy me a coffee', bmc_note:'(no pressure)',
    set_data_h:'Where the data comes from', set_data_p:'Results come live from the public-domain openfootball dataset. Highlight links and match details are read from a small data file published alongside the site, so nothing here needs an account or a key from you.',
    t_highlights:'Highlights', t_lineups:'Lineups', t_result:'Box Score',
    by_group:'By group', by_date:'By date', group_word:'Group', goals:'Goals', cards:'Cards', timeline:'Timeline', stats_h:'Match stats', box_partial:'Full match statistics will appear here once they are published.',
@@ -1892,7 +2189,7 @@ var I18N = {
    ko_locked_h:'Knockout match', ko_locked_p:'The matchup itself is a spoiler, so it stays hidden. Reveal to see who is playing, watch the highlights and view the result.', reveal_btn:'Reveal matchup',
    no_hl:'Highlights for your region will appear here once the match has been played.',
    not_played:'Available once the match has finished.',
-   subs:'Substitutes', coach:'Coach', manager:'Manager', assist:'assist',
+   subs:'Substitutes', coach:'Coach', manager:'Manager', mgr_incharge:'In charge', nationality:'Nationality', assist:'assist',
    no_lineups:'Lineups will appear here once they are published.',
    no_result:'The result and box score appear here once the match is played.',
    k_x:'Extended highlights', k_r:'Highlights', k_g:'Game in 30',
@@ -1908,6 +2205,7 @@ var I18N = {
    set_h:'Réglages', set_sub:'Indiquez où vous êtes et votre langue. Tout le reste est automatique, sans compte ni clé.',
    set_region_h:'Région et langue', set_region_p:'Votre pays détermine les diffuseurs dont vous voyez les résumés. Détecté automatiquement, modifiable à tout moment.',
    set_country:'Pays', set_language:'Langue',
+   set_units_h:'Unités', set_measurements:'Mesures', set_height:'Taille', set_weight:'Poids', uni_imp:'Impérial', uni_met:'Métrique', bmc:'Offrez-moi un café', bmc_note:'(sans pression)',
    set_data_h:"D'où viennent les données", set_data_p:'Les résultats proviennent en direct du jeu de données openfootball (domaine public). Les liens des résumés et les détails des matchs sont lus dans un petit fichier publié avec le site ; rien ici ne nécessite de compte ni de clé.',
    t_highlights:'Résumés', t_lineups:'Compositions', t_result:'Feuille de match',
    by_group:'Par groupe', by_date:'Par date', group_word:'Groupe', goals:'Buts', cards:'Cartons', timeline:'Chronologie', stats_h:'Statistiques du match', box_partial:'Les statistiques complètes apparaîtront ici une fois publiées.',
@@ -1916,7 +2214,7 @@ var I18N = {
    ko_locked_h:'Match à élimination', ko_locked_p:"L'affiche elle-même est un divulgâcheur : elle reste masquée. Révélez pour voir les équipes, le résumé et le résultat.", reveal_btn:"Révéler l'affiche",
    no_hl:'Les résumés de votre région apparaîtront ici une fois le match joué.',
    not_played:'Disponible une fois le match terminé.',
-   subs:'Remplaçants', coach:'Entraîneur', manager:'Sélectionneur', assist:'passe d.',
+   subs:'Remplaçants', coach:'Entraîneur', manager:'Sélectionneur', mgr_incharge:'En poste', nationality:'Nationalité', assist:'passe d.',
    no_lineups:'Les compositions apparaîtront ici une fois publiées.',
    no_result:'Le résultat et les statistiques apparaissent ici une fois le match joué.',
    k_x:'Résumé long', k_r:'Résumé', k_g:'Match en 30',
@@ -1926,8 +2224,8 @@ var I18N = {
 };
 var LANG='en', COUNTRY='US';
 function t(k){ var L=I18N[LANG]||I18N.en; return (L[k]!=null?L[k]:(I18N.en[k]!=null?I18N.en[k]:k)); }
-var COUNTRIES=[['CA','Canada'],['US','United States'],['GB','United Kingdom']];
-var LANGS=[['en','English'],['fr','Français']];
+var COUNTRIES=[['CA','Canada'],['US','United States'],['GB','United Kingdom'],['FR','France']];
+var LANGS=[['en','English'],['fr','Français'],['es','Español']];
 // Broadcaster region. navigator.language carries a *language* preference, not a
 // location (an English-Canadian may be on en-GB), so the default country comes
 // from the timezone, which actually tracks where the device is. ipwho.is (below)
@@ -2004,7 +2302,10 @@ function mmCrest(name){ var u=fedCrestURL(name); if(u) return '<img class="mm-cr
 function mmSideHTML(team, slotInner, side){
   if(!team) return slotInner;
   var nm='<span class="mm-tname">'+esc(team)+'</span>', fl=flag(team,'mm-iflag');
-  return mmCrest(team)+'<div class="mm-nrow">'+(side==='r'?(nm+fl):(fl+nm))+'</div>';
+  var inner=mmCrest(team)+'<div class="mm-nrow">'+(side==='r'?(nm+fl):(fl+nm))+'</div>';
+  // The crest/flag/name open this team's squad popup (the match tile itself still opens
+  // this match modal; this is the team mark *inside* it).
+  return SQUADS[nrm(team)]?('<span class="mm-teamlink" data-team-pop="'+esc(team)+'" role="button" tabindex="0" title="View '+esc(team)+' squad">'+inner+'</span>'):inner;
 }
 // A knockout slot label in the match popup. Group-fed slots (Winner/Runner-up/3rd
 // of a group) are clickable to reveal which teams could still take the place —
@@ -2158,6 +2459,16 @@ function teamCol(team, rev){
   var coach=team.coach?('<div class="coach">'+esc(t('coach'))+': '+esc(team.coach)+'</div>'):'';
   return '<div class="lu-col"><h4>'+flag(team.name)+esc(team.name||'')+'</h4><div class="form">'+esc(team.formation||'')+'</div><div class="pitch">'+pitch+'</div>'+subs+coach+'</div>';
 }
+// Manager row shown directly under the pitch, regardless of whether the result is revealed.
+// Clickable -> opens the manager badge. Card/red indicator only once events are revealed.
+function lineupMgrRow(side, evs, evTag, rev){
+  if(!side || !side.coach) return '';
+  var mp=side.coachPhoto, mcd='';
+  if(rev){ var mc=mgrCard(side,evs,evTag); mcd=mc.red?('<span class="su-c r"'+(mc.redSY?' title="Second yellow"':'')+'></span>'):(mc.yellow?'<span class="su-c y"></span>':''); }
+  return '<div class="su-row su-mgr" data-mgr-pop="'+esc(side.name||'')+'" role="button" tabindex="0" title="'+esc(t('manager'))+'">'+
+    '<span class="su-av"><span class="su-ini">'+esc(initials(side.coach))+'</span>'+(mp?'<img src="'+esc(mp)+'" alt="" loading="lazy" onload="var i=this.parentNode.querySelector(\'.su-ini\');if(i)i.style.display=\'none\'" onerror="this.remove()">':'')+'</span>'+
+    '<span class="su-nm">'+esc(side.coach)+'</span><span class="su-mgr-tag">'+esc(t('manager'))+'</span>'+mcd+'</div>';
+}
 function renderLU(c, rev){
   if(!c.played) return '<div class="empty-soft">'+esc(t('not_played'))+'</div>';
   var o=orientDetail(c); if(!o||(!o.homeSide&&!o.awaySide)) return '<div class="empty-soft">'+esc(t('no_lineups'))+'</div>';
@@ -2174,14 +2485,7 @@ function renderLU(c, rev){
     function subList(side, evTag, name){
       var all=(side&&side.subs)||[];
       var amb=ambigSurnames(side);
-      var mgr='';
-      if(side&&side.coach){ var mp=side.coachPhoto; var mc=mgrCard(side,evs,evTag);
-        var mcd=mc.red?('<span class="su-c r"'+(mc.redSY?' title="Second yellow"':'')+'></span>'):(mc.yellow?'<span class="su-c y"></span>':'');
-        mgr='<div class="su-row su-mgr">'+
-          '<span class="su-av"><span class="su-ini">'+esc(initials(side.coach))+'</span>'+(mp?'<img src="'+esc(mp)+'" alt="" loading="lazy" onload="var i=this.parentNode.querySelector(\'.su-ini\');if(i)i.style.display=\'none\'" onerror="this.remove()">':'')+'</span>'+
-          '<span class="su-nm">'+esc(side.coach)+'</span><span class="su-mgr-tag">'+esc(t('manager'))+'</span>'+mcd+'</div>';
-      }
-      if(!all.length && !mgr) return '';
+      if(!all.length) return '';
       var played=all.filter(function(p){return p.on!=null;}).sort(function(a,b){ var ma=parseInt(String(a.on),10), mb=parseInt(String(b.on),10); return (isNaN(ma)?9999:ma)-(isNaN(mb)?9999:mb); });
       var list=played.length?played:all;   // came-on players only, ordered by minute they entered
       return '<div><div class="su-h">'+flag(name)+'<span>'+esc(name)+'</span></div>'+list.map(function(p){
@@ -2195,12 +2499,14 @@ function renderLU(c, rev){
         var og=pe.og?'<span class="su-og" title="Own goal">OG</span>':'';
         var as=pe.assists?'<span class="su-a" title="Assist">A'+(pe.assists>1?'\u00d7'+pe.assists:'')+'</span>':'';
         return '<a class="su-row" href="'+esc(p.stats||fbrefUrl(p.name))+'" target="_blank" rel="noopener noreferrer" data-pc-name="'+esc(p.name||'')+'" data-pc-team="'+esc(name||'')+'"'+(p.n!=null?' data-pc-num="'+esc(String(p.n))+'"':'')+(p.pos?' data-pc-pos="'+esc(p.pos)+'"':'')+(p.photo?' data-pc-photo="'+esc(p.photo)+'"':'')+'>'+ph+'<span class="su-n">'+(p.n!=null?esc(String(p.n)):'')+'</span><span class="su-nm">'+esc(shortName(p.name))+'</span>'+gl+as+og+cd+on+rt+'</a>';
-      }).join('')+mgr+'</div>';
+      }).join('')+'</div>';
     }
     var hs=subList(o.homeSide,o.homeTag,hN), as=subList(o.awaySide,o.awayTag,aN);
     if(hs||as) subsHTML='<div class="bs-gh" style="margin-top:20px">'+esc(t('subs'))+'</div><div class="su-wrap">'+(hs||'<div></div>')+(as||'<div></div>')+'</div>';
   }
-  return pitch+(rev?timelineHTML(o,evs,t('timeline')):'')+subsHTML;
+  var hM=lineupMgrRow(o.homeSide,evs,o.homeTag,rev), aM=lineupMgrRow(o.awaySide,evs,o.awayTag,rev);
+  var mgrsHTML=(hM||aM)?('<div class="lu-mgrs">'+(hM||'<div></div>')+(aM||'<div></div>')+'</div>'):'';
+  return pitch+mgrsHTML+(rev?timelineHTML(o,evs,t('timeline')):'')+subsHTML;
 }
 // Chronological match timeline: goals (with assist/P/OG), yellow & red cards, and substitutions. Home left, away right. Shared by the lineup and box-score tabs.
 function timelineHTML(o, evs, header){
@@ -2332,70 +2638,36 @@ function buildStatsSection(d){
 var FOX_LOGO_URI='data:image/png;base64,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';
 var FBREF_LOGO_URI='data:image/png;base64,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';
 function pcRenderBody(d){
-  var ti=tiPlayer(d.stats), px=pidxGet(d.team,d.name)||{};
+  var px=pidxGet(d.team,d.name)||{};
+  var pxScoped=cleanPhoto(photoxScoped(d.team,d.name)), pxBare=cleanPhoto(photoxBare(d.name));
+  // Resolve the Fox profile from the photo's fid when `stats` is only an FBref search
+  // URL, then use it both for the link and to reach the (already-scraped) team-info bio.
+  var foxUrl=foxUrlOf(d.team, d.name, pxScoped||cleanPhoto(d.photo)||pxBare||'', d.stats);
+  var ti=tiPlayer(d.stats)||(foxUrl?tiPlayer(foxUrl):null);
+  var isFox=!!foxUrl;
   var fifa=FIFA[d.stats]||null;   // official FIFA squad entry (pos, DOB, height cm, caps/goals, kit name, club nation)
   var num=(d.num!=null&&d.num!=='')?d.num:(ti&&ti.num!=null?ti.num:(px.num!=null?px.num:null));
   // Position priority: FIFA official > Fox bio > lineup feed > squad. The lineup feed
   // often mislabels players as midfielders, so a real source always wins.
   var pos=(fifa&&fifa.pos)||(ti&&ti.pos)||d.pos||px.pos||'';
-  var pxScoped=photoxScoped(d.team,d.name), pxBare=photoxBare(d.name);
-  var photoChain=d.photo||(ti&&ti.photo)||px.photo||'';
-  var photo=pxScoped||((!photoChain||/espncdn\.com/i.test(photoChain))?(pxBare||photoChain):photoChain)||'';
+  var photo=pxScoped||cleanPhoto(d.photo)||cleanPhoto(ti&&ti.photo)||cleanPhoto(px.photo)||pxBare||'';
   var dob=(fifa&&fifa.dob)||(ti&&ti.dob), age=ageFromDob(dob);
   var hi=ti&&ti.height_in, hcm=(fifa&&fifa.height_cm)||null, wl=ti&&ti.weight_lb;
-  var foxUrl=d.stats||'', isFox=/foxsports\.com/i.test(foxUrl);
 
-  // Club: FIFA's official squad-list club is authoritative. We show FIFA's club NAME
-  // and nation (flag), with the crest/league baked from clubs.json by that name
-  // (fifa_clubs.py) — sidestepping Fox's per-player club, which is often a stale
-  // transfer or even the national team. club-overrides.json fills clubs clubs.json
-  // lacks. Players with no FIFA squad entry keep the old Fox/Wikidata resolution.
-  var ci=clubInfoFor(d.team, d.name);
-  var tiClubId=ti&&ti.club, tiClub=(tiClubId&&TEAMINFO&&TEAMINFO.clubs)?TEAMINFO.clubs[tiClubId]:null;
-  var isUrl=function(s){ return typeof s==='string' && /^https?:\/\//i.test(s); };
-  var clubName=null, clubLogo=null, clubLogoLight=false, clubFlag=null,
-      leagueLogo=null, leagueLight=false, clubLeague=null, clubLink=null;
-  var fifaClub=(fifa&&fifa.fifa_club_name)||null;
-  if(fifaClub){
-    var ov=(CLUBOVERRIDE&&CLUBOVERRIDE[fifaClub])||null, cb=(fifa&&fifa.club)||null;
-    clubName=fixClubCaps(fifaClub);
-    clubFlag=fifa.fifa_club_iso2||(ov&&ov.cc)||null;             // FIFA club nation (authoritative)
-    clubLogo=(cb&&cb.crest)||(ov&&ov.crest)||null;
-    clubLogoLight=!!(cb&&cb.cdark);
-    var lq=(cb&&cb.lq)||(ov&&ov.leagueQid)||null;
-    clubLeague=leagueLabel(lq, (cb&&cb.league)||(ov&&ov.league)||null);
-    if(clubLeague && /^Q\d+$/.test(clubLeague)) clubLeague=null;
-    if(!clubLeague){ var g0=clubGeoFallback(clubName, null); clubLeague=g0.league; }
-    leagueLogo=leagueLogoByQid(lq, leagueLogoClean(clubLeague, (cb&&cb.llogo)||(ov&&ov.leagueLogo)||null));
-    leagueLight=!!(cb&&cb.ldark);
-    clubLink=(cb&&cb.fb)||(ci&&ci.fbref)||fbrefUrl(fifaClub)||null;
-  } else {
-    var foxName=tiClub&&tiClub.name;
-    clubName=foxName||(ci&&ci.name)||null;
-    if(clubName) clubName=fixClubCaps(clubName);
-    clubLogo=(tiClub&&tiClub.crest)||(ci&&ci.logo)||null;        // Fox crest first, Wikidata fallback
-    clubLogoLight=(tiClub&&tiClub.crest)?false:(ci?ci.logoLight:false);
-    // When Fox (current) club differs from the Wikidata club, only trust Wikidata's
-    // league/flag/logo when it is the SAME club we are showing.
-    var sameClub = !!ci && (!foxName || (ci.name && nrm(ci.name)===nrm(foxName)));
-    clubFlag=sameClub?ci.flag:null;
-    leagueLogo=sameClub?ci.leagueLogo:null; leagueLight=sameClub?ci.leagueLight:false;
-    var foxClub=isUrl(tiClubId)?tiClubId:null;
-    clubLink=foxClub||(ci&&ci.fbref)||null;
-    clubLeague=sameClub?leagueLabel(ci.leagueQid, ci.league):null;
-    if(clubLeague && /^Q\d+$/.test(clubLeague)) clubLeague=null;
-    var geo=clubGeoFallback(clubName, clubLeague);
-    if(!clubLeague) clubLeague=geo.league;
-    if(!clubFlag) clubFlag=geo.cc;
-    leagueLogo=leagueLogoByQid(ci&&ci.leagueQid, leagueLogoClean(clubLeague, leagueLogo));
-  }
+
+  // Club marks come from the SAME resolver the leaderboard / team popup use, so the card and
+  // the popup can never disagree (Koné's Serie A/Italy, de Fougerolles' corrected league, etc.).
+  var CM=resolveClubMarks(d.team, d.name, d.stats, photo);
+  var clubName=CM.clubName, clubLogo=CM.clubLogo, clubLogoLight=CM.clubLogoLight, clubLogoBg=CM.clubLogoBg,
+      clubFlag=CM.clubFlag, leagueLogo=CM.leagueLogo, leagueLight=CM.leagueLight, clubLeagueBg=CM.leagueBg,
+      clubLeague=CM.clubLeague, clubLink=CM.clubLink, clubLeagueQid=CM.clubLeagueQid;
   var clubHTML='';
   if(clubName){
     // Layout: [big crest] [club name] [league logo + club-nation flag, stacked].
     // The crest + name carry the club; the league/flag are smaller metadata to the side.
-    var bigCrest='<span class="pc-ccrest">'+lbLogo(clubLogo, initials(clubName), clubLogoLight, isDarkCrest(clubName)?'':'lb-bare')+'</span>';
+    var bigCrest='<span class="pc-ccrest">'+crestCell(clubName, clubLogo, clubLogoLight, clubLogoBg)+'</span>';
     var metaFlag=clubFlag?('<span class="pc-cmico pc-cmflag" title="'+esc(ccName(clubFlag)||'')+'">'+flagByCode(clubFlag,'pc-cflag')+'</span>'):'';
-    var metaLeague=(leagueLogo||clubLeague)?('<span class="pc-cmico" title="'+esc(clubLeague||'')+'">'+lbLogo(leagueLogo, initials(clubLeague||''), leagueLight&&!isDarkLeague(clubLeague))+'</span>'):'';
+    var metaLeague=(leagueLogo||clubLeague)?('<span class="pc-cmico" title="'+esc(clubLeague||'')+'">'+leagueLogoCell(clubLeagueQid, leagueLogo, clubLeague||'', leagueLight, clubLeagueBg)+'</span>'):'';
     var meta=(metaLeague||metaFlag)?('<span class="pc-cmeta">'+metaLeague+metaFlag+'</span>'):'';
     var name='<span class="pc-cname">'+esc(clubName)+(clubLeague?'<small>'+esc(clubLeague)+'</small>':'')+'</span>';
     var inner=bigCrest+name+meta;
@@ -2410,11 +2682,12 @@ function pcRenderBody(d){
   // the default blue. FIFA's recased name takes priority for the headline.
   var shownName=(fifa&&fifa.fifa_name)||dispName(d.name);
   var th=fedTheme(d.team), fedCrest=fedCrestURL(d.team);
-  var crestTag=fedCrest?('<img class="pc-fedcrest" src="'+esc(fedCrest)+'" alt="'+esc(d.team||'')+' crest" loading="lazy" onerror="this.style.display=\'none\'">'):'';
+  var teamPop=(d.team&&SQUADS[nrm(d.team)])?(' data-team-pop="'+esc(d.team)+'" role="button" tabindex="0" title="View '+esc(d.team)+' squad"'):'';
+  var crestTag=fedCrest?('<img class="pc-fedcrest"'+teamPop+' src="'+esc(fedCrest)+'" alt="'+esc(d.team||'')+' crest" loading="lazy" onerror="this.style.display=\'none\'">'):'';
   var hdStyle=th?(' style="background:radial-gradient(135% 150% at 0% 0%,'+hexA(th.deep,0.92)+',transparent 60%),linear-gradient(180deg,'+hexA(th.wash,0.5)+',transparent 78%);border-top:3px solid '+th.accent+'"'):'';
   var avStyle=th?(' style="box-shadow:0 0 0 1px '+hexA(th.accent,0.85)+'"'):'';
-  var hd='<div class="pc-hd"'+hdStyle+'>'+crestTag+'<span class="pc-av"'+avStyle+'><span class="pc-ini">'+esc(initials(d.name))+'</span>'+(photo?'<img src="'+esc(photo)+'" alt="" onload="var i=this.parentNode.querySelector(\'.pc-ini\');if(i)i.style.display=\'none\'" onerror="this.remove()">':'')+'</span>'+
-    '<div class="pc-ht"><div class="pc-nm">'+esc(shownName)+'</div>'+(d.team?'<div class="pc-team">'+flag(d.team)+'<span>'+esc(d.team)+'</span>'+(num!=null&&num!==''?'<span class="pc-tnum">#'+esc(String(num))+'</span>':'')+'</div>':'')+'</div></div>';
+  var hd='<div class="pc-hd'+(crestTag?' pc-hd-crest':'')+'"'+hdStyle+'>'+crestTag+'<span class="pc-av"'+avStyle+'><span class="pc-ini">'+esc(initials(d.name))+'</span>'+(photo?'<img src="'+esc(photo)+'" alt="" onload="var i=this.parentNode.querySelector(\'.pc-ini\');if(i)i.style.display=\'none\'" onerror="this.remove()">':'')+'</span>'+
+    '<div class="pc-ht"><div class="pc-nm">'+esc(shownName)+'</div>'+(d.team?'<div class="pc-team"><span class="pc-teamlink"'+teamPop+'>'+flag(d.team)+'<span>'+esc(d.team)+'</span></span>'+(num!=null&&num!==''?'<span class="pc-tnum">#'+esc(String(num))+'</span>':'')+'</div>':'')+'</div></div>';
 
   // One compact row above the club: Position · Age · Height · Weight · Birthplace.
   // (No. moved into the header beside the country; Nationality dropped as redundant.)
@@ -2457,6 +2730,37 @@ function openPlayerCard(d){
   var body=$('#pc-body'); if(body) body.innerHTML=pcRenderBody(d);
   var el=$('#pc'); if(el){ el.classList.add('open'); el.setAttribute('aria-hidden','false'); }
 }
+// Display a country name in the active language (falls back to the supplied English name).
+function dispCountry(name){ if(!name) return ''; var cc=(typeof FLAG_CODE!=='undefined'&&FLAG_CODE)?FLAG_CODE[name]:null; return (cc&&ccName(cc))||name; }
+// Manager badge: mirrors the player card chrome but themed with the colours of the country
+// they MANAGE (not their nationality). Header carries that country's crest + flag; one row
+// shows tenure (left) and the manager's own nationality (right); footer links an FBref search.
+function mgrRenderBody(team){
+  var mi=mgrFor(team); if(!mi||!mi.name) return '<div class="tm-empty">'+esc(t('manager'))+' \u2013</div>';
+  var th=fedTheme(team), fedCrest=fedCrestURL(team);
+  var crestTag=fedCrest?('<img class="pc-fedcrest" src="'+esc(fedCrest)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'):'';
+  var hdStyle=th?(' style="background:radial-gradient(135% 150% at 0% 0%,'+hexA(th.deep,0.92)+',transparent 60%),linear-gradient(180deg,'+hexA(th.wash,0.5)+',transparent 78%);border-top:3px solid '+th.accent+'"'):'';
+  var avStyle=th?(' style="box-shadow:0 0 0 1px '+hexA(th.accent,0.85)+'"'):'';
+  var hd='<div class="pc-hd pc-hd-crest"'+hdStyle+'>'+crestTag+
+    '<span class="pc-av"'+avStyle+'><span class="pc-ini">'+esc(initials(mi.name))+'</span>'+(mi.photo?'<img src="'+esc(mi.photo)+'" alt="" onload="var i=this.parentNode.querySelector(\'.pc-ini\');if(i)i.style.display=\'none\'" onerror="this.remove()">':'')+'</span>'+
+    '<div class="pc-ht"><div class="pc-nm">'+esc(dispName(mi.name))+'</div>'+
+      '<div class="pc-team"><span class="pc-teamline">'+flag(team)+'<span>'+esc(dispCountry(team))+'</span></span><span class="mc-role">'+esc(t('manager'))+'</span></div>'+
+    '</div></div>';
+  var tenure=mgrTenure(mi.from, mi.effDate, mi.to);
+  var natHTML=mi.nationality?('<span class="mc-nat">'+flag(mi.nationality,'mc-natflag')+'<span>'+esc(dispCountry(mi.nationality))+'</span></span>'):'\u2013';
+  var row='<div class="mc-row">'+
+    '<div class="mc-cell"><div class="pc-k">'+esc(t('mgr_incharge'))+'</div><div class="pc-v mc-ten">'+(tenure?esc(tenure):'\u2013')+'</div></div>'+
+    '<div class="mc-cell mc-cell-r"><div class="pc-k">'+esc(t('nationality'))+'</div><div class="pc-v">'+natHTML+'</div></div>'+
+  '</div>';
+  var fb=fbrefUrl(mi.name);
+  var ft='<div class="pc-ft"><span></span><span class="pc-srcs"><a class="pc-srclink" href="'+esc(fb)+'" target="_blank" rel="noopener noreferrer" title="FBref search"><img class="pc-srclogo pc-srclogo--fb" src="'+FBREF_LOGO_URI+'" alt="FBref"><span class="pc-srcarrow">\u2197</span></a></span></div>';
+  return hd+row+ft;
+}
+function openManagerCard(team){
+  if(!team) return; _PCDATA=null;
+  var body=$('#pc-body'); if(body) body.innerHTML=mgrRenderBody(team);
+  var el=$('#pc'); if(el){ el.classList.add('open'); el.setAttribute('aria-hidden','false'); }
+}
 $('#pc-close').addEventListener('click', pcClose);
 $('#pc').addEventListener('click', function(e){ if(e.target.id==='pc') pcClose(); });
 $('#pc-body').addEventListener('click', function(e){
@@ -2465,6 +2769,109 @@ $('#pc-body').addEventListener('click', function(e){
   var sv=e.target.closest('.pc-seg button[data-pc-sv]'); if(sv){ STATSVIEW=(sv.getAttribute('data-pc-sv')==='adv')?'adv':'simple'; $('#pc-body').innerHTML=pcRenderBody(_PCDATA); return; }
 });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape' && $('#pc').classList.contains('open')) pcClose(); });
+
+/* ---------- team-squad popup (#tm) ---------- */
+var _tmTeam=null, _tmRes=false, _tmSort={k:'caps',dir:'desc'};
+function tmClose(){ var el=$('#tm'); if(el){ el.classList.remove('open'); el.setAttribute('aria-hidden','true'); } _tmTeam=null; }
+// Photo precedence mirrors the player card: team-scoped override > roster photo > PIDX > unambiguous bare override. ESPN/vresize normalised by cleanPhoto.
+function tmPhotoFor(team, name, raw){ var pxS=cleanPhoto(photoxScoped(team,name)), pxB=cleanPhoto(photoxBare(name)), px=pidxGet(team,name)||{}; return pxS||cleanPhoto(raw)||cleanPhoto(px.photo)||pxB||''; }
+function tmAva(photo, name){ var ini=esc(initials(name)); if(!photo) return '<span class="tm-ini">'+ini+'</span>'; return '<img class="tm-ava" src="'+esc(photo)+'" alt="" loading="lazy" data-ini="'+ini+'" onerror="var s=document.createElement(\'span\');s.className=\'tm-ini\';s.textContent=this.getAttribute(\'data-ini\');this.replaceWith(s)">'; }
+function tmRenderBody(teamName){
+  var sq=SQUADS[nrm(teamName)]; if(!sq) return '<div class="tm-empty">No squad available for '+esc(teamName)+'.</div>';
+  var disp=sq.name||teamName;
+  // Header: federation crest + flag + name, tinted with the nation palette (same treatment as the player card).
+  var th=fedTheme(disp), fedCrest=fedCrestURL(disp);
+  var crestTag=fedCrest?('<img class="tm-fedcrest" src="'+esc(fedCrest)+'" alt="'+esc(disp)+' crest" loading="lazy" onerror="this.style.display=\'none\'">'):'';
+  var hdStyle=th?(' style="background:radial-gradient(135% 150% at 0% 0%,'+hexA(th.deep,0.92)+',transparent 60%),linear-gradient(180deg,'+hexA(th.wash,0.5)+',transparent 78%);border-top:3px solid '+th.accent+'"'):'';
+  var roster=(sq.players||[]).slice();
+  var _mi=mgrFor(disp), mgr='';
+  if(_mi&&_mi.name){ var _mf=_mi.nationality?flag(_mi.nationality,'tm-mgr-flag'):''; var _mp=_mi.photo?('<span class="tm-mgr-av"><img src="'+esc(_mi.photo)+'" alt="" loading="lazy" onerror="this.parentNode.style.display=\'none\'"></span>'):'';
+    mgr='<span class="tm-mgr" data-mgr-pop="'+esc(disp)+'" role="button" tabindex="0" title="View manager">'+_mp+'<span class="tm-mgr-nm">'+esc(t('manager'))+': '+esc(dispName(_mi.name))+'</span>'+_mf+'</span>'; }
+  var canRes=!!revealCutoff(), showRes=_tmRes;   // toggle is always available; numbers stay spoiler-safe below
+  // Results toggle: a small switch in the header, under the X with its label to the left.
+  // Default off; the choice persists across countries for the session and resets on reload.
+  var resToggle='<div class="tm-res"><span class="tm-res-lbl">Results</span><button type="button" class="sw tm-sw'+(showRes?' on':'')+'" data-tm-stoggle role="switch" aria-checked="'+(showRes?'true':'false')+'" aria-label="Show World Cup results"></button></div>';
+  var hd='<div class="tm-hd tm-hd-res"'+hdStyle+'>'+crestTag+'<span class="tm-flag">'+flag(disp)+'</span><div class="tm-ht"><div class="tm-nm">'+esc(disp)+'</div><div class="tm-sub"><span>'+roster.length+' player'+(roster.length===1?'':'s')+'</span>'+mgr+'</div></div>'+resToggle+'</div>';
+
+  // Per-player World Cup contributions, keyed team|nrm(name) from the same aggregate the leaderboards use.
+  // Only ever drawn from revealed matches (revealCutoff), so turning the toggle on before
+  // revealing anything shows zeros rather than spoiling unrevealed results.
+  var perf={};
+  if(showRes && canRes){ (aggregateLeaders(revealCutoff()).players||[]).forEach(function(x){ perf[x.team+'|'+nrm(x.name)]=x; }); }
+
+  // One record per player (club marks + caps + WC stats) so any column can drive the sort.
+  var recs=roster.map(function(p){
+    var nm=p.name, fifa=p.stats?FIFA[p.stats]:null, caps=(fifa&&fifa.caps!=null)?fifa.caps:null;
+    var P={name:nm, team:disp, stats:p.stats||null}; attachClub(P);   // shared resolver: matches the player card + leaderboard
+    var x=showRes?(perf[disp+'|'+nrm(nm)]||null):null;
+    return { p:p, P:P, num:(p.num==null||p.num==='')?null:(+p.num||null), caps:caps,
+             nat:P.clubFlag?ccName(P.clubFlag):'', league:P.clubLeague||'', club:P.clubName||'',
+             shown:(fifa&&fifa.fifa_name)||dispName(nm), sortnm:dispName(nm)||'',
+             g:x?x.g:0, a:x?x.a:0, y:x?x.yel:0, r:x?x.red:0, c:x?x.conduct:0 };
+  });
+
+  // Sort (default caps desc). String columns sort as text; tiebreak on shirt number then name.
+  var sortK=(_tmSort&&_tmSort.k)||'caps', sortDir=(_tmSort&&_tmSort.dir==='asc')?1:-1;
+  if({g:1,a:1,y:1,r:1,c:1}[sortK] && !showRes){ sortK='caps'; sortDir=-1; }
+  var STR={nat:1,league:1,club:1,name:1};
+  function tcmp(a,b){ var an=a.num==null?9999:a.num, bn=b.num==null?9999:b.num; if(an!==bn) return an-bn; return a.sortnm<b.sortnm?-1:(a.sortnm>b.sortnm?1:0); }
+  recs.sort(function(a,b){
+    if(STR[sortK]){ var av=(sortK==='name'?a.sortnm:a[sortK])||'', bv=(sortK==='name'?b.sortnm:b[sortK])||''; if(av!==bv) return av<bv?-sortDir:sortDir; return tcmp(a,b); }
+    var x=a[sortK],y=b[sortK]; x=(x==null||isNaN(x))?-Infinity:x; y=(y==null||isNaN(y))?-Infinity:y; if(x!==y) return (x-y)*sortDir; return tcmp(a,b);
+  });
+
+  // Sortable header: data-tm-k = sort key, active column shows a direction arrow.
+  function thS(k,label,cls,title){ var on=sortK===k; return '<th class="'+(cls?cls+' ':'')+'tm-sh'+(on?' on':'')+'" data-tm-k="'+k+'"'+(title?' title="'+esc(title)+'"':'')+'>'+label+(on?'<span class="tm-ar">'+(sortDir>0?'\u25B2':'\u25BC')+'</span>':'')+'</th>'; }
+  var statCols=showRes?(thS('g','<span class="tm-goalh">\u26BD</span>','','World Cup goals')+thS('a','<span class="tm-assisth">A</span>','','World Cup assists')+thS('y','<span class="tm-cardh tm-cardh-y"></span>','','Yellow cards')+thS('r','<span class="tm-cardh tm-cardh-r"></span>','','Red cards')+thS('c','Cond','','Fair-play conduct (FIFA): yellow -1, second yellow -3, direct red -4, yellow + direct red -5; closer to 0 is cleaner')):'';
+  var head='<tr>'+thS('num','#','tm-num')+thS('name','Player','tm-th-pl tm-lh')+thS('caps','Caps','','International caps (pre-tournament)')+thS('nat','Nat','','Country of current club')+thS('league','Lg','','Current club\u2019s league')+thS('club','Club','','Current club (opens FBref)')+statCols+'</tr>';
+
+  var tG=0,tA=0,tY=0,tR=0,tC=0;
+  var rowsHtml=recs.map(function(R){
+    var p=R.p, P=R.P;
+    var cf=P.clubFlag?('<span class="tm-cf" title="'+esc(ccName(P.clubFlag))+'">'+flagByCode(P.clubFlag,'')+'</span>'):'\u2013';
+    var lg=P.clubLeague?('<span class="tm-llogo" title="'+esc(leagueLabel(P.clubLeagueQid,P.clubLeague))+'">'+leagueLogoCell(P.clubLeagueQid, leagueLogoByQid(P.clubLeagueQid,P.clubLeagueLogo), P.clubLeague, P.clubLeagueLight, P.clubLeagueBg)+'</span>'):'\u2013';
+    var cl;
+    if(P.clubName){ var cu=P.clubFoxUrl||P.clubFbref||fbrefUrl(P.clubName); cl='<a class="tm-clink tm-clogo" href="'+esc(cu)+'" target="_blank" rel="noopener noreferrer" title="'+esc(P.clubName)+'">'+crestCell(P.clubName, P.clubLogo, P.clubLogoLight, P.clubLogoBg)+'</a>'; }
+    else cl='\u2013';
+    var statsHref=p.stats||fbrefUrl(p.name), rphoto=tmPhotoFor(disp,p.name,p.photo);
+    var nameCell='<a class="tm-plcell" data-pc-name="'+esc(p.name)+'" data-pc-team="'+esc(disp)+'"'+((p.num!=null&&p.num!=='')?' data-pc-num="'+esc(String(p.num))+'"':'')+(p.pos?' data-pc-pos="'+esc(p.pos)+'"':'')+(rphoto?' data-pc-photo="'+esc(rphoto)+'"':'')+' href="'+esc(statsHref)+'" target="_blank" rel="noopener noreferrer">'+tmAva(rphoto,p.name)+'<span class="tm-plnm">'+esc(R.shown)+'</span></a>';
+    var statCells='';
+    if(showRes){ tG+=R.g; tA+=R.a; tY+=R.y; tR+=R.r; tC+=R.c; var sc=function(v){ return '<td><span class="tm-stat'+(v?'':' tm-z')+'">'+(v||0)+'</span></td>'; }; statCells=sc(R.g)+sc(R.a)+sc(R.y)+sc(R.r)+sc(R.c); }
+    return '<tr><td class="tm-num">'+((p.num!=null&&p.num!=='')?esc(String(p.num)):'')+'</td><td class="tm-th-pl">'+nameCell+'</td><td><span class="tm-stat'+(R.caps!=null?'':' tm-z')+'">'+(R.caps!=null?R.caps:'\u2013')+'</span></td><td>'+cf+'</td><td>'+lg+'</td><td>'+cl+'</td>'+statCells+'</tr>';
+  }).join('');
+
+  var totals=showRes?('<tr class="tm-trow"><td class="tm-tlabel" colspan="6">Totals</td><td><span class="tm-stat">'+tG+'</span></td><td><span class="tm-stat">'+tA+'</span></td><td><span class="tm-stat">'+tY+'</span></td><td><span class="tm-stat">'+tR+'</span></td><td><span class="tm-stat">'+tC+'</span></td></tr>'):'';
+
+  return hd+'<div class="tm-tablewrap"><table class="tm-roster"><thead>'+head+'</thead><tbody>'+rowsHtml+totals+'</tbody></table></div>';
+}
+function openTeamPopup(teamName){
+  if(!teamName) return; var sq=SQUADS[nrm(teamName)]; if(!sq) return;
+  // Reached from a player card or the match popup (their crest/flag/name): close those so
+  // the squad popup stands on its own and a single Escape dismisses it.
+  if($('#pc')&&$('#pc').classList.contains('open')) pcClose();
+  if($('#mm')&&$('#mm').classList.contains('open')) mmClose();
+  _tmTeam=sq.name||teamName;
+  var body=$('#tm-body'); if(body) body.innerHTML=tmRenderBody(_tmTeam);
+  var el=$('#tm'); if(el){ el.classList.add('open'); el.setAttribute('aria-hidden','false'); }
+}
+$('#tm-close').addEventListener('click', tmClose);
+$('#tm').addEventListener('click', function(e){ if(e.target.id==='tm') tmClose(); });
+$('#tm-body').addEventListener('click', function(e){
+  var t=e.target.closest('[data-tm-stoggle]'); if(t && _tmTeam){ _tmRes=!_tmRes; $('#tm-body').innerHTML=tmRenderBody(_tmTeam); return; }
+  var sh=e.target.closest('th[data-tm-k]'); if(sh && _tmTeam){ var k=sh.getAttribute('data-tm-k'); if(_tmSort && _tmSort.k===k){ _tmSort.dir=(_tmSort.dir==='desc')?'asc':'desc'; } else { _tmSort={k:k, dir:({nat:1,league:1,club:1,name:1}[k])?'asc':'desc'}; } $('#tm-body').innerHTML=tmRenderBody(_tmTeam); return; }
+});
+document.addEventListener('keydown', function(e){ if(e.key==='Escape' && $('#tm').classList.contains('open') && !$('#pc').classList.contains('open')) tmClose(); }, true);
+// Open the squad popup from any country flag/name/crest tagged data-team-pop. Player links, club marks and match tiles keep their own behaviour.
+function _tmTrigFrom(e){ var el=e.target.closest('[data-team-pop]'); if(!el) return null; if(e.target.closest('[data-pc-name]')||e.target.closest('a[href]')||e.target.closest('.mt')||e.target.closest('.bx-row')||e.target.closest('[data-id]')) return null; var tn=el.getAttribute('data-team-pop'); return (tn && SQUADS[nrm(tn)])?tn:null; }
+document.addEventListener('click', function(e){
+  if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||(e.button&&e.button!==0)) return;
+  var tn=_tmTrigFrom(e); if(!tn) return; e.preventDefault(); openTeamPopup(tn);
+});
+document.addEventListener('keydown', function(e){
+  if(e.key!=='Enter' && e.key!==' ' && e.key!=='Spacebar') return;
+  var el=e.target&&e.target.closest?e.target.closest('[data-team-pop]'):null; if(!el) return;
+  var tn=el.getAttribute('data-team-pop'); if(!tn || !SQUADS[nrm(tn)]) return; e.preventDefault(); openTeamPopup(tn);
+});
 
 /* ---------- Settings: height/weight units ---------- */
 function refreshUnitUI(){
@@ -2484,11 +2891,14 @@ document.addEventListener('click', function(e){
 });
 (function(){ try{ refreshUnitUI(); if(UNITS_HT!==UNITS_WT){ var d=document.getElementById('uni-detail'), b=document.getElementById('uni-exp'); if(d) d.removeAttribute('hidden'); if(b){ b.classList.add('open'); b.setAttribute('aria-expanded','true'); } } }catch(e){} })();
 document.addEventListener('click', function(e){
+  var mg=e.target.closest('[data-mgr-pop]');
+  if(mg){ if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||(e.button&&e.button!==0)) return; e.preventDefault(); e.stopPropagation(); openManagerCard(mg.getAttribute('data-mgr-pop')); return; }
   var a=e.target.closest('[data-pc-name]'); if(!a) return;
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||(e.button&&e.button!==0)) return;  // let modifier/middle clicks open the Fox link
   e.preventDefault();
   openPlayerCard({ name:a.getAttribute('data-pc-name'), team:a.getAttribute('data-pc-team')||'', stats:a.getAttribute('href')||null, num:a.getAttribute('data-pc-num'), pos:a.getAttribute('data-pc-pos'), photo:a.getAttribute('data-pc-photo')||null });
 }, true);
+document.addEventListener('keydown', function(e){ if((e.key==='Enter'||e.key===' ')){ var mg=e.target&&e.target.closest&&e.target.closest('[data-mgr-pop]'); if(mg){ e.preventDefault(); openManagerCard(mg.getAttribute('data-mgr-pop')); } } });
 
 
 /* ---------- tabs ---------- */
@@ -2744,7 +3154,7 @@ function groupCardActual(g, cutoff, clinch){
     st.rows.forEach((r,i)=>{ const cls=i<2?('q'+(i+1)):(i===2?'q3':'');
       const badge=clinch?clinchBadge(clinch[r.team]):'';
       const nameCls=(r.team.length>=16?' class="long"':'');
-      h+='<tr class="'+cls+'"><td class="pos">'+(i+1)+'</td><td class="tl"><div class="teamcell">'+flag(r.team)+'<span'+nameCls+'>'+esc(r.team)+badge+'</span></div></td>'+
+      h+='<tr class="'+cls+'"><td class="pos">'+(i+1)+'</td><td class="tl"><div class="teamcell"'+(SQUADS[nrm(r.team)]?' data-team-pop="'+esc(r.team)+'" role="button" tabindex="0" title="View squad"':'')+'>'+flag(r.team)+'<span'+nameCls+'>'+esc(r.team)+badge+'</span></div></td>'+
          '<td>'+r.p+'</td><td>'+r.w+'</td><td>'+r.d+'</td><td>'+r.l+'</td><td>'+(r.gd>0?'+':'')+r.gd+'</td><td class="pts">'+r.pts+'</td></tr>'; });
     h+='</tbody></table>';
   } else {
@@ -3553,13 +3963,13 @@ function lbTable(keepPage){
   var thead='<tr><th class="lb-l lb-rank"></th>'+cols.map(function(c,ci){ var sortable=!!c.k&&c.kind!=='pic'; var on=sort&&sort.k===c.k; var lbl=c.card?'<span class="lb-cardh lb-cardh-'+c.card+'"></span>':c.sym==='g'?'<span class="lb-goalh">\u26BD</span>':c.sym==='a'?'<span class="lb-assisth">A</span>':esc(c.lbl); return '<th class="'+(c.cls||'')+(shade[ci]?' '+shade[ci]:'')+(on?' on':'')+'"'+(sortable?' data-k="'+c.k+'"':'')+(c.t?' data-tip="'+esc(c.t)+'" aria-label="'+esc(c.t)+'"':'')+'>'+lbl+(on?'<span class="lb-ar">'+(sort.dir==='asc'?'\u25B2':'\u25BC')+'</span>':'')+'</th>'; }).join('')+'</tr>';
   var tb=shown.map(function(r,i){
     var tds=cols.map(function(c,ci){
-      if(c.kind==='flag') return '<td class="lb-cc"><span class="lb-natwrap">'+flag(r.cc, 'lb-flag')+crestImg(r.cc,'lb-crest')+'</span></td>';
+      if(c.kind==='flag') return '<td class="lb-cc"><span class="lb-natwrap"'+(SQUADS[nrm(r.cc)]?' data-team-pop="'+esc(r.cc)+'" role="button" tabindex="0" title="View squad"':'')+'>'+flag(r.cc, 'lb-flag')+crestImg(r.cc,'lb-crest')+'</span></td>';
       if(c.kind==='code') return '<td class="lb-l lb-name" title="'+esc(r.cc||'')+'">'+esc(TEAM_CODE[r.cc]||r.cc||'')+'</td>';
       if(c.kind==='pname'||c.kind==='name'){ var pu=r.stats||fbrefUrl(r.name); return '<td class="lb-l lb-name"><a class="lb-plink" href="'+esc(pu)+'" target="_blank" rel="noopener noreferrer" data-pc-name="'+esc(r.name||'')+'" data-pc-team="'+esc(r.cc||'')+'"'+(r.photo?' data-pc-photo="'+esc(r.photo)+'"':'')+'>'+esc(dispName(r.name))+'</a></td>'; }
       if(c.kind==='pic'){ var pu2=r.stats||fbrefUrl(r.name), inner=r.photo?'<img class="lb-pic" src="'+esc(r.photo)+'" alt="" loading="lazy" data-ini="'+esc(initials(r.name))+'" onerror="var s=document.createElement(\'span\');s.className=\'lb-ini\';s.textContent=this.getAttribute(\'data-ini\');this.replaceWith(s)">':'<span class="lb-ini">'+esc(initials(r.name))+'</span>'; return '<td class="lb-l"><a class="lb-plink" href="'+esc(pu2)+'" target="_blank" rel="noopener noreferrer" data-pc-name="'+esc(r.name||'')+'" data-pc-team="'+esc(r.cc||'')+'"'+(r.photo?' data-pc-photo="'+esc(r.photo)+'"':'')+'>'+inner+'</a></td>'; }
       if(c.kind==='cflag'){ if(!r.clubFlag) return '<td class="lb-cc">\u2013</td>'; return '<td class="lb-cc" title="'+esc(ccName(r.clubFlag))+'">'+flagByCode(r.clubFlag,'lb-flag')+'</td>'; }
-      if(c.kind==='league'){ if(!r.clubLeague) return '<td class="lb-cc">\u2013</td>'; var tt=esc(leagueLabel(r.clubLeagueQid, r.clubLeague))+(typeof r.clubTier==='number'?(' \u00b7 tier '+r.clubTier):''); return '<td class="lb-cc" title="'+tt+'">'+lbLogo(leagueLogoByQid(r.clubLeagueQid, r.clubLeagueLogo), initials(r.clubLeague), r.clubLeagueLight&&!isDarkLeague(r.clubLeague))+'</td>'; }
-      if(c.kind==='club'){ if(!r.clubName) return '<td class="lb-cc">\u2013</td>'; var cu=r.clubFoxUrl||r.clubFbref||fbrefUrl(r.clubName); return '<td class="lb-cc"><a class="lb-plink" href="'+esc(cu)+'" target="_blank" rel="noopener noreferrer" title="'+esc(r.clubName)+'">'+lbLogo(r.clubLogo, initials(r.clubName), r.clubLogoLight, isDarkCrest(r.clubName)?'':'lb-bare')+'</a></td>'; }
+      if(c.kind==='league'){ if(!r.clubLeague) return '<td class="lb-cc">\u2013</td>'; var tt=esc(leagueLabel(r.clubLeagueQid, r.clubLeague))+(typeof r.clubTier==='number'?(' \u00b7 tier '+r.clubTier):''); return '<td class="lb-cc" title="'+tt+'">'+leagueLogoCell(r.clubLeagueQid, leagueLogoByQid(r.clubLeagueQid, r.clubLeagueLogo), r.clubLeague, r.clubLeagueLight, r.clubLeagueBg)+'</td>'; }
+      if(c.kind==='club'){ if(!r.clubName) return '<td class="lb-cc">\u2013</td>'; var cu=r.clubFoxUrl||r.clubFbref||fbrefUrl(r.clubName); return '<td class="lb-cc"><a class="lb-plink" href="'+esc(cu)+'" target="_blank" rel="noopener noreferrer" title="'+esc(r.clubName)+'">'+crestCell(r.clubName, r.clubLogo, r.clubLogoLight, r.clubLogoBg)+'</a></td>'; }
       return '<td'+(shade[ci]?' class="'+shade[ci]+'"':'')+'>'+lbFmt(c,r[c.k])+'</td>';
     }).join('');
     return '<tr><td class="lb-rank">'+(start+i+1)+'</td>'+tds+'</tr>';
@@ -3612,12 +4022,12 @@ function msOpen(key, btn){ if(_msOpen && _msOpen.key===key){ msClose(); return; 
 // Built-in sets cover countries and major leagues; FILTER_ALIASES is merged from
 // aliases.json at load for clubs and any extras.
 var ALIAS_COUNTRY={ us:['usa','united states of america','yanks','usmnt','stars and stripes'], gb:['uk','britain','great britain'], 'gb-eng':['eng','three lions'], 'gb-sct':['sco','tartan army'], 'gb-wls':['cymru','wal'], 'gb-nir':['n ireland','northern ire'], kr:['korea','south korea','rok','taeguk warriors'], cd:['dr congo','drc','congo dr'], ci:['ivory coast','cote divoire'], cv:['cape verde'], cw:['curacao'], cz:['czech republic','czech'], nl:['holland','oranje'], de:['germany','die mannschaft'], sa:['ksa','saudi'], ae:['uae'], ir:['iran'], iq:['iraq'], qa:['qatar'], jp:['nippon','samurai blue'], mx:['el tri'], ar:['albiceleste'], br:['selecao','brasil'], es:['espana','la roja'], it:['azzurri','italia'], fr:['les bleus'], pt:['selecao','portugal'], hr:['vatreni'], ma:['atlas lions'], sn:['teranga lions'], au:['socceroos'], nz:['all whites'], za:['bafana bafana'], dz:['les fennecs'], eg:['pharaohs'], tn:['carthage eagles'], be:['red devils'], jo:['jordan'], pa:['panama'], ht:['haiti'], uy:['celeste'], co:['cafeteros'], ec:['la tri'], py:['albirroja'], pe:['blanquirroja'], no:['norge'], se:['blagult'], tr:['turkey','turkiye'] };
-var ALIAS_LEAGUE_NAME={ 'premier league':['epl','pl','english premier'], 'la liga':['laliga','primera division','spanish league'], 'serie a':['calcio','italian league'], 'bundesliga':['buli','german league'], 'ligue 1':['l1','french league'], 'eredivisie':['dutch league'], 'primeira liga':['liga portugal','portuguese league'], 'major league soccer':['mls'], 'saudi pro league':['spl','roshn league'], 'liga mx':['mexican league'], 'jupiler pro league':['belgian league','pro league'], 'super lig':['turkish league','superlig'], 'scottish premiership':['spfl','spl scotland'], 'championship':['efl championship'], 'j1 league':['j league','jleague'] };
+var ALIAS_LEAGUE_NAME={ 'premier league':['epl','pl','english premier','english premier league','english top flight'], 'la liga':['laliga','primera division','spanish league','spanish la liga'], 'serie a':['calcio','italian league'], 'bundesliga':['buli','german league'], 'ligue 1':['l1','french league'], 'eredivisie':['dutch league'], 'primeira liga':['liga portugal','portuguese league'], 'major league soccer':['mls'], 'saudi pro league':['spl','roshn league'], 'liga mx':['mexican league'], 'jupiler pro league':['belgian league','pro league'], 'super lig':['turkish league','superlig'], 'scottish premiership':['spfl','spl scotland'], 'championship':['efl championship'], 'j1 league':['j league','jleague'] };
 var FILTER_ALIASES={ country:{}, league:{}, club:{} };
 function aliasHit(key, value, f){
   if(!f) return false;
   var arr=null;
-  if(key==='country'||key==='nation'){ arr=ALIAS_COUNTRY[value]||FILTER_ALIASES.country[value]; }
+  if(key==='country'||key==='nation'){ var cc=(typeof FLAG_CODE!=='undefined'&&FLAG_CODE[value])||value; arr=ALIAS_COUNTRY[cc]||ALIAS_COUNTRY[value]||FILTER_ALIASES.country[cc]||FILTER_ALIASES.country[value]; }
   else if(key==='league'){ arr=FILTER_ALIASES.league[value]; if(!arr){ var lab=nrm(leagueLabel(value,'')); for(var nm in ALIAS_LEAGUE_NAME){ if(nrm(nm)===lab){ arr=ALIAS_LEAGUE_NAME[nm]; break; } } } }
   else if(key==='team'){ arr=FILTER_ALIASES.club[value]; }
   if(!arr||!arr.length) return false;

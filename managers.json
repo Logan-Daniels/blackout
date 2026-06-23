@@ -1,356 +1,445 @@
 {
-  "teams": {
-    "Argentina": [
-      {
-        "name": "Lionel Scaloni",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Brazil": [
-      {
-        "name": "Carlo Ancelotti",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "France": [
-      {
-        "name": "Didier Deschamps",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Germany": [
-      {
-        "name": "Julian Nagelsmann",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Spain": [
-      {
-        "name": "Luis de la Fuente",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Netherlands": [
-      {
-        "name": "Ronald Koeman",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Belgium": [
-      {
-        "name": "Rudi Garcia",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Portugal": [
-      {
-        "name": "Roberto Martinez",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "England": [
-      {
-        "name": "Thomas Tuchel",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Croatia": [
-      {
-        "name": "Zlatko Dalic",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Italy": [
-      {
-        "name": "Luciano Spalletti",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Canada": [
-      {
-        "name": "Jesse Marsch",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "United States": [
-      {
-        "name": "Mauricio Pochettino",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Mexico": [
-      {
-        "name": "Javier Aguirre",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Morocco": [
-      {
-        "name": "Walid Regragui",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Japan": [
-      {
-        "name": "Hajime Moriyasu",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Senegal": [
-      {
-        "name": "Pape Thiaw",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Uruguay": [
-      {
-        "name": "Marcelo Bielsa",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Switzerland": [
-      {
-        "name": "Murat Yakin",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Scotland": [
-      {
-        "name": "Steve Clarke",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Norway": [
-      {
-        "name": "Stale Solbakken",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Austria": [
-      {
-        "name": "Ralf Rangnick",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Ecuador": [
-      {
-        "name": "Sebastian Beccacece",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Egypt": [
-      {
-        "name": "Hossam Hassan",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Iran": [
-      {
-        "name": "Amir Ghalenoei",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Australia": [
-      {
-        "name": "Tony Popovic",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "South Korea": [
-      {
-        "name": "Hong Myung-bo",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Paraguay": [
-      {
-        "name": "Gustavo Alfaro",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Cote d'Ivoire": [
-      {
-        "name": "Emerse Fae",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Bosnia and Herzegovina": [
-      {
-        "name": "Sergej Barbarez",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Czechia": [
-      {
-        "name": "Ivan Hasek",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Sweden": [
-      {
-        "name": "Jon Dahl Tomasson",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "South Africa": [
-      {
-        "name": "Hugo Broos",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "New Zealand": [
-      {
-        "name": "Darren Bazeley",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Cabo Verde": [
-      {
-        "name": "Bubista",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Curacao": [
-      {
-        "name": "Dick Advocaat",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Iraq": [
-      {
-        "name": "Graham Arnold",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Turkiye": [
-      {
-        "name": "Vincenzo Montella",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ],
-    "Algeria": [
-      {
-        "name": "Vladimir Petkovic",
-        "from": null,
-        "to": null,
-        "photo": "",
-        "url": ""
-      }
-    ]
-  },
-  "cards": []
+ "_README": "Ultimate manager source built from blackout_sheets_-_managers.csv. teams[country] = chronological list of {name,nationality,photo,from(YYYY-MM-DD),to(null=current)}. The site shows whichever manager was in charge as of the revealed match date, so a mid-tournament change only surfaces once that period is revealed.",
+ "teams": {
+  "Algeria": [
+   {
+    "name": "Vladimir Petkovic",
+    "nationality": "Switzerland",
+    "photo": "https://fmdataba.com/images/p_s/312.png",
+    "from": "2024-02-29",
+    "to": null
+   }
+  ],
+  "Argentina": [
+   {
+    "name": "Lionel Scaloni",
+    "nationality": "Argentina",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/8842.png",
+    "from": "2018-08-03",
+    "to": null
+   }
+  ],
+  "Australia": [
+   {
+    "name": "Tony Popovic",
+    "nationality": "Australia",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/2741.png?fallback=male",
+    "from": "2024-09-23",
+    "to": null
+   }
+  ],
+  "Austria": [
+   {
+    "name": "Ralf Rangnick",
+    "nationality": "Germany",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/495.png?fallback=male",
+    "from": "2022-05-24",
+    "to": null
+   }
+  ],
+  "Belgium": [
+   {
+    "name": "Rudi Garcia",
+    "nationality": "France",
+    "photo": "https://fmdataba.com/images/p_s/32.png",
+    "from": "2025-01-24",
+    "to": null
+   }
+  ],
+  "Bosnia and Herzegovina": [
+   {
+    "name": "Sergej Barbarez",
+    "nationality": "Bosnia and Herzegovina",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/40734.png?fallback=male",
+    "from": "2024-04-19",
+    "to": null
+   }
+  ],
+  "Brazil": [
+   {
+    "name": "Carlo Ancelotti",
+    "nationality": "Italy",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/237388.png",
+    "from": "2025-05-26",
+    "to": null
+   }
+  ],
+  "Cabo Verde": [
+   {
+    "name": "Bubista",
+    "nationality": "Cabo Verde",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/69921.png?fallback=male",
+    "from": "2020-01-01",
+    "to": null
+   }
+  ],
+  "Canada": [
+   {
+    "name": "Jesse Marsch",
+    "nationality": "United States",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/5055.png?fallback=male",
+    "from": "2024-05-13",
+    "to": null
+   }
+  ],
+  "Côte d'Ivoire": [
+   {
+    "name": "Emerse Faé",
+    "nationality": "Côte d'Ivoire",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/8316.png?fallback=male",
+    "from": "2024-01-24",
+    "to": null
+   }
+  ],
+  "Colombia": [
+   {
+    "name": "Nestor Lorenzo",
+    "nationality": "Argentina",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/45972.png?fallback=male",
+    "from": "2022-07-09",
+    "to": null
+   }
+  ],
+  "Croatia": [
+   {
+    "name": "Zlatko Dalic",
+    "nationality": "Croatia",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/250720.png",
+    "from": "2017-10-07",
+    "to": null
+   }
+  ],
+  "Curaçao": [
+   {
+    "name": "Dick Advocaat",
+    "nationality": "Netherlands",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/277803.png",
+    "from": "2026-05-12",
+    "to": null
+   }
+  ],
+  "Czechia": [
+   {
+    "name": "Miroslav Koubek",
+    "nationality": "Czechia",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/79139.png?fallback=male",
+    "from": "2025-12-19",
+    "to": null
+   }
+  ],
+  "DR Congo": [
+   {
+    "name": "Sebastien Desabre",
+    "nationality": "France",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/370023.png?fallback=male",
+    "from": "2022-08-22",
+    "to": null
+   }
+  ],
+  "Ecuador": [
+   {
+    "name": "Sebastian Beccacece",
+    "nationality": "Argentina",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/435409.png?fallback=male",
+    "from": "2024-08-01",
+    "to": null
+   }
+  ],
+  "Egypt": [
+   {
+    "name": "Hossam Hassan",
+    "nationality": "Egypt",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/46204.png?fallback=male",
+    "from": "2024-02-06",
+    "to": null
+   }
+  ],
+  "England": [
+   {
+    "name": "Thomas Tuchel",
+    "nationality": "Germany",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc26/managers/250585.png",
+    "from": "2025-01-01",
+    "to": null
+   }
+  ],
+  "France": [
+   {
+    "name": "Didier Deschamps",
+    "nationality": "France",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/220469.png",
+    "from": "2012-07-08",
+    "to": null
+   }
+  ],
+  "Germany": [
+   {
+    "name": "Julian Nagelsmann",
+    "nationality": "Germany",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/249812.png",
+    "from": "2023-09-22",
+    "to": null
+   }
+  ],
+  "Ghana": [
+   {
+    "name": "Carlos Queiroz",
+    "nationality": "Portugal",
+    "photo": "https://fmdataba.com/images/p_s/1810.png",
+    "from": "2026-04-12",
+    "to": null
+   }
+  ],
+  "Haiti": [
+   {
+    "name": "Sebastien Migne",
+    "nationality": "France",
+    "photo": "https://images.fotmob.com/image_resources/playerimages/878257.png",
+    "from": "2024-06-01",
+    "to": null
+   }
+  ],
+  "Iran": [
+   {
+    "name": "Amir Ghalenoei",
+    "nationality": "Iran",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/15867.png?fallback=male",
+    "from": "2023-03-01",
+    "to": null
+   }
+  ],
+  "Iraq": [
+   {
+    "name": "Graham Arnold",
+    "nationality": "Australia",
+    "photo": "https://fmdataba.com/images/p_s/39138.png",
+    "from": "2025-05-09",
+    "to": null
+   }
+  ],
+  "Japan": [
+   {
+    "name": "Hajime Moriyasu",
+    "nationality": "Japan",
+    "photo": "https://images.fotmob.com/image_resources/playerimages/431269.png",
+    "from": "2018-08-01",
+    "to": null
+   }
+  ],
+  "Jordan": [
+   {
+    "name": "Jamal Sellami",
+    "nationality": "Morocco",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/41982.png?fallback=male",
+    "from": "2024-08-27",
+    "to": null
+   }
+  ],
+  "Mexico": [
+   {
+    "name": "Javier Aguirre",
+    "nationality": "Mexico",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/192945.png",
+    "from": "2024-07-22",
+    "to": null
+   }
+  ],
+  "Morocco": [
+   {
+    "name": "Mohamed Ouahbi",
+    "nationality": "Morocco",
+    "photo": "https://images.fotmob.com/image_resources/playerimages/1816954.png",
+    "from": "2026-03-05",
+    "to": null
+   }
+  ],
+  "Netherlands": [
+   {
+    "name": "Ronald Koeman",
+    "nationality": "Netherlands",
+    "photo": "https://www.pesmaster.com/efootball-2022/graphics/coaches/Variation/coach_17596481012062_.png",
+    "from": "2023-01-01",
+    "to": null
+   }
+  ],
+  "New Zealand": [
+   {
+    "name": "Darren Bazeley",
+    "nationality": "New Zealand",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/60559.png?fallback=male",
+    "from": "2022-11-01",
+    "to": null
+   }
+  ],
+  "Norway": [
+   {
+    "name": "Ståle Solbakken",
+    "nationality": "Norway",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/250516.png",
+    "from": "2020-12-07",
+    "to": null
+   }
+  ],
+  "Panama": [
+   {
+    "name": "Thomas Christiansen",
+    "nationality": "Spain",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/40868.png?fallback=male",
+    "from": "2020-07-22",
+    "to": null
+   }
+  ],
+  "Paraguay": [
+   {
+    "name": "Gustavo Alfaro",
+    "nationality": "Argentina",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/1942.png?fallback=male",
+    "from": "2024-08-13",
+    "to": null
+   }
+  ],
+  "Portugal": [
+   {
+    "name": "Roberto Martinez",
+    "nationality": "Spain",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/53951.png",
+    "from": "2023-01-09",
+    "to": null
+   }
+  ],
+  "Qatar": [
+   {
+    "name": "Julen Lopetegui",
+    "nationality": "Spain",
+    "photo": "https://fmdataba.com/images/p_s/290.png",
+    "from": "2025-05-01",
+    "to": null
+   }
+  ],
+  "Saudi Arabia": [
+   {
+    "name": "Georgios Donis",
+    "nationality": "Greece",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/249481.png",
+    "from": "2026-04-23",
+    "to": null
+   }
+  ],
+  "Scotland": [
+   {
+    "name": "Steve Clarke",
+    "nationality": "Scotland",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/250538.png",
+    "from": "2019-05-20",
+    "to": null
+   }
+  ],
+  "Senegal": [
+   {
+    "name": "Pape Thiaw",
+    "nationality": "Senegal",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/27648.png?fallback=male",
+    "from": "2024-12-02",
+    "to": null
+   }
+  ],
+  "South Africa": [
+   {
+    "name": "Hugo Broos",
+    "nationality": "Belgium",
+    "photo": "https://i.ibb.co/1YcRS3xK/Hugo-Broos.png",
+    "from": "2021-05-05",
+    "to": null
+   }
+  ],
+  "South Korea": [
+   {
+    "name": "Hong Myung-bo",
+    "nationality": "South Korea",
+    "photo": "https://images.fotmob.com/image_resources/playerimages/29429.png",
+    "from": "2024-07-08",
+    "to": null
+   }
+  ],
+  "Spain": [
+   {
+    "name": "Luis De La Fuente",
+    "nationality": "Spain",
+    "photo": "https://cdn.fctoolshub.com/game_assets/fc25/managers/272689.png",
+    "from": "2022-12-08",
+    "to": null
+   }
+  ],
+  "Sweden": [
+   {
+    "name": "Graham Potter",
+    "nationality": "England",
+    "photo": "https://images.fotmob.com/image_resources/playerimages/721728.png",
+    "from": "2025-10-20",
+    "to": null
+   }
+  ],
+  "Switzerland": [
+   {
+    "name": "Murat Yakin",
+    "nationality": "Switzerland",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/42830.png?fallback=male",
+    "from": "2021-08-09",
+    "to": null
+   }
+  ],
+  "Tunisia": [
+   {
+    "name": "Sabri Lamouchi",
+    "nationality": "France",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/48519.png?fallback=male",
+    "from": "2026-01-14",
+    "to": "2026-06-15"
+   },
+   {
+    "name": "Hervé Renard",
+    "nationality": "France",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/148665.png?fallback=male",
+    "from": "2026-06-16",
+    "to": null
+   }
+  ],
+  "Türkiye": [
+   {
+    "name": "Vincenzo Montella",
+    "nationality": "Italy",
+    "photo": "https://s.hs-data.com/gfx/person/cropped/250x250/2173.png?fallback=male",
+    "from": "2023-09-21",
+    "to": null
+   }
+  ],
+  "United States": [
+   {
+    "name": "Mauricio Pochettino",
+    "nationality": "Argentina",
+    "photo": "https://cmtracker.fra1.cdn.digitaloceanspaces.com/DB/24/managers/heads_staff_1008885.png",
+    "from": "2024-09-10",
+    "to": null
+   }
+  ],
+  "Uruguay": [
+   {
+    "name": "Marcelo Bielsa",
+    "nationality": "Argentina",
+    "photo": "https://fmdataba.com/images/p_s/37804.png",
+    "from": "2023-05-15",
+    "to": null
+   }
+  ],
+  "Uzbekistan": [
+   {
+    "name": "Fabio Cannavaro",
+    "nationality": "Italy",
+    "photo": "https://www.dx84tech.com/wp-content/uploads/2021/06/Fabio-CANNAVARO-512.png",
+    "from": "2025-10-06",
+    "to": null
+   }
+  ]
+ },
+ "cards": []
 }
