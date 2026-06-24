@@ -113,6 +113,7 @@ const FEEDS = [
   { pl: 'itv',   src: 'itv'  },
   { pl: 'bein',      src: 'bein'      },
   { pl: 'telemundo', src: 'telemundo' },
+  { pl: 'fifa',      src: 'fifa'      },
   { pl: 'fox_x', src: 'fox', forceExtended: true },
   { pl: 'fox_r', src: 'fox' },
 ];
@@ -158,6 +159,7 @@ const pair = (a, b) => [a, b].sort().join('~');
 function classify(feed, durSec, title) {
   const n = norm(title);
   const isHL = /highlight|résum|resum|faits saillants|temps forts/.test(n);
+  if (feed.pl === 'fifa') return 'r';   // curated FIFA highlights playlist: attach matches as recaps regardless of title wording
   if (feed.pl === 'tsn') { if (/game in 30|in\s?30/.test(n)) return 'g'; return isHL ? 'r' : null; }
   if (feed.forceExtended) return isHL || durSec > 14 * 60 ? 'x' : null;   // Fox extended feed
   if (!isHL) return null;                                                  // everything else must look like a recap

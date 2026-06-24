@@ -927,24 +927,24 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   <section class="view" id="view-bracket">
     <div class="view-head">
       <h2 data-i18n="tab_bracket">Results</h2>
-      <p>The real tournament, filled in automatically from public results data. Use the slider to reveal results only as far as you’ve caught up · standings and the bracket unlock day by day, so nothing ahead of you gets spoiled.</p>
+      <p data-i18n="bk_intro">The real tournament, filled in automatically from public results data. Use the slider to reveal results only as far as you’ve caught up · standings and the bracket unlock day by day, so nothing ahead of you gets spoiled.</p>
     </div>
     <div class="bar" style="flex-direction:column;align-items:stretch;gap:12px">
       <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-        <span style="font-weight:600">Reveal results through:</span>
+        <span style="font-weight:600" data-i18n="bk_reveal_through">Reveal results through:</span>
         <strong id="bk-daylabel" style="font-family:var(--mono);color:var(--a)">Nothing revealed</strong>
         <span style="margin-left:auto;display:flex;gap:6px">
-          <button class="btn" id="bk-none">Nothing</button>
-          <button class="btn" id="bk-today">Today</button>
+          <button class="btn" id="bk-none" data-i18n="btn_nothing">Nothing</button>
+          <button class="btn" id="bk-today" data-i18n="btn_today">Today</button>
         </span>
       </div>
       <input type="range" id="bk-day" min="0" max="40" value="0" step="1" aria-label="Reveal results through day">
       <div class="statusline" style="margin:0"><span class="livedot on" style="background:var(--live);box-shadow:none"></span><span id="bk-updated">Loading results…</span></div>
     </div>
     <div id="bk-standings"></div>
-    <div class="section-title" id="bk-thirds-title">Best third-placed teams <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· provisional · top 8 advance to the Round of 32</span></div>
+    <div class="section-title" id="bk-thirds-title"><span data-i18n="sec_best_thirds">Best third-placed teams</span> <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· provisional · top 8 advance to the Round of 32</span></div>
     <div id="bk-thirds"></div>
-    <div class="section-title">Knockout bracket</div>
+    <div class="section-title" data-i18n="sec_ko_bracket">Knockout bracket</div>
     <div class="legend" id="bk-legend"></div>
     <div class="bracket-wrap"><div class="bracket" id="bk-tree"></div></div>
     <div id="bk-champ"></div>
@@ -954,19 +954,19 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   <section class="view" id="view-predictions">
     <div class="view-head">
       <h2 data-i18n="tab_predictions">Predictions</h2>
-      <p>Your own bracket, kept separate from the real results. Tap teams to set how each group finishes, choose which third-placed teams advance, then pick winners through to the final. Saved automatically on this device.</p>
+      <p data-i18n="pr_intro">Your own bracket, kept separate from the real results. Tap teams to set how each group finishes, choose which third-placed teams advance, then pick winners through to the final. Saved automatically on this device.</p>
     </div>
     <div class="bar">
-      <button class="btn primary" id="pr-download">⤓ Download as JPG</button>
-      <button class="btn" id="pr-reset">Clear predictions</button>
+      <button class="btn primary" id="pr-download" data-i18n="pr_download">⤓ Download as JPG</button>
+      <button class="btn" id="pr-reset" data-i18n="pr_clear">Clear predictions</button>
       <div class="statusline" style="margin:0"><span class="livedot on" style="background:var(--gold);box-shadow:none"></span><span id="pr-status">Saved on this device</span></div>
     </div>
     <div id="pr-capture">
-      <div class="section-title">Group stage <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· tap teams in finishing order; the 4th fills in automatically</span></div>
+      <div class="section-title"><span data-i18n="f_group">Group stage</span> <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· tap teams in finishing order; the 4th fills in automatically</span></div>
       <div id="pr-groups" class="grid cols"></div>
-      <div class="section-title">Best third-placed teams <span class="hint" id="pr-third-count" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· choose 8</span></div>
+      <div class="section-title"><span data-i18n="sec_best_thirds">Best third-placed teams</span> <span class="hint" id="pr-third-count" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· choose 8</span></div>
       <div id="pr-thirds"></div>
-      <div class="section-title">Knockout bracket <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· tap who advances</span></div>
+      <div class="section-title"><span data-i18n="sec_ko_bracket">Knockout bracket</span> <span class="hint" style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--faint)">· tap who advances</span></div>
       <div class="bracket-wrap"><div class="bracket" id="pr-tree"></div></div>
       <div id="pr-champ"></div>
     </div>
@@ -988,11 +988,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     </div>
     <div class="bar" style="flex-direction:column;align-items:stretch;gap:9px;margin-top:2px">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-        <span style="font-weight:600;font-size:13px">Stats through:</span>
+        <span style="font-weight:600;font-size:13px" data-i18n="lb_stats_through">Stats through:</span>
         <strong id="lb-daylabel" style="font-family:var(--mono);color:var(--a)">Nothing revealed</strong>
         <span style="margin-left:auto;display:flex;gap:6px">
-          <button class="btn" id="lb-none">Nothing</button>
-          <button class="btn" id="lb-today">Today</button>
+          <button class="btn" id="lb-none" data-i18n="btn_nothing">Nothing</button>
+          <button class="btn" id="lb-today" data-i18n="btn_today">Today</button>
         </span>
       </div>
       <input type="range" id="lb-day" min="0" max="40" value="0" step="1" aria-label="Stats through day">
@@ -2208,7 +2208,7 @@ var I18N = {
    set_data_h:'Where the data comes from', set_data_p:'Results come live from the public-domain openfootball dataset. Highlight links and match details are read from a small data file published alongside the site, so nothing here needs an account or a key from you.',
    t_highlights:'Highlights', t_lineups:'Lineups', t_result:'Box Score',
    by_group:'By group', by_date:'By date', group_word:'Group', goals:'Goals', cards:'Cards', timeline:'Timeline', stats_h:'Match stats', box_partial:'Full match statistics will appear here once they are published.',
-   fifa_h:'⚠️CAUTION: SPOILERS⚠️', fifa_b:'FIFA\u2019s highlights put the result in the title, so they spoil the match. They also can\u2019t play here because FIFA blocks embedding, so the link opens on YouTube. Tip: press <b>F</b> as soon as the page loads to jump straight to full screen.', fifa_q:'Do you still want to proceed?', fifa_no:'No', fifa_no_sub:'I want to avoid spoilers', fifa_go:'Proceed', fifa_go_sub:'\u2755 High chance of spoilers \u2755', slot_win:'Winner Group {g}', slot_run:'Runner-up Group {g}', slot_3rd:'3rd place', slot_tbd:'TBD',
+   fifa_h:'⚠️CAUTION: SPOILERS⚠️', fifa_b:'FIFA\u2019s highlights put the result in the title, so they spoil the match. They also can\u2019t play here because FIFA blocks embedding, so the link opens on YouTube. Tip: press <b>F</b> as soon as the page loads to jump straight to full screen.', fifa_q:'Do you still want to proceed?', fifa_no:'No', fifa_no_sub:'I want to avoid spoilers', fifa_go:'Proceed', fifa_go_sub:'\u2755 High chance of spoilers \u2755', slot_win:'Winner Group {g}', slot_run:'Runner-up Group {g}', slot_3rd:'3rd place', slot_tbd:'TBD', bk_intro:'The real tournament, filled in automatically from public results data. Use the slider to reveal results only as far as you’ve caught up · standings and the bracket unlock day by day, so nothing ahead of you gets spoiled.', bk_reveal_through:'Reveal results through:', btn_nothing:'Nothing', btn_today:'Today', sec_best_thirds:'Best third-placed teams', sec_ko_bracket:'Knockout bracket', pr_intro:'Your own bracket, kept separate from the real results. Tap teams to set how each group finishes, choose which third-placed teams advance, then pick winners through to the final. Saved automatically on this device.', pr_download:'⤓ Download as JPG', pr_clear:'Clear predictions', lb_stats_through:'Stats through:',
    watch:'Watch highlights', live:'Live now', soon:'Kicks off', awaiting:'Awaiting highlights', opening_yt:'Opening on YouTube', for_player:'for',
    reveal_h:'Reveal the result', reveal_p:'Off by default so nothing is spoiled. Turn on to show the score, substitutions and stats.',
    ko_locked_h:'Knockout match', ko_locked_p:'The matchup itself is a spoiler, so it stays hidden. Reveal to see who is playing, watch the highlights and view the result.', reveal_btn:'Reveal matchup',
@@ -2234,7 +2234,7 @@ var I18N = {
    set_data_h:"D'où viennent les données", set_data_p:'Les résultats proviennent en direct du jeu de données openfootball (domaine public). Les liens des résumés et les détails des matchs sont lus dans un petit fichier publié avec le site ; rien ici ne nécessite de compte ni de clé.',
    t_highlights:'Résumés', t_lineups:'Compositions', t_result:'Feuille de match',
    by_group:'Par groupe', by_date:'Par date', group_word:'Groupe', goals:'Buts', cards:'Cartons', timeline:'Chronologie', stats_h:'Statistiques du match', box_partial:'Les statistiques complètes apparaîtront ici une fois publiées.',
-   slot_win:'Vainqueur Groupe {g}', slot_run:'Deuxième Groupe {g}', slot_3rd:'3e place', slot_tbd:'À définir',
+   slot_win:'Vainqueur Groupe {g}', slot_run:'Deuxième Groupe {g}', slot_3rd:'3e place', slot_tbd:'À définir', bk_intro:'Le tournoi réel, rempli automatiquement à partir de données publiques. Utilisez le curseur pour ne révéler les résultats que jusqu’où vous en êtes · le classement et le tableau se déverrouillent jour après jour, pour ne rien dévoiler en avance.', bk_reveal_through:'Révéler les résultats jusqu’à :', btn_nothing:'Rien', btn_today:'Aujourd’hui', sec_best_thirds:'Meilleurs troisièmes', sec_ko_bracket:'Tableau final', pr_intro:'Votre propre tableau, séparé des résultats réels. Touchez les équipes pour définir le classement de chaque groupe, choisissez les troisièmes qualifiés, puis désignez les vainqueurs jusqu’à la finale. Enregistré automatiquement sur cet appareil.', pr_download:'⤓ Télécharger en JPG', pr_clear:'Effacer les pronostics', lb_stats_through:'Statistiques jusqu’à :',
    watch:'Voir le résumé', live:'En direct', soon:'Coup d’envoi', awaiting:'Résumé à venir', opening_yt:'Ouverture sur YouTube', for_player:'pour',
    reveal_h:'Révéler le résultat', reveal_p:'Désactivé par défaut pour ne rien divulgâcher. Activez pour afficher le score, les remplacements et les statistiques.',
    ko_locked_h:'Match à élimination', ko_locked_p:"L'affiche elle-même est un divulgâcheur : elle reste masquée. Révélez pour voir les équipes, le résumé et le résultat.", reveal_btn:"Révéler l'affiche",
@@ -2260,7 +2260,7 @@ var I18N = {
    set_data_h:'De dónde vienen los datos', set_data_p:'Los resultados provienen en directo del conjunto de datos de dominio público openfootball. Los enlaces de los resúmenes y los detalles de los partidos se leen de un pequeño archivo publicado junto al sitio; aquí nada requiere cuenta ni clave.',
    t_highlights:'Resúmenes', t_lineups:'Alineaciones', t_result:'Ficha del partido',
    by_group:'Por grupo', by_date:'Por fecha', group_word:'Grupo', goals:'Goles', cards:'Tarjetas', timeline:'Cronología', stats_h:'Estadísticas del partido', box_partial:'Las estadísticas completas del partido aparecerán aquí una vez publicadas.',
-   slot_win:'Ganador Grupo {g}', slot_run:'Segundo Grupo {g}', slot_3rd:'3.º puesto', slot_tbd:'Por definir',
+   slot_win:'Ganador Grupo {g}', slot_run:'Segundo Grupo {g}', slot_3rd:'3.º puesto', slot_tbd:'Por definir', bk_intro:'El torneo real, rellenado automáticamente con datos públicos. Usa el control deslizante para revelar los resultados solo hasta donde vas · la clasificación y el cuadro se desbloquean día a día, para no adelantar nada.', bk_reveal_through:'Revelar resultados hasta:', btn_nothing:'Nada', btn_today:'Hoy', sec_best_thirds:'Mejores terceros', sec_ko_bracket:'Cuadro eliminatorio', pr_intro:'Tu propio cuadro, separado de los resultados reales. Toca los equipos para fijar cómo termina cada grupo, elige qué terceros avanzan y luego escoge a los ganadores hasta la final. Se guarda automáticamente en este dispositivo.', pr_download:'⤓ Descargar como JPG', pr_clear:'Borrar pronósticos', lb_stats_through:'Estadísticas hasta:',
    watch:'Ver el resumen', live:'En directo', soon:'Comienza', awaiting:'Resumen en camino', opening_yt:'Abriendo en YouTube', for_player:'por',
    reveal_h:'Revelar el resultado', reveal_p:'Desactivado por defecto para no revelar nada. Actívalo para mostrar el marcador, los cambios y las estadísticas.',
    ko_locked_h:'Partido eliminatorio', ko_locked_p:'El propio enfrentamiento es un spoiler, así que permanece oculto. Revélalo para ver quién juega, ver el resumen y el resultado.', reveal_btn:'Revelar enfrentamiento',
