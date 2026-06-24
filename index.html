@@ -1027,7 +1027,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <footer class="site-foot">
   <div class="bmc-wrap">
-    <a class="bmc-btn" href="https://www.buymeacoffee.com/logandaniels" target="_blank" rel="noopener noreferrer"><span class="bmc-emoji">&#x2615;</span><span data-i18n="bmc">Buy me a coffee</span></a>
+    <a class="bmc-btn" href="https://www.buymeacoffee.com/logandaniels" target="_blank" rel="noopener noreferrer"><span class="bmc-emoji">&#x2615;&#xFE0F;</span><span data-i18n="bmc">Buy me a coffee</span></a>
   </div>
   <div class="bmc-note" data-i18n="bmc_note">(no pressure)</div>
 </footer>
@@ -1581,6 +1581,8 @@ var LEAGUELOGO={};  // Wikidata QID -> {logo,name,tier,cc}
 var MANAGERS={};            // nrm(team) -> [{name,nationality,photo,from,to}] manager history from ./managers.json (newest changes appended); fallback when the match feed has no coach
 const OF_NAME={'Czech Republic':'Czechia','Bosnia & Herzegovina':'Bosnia and Herzegovina','Cape Verde':'Cabo Verde','Ivory Coast':"Côte d'Ivoire",'Turkey':'Türkiye','USA':'United States'};
 function nrm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+// search-only: also strip spaces, punctuation and any non-alphanumerics so "ParisSaint Germain" matches "Paris Saint-Germain"
+function nrms(s){ return nrm(s).replace(/[^a-z0-9]/g,''); }
 // Photo hygiene: ESPN headshots are dropped (they 404/redirect and do more harm than good, leaving a broken image), and Fox's resized "vresize" variant URLs are reduced to the plain base headshot, which is the reliable one Fox actually serves. Returns '' when there is no usable photo, so callers fall back to initials.
 function cleanPhoto(u){ u=u||''; if(!u||/espncdn\.com/i.test(u)) return ''; return u.replace(/\.vresize\.\d+\.\d+\.[a-z]+\.\d+(\.png)(\?.*)?$/i, '$1'); }
 /* Display-only name overrides, keyed by nrm(full name). Data files and ESPN events keep the original name (used for photo/event/url matching); only the shown text changes. */
@@ -2220,7 +2222,32 @@ var I18N = {
    k_x:'Résumé long', k_r:'Résumé', k_g:'Match en 30',
    d_x:'~20 min', d_r:'~10 min', d_g:'~30 min',
    reveal_to_see:'Activez « Révéler le résultat » ci-dessus pour voir ceci.',
-   pens:'t.a.b.', updated:'Mis à jour', host_lbl:'Hôte', host_mx:'Mexique', host_us:'États-Unis', host_ca:'Canada' }
+   pens:'t.a.b.', updated:'Mis à jour', host_lbl:'Hôte', host_mx:'Mexique', host_us:'États-Unis', host_ca:'Canada' },
+ es:{ tab_highlights:'Resúmenes', tab_bracket:'Resultados', tab_predictions:'Pronósticos', tab_leaders:'Clasificaciones',
+   lb_team:'Equipos', lb_individual:'Jugadores', lb_advanced:'Estadísticas avanzadas',
+   lb_blurb:'Líderes estadísticos del torneo, a partir de datos públicos de los partidos. Toca el encabezado de cualquier columna para ordenar. Solo refleja los resultados que has revelado en la pestaña Resultados.',
+   brand_tag:'Resúmenes a tu ritmo · cero spoilers',
+   hl_h:'Resúmenes', hl_sub:'Todos los partidos, con los marcadores ocultos. Toca un partido para ver el resumen y, cuando quieras, revela el resultado, las alineaciones y las estadísticas.',
+   f_all:'Todos', f_group:'Fase de grupos', f_ko:'Eliminatorias',
+   set_h:'Ajustes', set_sub:'Indica dónde estás y tu idioma. Todo lo demás es automático, sin cuenta ni clave.',
+   set_region_h:'Región e idioma', set_region_p:'Tu país determina los emisores cuyos resúmenes ves. Se detecta automáticamente, pero puedes cambiarlo cuando quieras.',
+   set_country:'País', set_language:'Idioma',
+   set_units_h:'Unidades', set_measurements:'Medidas', set_height:'Altura', set_weight:'Peso', uni_imp:'Imperial', uni_met:'Métrico', bmc:'Invítame a un café', bmc_note:'(sin compromiso)',
+   set_data_h:'De dónde vienen los datos', set_data_p:'Los resultados provienen en directo del conjunto de datos de dominio público openfootball. Los enlaces de los resúmenes y los detalles de los partidos se leen de un pequeño archivo publicado junto al sitio; aquí nada requiere cuenta ni clave.',
+   t_highlights:'Resúmenes', t_lineups:'Alineaciones', t_result:'Ficha del partido',
+   by_group:'Por grupo', by_date:'Por fecha', group_word:'Grupo', goals:'Goles', cards:'Tarjetas', timeline:'Cronología', stats_h:'Estadísticas del partido', box_partial:'Las estadísticas completas del partido aparecerán aquí una vez publicadas.',
+   watch:'Ver el resumen', live:'En directo', soon:'Comienza', awaiting:'Resumen en camino', opening_yt:'Abriendo en YouTube', for_player:'por',
+   reveal_h:'Revelar el resultado', reveal_p:'Desactivado por defecto para no revelar nada. Actívalo para mostrar el marcador, los cambios y las estadísticas.',
+   ko_locked_h:'Partido eliminatorio', ko_locked_p:'El propio enfrentamiento es un spoiler, así que permanece oculto. Revélalo para ver quién juega, ver el resumen y el resultado.', reveal_btn:'Revelar enfrentamiento',
+   no_hl:'Los resúmenes de tu región aparecerán aquí una vez jugado el partido.',
+   not_played:'Disponible una vez finalizado el partido.',
+   subs:'Suplentes', coach:'Entrenador', manager:'Seleccionador', mgr_incharge:'En el cargo', nationality:'Nacionalidad', assist:'asistencia',
+   no_lineups:'Las alineaciones aparecerán aquí una vez publicadas.',
+   no_result:'El resultado y las estadísticas aparecen aquí una vez jugado el partido.',
+   k_x:'Resumen extendido', k_r:'Resumen', k_g:'Partido en 30',
+   d_x:'~20 min', d_r:'~10 min', d_g:'~30 min',
+   reveal_to_see:'Activa «Revelar el resultado» arriba para ver esto.',
+   pens:'pen.', updated:'Actualizado', host_lbl:'Anfitrión', host_mx:'México', host_us:'EE. UU.', host_ca:'Canadá' }
 };
 var LANG='en', COUNTRY='US';
 function t(k){ var L=I18N[LANG]||I18N.en; return (L[k]!=null?L[k]:(I18N.en[k]!=null?I18N.en[k]:k)); }
@@ -4016,7 +4043,7 @@ function _msScroll(e){ if(_msOpen && _msOpen.pop.contains(e.target)) return; msC
 function msClose(){ if(!_msOpen) return; _msOpen.pop.remove(); if(_msOpen.btn){ _msOpen.btn.setAttribute('aria-expanded','false'); _msOpen.btn.classList.remove('open'); } _msOpen=null; document.removeEventListener('mousedown',_msOutside,true); document.removeEventListener('keydown',_msKey,true); window.removeEventListener('resize',msClose); window.removeEventListener('scroll',_msScroll,true); }
 function updateClear(){ var host=$('#lb-filters'); if(!host) return; var isTeam=LB.sub!=='ind'; var any=LB.groups.size||LB.countries.size||(!isTeam&&(LB.confeds.size||LB.nations.size||LB.leagues.size||LB.teams.size)); var btn=host.querySelector('.lb-clear'); if(any&&!btn){ var b=document.createElement('button'); b.className='lb-chip lb-clear'; b.setAttribute('data-clear','1'); b.textContent='Clear'; host.appendChild(b); } else if(!any&&btn){ btn.remove(); } }
 function updateMsCounts(){ ['country','nation','league','team'].forEach(function(key){ var b=$('#lb-filters .ms-btn[data-ms="'+key+'"]'); if(!b) return; var n=LB[msSetName(key)].size; b.classList.toggle('on',!!n); var c=b.querySelector('.ms-count'); if(n){ if(c) c.textContent=n; else { var s=document.createElement('span'); s.className='ms-count'; s.textContent=n; b.insertBefore(s,b.querySelector('.ms-caret')); } } else if(c){ c.remove(); } }); updateClear(); }
-function msOpen(key, btn){ if(_msOpen && _msOpen.key===key){ msClose(); return; } msClose(); var set=LB[msSetName(key)], opts=msOptionsFor(key); var pop=document.createElement('div'); pop.className='ms-pop'; pop.innerHTML='<input class="ms-search" type="text" placeholder="Search\u2026" autocomplete="off"><div class="ms-list"></div><div class="ms-foot"><span class="ms-seln"></span><button class="ms-clearone" type="button">Clear</button></div>'; document.body.appendChild(pop); var list=pop.querySelector('.ms-list'), search=pop.querySelector('.ms-search'), seln=pop.querySelector('.ms-seln'); function rowsHtml(filter){ var f=nrm(filter||''); var items=opts.filter(function(o){ return !f || nrm(o.label).indexOf(f)>=0 || (o.sub&&nrm(o.sub).indexOf(f)>=0) || aliasHit(key, o.value, f); }); if(!items.length) return '<div class="ms-empty">No matches</div>'; return items.map(function(o){ return '<label class="ms-opt"><input type="checkbox" data-v="'+esc(String(o.value))+'"'+(set.has(o.value)?' checked':'')+'><span class="ms-optl"><span>'+esc(o.label)+'</span>'+(o.sub?'<span class="ms-optsub">'+esc(o.sub)+'</span>':'')+'</span></label>'; }).join(''); } function refreshSeln(){ seln.textContent=set.size?(set.size+' selected'):'None selected'; } list.innerHTML=rowsHtml(''); refreshSeln(); search.addEventListener('input',function(){ list.innerHTML=rowsHtml(search.value); }); list.addEventListener('change',function(e){ var cb=e.target.closest('input[type=checkbox]'); if(!cb) return; var v=cb.getAttribute('data-v'); if(cb.checked) set.add(v); else set.delete(v); if(key==='nation'||key==='league') lbPruneCascade(); persistFilters(); updateMsCounts(); lbTable(); refreshSeln(); }); pop.querySelector('.ms-clearone').addEventListener('click',function(){ set.clear(); if(key==='nation'||key==='league') lbPruneCascade(); persistFilters(); updateMsCounts(); lbTable(); list.innerHTML=rowsHtml(search.value); refreshSeln(); }); var r=btn.getBoundingClientRect(); pop.style.position='fixed'; pop.style.top=(r.bottom+6)+'px'; var left=Math.min(r.left, window.innerWidth-pop.offsetWidth-12); pop.style.left=Math.max(8,left)+'px'; btn.setAttribute('aria-expanded','true'); btn.classList.add('open'); _msOpen={key:key,pop:pop,btn:btn}; document.addEventListener('mousedown',_msOutside,true); document.addEventListener('keydown',_msKey,true); window.addEventListener('resize',msClose); window.addEventListener('scroll',_msScroll,true); search.focus(); }
+function msOpen(key, btn){ if(_msOpen && _msOpen.key===key){ msClose(); return; } msClose(); var set=LB[msSetName(key)], opts=msOptionsFor(key); var pop=document.createElement('div'); pop.className='ms-pop'; pop.innerHTML='<input class="ms-search" type="text" placeholder="Search\u2026" autocomplete="off"><div class="ms-list"></div><div class="ms-foot"><span class="ms-seln"></span><button class="ms-clearone" type="button">Clear</button></div>'; document.body.appendChild(pop); var list=pop.querySelector('.ms-list'), search=pop.querySelector('.ms-search'), seln=pop.querySelector('.ms-seln'); function rowsHtml(filter){ var f=nrms(filter||''); var items=opts.filter(function(o){ return !f || nrms(o.label).indexOf(f)>=0 || (o.sub&&nrms(o.sub).indexOf(f)>=0) || aliasHit(key, o.value, f); }); if(!items.length) return '<div class="ms-empty">No matches</div>'; return items.map(function(o){ return '<label class="ms-opt"><input type="checkbox" data-v="'+esc(String(o.value))+'"'+(set.has(o.value)?' checked':'')+'><span class="ms-optl"><span>'+esc(o.label)+'</span>'+(o.sub?'<span class="ms-optsub">'+esc(o.sub)+'</span>':'')+'</span></label>'; }).join(''); } function refreshSeln(){ seln.textContent=set.size?(set.size+' selected'):'None selected'; } list.innerHTML=rowsHtml(''); refreshSeln(); search.addEventListener('input',function(){ list.innerHTML=rowsHtml(search.value); }); list.addEventListener('change',function(e){ var cb=e.target.closest('input[type=checkbox]'); if(!cb) return; var v=cb.getAttribute('data-v'); if(cb.checked) set.add(v); else set.delete(v); if(key==='nation'||key==='league') lbPruneCascade(); persistFilters(); updateMsCounts(); lbTable(); refreshSeln(); }); pop.querySelector('.ms-clearone').addEventListener('click',function(){ set.clear(); if(key==='nation'||key==='league') lbPruneCascade(); persistFilters(); updateMsCounts(); lbTable(); list.innerHTML=rowsHtml(search.value); refreshSeln(); }); var r=btn.getBoundingClientRect(); pop.style.position='fixed'; pop.style.top=(r.bottom+6)+'px'; var left=Math.min(r.left, window.innerWidth-pop.offsetWidth-12); pop.style.left=Math.max(8,left)+'px'; btn.setAttribute('aria-expanded','true'); btn.classList.add('open'); _msOpen={key:key,pop:pop,btn:btn}; document.addEventListener('mousedown',_msOutside,true); document.addEventListener('keydown',_msKey,true); window.addEventListener('resize',msClose); window.addEventListener('scroll',_msScroll,true); search.focus(); }
 // Aliases (incl. abbreviations) used ONLY to match while filtering; never shown.
 // country/nation keyed by ISO code, league keyed by leagueQid, club keyed by club qid.
 // Built-in sets cover countries and major leagues; FILTER_ALIASES is merged from
@@ -4031,7 +4058,7 @@ function aliasHit(key, value, f){
   else if(key==='league'){ arr=FILTER_ALIASES.league[value]; if(!arr){ var lab=nrm(leagueLabel(value,'')); for(var nm in ALIAS_LEAGUE_NAME){ if(nrm(nm)===lab){ arr=ALIAS_LEAGUE_NAME[nm]; break; } } } }
   else if(key==='team'){ arr=FILTER_ALIASES.club[value]; }
   if(!arr||!arr.length) return false;
-  for(var i=0;i<arr.length;i++){ if(nrm(arr[i]).indexOf(f)>=0) return true; }
+  for(var i=0;i<arr.length;i++){ if(nrms(arr[i]).indexOf(f)>=0) return true; }
   return false;
 }
 function msBtn(key, label){ var n=LB[msSetName(key)].size; return '<button class="ms-btn'+(n?' on':'')+'" type="button" data-ms="'+key+'" aria-expanded="false"><span class="ms-lab">'+esc(label)+'</span>'+(n?'<span class="ms-count">'+n+'</span>':'')+'<span class="ms-caret">\u25BE</span></button>'; }
