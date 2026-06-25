@@ -24,9 +24,9 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
-const DATA   = './data.json';
-const PLAYERS= './players.json';
-const OUT    = './photos-extra.json';
+const DATA   = './data/data.json';
+const PLAYERS= './data/players.json';
+const OUT    = './data/photos-extra.json';
 const VERSION= 1;
 
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';

@@ -471,7 +471,7 @@ class FoxTeamSpider(scrapy.Spider):
         "FEED_EXPORT_ENCODING": "utf-8",
     }
 
-    def __init__(self, foxurls="fox-urls.json", out="out", season="2025/2026",
+    def __init__(self, foxurls="data/fox-urls.json", out="out", season="2025/2026",
                  teams=None, probe=None, bio_suffix="-bio", *args, **kw):
         # NOTE: the physical bio (DOB/height/weight/birthplace/nationality) lives
         # on the player's "-bio" page, not the bare "-player" page. The "-player"

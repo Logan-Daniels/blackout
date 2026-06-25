@@ -15,7 +15,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
-const DATA = 'data.json', OUT = 'players.json', VERSION = 3;
+const DATA = 'data/data.json', OUT = 'data/players.json', VERSION = 3;
 const FOX = 'https://www.foxsports.com/soccer/';
 const HEAD_BASE = 'https://b.fssta.com/uploads/application/soccer/headshots/';
 const FBREF = n => 'https://fbref.com/search/search.fcgi?search=' + encodeURIComponent(String(n || '').trim());
@@ -60,7 +60,7 @@ const foxMiss = new Set(prev.v === VERSION ? (prev.foxMiss || []) : []);
 if (prev.teams && prev.v !== VERSION) console.log('players: upgrading cache - will retry everyone without a Fox photo yet.');
 
 /* exact Fox player-page URLs resolved from team roster pages (build-rosters.mjs) */
-const rosters = existsSync('fox-urls.json') ? (JSON.parse(readFileSync('fox-urls.json', 'utf8')).teams || {}) : {};
+const rosters = existsSync('data/fox-urls.json') ? (JSON.parse(readFileSync('data/fox-urls.json', 'utf8')).teams || {}) : {};
 if (!Object.keys(rosters).length) console.log('players: no fox-urls.json found - run build-rosters.mjs first for exact URLs (otherwise slugs are guessed).');
 // match a squad member to a roster player. The roster anchor's text is the
 // player's current name (even when the slug is unrelated, e.g. Ghedjemis ->

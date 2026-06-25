@@ -37,7 +37,7 @@ import zlib from 'node:zlib';
 
 /* ----------------------------- configuration ----------------------------- */
 const SOURCE       = process.env.LOGO_SOURCE || 'gapfill'; // 'gapfill' | 'thesportsdb'
-const CLUBS_PATH   = process.env.CLUBS_PATH  || './clubs.json';
+const CLUBS_PATH   = process.env.CLUBS_PATH  || './data/clubs.json';
 const CACHE_DIR    = process.env.CACHE_DIR   || './.logo-cache';
 const TSDB_KEY     = process.env.TSDB_KEY    || '3';       // '3' is the free public test key
 const RATE_MS      = Number(process.env.RATE_MS || 350);   // delay between live requests
@@ -374,7 +374,7 @@ async function main(){
   /* ---- per-logo background: light artwork -> dark chip, else light chip ---- */
   // only analyse logos the app actually shows: leagues + rostered clubs
   let rostered = null;
-  try { const pc = (JSON.parse(await readFile('./players-clubs.json', 'utf8')).teams) || {}; rostered = new Set(); for(const tm in pc) for(const pn in pc[tm]){ const q = pc[tm][pn].club; if(q) rostered.add(q); } } catch { rostered = null; }
+  try { const pc = (JSON.parse(await readFile('./data/players-clubs.json', 'utf8')).teams) || {}; rostered = new Set(); for(const tm in pc) for(const pn in pc[tm]){ const q = pc[tm][pn].club; if(q) rostered.add(q); } } catch { rostered = null; }
   const bgTargets = [];
   for(const lq of leagueKeys) if(leagues[lq].logo) bgTargets.push(leagues[lq]);
   for(const q of clubKeys) if(clubs[q].logo && (!rostered || rostered.has(q))) bgTargets.push(clubs[q]);

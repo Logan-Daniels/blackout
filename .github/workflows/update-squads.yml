@@ -56,15 +56,15 @@ jobs:
           mkdir -p out
           # seed the spider's working copy from the committed file so a re-run
           # keeps prior progress and only refetches the gaps
-          if [ -f team-info.json ]; then cp team-info.json out/team-info.json; fi
+          if [ -f data/team-info.json ]; then cp data/team-info.json out/team-info.json; fi
           scrapy runspider scripts/fox_team_spider.py
-          cp out/team-info.json team-info.json
+          cp out/team-info.json data/team-info.json
 
       - name: Commit rebuilt data if it changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add fox-urls.json players.json team-info.json photos-extra.json
+          git add data/fox-urls.json data/players.json data/team-info.json data/photos-extra.json
           if git diff --cached --quiet; then
             echo "nothing changed; nothing to commit."
           else

@@ -20,7 +20,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
-const DATA = 'data.json', OUT = 'fox-urls.json';
+const DATA = 'data/data.json', OUT = 'data/fox-urls.json';
 const FOX = 'https://www.foxsports.com/soccer/';
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const BLOCK_RX = /incapsula|request unsuccessful|access denied|distil|captcha|unusual traffic|you have been blocked|too many requests/i;

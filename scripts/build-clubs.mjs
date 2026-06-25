@@ -384,9 +384,9 @@ async function clubDetails(qid, sampleName) {
 }
 
 /* ---- main ---- */
-const players = loadJSON('players.json', { teams: {} });
-const aliases = loadJSON('wc-fixtures.json', { aliases: {} }).aliases || {};
-prevClubs = loadJSON('clubs.json', {}).clubs || {};   // preserve prior league history across runs
+const players = loadJSON('data/players.json', { teams: {} });
+const aliases = loadJSON('data/wc-fixtures.json', { aliases: {} }).aliases || {};
+prevClubs = loadJSON('data/clubs.json', {}).clubs || {};   // preserve prior league history across runs
 
 const arg = process.argv.indexOf('--teams');
 const only = arg > -1 ? process.argv[arg + 1].split(',').map(s => s.trim()) : null;
@@ -417,11 +417,11 @@ for (const team of teamNames) {
   process.stdout.write('\n');
 }
 
-saveJSON('clubs.json', {
+saveJSON('data/clubs.json', {
   v: 2, generatedAt: new Date().toISOString(), clubs: clubsOut, leagues: leaguesOut,
   unmappedLeagues: Object.values(unmapped).sort((a, b) => String(a.country).localeCompare(String(b.country))),
 });
-saveJSON('players-clubs.json', overlay);
+saveJSON('data/players-clubs.json', overlay);
 
 console.log(`\nresolved ${resolved}, missed ${missed}, clubs ${Object.keys(clubsOut).length}, network calls ${netCalls}`);
 const um = Object.values(unmapped);

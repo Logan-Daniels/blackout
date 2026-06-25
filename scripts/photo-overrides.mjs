@@ -20,7 +20,7 @@
  */
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 
-const PLAYERS = 'players.json', PHOTOX = 'photos-extra.json', OVR = 'photo-overrides.json';
+const PLAYERS = 'data/players.json', PHOTOX = 'data/photos-extra.json', OVR = 'photo-overrides.json';
 const HEADSHOT_RX = /https?:\/\/b\.fssta\.com\/uploads\/application\/soccer\/headshots\/\d+(?:\.vresize\.\d+\.\d+\.[a-z]+\.\d+)?\.png/gi;
 const PAGE_RX = /^https?:\/\/(?:www\.)?foxsports\.com\/soccer\/[a-z0-9-]+-player\/?$/i;
 const BLOCK_RX = /incapsula|request unsuccessful|access denied|distil|captcha|unusual traffic|you have been blocked|cf-browser-verification|too many requests/i;

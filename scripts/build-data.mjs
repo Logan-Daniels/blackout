@@ -28,20 +28,21 @@ import { dirname, join } from 'node:path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
+const keyFile = (name) => { try { const f = join(ROOT, 'keys', name + '.txt'); return existsSync(f) ? readFileSync(f, 'utf8').trim() : ''; } catch { return ''; } };
 const OPENFOOTBALL_URL = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
 const TOURNAMENT_START = Date.parse('2026-06-11T00:00:00-04:00');
 const MATCH_END_BUFFER = 120 * 60000;
 const DEEP_EVERY_MS = 6 * 3600000;
 
-const cfg = JSON.parse(readFileSync(join(ROOT, 'wc-fixtures.json'), 'utf8'));
+const cfg = JSON.parse(readFileSync(join(ROOT, 'data', 'wc-fixtures.json'), 'utf8'));
 const FIXTURES = cfg.fixtures;            // [[id, home, away, kickoffISO], ...]
 const KO_START = cfg.koRoundStart;        // { R32: iso, ... }
 const ALIASES = cfg.aliases;              // { myName: [aliasStrings...] }
 const PLAYLISTS = cfg.playlists || {};    // { fifa, tsn, fox_x, fox_r, itv, rds }
-const KEY = process.env.YT_API_KEY || '';
+const KEY = process.env.YT_API_KEY || keyFile('youtube');
 const TSDB_KEY = process.env.TSDB_KEY || '123';
 let   TSDB_LEAGUE = process.env.TSDB_LEAGUE_ID || cfg.tsdbLeagueId || '';
-const AI_KEY = process.env.ANTHROPIC_API_KEY || '';
+const AI_KEY = process.env.ANTHROPIC_API_KEY || keyFile('anthropic');
 const AI_MODEL = process.env.CLAUDE_MODEL || 'claude-haiku-4-5-20251001';
 // API-Football (api-sports.io): the detail source when a key is present.
 const AF_KEY = process.env.API_FOOTBALL_KEY || '';
@@ -94,7 +95,7 @@ const MGR_SEED = {
   'South Africa': 'Hugo Broos', 'New Zealand': 'Darren Bazeley', 'Cabo Verde': 'Bubista',
   'Curacao': 'Dick Advocaat', 'Iraq': 'Graham Arnold', 'Turkiye': 'Vincenzo Montella', 'Algeria': 'Vladimir Petkovic'
 };
-const MANAGERS_PATH = join(ROOT, 'managers.json');
+const MANAGERS_PATH = join(ROOT, 'data', 'managers.json');
 let MGR_DOC = { teams: {}, cards: [] };
 if (existsSync(MANAGERS_PATH)) {
   try { MGR_DOC = JSON.parse(readFileSync(MANAGERS_PATH, 'utf8')); MGR_DOC.teams = MGR_DOC.teams || {}; MGR_DOC.cards = MGR_DOC.cards || []; }
@@ -116,11 +117,13 @@ const FEEDS = [
   { pl: 'fifa',      src: 'fifa'      },
   { pl: 'fox_x', src: 'fox', forceExtended: true },
   { pl: 'fox_r', src: 'fox' },
+  { pl: 'sportstudiofussball', src: 'sportstudiofussball' },
+  { pl: 'rtesport', src: 'rtesport' },
 ];
 
 /* ---------- load existing data.json (merge target so links persist) ---------- */
 let prev = {};
-if (existsSync(join(ROOT, 'data.json'))) { try { prev = JSON.parse(readFileSync(join(ROOT, 'data.json'), 'utf8')); } catch {} }
+if (existsSync(join(ROOT, 'data', 'data.json'))) { try { prev = JSON.parse(readFileSync(join(ROOT, 'data', 'data.json'), 'utf8')); } catch {} }
 const videos = prev.videos || {};
 const detail = prev.detail || {};
 const afState = prev.afState || { date: '', used: 0, map: {}, tried: {} };
@@ -627,7 +630,7 @@ if (ofMatches.length) {   // fallback: fills only matches API-Football has not a
 // the Fox bio carries the real one. Match by normalised name within each team.
 (function applyFoxPositions(){
   let TI=null;
-  try { if (existsSync(join(ROOT, 'team-info.json'))) TI = JSON.parse(readFileSync(join(ROOT, 'team-info.json'), 'utf8')); } catch {}
+  try { if (existsSync(join(ROOT, 'data', 'team-info.json'))) TI = JSON.parse(readFileSync(join(ROOT, 'data', 'team-info.json'), 'utf8')); } catch {}
   if (!TI || !TI.players) return;
   const _n = s => String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   // team (normalised) -> { playerName(normalised) -> pos letter }
@@ -699,6 +702,6 @@ const out = {
   lastDeep: deep ? new Date().toISOString() : (prev.lastDeep || null),
   videos, detail, ofMatches, afState, espnMap: prev.espnMap || {}
 };
-writeFileSync(join(ROOT, 'data.json'), JSON.stringify(out));
+writeFileSync(join(ROOT, 'data', 'data.json'), JSON.stringify(out));
 const nVid = Object.values(videos).reduce((a, v) => a + Object.keys(v).length, 0);
 console.log(`wrote data.json (${Object.keys(videos).length} matches with video, ${nVid} source-entries; ${Object.keys(detail).length} detail pages)`);

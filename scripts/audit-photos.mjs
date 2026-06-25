@@ -25,9 +25,9 @@ const surnameToken = name => {
 const pid  = u => { const m = String(u || '').match(/headshots\/(\d+)/); return m ? m[1] : null; };
 const slugTail = u => String(u || '').replace('https://www.foxsports.com/soccer/', '');
 
-if (!existsSync('players.json')) { console.error('players.json not found - run from the project root.'); process.exit(1); }
-const players = JSON.parse(readFileSync('players.json', 'utf8')).teams || {};
-const rosters = existsSync('fox-urls.json') ? (JSON.parse(readFileSync('fox-urls.json', 'utf8')).teams || {}) : {};
+if (!existsSync('data/players.json')) { console.error('players.json not found - run from the project root.'); process.exit(1); }
+const players = JSON.parse(readFileSync('data/players.json', 'utf8')).teams || {};
+const rosters = existsSync('data/fox-urls.json') ? (JSON.parse(readFileSync('data/fox-urls.json', 'utf8')).teams || {}) : {};
 
 function resolveExact(team, name) {
   const r = rosters[team]; if (!r || !r.players) return null;
