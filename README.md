@@ -49,7 +49,7 @@ blackout/
   i18n/                      UI strings per language: en, fr, es, de
   images/
     icons/                   app icons (180, 192, 512)
-    broadcasters/            highlight-source logos, by country
+    broadcasters/            highlight-source logos (one file per source)
   scripts/                   the data pipeline (see below)
   .github/workflows/         the two automation jobs
 ```
@@ -77,7 +77,7 @@ The live updater, `.github/workflows/update-data.yml`, wakes every five minutes 
 The scripts, roughly in the order they feed each other:
 
 - `should-build.mjs` decides whether a match is due, so the live job can exit fast when nothing is happening. Used by the live workflow.
-- `build-data.mjs` is the main builder. It reads results from openfootball, resolves highlight links, merges with the previous `data/data.json` so links persist across runs, and optionally adds player stats and AI-resolved recap titles. It writes `data/data.json` and maintains `data/managers.json`.
+- `build-data.mjs` is the main builder. It reads results from openfootball, resolves highlight links, merges with the previous `data/data.json` so links persist across runs, and optionally adds player stats and AI-resolved recap titles. It writes `data/data.json` and maintains `data/managers.json`. A normal run crawls each highlight feed shallowly; `DEEP=1` deep-crawls them all and `DEEP_ONLY=<src>` deep-crawls a single feed back to the tournament start while the rest stay shallow, which is how `add-broadcaster.mjs` fills in a freshly added source.
 - `build-rosters.mjs` resolves each squad's Fox player-page URLs into `data/fox-urls.json`.
 - `build-players.mjs` builds the squad and photo dictionary, `data/players.json`.
 - `fox_team_spider.py` is a Scrapy spider that crawls Fox politely for player bios and writes `data/team-info.json` (the data behind the player cards).
@@ -85,7 +85,7 @@ The scripts, roughly in the order they feed each other:
 - `build-clubs.mjs` builds `data/clubs.json` and the `data/players-clubs.json` overlay.
 - `build-logos.mjs` gap-fills club and league crests.
 
-The rest are helpers: `audit-photos.mjs` reports photo coverage, `photo-overrides.mjs` applies manual photo fixes, `clean-team-info.mjs` tidies a bios file without re-crawling, and `add-broadcaster.mjs` wires up a new broadcaster (see below). `check-apifootball.mjs`, `league-tiers.mjs`, `playlist-dump.mjs`, `build-surnames.mjs` and `purge_fox_cache.py` are diagnostic and one-off tools.
+The rest are helpers: `audit-photos.mjs` reports photo coverage, `photo-overrides.mjs` applies manual photo fixes, `clean-team-info.mjs` tidies a bios file without re-crawling, and `add-broadcaster.mjs` wires up a new broadcaster (see below). `yt-check.mjs` reports, for any YouTube video URL, whether it allows embedding and which countries it is available in. `check-apifootball.mjs`, `league-tiers.mjs`, `playlist-dump.mjs`, `build-surnames.mjs` and `purge_fox_cache.py` are diagnostic and one-off tools.
 
 Several data files have no generator and are hand-maintained: `wc-fixtures.json` (the schedule, which most builds read), `federations.json`, `league-logos.json`, `club-overrides.json` and `aliases.json`. `fifa-squads.json` is produced separately by parsing the official FIFA squad PDF, a step that is not part of `scripts/`; if you regenerate it, point that step at `data/fifa-squads.json`.
 
@@ -97,7 +97,7 @@ The site needs none. The build scripts read keys from environment variables, and
 - `ANTHROPIC_API_KEY` (with optional `CLAUDE_MODEL`) lets a model tidy up the few recap titles the rules miss.
 - `API_FOOTBALL_KEY` adds per-player stats and ratings.
 - `TSDB_KEY` (TheSportsDB) helps gap-fill logos.
-- `GEMINI_API_KEY` is used by an optional AI step.
+- `GEMINI_API_KEY` is used by optional AI steps: `add-broadcaster.mjs`'s title spoiler check, and translation.
 
 In CI these are set as GitHub repository secrets (Settings > Secrets and variables > Actions); unset secrets simply leave that feature off. Locally, export them in your shell before running a script. A `keys/` folder is a convenient place to keep the raw values and source them into your environment; keep it out of git (see `.gitignore`).
 
@@ -107,13 +107,20 @@ The interface is available in English, French, Spanish and German. English is th
 
 ## Adding a broadcaster
 
-Run the interactive helper and follow the prompts:
+First drop the broadcaster's logo in `images/broadcasters/<slug>-<hex>.png` (or `.svg`), where `<hex>` is the dominant brand colour the card is tinted with. The colour is read straight from that filename, so there is no colour flag to pass.
+
+Then point the helper at the broadcaster's YouTube highlights playlist, or at its channel when there is no single tidy playlist:
 
 ```bash
-node scripts/add-broadcaster.mjs
+node scripts/add-broadcaster.mjs "https://www.youtube.com/playlist?list=PL..."
+node scripts/add-broadcaster.mjs "https://www.youtube.com/@SomeBroadcaster"
 ```
 
-Each broadcaster has a "no spoilers" warning style, chosen with `--warn rds` or `--warn fifa`, and a logo stored at `images/broadcasters/<country>/<name>-<tint>.png`, where `<tint>` is the dominant colour used to render its card.
+From that it works out the rest. It reads the broadcaster's name from the channel, registers the feed in `data/wc-fixtures.json` and `build-data.mjs`, then rebuilds, deep-crawling only the new feed (a channel is crawled back to the start of the tournament, not its whole history). It then inspects the first real highlight through the YouTube API and writes what it finds into the `index.html` source entry: whether the clips can be embedded (`linkOut`), which countries they are allowed in (`regions`, so the broadcaster shows up for viewers in exactly those countries, or `blocked` for the inverse), and the audio language (`lang`). If the clips cannot be embedded it asks Gemini whether the real titles reveal scores and chooses the warning accordingly: the gentle `rds` notice when they do not, the `fifa` spoiler warning when they do.
+
+Anything it detects can be overridden with a flag: `--name`, `--id`, `--tint`, `--lang`, `--regions CA,US`, `--blocked RU`, `--linkout`/`--no-linkout`, `--warn rds|fifa`. `--no-build` skips the rebuild and `--no-ai` skips the title check. Keys come from `keys/youtube.txt` (or `YT_API_KEY`) and `keys/gemini.txt` (or `GEMINI_API_KEY`).
+
+To check a single video yourself, `node scripts/yt-check.mjs "<youtube-url>"` prints whether it can be embedded and which countries it is available in.
 
 ## Data sources and credits
 

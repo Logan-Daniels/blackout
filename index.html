@@ -11,7 +11,24 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>BLACKOUT · no spoilers</title>
+<title>BLACKOUT \u2014 2026 FIFA World Cup highlights, no spoilers</title>
+<meta name="description" content="Follow the 2026 FIFA World Cup on your own schedule. BLACKOUT shows match highlights with zero spoilers: no scores or results are revealed until you choose. Free, no account, no sign-in.">
+<meta name="keywords" content="2026 FIFA World Cup, World Cup 2026 highlights, no spoilers, spoiler-free football, spoiler free soccer, World Cup highlights without scores, hide football scores, FIFA World Cup companion, World Cup schedule, watch World Cup highlights">
+<meta name="robots" content="index, follow">
+<meta name="author" content="BLACKOUT">
+<link rel="canonical" href="https://logan-daniels.github.io/blackout/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BLACKOUT">
+<meta property="og:title" content="BLACKOUT \u2014 2026 FIFA World Cup highlights, no spoilers">
+<meta property="og:description" content="Match highlights for the 2026 FIFA World Cup with zero spoilers. Reveal scores and results only when you want to. Free and no account needed.">
+<meta property="og:url" content="https://logan-daniels.github.io/blackout/">
+<meta property="og:image" content="https://logan-daniels.github.io/blackout/images/icons/icon-180.png">
+<meta property="og:image:alt" content="BLACKOUT logo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BLACKOUT \u2014 2026 FIFA World Cup highlights, no spoilers">
+<meta name="twitter:description" content="Match highlights for the 2026 FIFA World Cup with zero spoilers. Reveal results only when you choose.">
+<meta name="twitter:image" content="https://logan-daniels.github.io/blackout/images/icons/icon-180.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BLACKOUT","url":"https://logan-daniels.github.io/blackout/","description":"A spoiler-free companion for the 2026 FIFA World Cup. Watch match highlights without seeing scores or results until you choose to reveal them.","applicationCategory":"SportsApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","fr","es","de"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
@@ -68,6 +85,7 @@ main{max-width:1120px;margin:0 auto;padding:24px 22px 80px}
 .btn.primary:hover{filter:brightness(1.08)}
 .btn.gold{background:var(--gold);border-color:var(--gold);color:#241c02}
 .btn:disabled{opacity:.5;cursor:not-allowed}
+.daystep{padding:7px 12px;font-size:16px;line-height:1;min-width:40px;text-align:center;font-family:var(--mono)}
 .seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
 .seg button{border:0;background:transparent;color:var(--dim);padding:7px 14px;border-radius:999px;font-weight:600;font-size:13px;cursor:pointer}
 .seg button.on{background:var(--surface2);color:var(--text)}
@@ -258,10 +276,19 @@ table.lb td.lb-name .lb-plink:hover{text-decoration:underline}
 .round-h{font-family:var(--disp);font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
   padding:0 0 12px;position:sticky;left:0}
 .round-body{display:flex;flex-direction:column;flex:1;gap:0}
-.ko-cell{flex:1 1 0;display:flex;flex-direction:column;justify-content:center;min-height:90px;padding:6px 0}
+.ko-cell{display:flex;flex-direction:column;justify-content:center;padding:4px 0;box-sizing:border-box}
 .ko-cell>.node{flex:0 0 auto}
-.ko-cell-pred{min-height:116px}
-.ko-cell-3p{flex:0 0 auto;margin-top:auto;justify-content:flex-end}
+/* True bracket geometry: each round's slot height doubles the one before it, so
+   every match sits centred between the two whose winners feed it. --u is one
+   first-round slot, measured from the tallest R32 node at render time
+   (sizeBracketTree); the fallbacks hold until that runs. */
+.round-R32 .ko-cell{height:var(--u,112px)}
+.round-R16 .ko-cell{height:calc(var(--u,112px)*2)}
+.round-QF .ko-cell{height:calc(var(--u,112px)*4)}
+.round-SF .ko-cell{height:calc(var(--u,112px)*8)}
+.round-F .round-body{justify-content:center}
+.round-F .ko-cell{height:auto}
+.round-F .ko-cell-3p{margin-top:8px}
 .node{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:8px 12px 8px 16px;position:relative;overflow:hidden}
 .node::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--line2)}
 .node.mx::before{background:#1f9e57} .node.us::before{background:#3b82c4} .node.ca::before{background:#e0524d}
@@ -497,7 +524,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .hl-actions{width:100%}
   .round{min-width:170px;flex-basis:170px}
   .node{padding:7px 10px 7px 13px}
-  .bx-fix{gap:7px} .bx-side{gap:6px} .bx-side .flag{height:16px} .bx-code{font-size:12.5px} .bx-sc{min-width:36px}
+  .bx-fix{gap:6px} .bx-side{gap:4px} .bx-side .flag{height:auto} .bx-side .flag img,.bx-side .flag svg{max-height:14px;max-width:21px} .bx-code{font-size:12.5px} .bx-sc{min-width:36px}
 }
 /* ===== redesign: match grid + tiles ===== */
 .hl-note{color:var(--dim);font-size:13.5px;margin:2px 0 18px}
@@ -580,6 +607,97 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .scard .dur{font-size:11.5px;color:var(--dim);margin-top:1px}
 .scard .play{position:absolute;top:20px;right:20px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px}
 .empty-soft{color:var(--dim);text-align:center;padding:30px 12px;font-size:14px}
+/* Run 2: data-freshness states + loading skeletons */
+.statusline.fresh .livedot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.fresh.fr-ok .livedot{background:var(--live)}
+.fresh.fr-load{color:var(--faint)} .fresh.fr-load .livedot{background:var(--faint)}
+.fresh.fr-stale{color:var(--gold)} .fresh.fr-stale .livedot{background:var(--gold)}
+.skel{position:relative;overflow:hidden;background:var(--line);border-radius:6px;display:block}
+.skel::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);animation:skelsh 1.25s infinite}
+@keyframes skelsh{100%{transform:translateX(100%)}}
+.skel-hdr{width:160px;height:14px;margin:8px 0 14px}
+.skel-card{background:linear-gradient(180deg,#13161e,#0f1219);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.skel-row{display:flex;align-items:center;gap:10px}
+.skel-row.tall{padding:10px 8px;border-bottom:1px solid var(--line)}
+.skel-dot{width:22px;height:16px;border-radius:3px;flex:0 0 auto}
+.skel-line{height:12px}
+.skel-pill{width:54px;height:18px;border-radius:9px;flex:0 0 auto}
+.skel-bar{height:30px;border-radius:8px}
+.skel-num{width:26px;height:12px;flex:0 0 auto}
+.skel-list{display:flex;flex-direction:column;gap:6px}
+/* Run 3a: quick-find + spotlight */
+.spotbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.qf-open{display:inline-flex;align-items:center;gap:6px}
+.spot-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(70,166,255,.12);border:1px solid var(--a-dim);color:var(--text);padding:5px 6px 5px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.spot-chip-flag,.spot-sechdr .flag,.qf-item .flag{display:inline-block}
+.spot-chip-flag{height:15px} .spot-sechdr .flag{height:18px} .qf-item .flag{height:17px}
+.spot-chip-flag svg,.spot-chip-flag img,.spot-sechdr .flag svg,.spot-sechdr .flag img,.qf-item .flag svg,.qf-item .flag img{height:100%;width:auto;border-radius:3px;display:block}
+.spot-x{appearance:none;border:0;background:rgba(255,255,255,.10);color:var(--text);width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
+.spot-x:hover{background:rgba(255,255,255,.2)}
+.spot-sechdr{display:flex;align-items:center;gap:10px}
+.teamcell.spot{outline:2px solid var(--a);outline-offset:-2px;border-radius:6px}
+tr.spot-row{background:rgba(70,166,255,.10)}
+.tm-find{position:absolute;top:10px;left:12px;z-index:3;width:30px;height:30px;border:0;border-radius:8px;background:rgba(255,255,255,.06);color:var(--dim);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.tm-find:hover{background:rgba(255,255,255,.12);color:#fff}
+.qf{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;background:rgba(4,6,11,.74);padding:60px 16px 16px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.qf.open{display:flex}
+.qf-card{position:relative;width:100%;max-width:440px;background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line2);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.5);overflow:hidden;max-height:min(70vh,560px);display:flex;flex-direction:column}
+.qf-top{display:flex;align-items:center;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+#qf-input{flex:1;appearance:none;background:var(--surface);border:1px solid var(--line2);border-radius:10px;color:var(--text);padding:11px 13px;font-size:15px;font-family:inherit}
+#qf-input:focus{outline:2px solid var(--a);outline-offset:1px;border-color:var(--a)}
+.qf-x{appearance:none;border:0;background:rgba(255,255,255,.06);color:var(--text);width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:20px;line-height:1;flex:0 0 auto}
+.qf-x:hover{background:rgba(255,255,255,.12)}
+.qf-list{overflow-y:auto;padding:6px}
+.qf-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;appearance:none;border:0;background:transparent;color:var(--text);padding:9px 10px;border-radius:9px;cursor:pointer;font-size:14px}
+.qf-item:hover,.qf-item.on{background:rgba(70,166,255,.14)}
+.qf-item .qf-nm{flex:1;font-weight:600}
+.qf-item .qf-grp{color:var(--dim);font-size:12px}
+.qf-empty{color:var(--dim);text-align:center;padding:24px 12px;font-size:14px}
+/* Run 3c: notifications */
+.tabbadge{display:inline-flex;align-items:center;justify-content:center;min-width:17px;height:17px;padding:0 4px;margin-left:7px;border-radius:9px;background:var(--gold,#f5b301);color:#1a1205;font-size:11px;font-weight:800;line-height:1;vertical-align:middle}
+.favbanner{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;background:rgba(245,179,1,.10);border:1px solid rgba(245,179,1,.42);border-radius:13px;padding:11px 14px;margin:0 0 16px;font-size:14px}
+.favbn-ic{color:var(--gold,#f5b301);font-size:12px}
+.favbn-tx{color:var(--text);font-weight:600}
+.favbn-team{display:inline-flex;align-items:center;gap:6px;font-weight:700;appearance:none;border:1px solid transparent;background:rgba(255,255,255,.05);color:var(--text);border-radius:8px;padding:3px 9px;cursor:pointer;font-size:13.5px;font-family:inherit}
+.favbn-team:hover{background:rgba(255,255,255,.12);border-color:var(--line2)}
+.favbn-flag{display:inline-block;height:13px}
+.favbn-flag svg,.favbn-flag img{height:100%;width:auto;border-radius:2px;display:block}
+.favbn-x{margin-left:auto;appearance:none;border:1px solid var(--line2);background:var(--surface);color:var(--text);border-radius:8px;padding:5px 11px;cursor:pointer;font-size:12.5px;font-weight:600}
+.favbn-x:hover{background:rgba(255,255,255,.07)}
+/* Run 4: accessibility */
+.skip-link{position:absolute;left:-9999px;top:0;z-index:300;background:var(--a);color:#03101f;padding:10px 16px;border-radius:0 0 10px 0;font-weight:700;font-size:14px}
+.skip-link:focus{left:0;outline:3px solid #fff;outline-offset:-3px}
+main:focus{outline:none}
+html.hc{ --bg:#000000; --surface:#0c111c; --surface2:#161d30; --elev:#1f2840; --line:#5d6f9e; --line2:#8fa0d4; --text:#ffffff; --dim:#d6def4; --faint:#b2bce0; --a:#7cc4ff; --a-dim:#4a83bb; --gold:#ffd451; --live:#5cf6a2; --b:#ff8b7c; }
+html.hc body{background-image:none}
+html.hc :focus-visible{outline-width:3px}
+.hctoggle{position:relative;width:46px;height:26px;border-radius:999px;border:1px solid var(--line2);background:var(--surface2);cursor:pointer;padding:0;transition:background .15s;flex:0 0 auto}
+.hctoggle.on{background:var(--a);border-color:var(--a)}
+.hct-knob{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:var(--text);transition:left .15s,background .15s}
+.hctoggle.on .hct-knob{left:22px;background:#03101f}
+/* Run 3b: favourites */
+.qf-row{display:flex;align-items:center;gap:2px;border-radius:9px}
+.qf-row:hover,.qf-row.on{background:rgba(70,166,255,.14)}
+.qf-row .qf-item{background:transparent}
+.qf-row .qf-item:hover{background:transparent}
+.qf-star{appearance:none;border:0;background:transparent;color:var(--faint);cursor:pointer;font-size:15px;width:34px;height:34px;border-radius:8px;flex:0 0 auto;line-height:1}
+.qf-star.on{color:var(--gold)}
+.qf-star:hover{background:rgba(255,255,255,.08)}
+.favblock{margin:12px 0 0}
+.favlabel{font-size:13px;color:var(--dim);font-weight:600;margin-bottom:8px}
+.favteams{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fav-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(70,166,255,.10);border:1px solid var(--a-dim);border-radius:999px;padding:5px 6px 5px 10px;font-size:13px;font-weight:600}
+.fav-chip-flag{display:inline-block;height:14px}
+.fav-chip-flag svg,.fav-chip-flag img{height:100%;width:auto;border-radius:3px;display:block}
+.fav-x{appearance:none;border:0;background:rgba(255,255,255,.10);color:var(--text);width:19px;height:19px;border-radius:50%;cursor:pointer;font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center}
+.fav-x:hover{background:rgba(255,255,255,.2)}
+.fav-none{color:var(--dim);font-size:13px}
+.fav-add{display:inline-flex;align-items:center;gap:6px}
+.favbc{display:flex;flex-wrap:wrap;gap:8px}
+.favbc-item{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:8px 12px;cursor:pointer;color:var(--text);font-size:13.5px;font-weight:600}
+.favbc-item.on{border-color:var(--gold)}
+.favbc-star{color:var(--faint);font-size:15px}
+.favbc-item.on .favbc-star{color:var(--gold)}
 
 /* lineups / pitch */
 .lu-wrap{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -724,12 +842,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .bs-ev.dim{color:var(--faint)}
 .bx-row{padding:10px 15px;border-top:1px solid var(--line)}
 .bx-when{font-size:11px;color:var(--faint);margin-bottom:7px;letter-spacing:.02em}
-.bx-fix{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding-left:6px;padding-right:2px}
-.bx-side{display:flex;align-items:center;gap:8px;min-width:0}
+.bx-fix{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:7px;padding-left:6px;padding-right:4px}
+.bx-side{display:flex;align-items:center;gap:5px;min-width:0}
 .bx-side.h{justify-content:flex-end}
 .bx-side.lost{opacity:.5}
-.bx-side .flag{width:auto;height:18px;border-radius:3px;flex:none}
-.bx-side .flag svg,.bx-side .flag img{height:100%;width:auto;border-radius:3px;object-fit:contain}
+.bx-side .flag{height:auto;width:auto;border-radius:3px;flex:none;overflow:hidden;display:inline-flex;align-items:center;justify-content:center}
+.bx-side .flag svg,.bx-side .flag img{display:block;width:auto;height:auto;max-height:16px;max-width:27px;border-radius:3px}
 .bx-code{font-family:var(--mono);font-weight:700;font-size:13.5px;color:var(--text);letter-spacing:.02em}
 .bx-slot{font-size:12px;color:var(--faint);font-style:italic;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bx-slot-pop{cursor:pointer;border-bottom:1px dotted var(--line2)}
@@ -757,6 +875,8 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .cand-fx{display:inline-flex;align-items:center;gap:3px}
 /* drill-down: a chevron on each candidate row opens a deeper, per-team explanation */
 .cand-row{position:relative}
+.cand-cnt{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--a);background:rgba(70,166,255,.13);border-radius:5px;padding:1px 5px;white-space:nowrap;flex:none;line-height:1.4;align-self:flex-start;margin-top:1px}
+.cand-cnt-t{color:var(--faint);font-weight:600}
 .cand-more{flex:none;align-self:center;margin-left:auto;border:0;background:transparent;color:var(--faint);font-size:15px;line-height:1;cursor:pointer;padding:2px 2px 2px 6px;border-radius:6px}
 .cand-more:hover{color:var(--a);background:var(--surface2)}
 .cand-row.has-more .cand-cond{padding-right:4px}
@@ -900,6 +1020,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 <header class="topbar">
   <div class="brand">
     <div class="mark" aria-hidden="true"><img id="brand-logo" alt=""></div>
@@ -917,7 +1038,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </nav>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
   <!-- HIGHLIGHTS -->
   <section class="view active" id="view-highlights">
     <div class="view-head">
@@ -953,7 +1074,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
           <button class="btn" id="bk-today" data-i18n="btn_today">Today</button>
         </span>
       </div>
-      <input type="range" id="bk-day" min="0" max="40" value="0" step="1" aria-label="Reveal results through day">
+      <div style="display:flex;align-items:center;gap:10px"><button class="btn daystep" type="button" id="bk-prev" aria-label="Reveal one day earlier">‹</button><input type="range" id="bk-day" min="0" max="40" value="0" step="1" aria-label="Reveal results through day" style="flex:1"><button class="btn daystep" type="button" id="bk-next" aria-label="Reveal one day later">›</button></div>
       <div class="statusline" style="margin:0"><span class="livedot on" style="background:var(--live);box-shadow:none"></span><span id="bk-updated">Loading results…</span></div>
     </div>
     <div class="seg" id="bk-filter" style="margin-bottom:14px"><button class="on" data-bf="all" data-i18n="f_all">All</button><button data-bf="group" data-i18n="f_group">Group stage</button><button data-bf="ko" data-i18n="f_ko">Knockout</button></div>
@@ -1011,7 +1132,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
           <button class="btn" id="lb-today" data-i18n="btn_today">Today</button>
         </span>
       </div>
-      <input type="range" id="lb-day" min="0" max="40" value="0" step="1" aria-label="Stats through day">
+      <div style="display:flex;align-items:center;gap:10px"><button class="btn daystep" type="button" id="lb-prev" aria-label="Reveal one day earlier">‹</button><input type="range" id="lb-day" min="0" max="40" value="0" step="1" aria-label="Stats through day" style="flex:1"><button class="btn daystep" type="button" id="lb-next" aria-label="Reveal one day later">›</button></div>
     </div>
     <div id="lb-filters" class="lb-filters"></div>
     <div id="lb-legend" class="lb-legend"></div>
@@ -1030,6 +1151,17 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <div class="selrow"><label data-i18n="set_country">Country</label><div id="set-country" class="combo"></div></div>
       <div class="selrow"><label data-i18n="set_language">Language</label><div id="set-lang" class="combo"></div></div>
       <div class="selrow"><label data-i18n="set_time_format">Time format</label><div id="set-time" class="combo"></div></div>
+    </div>
+    <div class="panel">
+      <h3>Favourites</h3>
+      <p>Star the teams and broadcasters you follow. Favourite teams sit at the top of the team finder, and favourite broadcasters show first on a match's highlights. Choosing a team to spotlight is separate and always starts empty.</p>
+      <div class="favblock"><div class="favlabel">Teams</div><div id="set-favteams" class="favteams"></div></div>
+      <div class="favblock"><div class="favlabel">Broadcasters</div><div id="set-favbc" class="favbc"></div></div>
+    </div>
+    <div class="panel">
+      <h3>Display</h3>
+      <p>Higher-contrast colours for sharper text and edges. There is no light mode.</p>
+      <div class="selrow"><label id="hc-label">High contrast</label><button type="button" class="hctoggle" id="hc-toggle" role="switch" aria-checked="false" aria-labelledby="hc-label"><span class="hct-knob"></span></button></div>
     </div>
     <div class="panel">
       <h3 data-i18n="set_units_h">Units</h3>
@@ -1072,7 +1204,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </div>
 
 <div class="ytmodal" id="fifamodal">
-  <div class="fifa-box">
+  <div class="fifa-box" role="dialog" aria-modal="true" aria-label="Spoiler warning">
     <div class="fh" id="fifa-h">⚠️CAUTION: SPOILERS⚠️</div>
     <div class="fb" id="fifa-b"></div>
     <div class="fq" id="fifa-q">Do you still want to proceed?</div>
@@ -1083,7 +1215,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </div>
 </div>
 <div class="ytmodal" id="pcstatsmodal">
-  <div class="fifa-box">
+  <div class="fifa-box" role="dialog" aria-modal="true" aria-label="Spoiler warning">
     <div class="fh">⚠️ CAUTION: SPOILERS ⚠️</div>
     <div class="fb">These match stats include results you haven't revealed yet.</div>
     <div class="fq">How would you like to see them?</div>
@@ -1096,7 +1228,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </div>
 
 <div class="ytmodal" id="ytmodal">
-  <div class="ytbox">
+  <div class="ytbox" role="dialog" aria-modal="true" aria-label="Video player">
     <div class="ytbox-h"><span class="t" id="yt-title">Highlights</span><div style="display:flex;align-items:center;gap:10px"><a id="yt-open" href="#" target="_blank" rel="noopener" class="muted-pill">Open on YouTube ↗</a><button id="yt-close" aria-label="Close">×</button></div></div>
     <div class="ytframe" id="yt-frame"></div>
   </div>
@@ -1111,8 +1243,18 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <div class="tm" id="tm" aria-hidden="true">
   <div class="tm-card" role="dialog" aria-modal="true" aria-label="Squad">
+    <button class="tm-find" id="tm-find" type="button" data-qf="squad" aria-label="Find another team" title="Find another team"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" style="vertical-align:-2px"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="10.8" y1="10.8" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
     <button class="tm-x" id="tm-close" aria-label="Close">×</button>
     <div class="tm-body" id="tm-body"></div>
+  </div>
+</div>
+<div class="qf" id="qf" aria-hidden="true">
+  <div class="qf-card" role="dialog" aria-modal="true" aria-label="Find a team">
+    <div class="qf-top">
+      <input type="text" id="qf-input" role="combobox" aria-controls="qf-list" aria-autocomplete="list" aria-expanded="true" placeholder="Find a team…" aria-label="Find a team" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="qf-x" id="qf-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="qf-list" id="qf-list" role="listbox" aria-label="Teams"></div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -1571,6 +1713,96 @@ function clinchThirds(gScore, bands, info){
 }
 
 
+// --- Third-place SLOT clinch (sound across all 495 qualifying combinations) ---
+// A given R32 3rd-place slot is resolved only when ONE team is locked into it in
+// EVERY still-possible scenario. Method: (1) per group, the exact min/max points
+// its 3rd-placed team can finish with, enumerating only W/D/L of unrevealed
+// matches (points are margin-independent, so this is exact and bounded); (2)
+// classify each group's third as certain-to-qualify (qIn), certain-to-miss (qOut),
+// or undecided, using sound cross-group point bounds; (3) walk the 495 official
+// combinations consistent with that classification and, per slot, collect the set
+// of groups it could be assigned to. If that set is a single group whose 3rd place
+// is itself locked to one team, the slot is clinched for that team. Over-approxing
+// the possible combinations only makes a clinch harder to declare, so this never
+// reports a team that is not mathematically certain (no spoilers).
+function thirdInfo(g, fgs){
+  var ms=groupMatches(g), rem=[];
+  ms.forEach(function(m){ var sc=fgs[m[0]]; if(!(sc&&sc[0]!==''&&sc[1]!==''&&sc[0]!=null&&sc[1]!=null)) rem.push(m[0]); });
+  if(rem.length===0){
+    var st=computeStandings(g, fgs), r=st.rows[2]||{team:null,pts:0,gd:0,gf:0};
+    return {group:g, complete:true, lo:r.pts, hi:r.pts, pts:r.pts, gd:r.gd, gf:r.gf,
+            disc:((typeof ALL_DISC!=='undefined'&&ALL_DISC[r.team])||0), fr:((typeof FIFA_RANK!=='undefined'&&FIFA_RANK[r.team])||999)};
+  }
+  var lo=Infinity, hi=-Infinity, total=Math.pow(3, rem.length);
+  for(var c=0;c<total;c++){ var sim={}; for(var k in fgs){ sim[k]=fgs[k]; } var n=c;
+    for(var i=0;i<rem.length;i++){ var o=n%3; n=(n-o)/3; sim[rem[i]]= o===0?[1,0]:(o===1?[0,1]:[0,0]); }
+    var st2=computeStandings(g, sim), pp=(st2.rows[2]?st2.rows[2].pts:0); if(pp<lo) lo=pp; if(pp>hi) hi=pp;
+  }
+  if(lo===Infinity){ lo=0; hi=0; }
+  return {group:g, complete:false, lo:lo, hi:hi};
+}
+// Strict "ranked above" between two COMPLETE thirds, in the official thirds
+// tiebreak order: points, goal difference, goals, conduct, FIFA ranking, group.
+function thirdRankAbove(h, g){
+  if(h.pts!==g.pts) return h.pts>g.pts;
+  if(h.gd!==g.gd) return h.gd>g.gd;
+  if(h.gf!==g.gf) return h.gf>g.gf;
+  if(h.disc!==g.disc) return h.disc<g.disc;
+  if(h.fr!==g.fr) return h.fr<g.fr;
+  return h.group<g.group;
+}
+// Could h's third rank strictly above g's third in SOME joint completion?
+function couldBeAbove(h, g){
+  var hHi=h.complete?h.pts:h.hi, gLo=g.complete?g.pts:g.lo;
+  if(hHi>gLo) return true; if(hHi<gLo) return false;
+  return (h.complete&&g.complete)?thirdRankAbove(h,g):true; // an open group can swing GD either way
+}
+// Does h's third rank strictly above g's third in EVERY joint completion?
+function guaranteedAbove(h, g){
+  var hLo=h.complete?h.pts:h.lo, gHi=g.complete?g.pts:g.hi;
+  if(hLo>gHi) return true; if(hLo<gHi) return false;
+  return (h.complete&&g.complete)?thirdRankAbove(h,g):false;
+}
+var _tsgCache={};
+// Per-slot set of groups whose 3rd-placed team could STILL be assigned to each
+// R32 3rd-place slot, given the still-possible qualifying combinations. Drives
+// both the clinch resolver and the slot explainer (so a group locked into one
+// slot stops appearing as a candidate for any other slot).
+function thirdSlotGroups(fgs, cutoff){
+  var ckey=String(cutoff)+'|'+((typeof ACTUAL!=='undefined'&&ACTUAL)?ACTUAL.generatedAt:0);
+  if(_tsgCache.key===ckey) return _tsgCache.val;
+  var groups=Object.keys(GROUPS), info={};
+  groups.forEach(function(g){ info[g]=thirdInfo(g, fgs); });
+  var qIn={}, qOut={};
+  groups.forEach(function(g){
+    var could=0, sure=0;
+    groups.forEach(function(h){ if(h===g) return; if(couldBeAbove(info[h], info[g])) could++; if(guaranteedAbove(info[h], info[g])) sure++; });
+    if(could<=7) qIn[g]=true;     // at most 7 thirds can rank above g's worst -> g is top 8 in every case
+    if(sure>=8) qOut[g]=true;     // at least 8 thirds rank above g's best -> g misses in every case
+  });
+  var colIndex={}; for(var ci=0;ci<THIRD_COLS.length;ci++) colIndex[THIRD_COLS[ci]]=ci;
+  var asg={}; THIRD_COLS.forEach(function(mid){ asg[mid]={}; });
+  var keys=Object.keys(THIRD_COMBO), keysOK=[];
+  for(var k=0;k<keys.length;k++){ var Q=keys[k], bad=false, gg;
+    for(gg in qIn){ if(Q.indexOf(gg)<0){ bad=true; break; } } if(bad) continue;
+    for(gg in qOut){ if(Q.indexOf(gg)>=0){ bad=true; break; } } if(bad) continue;
+    var a=THIRD_COMBO[Q]; if(!a||a.length!==8) continue;
+    keysOK.push(Q);
+    for(var ci2=0;ci2<THIRD_COLS.length;ci2++){ asg[THIRD_COLS[ci2]][a.charAt(ci2)]=true; }
+  }
+  var R={asg:asg, info:info, keys:keysOK};
+  _tsgCache={key:ckey, val:R};
+  return R;
+}
+function thirdSlotClinch(fgs, clinch, cutoff){
+  var R=thirdSlotGroups(fgs, cutoff), asg=R.asg, out={};
+  THIRD_COLS.forEach(function(mid){
+    var gs=Object.keys(asg[mid]);
+    if(gs.length===1){ var g=gs[0], locked=null; (GROUPS[g]||[]).forEach(function(t){ var f=clinch&&clinch[t]; if(f&&f.lockPos===3) locked=t; }); if(locked) out[mid]=locked; }
+  });
+  return out;
+}
+
 if(typeof module!=='undefined'){ module.exports={computeStandings:computeStandings, resolveBracket:resolveBracket, thirdSlots:thirdSlots}; }
 
 </script>
@@ -1717,6 +1949,7 @@ function htHTML(inn, cm){ if(cm!=null&&cm!==''){ if(UNITS_HT==='met') return Mat
 function wtHTML(lb){ if(lb==null) return ''; return (UNITS_WT==='met'?Math.round(lb*0.45359237):lb)+'<span class="pc-u">'+(UNITS_WT==='met'?'kg':'lbs')+'</span>'; }
 function canonName(n){ if(!n) return null; if(OF_NAME[n]) return OF_NAME[n]; if(FLAGS[n]) return n; const t=nrm(n); return Object.keys(FLAGS).find(k=>nrm(k)===t)||null; }
 let ACTUAL={ gScore:{}, koByNum:{}, infoByPair:{}, generatedAt:0 };
+var DATA_LOADED=false; // flips true once the first data load resolves; drives loading skeletons
 const MATCH_DATES=(function(){ const s=new Set(); GROUP_FIXTURES.forEach(m=>s.add(m[4].slice(0,10))); KO.forEach(m=>s.add(m[4].slice(0,10))); return Array.from(s).sort(); })();
 function ingestResults(matches){
   const gScore={}, koByNum={}, infoByPair={};
@@ -2213,18 +2446,19 @@ function code(name){ if(!name) return '?'; if(CODES[name]) return CODES[name]; v
 
 /* ---------- broadcasters + region mapping (extensible) ---------- */
 var SOURCES = {
-  tsn:{ name:'TSN', tint:'#e2231a', country:'CA', lang:'en', logo:'./images/broadcasters/canada/tsn-e2231a.png' },
-  rds:{ name:'RDS', tint:'#e2231a', country:'CA', lang:'fr', linkOut:true, logo:'./images/broadcasters/canada/rds-e2231a.png' },
-  fox:{ name:'Fox Sports', tint:'#000000', country:'US', lang:'en', logo:'./images/broadcasters/united_states/fox_sports-000000.png' },
-  itv:{ name:'ITV Sport', tint:'#1e7a4f', country:'GB', lang:'en', logo:'./images/broadcasters/united_kingdom/itv_sport-1e7a4f.png' },
-  bein:{ name:'beIN Sports', tint:'#542986', country:'FR', lang:'fr', logo:'./images/broadcasters/france/bein_sports-542986.png' },
-  telemundo:{ name:'Telemundo Deportes', tint:'#ffffff', country:'US', lang:'es', logo:'./images/broadcasters/united_states/telemundo_deportes-ffffff.svg' },
-  sportstudiofussball:{ name:'sportstudio fußball', tint:'#fb7d1a', country:'DE', lang:'de', logo:'./images/broadcasters/germany/sportstudio_fussball-fb7d1a.png' },
-  rtesport:{ name:'RTÉ Sport', tint:'#007ac3', country:'IE', lang:'en', linkOut:true, logo:'./images/broadcasters/ireland/rte_sport-007ac3.png' },
-  fifa:{ name:'FIFA', tint:'#000000', lang:'en', linkOut:true, logo:'./images/broadcasters/world/fifa-000000.png' }
+  tsn:{ name:'TSN', tint:'#e2231a', country:'CA', lang:'en', logo:'./images/broadcasters/tsn-e2231a.png' },
+  rds:{ name:'RDS', tint:'#e2231a', country:'CA', lang:'fr', linkOut:true, logo:'./images/broadcasters/rds-e2231a.png' },
+  fox:{ name:'Fox Sports', tint:'#000000', country:'US', lang:'en', logo:'./images/broadcasters/fox_sports-000000.png' },
+  itv:{ name:'ITV Sport', tint:'#1e7a4f', country:'GB', lang:'en', logo:'./images/broadcasters/itv_sport-1e7a4f.png' },
+  bein:{ name:'beIN Sports', tint:'#542986', country:'FR', lang:'fr', logo:'./images/broadcasters/bein_sports-542986.png' },
+  telemundo:{ name:'Telemundo Deportes', tint:'#ffffff', country:'US', lang:'es', logo:'./images/broadcasters/telemundo_deportes-ffffff.svg' },
+  sportstudiofussball:{ name:'sportstudio fußball', tint:'#fb7d1a', country:'DE', lang:'de', logo:'./images/broadcasters/sportstudio_fussball-fb7d1a.png' },
+  rtesport:{ name:'RTÉ Sport', tint:'#007ac3', country:'IE', lang:'en', linkOut:true, logo:'./images/broadcasters/rte_sport-007ac3.png' },
+  fifa:{ name:'FIFA', tint:'#000000', lang:'en', linkOut:true, logo:'./images/broadcasters/fifa-000000.png' }
 };
+function srcInCountry(s, cc){ if(s.regions) return s.regions.indexOf(cc)>=0; if(s.blocked) return s.blocked.indexOf(cc)<0; if(s.country) return s.country===cc; return true; }
 function regionSources(country, lang){
-  var inCountry=Object.keys(SOURCES).filter(function(k){ if(k==='fifa') return false; var s=SOURCES[k]; return !s.country || s.country===country; });
+  var inCountry=Object.keys(SOURCES).filter(function(k){ if(k==='fifa') return false; return srcInCountry(SOURCES[k], country); });
   var byLang=inCountry.filter(function(k){ var s=SOURCES[k]; return !s.lang || s.lang===lang; });
   return byLang.length ? byLang : inCountry;   // no source in the user's language -> every source in the country
 }
@@ -2272,7 +2506,7 @@ async function geoDetect(){
   if(DB.country) return;
   try{ const r=await fetch('https://ipwho.is/?fields=country_code',{cache:'no-store'}); const j=await r.json();
     var cc=((j&&(j.country_code||j.countryCode))||'').toUpperCase();
-    if(['CA','US','GB'].indexOf(cc)>=0) COUNTRY=cc; }catch(e){}
+    if(COUNTRY_CODES.indexOf(cc)>=0) COUNTRY=cc; }catch(e){}
 }
 function applyI18n(){
   $$('[data-i18n]').forEach(function(el){ var v=t(el.getAttribute('data-i18n')); if(v!=null) el.textContent=v; });
@@ -2309,7 +2543,7 @@ function matchCtx(kind,id){
     srcHome:k[2], srcAway:k[3], slotHome:srcLabel(k[2]), slotAway:srcLabel(k[3]), clinchHome:clinchHome, clinchAway:clinchAway,
     home:act&&act.team1, away:act&&act.team2,
     played:!!(act&&act.ft), started:koRoundStarted(k[1]), score:(act&&act.ft)||null, pen:(act&&act.pen)||null }; }
-function openMatch(kind,id){ var c=matchCtx(kind,id); if(!c) return; MM={ctx:c, key:c.key, tab:'h'}; renderMM(); var m=$('#mm'); m.classList.add('open'); m.setAttribute('aria-hidden','false'); }
+function openMatch(kind,id){ var c=matchCtx(kind,id); if(!c) return; try{markFavSeen(c.key);}catch(e){} MM={ctx:c, key:c.key, tab:'h'}; renderMM(); var m=$('#mm'); m.classList.add('open'); m.setAttribute('aria-hidden','false'); }
 function isRevealed(){ return !!revealed[MM.key]; }
 function setReveal(v){ if(v) revealed[MM.key]=true; else delete revealed[MM.key]; renderMM(); }
 function blankFlag(big){ return '<span class="flag" style="display:block;background:#1a1f2b;border-radius:'+(big?'6px':'4px')+';width:'+(big?'62px':'30px')+';height:'+(big?'42px':'21px')+'"></span>'; }
@@ -2391,7 +2625,7 @@ function renderMM(){
 }
 function renderHL(c){
   if(!c.played) return '<div class="empty-soft">'+esc(t('not_played'))+'</div>';
-  var v=VIDS[c.key], reg=regionSources(COUNTRY,LANG), hasReg=reg.some(function(sk){ var sv=v&&v[sk]; return sv&&(sv.x||sv.r||sv.g); }), srcs=reg.slice(); if(SOURCES.fifa&&(LANG==='en'||!hasReg)) srcs.push('fifa'); var cards=[];
+  var v=VIDS[c.key], reg=regionSources(COUNTRY,LANG), hasReg=reg.some(function(sk){ var sv=v&&v[sk]; return sv&&(sv.x||sv.r||sv.g); }), srcs=reg.slice(); if(SOURCES.fifa&&(LANG==='en'||!hasReg)) srcs.push('fifa'); srcs=favOrderSources(srcs); var cards=[];
   srcs.forEach(function(sk){ var sv=v&&v[sk]; if(!sv) return; var src=SOURCES[sk];
     [['x','k_x','d_x'],['r','k_r','d_r'],['g','k_g','d_g']].forEach(function(tp){ var vid=sv[tp[0]]; if(!vid) return;
       var llab=(src.lang&&src.lang!==LANG)?({en:'English',fr:'Français',es:'Español'}[src.lang]||src.lang):'';
@@ -2984,16 +3218,25 @@ document.addEventListener('keydown', function(e){ if((e.key==='Enter'||e.key==='
 
 
 /* ---------- tabs ---------- */
+var VALID_TABS={highlights:1,bracket:1,predictions:1,leaders:1,settings:1};
+function renderForTab(tab){ if(tab==='bracket') renderBracket(); else if(tab==='predictions') renderPredictions(); else if(tab==='highlights') renderHighlights(); else if(tab==='leaders') renderLeaders(); }
+var _activeTab='highlights'; // matches the tab/view marked active in the static HTML
+function activateTab(tab){
+  if(!VALID_TABS[tab]) tab='highlights';
+  if(_activeTab===tab) return;
+  _activeTab=tab;
+  $$('.tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab===tab); });
+  $$('.view').forEach(function(v){ v.classList.toggle('active', v.id==='view-'+tab); });
+  DB.tab=tab; save();
+  renderForTab(tab);
+}
 $('#tabs').addEventListener('click', e=>{
   const b=e.target.closest('.tab'); if(!b) return;
-  $$('.tab').forEach(t=>t.classList.toggle('active', t===b));
-  const tab=b.dataset.tab;
-  $$('.view').forEach(v=>v.classList.toggle('active', v.id==='view-'+tab));
-  if(tab==='bracket') renderBracket();
-  if(tab==='predictions') renderPredictions();
-  if(tab==='highlights') renderHighlights();
-  if(tab==='leaders') renderLeaders();
+  var tab=b.dataset.tab; if(!tab) return;
+  if((location.hash||'').replace(/^#/,'')===tab){ activateTab(tab); return; }
+  location.hash=tab; // the hashchange handler performs the activation (keeps back/forward working)
 });
+window.addEventListener('hashchange', function(){ activateTab((location.hash||'').replace(/^#/,'')); });
 
 /* ---------- YouTube modal ---------- */
 function openYT(videoId, title, src){
@@ -3064,8 +3307,74 @@ function groupTile(m){ var played=groupPlayed(m), w=whenParts(m[4]), key=m[0], n
 var _koClinch=null;
 function koTile(m){ var w=whenParts(m[4]), started=koRoundStarted(m[1]); var foot=started?'<span class="mt-watch">'+t('reveal_btn')+'</span>':'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
   return '<button class="mt h'+hostOf(m[5])+'" data-k="k" data-id="'+m[0]+'"><div class="mt-top"><span class="mt-rd">'+esc(roundName(m[1]))+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].home)?tTeam(_koClinch[m[0]].home):tTeamAbs(srcLabel(m[2])))+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].away)?tTeam(_koClinch[m[0]].away):tTeamAbs(srcLabel(m[3])))+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
-function renderHighlights(){ var body=$('#hl-body'), html=''; _koClinch=(typeof revealCutoff==='function'&&revealCutoff())?clinchSlotTeams(revealCutoff(), clinchInfo(filteredGScore(revealCutoff()))):null;
-  var _hlSlider='<div class="bar" style="flex-direction:column;align-items:stretch;gap:10px;margin:0 0 16px"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="font-weight:600" data-i18n="bk_reveal_through">'+esc(t('bk_reveal_through'))+'</span><strong id="hl-daylabel" style="font-family:var(--mono);color:var(--a)">'+esc(dayLabel(DB.revealDayIdx|0))+'</strong><span style="margin-left:auto;display:flex;gap:6px"><button class="btn" id="hl-none">'+esc(t('btn_nothing'))+'</button><button class="btn" id="hl-today">'+esc(t('btn_today'))+'</button></span></div><input type="range" id="hl-day" min="0" max="'+MATCH_DATES.length+'" value="'+(DB.revealDayIdx|0)+'" step="1" aria-label="Reveal results through day"></div>';
+/* ---- Run 4: accessibility (high-contrast, focus management) ---- */
+function applyHC(){ try{ document.documentElement.classList.toggle('hc', !!(typeof DB!=='undefined'&&DB.hc)); var b=document.getElementById('hc-toggle'); if(b){ b.setAttribute('aria-checked',(typeof DB!=='undefined'&&DB.hc)?'true':'false'); b.classList.toggle('on', !!(typeof DB!=='undefined'&&DB.hc)); } }catch(e){} }
+function qfAria(){ var inp=document.getElementById('qf-input'); if(!inp) return; if(_qfActive>=0 && _qfActive<_qfItems.length){ inp.setAttribute('aria-activedescendant','qf-opt-'+_qfActive); } else { inp.removeAttribute('aria-activedescendant'); } }
+(function(){ var hct=document.getElementById('hc-toggle'); if(hct) hct.addEventListener('click', function(){ DB.hc=!DB.hc; save(); applyHC(); }); })();
+(function(){
+  var FOCUS_IDS=['ytmodal','fifamodal','pcstatsmodal','pc','tm','mm'];
+  var TRAP_IDS=FOCUS_IDS.concat(['qf']);
+  var SEL='a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex=\"-1\"])';
+  var returnTo=null;
+  function vis(n){ return !!(n.offsetWidth||n.offsetHeight||n.getClientRects().length); }
+  function foc(el){ return Array.prototype.slice.call(el.querySelectorAll(SEL)).filter(vis); }
+  function anyOpen(){ return TRAP_IDS.some(function(id){ var el=document.getElementById(id); return el&&el.classList.contains('open'); }); }
+  function topTrap(){ var best=null,bz=-1; TRAP_IDS.forEach(function(id){ var el=document.getElementById(id); if(!el||!el.classList.contains('open')) return; var z=parseInt(getComputedStyle(el).zIndex,10)||0; if(z>=bz){ bz=z; best=el; } }); return best; }
+  FOCUS_IDS.forEach(function(id){ var el=document.getElementById(id); if(!el) return; new MutationObserver(function(){ if(el.classList.contains('open')){ if(el._trap) return; el._trap=1; if(!returnTo) returnTo=document.activeElement; var f=foc(el), tgt=el.querySelector('[data-autofocus]')||f[0]; if(tgt) setTimeout(function(){ try{tgt.focus();}catch(e){} },0); } else { if(!el._trap) return; el._trap=0; if(!anyOpen()){ var r=returnTo; returnTo=null; if(r&&r.focus) setTimeout(function(){ try{r.focus();}catch(e){} },0); } } }).observe(el,{attributes:true,attributeFilter:['class']}); });
+  document.addEventListener('keydown', function(e){ if(e.key!=='Tab') return; var m=topTrap(); if(!m) return; var f=foc(m); if(!f.length){ e.preventDefault(); return; } var first=f[0], last=f[f.length-1], a=document.activeElement; if(!m.contains(a)){ e.preventDefault(); (e.shiftKey?last:first).focus(); return; } if(e.shiftKey && a===first){ e.preventDefault(); last.focus(); } else if(!e.shiftKey && a===last){ e.preventDefault(); first.focus(); } });
+})();
+/* ---- Run 3c: in-app new-highlights notifications (favourites) ---- */
+function favHasVids(key){ return !!(VIDS[key] && regionSources(COUNTRY,LANG).some(function(s){ return VIDS[key][s]; })); }
+function favNewMatches(){
+  var favs=DB.favTeams||[]; if(!favs.length) return [];
+  var seen=DB.seenFavMatches||[]; var out=[];
+  GROUP_FIXTURES.forEach(function(m){ var key=m[0]; if(seen.indexOf(key)>=0 || !favHasVids(key)) return; var ts=[m[2],m[3]].filter(function(x){ return favs.indexOf(x)>=0; }); if(ts.length) out.push({key:key,teams:ts}); });
+  KO.forEach(function(m){ var key=m[0]; if(seen.indexOf(key)>=0 || !favHasVids(key)) return; var k=ACTUAL.koByNum[m[0]]; if(!k) return; var ts=[k.team1,k.team2].filter(function(x){ return favs.indexOf(x)>=0; }); if(ts.length) out.push({key:key,teams:ts}); });
+  return out;
+}
+function favNewTeams(){ var seen={}, order=[]; favNewMatches().forEach(function(it){ it.teams.forEach(function(tm){ if(!seen[tm]){ seen[tm]=1; order.push(tm); } }); }); return order; }
+function markFavSeen(key){ if(!key) return; if(!favNewMatches().some(function(it){ return it.key===key; })) return; DB.seenFavMatches=DB.seenFavMatches||[]; if(DB.seenFavMatches.indexOf(key)<0){ DB.seenFavMatches.push(key); save(); updateFavBadge(); } }
+function markFavSeenTeam(tm){ DB.seenFavMatches=DB.seenFavMatches||[]; var ch=false; favNewMatches().forEach(function(it){ if(it.teams.indexOf(tm)>=0 && DB.seenFavMatches.indexOf(it.key)<0){ DB.seenFavMatches.push(it.key); ch=true; } }); if(ch){ save(); updateFavBadge(); } }
+function favSeenAll(){ DB.seenFavMatches=DB.seenFavMatches||[]; favNewMatches().forEach(function(it){ if(DB.seenFavMatches.indexOf(it.key)<0) DB.seenFavMatches.push(it.key); }); save(); updateFavBadge(); try{ if(_activeTab==='highlights') renderHighlights(); }catch(e){} }
+function updateFavBadge(){ var btn=document.querySelector('#tabs [data-tab="highlights"]'); if(!btn) return; var n=favNewMatches().length, b=btn.querySelector('.tabbadge'); if(n>0){ if(!b){ b=document.createElement('span'); b.className='tabbadge'; btn.appendChild(b); } b.textContent=n>9?'9+':String(n); b.setAttribute('aria-label', n+' new favourite highlights'); } else if(b){ b.remove(); } }
+function favBannerHTML(){ var tms=favNewTeams(); if(!tms.length) return ''; var names=tms.map(function(tm){ return '<button type="button" class="favbn-team" data-fav-go="'+esc(tm)+'" aria-label="Spotlight '+esc(dispCountry(tm))+'">'+flag(tm,'favbn-flag')+esc(dispCountry(tm))+'</button>'; }).join(''); return '<div class="favbanner" role="status"><span class="favbn-ic">\u25b6</span><span class="favbn-tx">New highlights for</span>'+names+'<button type="button" class="favbn-x" data-fav-seen-all>Dismiss</button></div>'; }
+/* ---- Run 3b: favourites (teams + broadcasters) ---- */
+function isFavTeam(tm){ return (DB.favTeams||[]).indexOf(tm)>=0; }
+function toggleFavTeam(tm){ if(!tm) return; DB.favTeams=DB.favTeams||[]; var i=DB.favTeams.indexOf(tm); if(i>=0) DB.favTeams.splice(i,1); else DB.favTeams.push(tm); save(); renderFavTeams(); try{updateFavBadge();}catch(e){} }
+function isFavBc(k){ return (DB.favBroadcasters||[]).indexOf(k)>=0; }
+function toggleFavBc(k){ if(!k) return; DB.favBroadcasters=DB.favBroadcasters||[]; var i=DB.favBroadcasters.indexOf(k); if(i>=0) DB.favBroadcasters.splice(i,1); else DB.favBroadcasters.push(k); save(); renderFavBc(); }
+function favOrderSources(list){ var fav=DB.favBroadcasters||[]; if(!fav.length) return list; return list.slice().sort(function(a,b){ var fa=fav.indexOf(a)>=0, fb=fav.indexOf(b)>=0; if(fa!==fb) return fa?-1:1; return 0; }); }
+function renderFavTeams(){ var host=$('#set-favteams'); if(!host) return; var favs=(DB.favTeams||[]).slice(); favs.sort(function(a,b){ return dispCountry(a).localeCompare(dispCountry(b)); }); var chips=favs.map(function(tm){ return '<span class="fav-chip">'+flag(tm,'fav-chip-flag')+'<span class="fav-chip-nm">'+esc(dispCountry(tm))+'</span><button type="button" class="fav-x" data-fav-remove="'+esc(tm)+'" aria-label="Remove '+esc(dispCountry(tm))+'">\u00d7</button></span>'; }).join(''); host.innerHTML=(chips||'<span class="fav-none">None yet</span>')+'<button type="button" class="btn fav-add" data-qf="favourite">'+FIND_SVG+' Add teams</button>'; }
+function renderFavBc(){ var host=$('#set-favbc'); if(!host) return; host.innerHTML=Object.keys(SOURCES).map(function(k){ var sc=SOURCES[k], on=isFavBc(k); return '<button type="button" class="favbc-item'+(on?' on':'')+'" data-fav-bc="'+esc(k)+'" aria-pressed="'+(on?'true':'false')+'"><span class="favbc-nm">'+esc(sc.name)+'</span><span class="favbc-star">'+(on?'\u2605':'\u2606')+'</span></button>'; }).join(''); }
+/* ---- Run 3a: team quick-find + spotlight ---- */
+var SPOTLIGHT=null; // spotlighted team (session only; defaults to none each load)
+var FIND_SVG='<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" style="vertical-align:-2px"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="10.8" y1="10.8" x2="15" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+function spotBarHTML(){ var btn='<button type="button" class="btn qf-open" data-qf="spotlight">'+FIND_SVG+' Find a team</button>'; var chip=''; if(SPOTLIGHT){ chip='<span class="spot-chip">'+flag(SPOTLIGHT,'spot-chip-flag')+'<span class="spot-chip-nm">'+esc(dispCountry(SPOTLIGHT))+'</span><button type="button" class="spot-x" data-spot-clear aria-label="Clear spotlight">\u00d7</button></span>'; } return '<div class="spotbar">'+btn+chip+'</div>'; }
+function spotSectionHL(){ if(!SPOTLIGHT) return ''; var arr=matchList().filter(function(it){ return it.m[2]===SPOTLIGHT || it.m[3]===SPOTLIGHT; }); var _cut=revealCutoff(); if(_cut && hlFilter!=='group'){ KO.forEach(function(m){ var k=ACTUAL.koByNum[m[0]]; if(!k) return; if(m[4].slice(0,10)<=_cut && (k.team1===SPOTLIGHT||k.team2===SPOTLIGHT)){ arr.push({k:'k',m:m,ts:whenTs(m[4])}); } }); } if(!arr.length) return ''; arr.sort(function(a,b){ return a.ts-b.ts; }); var cards=arr.map(function(it){ return it.k==='g'?groupTile(it.m):koTile(it.m); }).join(''); return '<div class="dayhdr spot-sechdr">'+flag(SPOTLIGHT)+'<span>'+esc(dispCountry(SPOTLIGHT))+'</span></div><div class="mgrid">'+cards+'</div>'; }
+function spotGroupOrder(keys){ if(!SPOTLIGHT) return keys; var g=TEAM_GROUP[SPOTLIGHT]; if(!g) return keys; return keys.slice().sort(function(a,b){ return (a===g?0:1)-(b===g?0:1); }); }
+function applySpotlight(root){ if(!root||!SPOTLIGHT) return; var els=root.querySelectorAll('[data-team-pop]'); for(var i=0;i<els.length;i++){ if(els[i].getAttribute('data-team-pop')===SPOTLIGHT){ els[i].classList.add('spot'); var tr=els[i].closest('tr'); if(tr) tr.classList.add('spot-row'); } } }
+function setSpotlight(team){ SPOTLIGHT=team||null; renderForTab(_activeTab); }
+function clearSpotlight(){ SPOTLIGHT=null; renderForTab(_activeTab); }
+var QF_MODE='spotlight', _qfItems=[], _qfActive=-1, _qfReturn=null;
+function qfAllTeams(){ var arr=[]; Object.keys(GROUPS).forEach(function(g){ (GROUPS[g]||[]).forEach(function(tm){ arr.push({team:tm,group:g}); }); }); arr.sort(function(a,b){ var fa=isFavTeam(a.team), fb=isFavTeam(b.team); if(fa!==fb) return fa?-1:1; return dispCountry(a.team).localeCompare(dispCountry(b.team)); }); return arr; }
+function qfRender(filter){ var f=(filter||'').trim().toLowerCase(); _qfItems=qfAllTeams().filter(function(it){ if(!f) return true; return (dispCountry(it.team)+' '+it.team+' '+code(it.team)).toLowerCase().indexOf(f)>=0; }); if(_qfActive>=_qfItems.length) _qfActive=_qfItems.length-1; var html=_qfItems.map(function(it,i){ var fav=isFavTeam(it.team); return '<div class="qf-row'+(i===_qfActive?' on':'')+'"><button type="button" class="qf-item" id="qf-opt-'+i+'" tabindex="-1" role="option" aria-selected="'+(i===_qfActive?'true':'false')+'" data-qf-team="'+esc(it.team)+'">'+flag(it.team)+'<span class="qf-nm">'+esc(dispCountry(it.team))+'</span><span class="qf-grp">'+esc(t('group_word')+' '+it.group)+'</span></button><button type="button" tabindex="-1" class="qf-star'+(fav?' on':'')+'" data-qf-fav="'+esc(it.team)+'" aria-pressed="'+(fav?'true':'false')+'" aria-label="'+(fav?'Remove favourite':'Add favourite')+'">'+(fav?'\u2605':'\u2606')+'</button></div>'; }).join(''); if(!_qfItems.length) html='<div class="qf-empty">No teams match.</div>'; var l=$('#qf-list'); if(l) l.innerHTML=html; qfAria(); }
+function qfActiveScroll(){ qfAria(); var l=$('#qf-list'); if(!l||_qfActive<0) return; var el=l.children[_qfActive]; if(el&&el.scrollIntoView) el.scrollIntoView({block:'nearest'}); }
+function qfOpen(mode){ QF_MODE=mode||'spotlight'; _qfActive=-1; _qfReturn=document.activeElement; var el=$('#qf'); if(!el) return; el.classList.add('open'); el.setAttribute('aria-hidden','false'); var inp=$('#qf-input'); if(inp) inp.value=''; qfRender(''); if(inp) setTimeout(function(){ try{inp.focus();}catch(e){} },30); }
+function qfClose(){ var el=$('#qf'); if(el){ el.classList.remove('open'); el.setAttribute('aria-hidden','true'); } if(_qfReturn&&_qfReturn.focus){ try{_qfReturn.focus();}catch(e){} } _qfReturn=null; }
+function qfChoose(team){ if(!team) return; if(QF_MODE==='favourite'){ toggleFavTeam(team); qfRender($('#qf-input')?$('#qf-input').value:''); return; } if(QF_MODE==='squad'){ qfClose(); openTeamPopup(team); } else { qfClose(); setSpotlight(team); } }
+document.addEventListener('click', function(e){ if(!e.target.closest) return; var q=e.target.closest('[data-qf]'); if(q){ e.preventDefault(); qfOpen(q.getAttribute('data-qf')); return; } var sc=e.target.closest('[data-spot-clear]'); if(sc){ e.preventDefault(); clearSpotlight(); return; } var fv=e.target.closest('[data-qf-fav]'); if(fv){ e.preventDefault(); e.stopPropagation(); toggleFavTeam(fv.getAttribute('data-qf-fav')); qfRender($('#qf-input')?$('#qf-input').value:''); return; } var fr=e.target.closest('[data-fav-remove]'); if(fr){ e.preventDefault(); toggleFavTeam(fr.getAttribute('data-fav-remove')); return; } var fb=e.target.closest('[data-fav-bc]'); if(fb){ e.preventDefault(); toggleFavBc(fb.getAttribute('data-fav-bc')); return; } var fsa=e.target.closest('[data-fav-seen-all]'); if(fsa){ e.preventDefault(); favSeenAll(); return; } var fg=e.target.closest('[data-fav-go]'); if(fg){ e.preventDefault(); var _gt=fg.getAttribute('data-fav-go'); markFavSeenTeam(_gt); setSpotlight(_gt); return; } });
+(function(){ var qf=$('#qf'); if(!qf) return; var cl=$('#qf-close'); if(cl) cl.addEventListener('click', qfClose); qf.addEventListener('click', function(e){ if(e.target.id==='qf') qfClose(); }); qf.addEventListener('keydown', function(e){ if(e.key==='Escape') qfClose(); }); var inp=$('#qf-input'); if(inp){ inp.addEventListener('input', function(){ _qfActive=-1; qfRender(inp.value); }); inp.addEventListener('keydown', function(e){ if(e.key==='ArrowDown'){ e.preventDefault(); if(_qfItems.length){ _qfActive=Math.min(_qfItems.length-1,_qfActive+1); qfRender(inp.value); qfActiveScroll(); } } else if(e.key==='ArrowUp'){ e.preventDefault(); if(_qfItems.length){ _qfActive=Math.max(0,_qfActive-1); qfRender(inp.value); qfActiveScroll(); } } else if(e.key==='Enter'){ e.preventDefault(); var pick=_qfActive>=0?_qfItems[_qfActive]:_qfItems[0]; if(pick) qfChoose(pick.team); } else if(e.key==='Escape'){ e.preventDefault(); qfClose(); } }); } var list=$('#qf-list'); if(list) list.addEventListener('click', function(e){ var it=e.target.closest('[data-qf-team]'); if(it) qfChoose(it.getAttribute('data-qf-team')); }); })();
+/* ---- Run 2: freshness + skeleton helpers ---- */
+function relAgo(ms){ var s=Math.max(0,(Date.now()-ms)/1000); if(s<45) return 'just now'; var m=Math.round(s/60); if(m<60) return m+' min ago'; var h=Math.round(m/60); if(h<24) return h+' h ago'; var d=Math.round(h/24); return d+(d===1?' day ago':' days ago'); }
+function lastFinishedMatchEnd(){ var now=Date.now(), best=0; function scan(a){ if(!a) return; for(var i=0;i<a.length;i++){ var k=Date.parse(a[i][4]); if(!isNaN(k)){ var e=k+MATCH_END_BUFFER; if(e<=now && e>best) best=e; } } } scan(typeof GROUP_FIXTURES!=='undefined'?GROUP_FIXTURES:null); scan(typeof KO!=='undefined'?KO:null); return best; }
+function dataIsStale(){ return !!(ACTUAL.generatedAt && lastFinishedMatchEnd() > ACTUAL.generatedAt); }
+function freshnessInfo(){ if(!DATA_LOADED) return {text:'Loading latest results\u2026', cls:'fr-load'}; if(!ACTUAL.generatedAt) return {text:'Results not loaded yet', cls:'fr-load'}; var stale=dataIsStale(); var text='Results updated '+relAgo(ACTUAL.generatedAt)+(stale?' \u00b7 new results expected':' \u00b7 source: openfootball'); var title=''; try{ title=new Date(ACTUAL.generatedAt).toLocaleString(); }catch(e){} return {text:text, cls: stale?'fr-stale':'fr-ok', title:title}; }
+function freshnessLineHTML(){ var f=freshnessInfo(); return '<div class="statusline fresh '+f.cls+'"'+(f.title?(' title="'+esc(f.title)+'"'):'')+'><span class="livedot"></span><span>'+esc(f.text)+'</span></div>'; }
+function skelCards(n){ var c=''; for(var i=0;i<(n||6);i++){ c+='<div class="skel-card"><div class="skel-row"><span class="skel skel-dot"></span><span class="skel skel-line" style="flex:1"></span><span class="skel skel-pill"></span></div><div class="skel-row"><span class="skel skel-dot"></span><span class="skel skel-line" style="flex:1"></span></div><div class="skel skel-bar"></div></div>'; } return c; }
+function hlSkeleton(){ return freshnessLineHTML()+'<div class="skel skel-hdr"></div><div class="mgrid">'+skelCards(6)+'</div>'; }
+function skelRows(n){ var c=''; for(var i=0;i<(n||8);i++){ c+='<div class="skel-row tall"><span class="skel skel-dot"></span><span class="skel skel-line" style="flex:1"></span><span class="skel skel-num"></span><span class="skel skel-num"></span></div>'; } return '<div class="skel-list">'+c+'</div>'; }
+function renderHighlights(){ var body=$('#hl-body'), html=''; if(body&&!DATA_LOADED){ body.innerHTML=hlSkeleton(); return; } _koClinch=(typeof revealCutoff==='function'&&revealCutoff())?clinchSlotTeams(revealCutoff(), clinchInfo(filteredGScore(revealCutoff()))):null;
+  var _hlSlider='<div class="bar" style="flex-direction:column;align-items:stretch;gap:10px;margin:0 0 16px"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="font-weight:600" data-i18n="bk_reveal_through">'+esc(t('bk_reveal_through'))+'</span><strong id="hl-daylabel" style="font-family:var(--mono);color:var(--a)">'+esc(dayLabel(DB.revealDayIdx|0))+'</strong><span style="margin-left:auto;display:flex;gap:6px"><button class="btn" id="hl-none">'+esc(t('btn_nothing'))+'</button><button class="btn" id="hl-today">'+esc(t('btn_today'))+'</button></span></div><div style="display:flex;align-items:center;gap:10px"><button class="btn daystep" type="button" id="hl-prev" aria-label="Reveal one day earlier">‹</button><input type="range" id="hl-day" min="0" max="'+MATCH_DATES.length+'" value="'+(DB.revealDayIdx|0)+'" step="1" aria-label="Reveal results through day" style="flex:1"><button class="btn daystep" type="button" id="hl-next" aria-label="Reveal one day later">›</button></div></div>';
   if(hlView==='date'){
     var list=matchList(), now=Date.now(), byDay={};
     list.forEach(function(it){ var dk=dayKey(it.ts); var d=byDay[dk]||(byDay[dk]={dk:dk,ts:it.ts,items:[]}); d.items.push(it); if(it.ts<d.ts) d.ts=it.ts; });
@@ -3074,16 +3383,16 @@ function renderHighlights(){ var body=$('#hl-body'), html=''; _koClinch=(typeof 
     if(hlFilter!=='group') html+=_hlSlider;
     days.forEach(function(d){ d.items.sort(function(x,y){ return x.ts-y.ts; }); html+='<div class="dayhdr">'+esc(dayLabelLong(d.ts))+'</div><div class="mgrid">'+d.items.map(function(it){ return it.k==='g'?groupTile(it.m):koTile(it.m); }).join('')+'</div>'; });
   } else {
-    if(hlFilter!=='ko'){ Object.keys(GROUPS).forEach(function(g){ var fx=GROUP_FIXTURES.filter(function(m){return m[1]===g;}); if(!fx.length) return; html+='<div class="dayhdr"><span class="glyph">'+esc(g)+'</span>'+esc(t('group_word')+' '+g)+'</div>'+tilesGrid(fx.map(function(m){return {k:'g',m:m};})); }); }
+    if(hlFilter!=='ko'){ spotGroupOrder(Object.keys(GROUPS)).forEach(function(g){ var fx=GROUP_FIXTURES.filter(function(m){return m[1]===g;}); if(!fx.length) return; html+='<div class="dayhdr"><span class="glyph">'+esc(g)+'</span>'+esc(t('group_word')+' '+g)+'</div>'+tilesGrid(fx.map(function(m){return {k:'g',m:m};})); }); }
     if(hlFilter!=='group'){ html+=_hlSlider; var cols=''; KO_ROUND_SEQ.forEach(function(rk){ var kl=KO.filter(function(m){return m[1]===rk;}); if(!kl.length) return; cols+='<div class="hlround"><div class="hlround-h">'+esc(roundName(rk))+'</div>'+kl.map(function(m){return koTile(m);}).join('')+'</div>'; }); if(cols) html+=hostLegend()+'<div class="hlbracket">'+cols+'</div>'; }
   }
-  if(!html) html='<div class="empty-soft">'+esc(t('no_hl'))+'</div>'; var _gb=$("#hl-view button[data-v='group']"); if(_gb) _gb.textContent=(hlFilter==='ko')?t('bracket_word'):t('by_group'); body.innerHTML=html; try{ requestAnimationFrame(function(){ fitTeamNames(body); }); }catch(e){} }
+  if(!html) html='<div class="empty-soft">'+esc(t('no_hl'))+'</div>'; var _gb=$("#hl-view button[data-v='group']"); if(_gb) _gb.textContent=(hlFilter==='ko')?t('bracket_word'):t('by_group'); body.innerHTML=favBannerHTML()+spotBarHTML()+spotSectionHL()+html; try{ requestAnimationFrame(function(){ fitTeamNames(body); }); }catch(e){} }
 $('#hl-body').addEventListener('click', function(e){ var b=e.target.closest('.mt'); if(b) openMatch(b.dataset.k, b.dataset.id); });
 $('#hl-filter').addEventListener('click', function(e){ var b=e.target.closest('button'); if(!b) return; hlFilter=b.dataset.f; $$('#hl-filter button').forEach(function(x){x.classList.toggle('on',x===b);}); renderHighlights(); });
 (function(){ var hb=$('#hl-body'); if(!hb) return;
   hb.addEventListener('input', function(e){ if(e.target&&e.target.id==='hl-day'){ var i=Math.max(0,Math.min(MATCH_DATES.length,(+e.target.value)||0)); DB.revealDayIdx=i; save(); var lab=$('#hl-daylabel'); if(lab) lab.textContent=dayLabel(i); syncDayControls(); } });
   hb.addEventListener('change', function(e){ if(e.target&&e.target.id==='hl-day') renderHighlights(); });
-  hb.addEventListener('click', function(e){ if(!e.target.closest) return; if(e.target.closest('#hl-none')){ e.preventDefault(); setRevealDay(0); } else if(e.target.closest('#hl-today')){ e.preventDefault(); setRevealDay(todayIdx()); } });
+  hb.addEventListener('click', function(e){ if(!e.target.closest) return; if(e.target.closest('#hl-none')){ e.preventDefault(); setRevealDay(0); } else if(e.target.closest('#hl-today')){ e.preventDefault(); setRevealDay(todayIdx()); } else if(e.target.closest('#hl-prev')){ e.preventDefault(); setRevealDay((DB.revealDayIdx|0)-1); } else if(e.target.closest('#hl-next')){ e.preventDefault(); setRevealDay((DB.revealDayIdx|0)+1); } });
 })();
 $('#hl-view').addEventListener('click', function(e){ var b=e.target.closest('button'); if(!b) return; hlView=b.dataset.v; DB.hlView=hlView; save(); $$('#hl-view button').forEach(function(x){x.classList.toggle('on',x===b);}); renderHighlights(); });
 
@@ -3298,16 +3607,15 @@ function clinchSlotTeams(cutoff, clinch){
     lock[g]={};
     GROUPS[g].forEach(function(tm){ var f=clinch[tm]; if(f&&f.lockPos===1) lock[g][1]=tm; else if(f&&f.lockPos===2) lock[g][2]=tm; });
   });
-  // Third places: only resolve when every group is complete (so the 8 thirds and
-  // their slot assignment are final). Mid-stage we leave third slots as TBD.
+  // Third places: resolve a slot the moment one team is locked into it across
+  // every still-possible qualifying combination (see thirdSlotClinch). Sound:
+  // it never names a team unless that holds in all cases, so no spoilers.
   var fgs=filteredGScore(cutoff);
-  var allComplete=Object.keys(GROUPS).every(function(g){ return computeStandings(g, fgs).complete; });
-  var thirdAssign=null, pos=null;
-  if(allComplete){ var R=resolveBracket({mode:'res', gScore:fgs}); thirdAssign=R.thirdAssign; pos=R.pos; }
+  var thirdLock=thirdSlotClinch(fgs, clinch, cutoff);
   function teamForSrc(src, id, side){
     if(src.indexOf('W:')===0){ return lock[src.slice(2)][1]||null; }
     if(src.indexOf('R:')===0){ return lock[src.slice(2)][2]||null; }
-    if(src.indexOf('T:')===0){ if(thirdAssign){ var a=thirdAssign[id]; if(a&&a.side===side&&pos[a.group]&&pos[a.group].complete) return pos[a.group].pos[3]; } return null; }
+    if(src.indexOf('T:')===0){ return (side==='away' && thirdLock[id]) ? thirdLock[id] : null; }
     return null; // MW:/ML: depend on knockout outcomes, handled by ACTUAL when revealed
   }
   var out={};
@@ -3321,7 +3629,24 @@ function clinchSlotTeams(cutoff, clinch){
 // precisely; for third-place (T:) slots it lists the still-alive third-placed
 // candidates from the pool groups (the exact slot assignment only settles once
 // the groups finish, so this is the honest "could be" set).
-function slotCandidates(src, cutoff){
+function groupPosScenarioCounts(g, target, fgs){
+  var ms=groupMatches(g), rem=[];
+  ms.forEach(function(m){ var sc=fgs[m[0]]; if(!(sc&&sc[0]!==''&&sc[1]!==''&&sc[0]!=null&&sc[1]!=null)) rem.push(m[0]); });
+  var counts={}, total=Math.pow(3, rem.length);
+  (GROUPS[g]||[]).forEach(function(t){ counts[t]=0; });
+  for(var c=0;c<total;c++){ var sim={}; for(var key in fgs){ sim[key]=fgs[key]; } var n=c;
+    for(var i=0;i<rem.length;i++){ var o=n%3; n=(n-o)/3; sim[rem[i]]= o===0?[1,0]:(o===1?[0,1]:[0,0]); }
+    var st=computeStandings(g, sim), pts={}; st.rows.forEach(function(r){ pts[r.team]=r.pts; });
+    (GROUPS[g]||[]).forEach(function(t){ var above=0, atLeast=0; (GROUPS[g]||[]).forEach(function(u){ if(pts[u]>pts[t]) above++; if(pts[u]>=pts[t]) atLeast++; }); if(above<target && target<=atLeast) counts[t]++; });
+  }
+  return {counts:counts, total:total};
+}
+function attachPosScen(list, g, target, fgs){
+  var sc=groupPosScenarioCounts(g, target, fgs);
+  list.forEach(function(c){ c.scen=sc.counts[c.team]||0; c.scenTotal=sc.total; });
+  list.sort(function(a,b){ if((b.scen||0)!==(a.scen||0)) return (b.scen||0)-(a.scen||0); if(a.locked!==b.locked) return a.locked?-1:1; return a.pos-b.pos; });
+}
+function slotCandidates(src, cutoff, matchId){
   var fgs=filteredGScore(cutoff);
   function orderInGroup(g){
     // current standing order (best first), used to rank candidates sensibly
@@ -3349,25 +3674,32 @@ function slotCandidates(src, cutoff){
     out.sort(function(a,b){ if(a.locked!==b.locked) return a.locked?-1:1; return a.pos-b.pos; });
     return out;
   }
-  if(src.indexOf('W:')===0) return { kind:'win', group:src.slice(2), list:groupCands(src.slice(2), 1) };
-  if(src.indexOf('R:')===0) return { kind:'run', group:src.slice(2), list:groupCands(src.slice(2), 2) };
+  if(src.indexOf('W:')===0){ var gw=src.slice(2), lw=groupCands(gw,1); attachPosScen(lw, gw, 1, fgs); return { kind:'win', group:gw, list:lw }; }
+  if(src.indexOf('R:')===0){ var gr=src.slice(2), lr=groupCands(gr,2); attachPosScen(lr, gr, 2, fgs); return { kind:'run', group:gr, list:lr }; }
   if(src.indexOf('T:')===0){
     // This slot takes the 3rd-placed team from ONE of the pool groups; which one
     // depends on which of the 12 thirds finish in the top 8 and the FIFA lookup
     // that maps that combination to slots. We list, per pool group, the teams that
     // can still finish 3rd there.
-    var pool=src.slice(2).split(','), groups=[];
+    var _tsg=(matchId!=null)?thirdSlotGroups(fgs, cutoff):null;
+    var pool=src.slice(2).split(',');
+    if(_tsg){ var _poss=_tsg.asg[matchId]; if(_poss){ pool=pool.filter(function(g){ return _poss[g]; }); } }
+    var _restrict=_tsg?_tsg.keys:null;
+    var groups=[];
     pool.forEach(function(g){
       var bands=groupPositionBands(g, fgs); var rem=groupRemaining(g, fgs); var o=orderInGroup(g);
+      var stt=(matchId!=null)?thirdAssignStats(g, matchId, _restrict):null;
       var cands=[];
       GROUPS[g].forEach(function(tm){ var b=bands[tm]; if(b && b.best<=3 && b.worst>=3){
         cands.push({ team:tm, pts:ptsOf(o.st,tm), pos:(o.ord[tm]+1),
                      locked:(b.best===3&&b.worst===3),
                      cond:condFor(g, tm, 3, fgs, bands),
-                     fixtures: remFixturesFor(g, tm, rem) }); } });
+                     fixtures: remFixturesFor(g, tm, rem),
+                     scen:null, scenTotal:null }); } });
       cands.sort(function(a,b){ if(a.locked!==b.locked) return a.locked?-1:1; return a.pos-b.pos; });
-      if(cands.length) groups.push({ group:g, cands:cands });
+      if(cands.length) groups.push({ group:g, cands:cands, scen:(stt?stt.here:0), scenTotal:(_restrict?_restrict.length:null) });
     });
+    groups.sort(function(a,b){ return (b.scen||0)-(a.scen||0); });
     return { kind:'third', pool:pool, groups:groups };
   }
   return { kind:'tbd', list:[] };
@@ -3512,19 +3844,26 @@ function koNodeActual(m, cutoff, clinchSlots){
     '<div class="bx-fix">'+sideEl('h')+mid+sideEl('a')+'</div>'+penNote+'</div>';
 }
 
+function sizeBracketTree(sel){
+  var tree=$(sel); if(!tree) return;
+  tree.style.removeProperty('--u');
+  var cells=tree.querySelectorAll('.round-R32 .ko-cell'), max=0;
+  for(var i=0;i<cells.length;i++){ var n=cells[i].firstElementChild; var h=n?n.offsetHeight:0; if(h>max) max=h; }
+  if(max>0) tree.style.setProperty('--u',(max+16)+'px');
+}
 function renderBracket(){
   const cutoff=revealCutoff();
   const lab=$('#bk-daylabel'); if(lab) lab.textContent=dayLabel(DB.revealDayIdx|0);
   const sl=$('#bk-day'); if(sl){ sl.max=String(MATCH_DATES.length); sl.value=String(DB.revealDayIdx|0); }
-  const upd=$('#bk-updated'); if(upd) upd.textContent = ACTUAL.generatedAt ? ('Results updated '+timeFmt().format(new Date(ACTUAL.generatedAt))+' · source: openfootball') : 'Results not loaded yet';
+  const upd=$('#bk-updated'); if(upd){ var _f=freshnessInfo(); upd.textContent=_f.text; var _sl=upd.parentNode; if(_sl){ _sl.classList.add('fresh'); _sl.classList.remove('fr-ok','fr-stale','fr-load'); _sl.classList.add(_f.cls); if(_f.title) _sl.title=_f.title; } }
   // clinching for the revealed state (drives standings badges and bracket slots)
   const clinch = cutoff ? clinchInfo(filteredGScore(cutoff)) : null;
   const clinchSlots = cutoff ? clinchSlotTeams(cutoff, clinch) : null;
   // standings, with the clinch key directly above them
-  let sh='';
-  if(!cutoff){ sh='<div class="empty">Nothing revealed yet. Drag the day slider above to catch up at your own pace — group tables and the bracket fill in automatically, and anything past your chosen day stays blacked out.</div>'; }
-  else { sh=clinchLegend()+'<div class="grid cols">'; Object.keys(GROUPS).forEach(g=>{ sh+=groupCardActual(g,cutoff,clinch); }); sh+='</div>'; }
-  $('#bk-standings').innerHTML=sh;
+  let sh=spotBarHTML();
+  if(!cutoff){ sh+='<div class="empty">Nothing revealed yet. Drag the day slider above to catch up at your own pace — group tables and the bracket fill in automatically, and anything past your chosen day stays blacked out.</div>'; }
+  else { sh+=clinchLegend()+'<div class="grid cols">'; spotGroupOrder(Object.keys(GROUPS)).forEach(g=>{ sh+=groupCardActual(g,cutoff,clinch); }); sh+='</div>'; }
+  $('#bk-standings').innerHTML=sh; applySpotlight($('#bk-standings'));
   renderThirds(cutoff);
   // bracket legend now holds host colours only (clinch key moved above the group tables)
   const leg=$('#bk-legend'); if(leg) leg.innerHTML = hostLegend();
@@ -3532,7 +3871,7 @@ function renderBracket(){
   // match sits centred between the two whose winners feed it
   let th='';
   ['R32','R16','QF','SF','F'].forEach(function(rk){
-    th+='<div class="round"><div class="round-h">'+roundName(rk)+'</div><div class="round-body">';
+    th+='<div class="round round-'+rk+'"><div class="round-h">'+roundName(rk)+'</div><div class="round-body">';
     if(rk==='F'){
       th+='<div class="ko-cell">'+koNodeActual(koById('104'),cutoff,clinchSlots)+'</div>';
       var tp=koById('103'); if(tp) th+='<div class="ko-cell ko-cell-3p">'+koNodeActual(tp,cutoff,clinchSlots)+'</div>';
@@ -3541,7 +3880,7 @@ function renderBracket(){
     }
     th+='</div></div>';
   });
-  $('#bk-tree').innerHTML=th; applyBkFilter();
+  $('#bk-tree').innerHTML=th; applyBkFilter(); sizeBracketTree('#bk-tree');
   // champion
   const fm=koById('104'); const fk=ACTUAL.koByNum['104'];
   let champ='';
@@ -3555,9 +3894,9 @@ function renderBracket(){
 // How often does the official Annex C table send Group `group`'s 3rd-placed team
 // to match `matchId`? Counts across all qualifying combinations that include the
 // group. Returns {here, total, byMatch}. Used by the popup drill-down.
-function thirdAssignStats(group, matchId){
+function thirdAssignStats(group, matchId, restrict){
   var total=0, here=0, byMatch={};
-  Object.keys(THIRD_COMBO).forEach(function(key){
+  (restrict||Object.keys(THIRD_COMBO)).forEach(function(key){
     if(key.indexOf(group)<0) return;            // only combinations where this group qualifies
     total++;
     var assign=THIRD_COMBO[key];                // 8 chars in THIRD_COLS order
@@ -3570,9 +3909,9 @@ function thirdAssignStats(group, matchId){
 function winnerGroupOf(matchId){ var k=koById(matchId); return (k&&k[2].indexOf('W:')===0)?k[2].slice(2):null; }
 // Enumerate, per group, exactly which qualifying-combinations send its 3rd to which
 // slot. Used to explain the cross-tournament scenarios, not just count them.
-function thirdComboList(group, matchId){
+function thirdComboList(group, matchId, restrict){
   var here=[], byMatch={}, total=0;
-  Object.keys(THIRD_COMBO).forEach(function(key){
+  (restrict||Object.keys(THIRD_COMBO)).forEach(function(key){
     if(key.indexOf(group)<0) return; total++;
     var a=THIRD_COMBO[key];
     for(var i=0;i<THIRD_COLS.length;i++){ if(a.charAt(i)===group){ var mid=THIRD_COLS[i]; (byMatch[mid]=byMatch[mid]||[]).push(key); if(mid===matchId) here.push(key); break; } }
@@ -3583,26 +3922,28 @@ function comboMissing(key){ return 'ABCDEFGHIJKL'.split('').filter(function(g){ 
 function fmtGroups(arr){ if(!arr.length) return ''; if(arr.length===1) return 'Group '+arr[0]; return 'Groups '+arr.slice(0,-1).join(', ')+' and '+arr[arr.length-1]; }
 // Plain-language account of what has to happen in the OTHER groups for this group's
 // 3rd to land in this exact slot, read off the Annex C table.
-function thirdScenarioText(group, matchId){
-  var L=thirdComboList(group, matchId), total=L.total, hereN=L.here.length, winG=winnerGroupOf(matchId);
+function thirdScenarioText(group, matchId, restrict){
+  var L=thirdComboList(group, matchId, restrict), total=L.total, hereN=L.here.length, winG=winnerGroupOf(matchId);
+  var K=(restrict?restrict.length:Object.keys(THIRD_COMBO).length);
+  var qual=(total===K)?('all '+K+' still-possible 3rd-place line-ups'):('<b>'+total+' of the '+K+'</b> still-possible 3rd-place line-ups');
   var here=winG?('the Group '+winG+' winner'):'this match';
   function altWin(m){ var w=winnerGroupOf(m); return w?('the Group '+w+' winner'):'another winner'; }
   function whenMiss(combos){ return combos.map(function(k){ return fmtGroups(comboMissing(k))+'\u2019s thirds all miss out'; }).join(', or '); }
   if(!total) return 'The exact slot depends on which other groups\u2019 3rd-placed teams qualify.';
-  if(hereN===total) return 'Group '+group+'\u2019s 3rd is sent to '+here+' in <b>every one</b> of the '+total+' combinations in which it qualifies, whoever else goes through.';
+  if(hereN===total) return 'Group '+group+'\u2019s 3rd qualifies in '+qual+', and in every one of those it is sent to '+here+', whoever else goes through.';
   var elsewhereN=total-hereN, LIM=10;
   // Dominant destination with <=10 exceptions: name every exception scenario.
   if(elsewhereN<=LIM){
-    var ex=Object.keys(L.byMatch).filter(function(m){ return m!==matchId; }).map(function(m){ return whenMiss(L.byMatch[m])+' \u2014 then it meets '+altWin(m); });
-    return 'Group '+group+'\u2019s 3rd comes here (to '+here+') in <b>'+hereN+' of the '+total+'</b> combinations in which it qualifies. It only goes elsewhere when '+ex.join('; ')+'.';
+    var ex=Object.keys(L.byMatch).filter(function(m){ return m!==matchId; }).map(function(m){ return whenMiss(L.byMatch[m])+', then it meets '+altWin(m); });
+    return 'Group '+group+'\u2019s 3rd qualifies in '+qual+'. It comes here (to '+here+') in <b>'+hereN+'</b> of those, and only goes elsewhere when '+ex.join('; ')+'.';
   }
   // This slot is a rare destination but <=10 cases: name every qualifying scenario.
   if(hereN<=LIM){
-    return 'Group '+group+'\u2019s 3rd reaches here (to '+here+') in only <b>'+hereN+' of '+total+'</b> combinations \u2014 when '+whenMiss(L.here)+'. In every other case it is assigned to a different winner.';
+    return 'Group '+group+'\u2019s 3rd qualifies in '+qual+', but reaches here (to '+here+') in only <b>'+hereN+'</b> of those, which happen only when '+whenMiss(L.here)+'. In every other qualifying case it is assigned to a different winner.';
   }
   // Broad spread: give the full split, then spell out any destination with <=10 cases.
   var bd=Object.keys(L.byMatch).sort(function(a,b){ return L.byMatch[b].length-L.byMatch[a].length; }).map(function(m){ return altWin(m).replace(/^the /,'')+' \u00d7'+L.byMatch[m].length+(m===matchId?' (here)':''); });
-  var s='Group '+group+'\u2019s 3rd is spread across '+Object.keys(L.byMatch).length+' slots, decided by which seven other groups\u2019 thirds also finish in the top eight. It comes here in <b>'+hereN+' of '+total+'</b>. Full split \u2014 '+bd.join(', ')+'.';
+  var s='Group '+group+'\u2019s 3rd qualifies in '+qual+', spread across '+Object.keys(L.byMatch).length+' slots once you know which seven other groups\u2019 thirds also finish in the top eight. It comes here in <b>'+hereN+'</b> of those. Full split: '+bd.join(', ')+'.';
   var small=Object.keys(L.byMatch).filter(function(m){ return m!==matchId && L.byMatch[m].length<=LIM; });
   if(small.length){ s+=' '+small.map(function(m){ return 'It meets '+altWin(m)+' only when '+whenMiss(L.byMatch[m])+'.'; }).join(' '); }
   return s;
@@ -3668,7 +4009,8 @@ function candDetailHTML(src, group, team){
     var cond3=condFor(group, team, 3, fgs, bands);
     steps.push(['1','<b>Finish 3rd in Group '+group+'.</b> '+esc(cond3)]);
     steps.push(['2','<b>Be one of the eight best 3rd-placed teams.</b> <span class="sub">The twelve groups\u2019 3rd-placed teams are ranked together by points, then goal difference, then goals scored; only the top eight reach the Round of 32.</span>']);
-    var s3='<b>Be assigned to this slot.</b> FIFA\u2019s fixed table places the eight qualifying 3rd-placed teams by which groups they come from. '+thirdScenarioText(group, matchId);
+    var _r3=thirdSlotGroups(fgs, revealCutoff()).keys;
+    var s3='<b>Be assigned to this slot.</b> FIFA\u2019s fixed table places the eight qualifying 3rd-placed teams by which groups they come from. '+thirdScenarioText(group, matchId, _r3);
     steps.push(['3',s3]);
   } else {
     // winner / runner-up: spell out the per-result outcomes and the tiebreak order
@@ -3719,8 +4061,9 @@ var _candPop=null;
 function teamRowHTML(c, prefix, group){
   var fxs=(c.fixtures||[]).map(function(f){ return '<span class="cand-fx">'+flag(f.home)+'<span class="cand-vs">v</span>'+flag(f.away)+'</span>'; }).join('');
   var pts=(c.pts!=null)?'<span class="cand-pts">'+c.pts+' pt'+(c.pts===1?'':'s')+'</span>':'';
+  var cnt=(c.scen!=null&&c.scenTotal)?'<span class="cand-cnt" title="Can still finish here in '+c.scen+' of the '+c.scenTotal+' ways the remaining group games can go">'+c.scen+'<span class="cand-cnt-t">/'+c.scenTotal+'</span></span>':'';
   var more='<button type="button" class="cand-more" data-drill="'+esc(group+'|'+c.team)+'" aria-label="Why this team" title="What would put them here">\u203a</button>';
-  return '<div class="cand-row has-more"><span class="cand-team">'+flag(c.team)+'<span class="cand-code">'+esc(code(c.team))+'</span>'+pts+'</span>'+
+  return '<div class="cand-row has-more"><span class="cand-team">'+flag(c.team)+'<span class="cand-code">'+esc(code(c.team))+'</span>'+pts+'</span>'+cnt+
     '<span class="cand-cond">'+(prefix?'<b class="cand-if">'+esc(prefix)+'</b> ':'')+esc(c.cond||'')+(fxs?'<span class="cand-fxs">'+fxs+'</span>':'')+'</span>'+more+'</div>';
 }
 function candListHTML(data){
@@ -3729,7 +4072,7 @@ function candListHTML(data){
     title=(data.kind==='win'?'Group '+data.group+' winner':'Group '+data.group+' runner-up')+' — who lands here';
     var list=data.list||[];
     var what=(data.kind==='win')?'win the group':'finish 2nd';
-    var note='<div class="cand-note">Each team below can still '+what+'. The line by each shows what still has to happen \u2014 tap \u203a for the full picture.</div>';
+    var note='<div class="cand-note">Each team below can still '+what+'; the badge counts the remaining result combinations in which it still can (a combination can suit more than one team). Tap \u203a for the full picture.</div>';
     var rows=list.map(function(c){
       return teamRowHTML(c, '', data.group);
     }).join('');
@@ -3737,10 +4080,11 @@ function candListHTML(data){
     bodyHTML=note+rows;
   } else if(data.kind==='third'){
     title='3rd-place slot — from Groups '+(data.pool||[]).join(', ');
-    var note2='<div class="cand-note">This R32 place goes to a <b>3rd-placed team</b>, but not from a fixed group. Eight of the twelve 3rd-placed teams advance (ranked by points, then goal difference, then goals), and FIFA\u2019s published table maps that set of qualifying groups onto the eight 3rd-place slots. So the team here will be whichever of these groups\u2019 3rd-placed side both qualifies and is assigned to this slot \u2014 tap \u203a on a team for the full chain:</div>';
+    var note2='<div class="cand-note">The eight best 3rd-placed teams advance, slotted by a fixed FIFA table, so this place goes to whichever of these groups\u2019 3rd qualifies and lands here. The badge by each group counts how many of the still-possible qualifying line-ups send its 3rd to this slot; tap \u203a for the chain.</div>';
     var blocks=(data.groups||[]).map(function(gb){
       var inner=gb.cands.map(function(c){ return teamRowHTML(c, '', gb.group); }).join('');
-      return '<div class="cand-grp"><div class="cand-grp-h">If the 3rd-place team here is from Group '+gb.group+'</div>'+inner+'</div>';
+      var hcnt=(gb.scen!=null&&gb.scenTotal)?' <span class="cand-cnt" title="This slot goes to Group '+gb.group+'\u2019s 3rd-placed team in '+gb.scen+' of the '+gb.scenTotal+' still-possible qualifying line-ups">'+gb.scen+'<span class="cand-cnt-t">/'+gb.scenTotal+'</span></span>':'';
+      return '<div class="cand-grp"><div class="cand-grp-h">If the 3rd-place team here is from Group '+gb.group+hcnt+'</div>'+inner+'</div>';
     }).join('');
     if(!blocks) blocks='<div class="cand-empty">Not enough has been revealed yet to say.</div>';
     bodyHTML=note2+blocks;
@@ -3780,7 +4124,7 @@ function positionCandPop(){
 function openCandPop(anchor, src){ if(typeof LANG!=='undefined' && LANG && LANG!=='en') return;
   closeCandPop();
   _candMatchId=(function(){ var f=KO.find(function(m){return m[2]===src||m[3]===src;}); return f?f[0]:null; })();
-  var data=slotCandidates(src, revealCutoff());
+  var data=slotCandidates(src, revealCutoff(), _candMatchId);
   var pop=document.createElement('div'); pop.id='cand-pop'; pop.className='cand-pop';
   document.body.appendChild(pop);
   _candPop={src:src, data:data, anchor:anchor, view:{mode:'list'}};
@@ -3797,6 +4141,8 @@ $('#bk-standings').addEventListener('click', function(e){ var rw=e.target.closes
 $('#bk-day').addEventListener('input', e=>{ setRevealDay(+e.target.value); });
 $('#bk-none').addEventListener('click', ()=>{ setRevealDay(0); });
 $('#bk-today').addEventListener('click', ()=>{ setRevealDay(todayIdx()); });
+$('#bk-prev').addEventListener('click', ()=>{ setRevealDay((DB.revealDayIdx|0)-1); });
+$('#bk-next').addEventListener('click', ()=>{ setRevealDay((DB.revealDayIdx|0)+1); });
 function applyBkFilter(){ var grp=(bkFilter!=='ko'), ko=(bkFilter!=='group'); var st=$('#bk-standings'); if(st) st.style.display=grp?'':'none'; ['#bk-thirds-title','#bk-thirds','#bk-ko-title','#bk-legend','#bk-tree'].forEach(function(sel){ var el=$(sel); if(el) el.style.display=ko?'':'none'; }); }
 (function(){ var bf=$('#bk-filter'); if(bf) bf.addEventListener('click', function(e){ var b=e.target.closest('button'); if(!b) return; bkFilter=b.dataset.bf; $$('#bk-filter button').forEach(function(x){x.classList.toggle('on',x===b);}); applyBkFilter(); }); })();
 
@@ -3866,7 +4212,7 @@ function renderPredictions(){
   // tree
   let th='';
   ['R32','R16','QF','SF','F'].forEach(function(rk){
-    th+='<div class="round"><div class="round-h">'+roundName(rk)+'</div><div class="round-body">';
+    th+='<div class="round round-'+rk+'"><div class="round-h">'+roundName(rk)+'</div><div class="round-body">';
     if(rk==='F'){
       th+='<div class="ko-cell ko-cell-pred">'+koNodePred('104',R)+'</div>';
       if(koById('103')) th+='<div class="ko-cell ko-cell-pred ko-cell-3p">'+koNodePred('103',R)+'</div>';
@@ -3875,7 +4221,7 @@ function renderPredictions(){
     }
     th+='</div></div>';
   });
-  $('#pr-tree').innerHTML=hostLegend()+th;
+  $('#pr-tree').innerHTML=hostLegend()+th; sizeBracketTree('#pr-tree');
   const fin=R.res['104'];
   $('#pr-champ').innerHTML = (fin&&fin.winner)? '<div class="champion">'+flag(fin.winner)+'<div><div class="lbl">Your predicted champion</div><div class="nm">'+esc(fin.winner)+'</div></div></div>' : '';
 }
@@ -4058,6 +4404,7 @@ function renderLeaders(){
   var body=$('#lb-body'); if(!body) return;
   syncDayControls();
   var cutoff=revealCutoff(), note=$('#lb-note');
+  if(!DATA_LOADED){ if(note) note.textContent='Loading\u2026'; body.innerHTML=skelRows(8); return; }
   if(note) note.textContent = cutoff ? dayLabel(DB.revealDayIdx|0) : 'Nothing revealed yet';
   if(!cutoff){ LB._agg=null; msClose(); renderLbFilters(); body.innerHTML='<div class="lb-empty">Nothing revealed yet. Use the day slider on the <b>Results</b> tab to catch up \u2014 the leaderboards fill in from the matches you\u2019ve revealed.</div>'; lbLegend(null); return; }
   buildAllDisc();
@@ -4131,7 +4478,7 @@ function renderThirds(cutoff){
 }
 // shared reveal-day controls: the Results slider and the Leaderboards slider drive the same DB.revealDayIdx
 function todayIdx(){ var t=new Date().toISOString().slice(0,10), i=0; MATCH_DATES.forEach(function(d,idx){ if(d<=t) i=idx+1; }); return i; }
-function syncDayControls(){ var i=DB.revealDayIdx|0; [['#bk-day','#bk-daylabel'],['#lb-day','#lb-daylabel'],['#hl-day','#hl-daylabel']].forEach(function(p){ var sl=$(p[0]); if(sl){ sl.max=String(MATCH_DATES.length); if((+sl.value)!==i) sl.value=String(i); } var lab=$(p[1]); if(lab) lab.textContent=dayLabel(i); }); }
+function syncDayControls(){ var i=DB.revealDayIdx|0, max=MATCH_DATES.length, dl=dayLabel(i); [['#bk-day','#bk-daylabel','#bk-prev','#bk-next'],['#lb-day','#lb-daylabel','#lb-prev','#lb-next'],['#hl-day','#hl-daylabel','#hl-prev','#hl-next']].forEach(function(p){ var sl=$(p[0]); if(sl){ sl.max=String(max); if((+sl.value)!==i) sl.value=String(i); sl.setAttribute('aria-valuetext', dl); } var lab=$(p[1]); if(lab) lab.textContent=dl; var pv=$(p[2]); if(pv) pv.disabled=(i<=0); var nx=$(p[3]); if(nx) nx.disabled=(i>=max); }); }
 function setRevealDay(i){ i=Math.max(0,Math.min(MATCH_DATES.length, i|0)); DB.revealDayIdx=i; save(); syncDayControls(); var a=document.querySelector('.view.active'); if(a&&a.id==='view-leaders') renderLeaders(); else if(a&&a.id==='view-highlights') renderHighlights(); else renderBracket(); }
 function persistFilters(){ DB.lbGroups=[].slice.call(LB.groups); DB.lbConfeds=[].slice.call(LB.confeds); DB.lbCountries=[].slice.call(LB.countries); DB.lbNations=[].slice.call(LB.nations); DB.lbLeagues=[].slice.call(LB.leagues); DB.lbTeams=[].slice.call(LB.teams); save(); }
 function msSetName(key){ return key==='nation'?'nations':(key==='league'?'leagues':(key==='country'?'countries':'teams')); }
@@ -4185,6 +4532,8 @@ function renderLbFilters(){
   var ld=$('#lb-day'); if(ld) ld.addEventListener('input',function(e){ setRevealDay(+e.target.value); });
   var ln=$('#lb-none'); if(ln) ln.addEventListener('click',function(){ setRevealDay(0); });
   var lt=$('#lb-today'); if(lt) lt.addEventListener('click',function(){ setRevealDay(todayIdx()); });
+  var lp=$('#lb-prev'); if(lp) lp.addEventListener('click',function(){ setRevealDay((DB.revealDayIdx|0)-1); });
+  var lx=$('#lb-next'); if(lx) lx.addEventListener('click',function(){ setRevealDay((DB.revealDayIdx|0)+1); });
   var lbBody=$('#lb-body');
   if(lbBody){
     var _tip=null;
@@ -4196,10 +4545,17 @@ function renderLbFilters(){
   }
 })();
 renderBracket();
-function refresh(){ return loadData().then(function(){ renderHighlights(); renderBracket(); if($('#view-leaders')&&$('#view-leaders').classList.contains('active')) renderLeaders(); if($('#mm').classList.contains('open')) renderMM(); }).catch(function(){}); }
+(function initTabFromUrl(){
+  var h=(location.hash||'').replace(/^#/,'');
+  var tab=VALID_TABS[h]?h:(VALID_TABS[DB.tab]?DB.tab:'highlights');
+  if((location.hash||'').replace(/^#/,'')!==tab) location.hash=tab; // reflect in the URL (may fire hashchange)
+  activateTab(tab); // ensure it is active even when the hash did not change
+})();
+function refresh(){ return loadData().then(function(){ DATA_LOADED=true; try{updateFavBadge();}catch(e){} renderHighlights(); renderBracket(); if($('#view-leaders')&&$('#view-leaders').classList.contains('active')) renderLeaders(); if($('#mm').classList.contains('open')) renderMM(); }).catch(function(){}); }
 refresh();
 document.addEventListener('visibilitychange', function(){ if(!document.hidden) refresh(); });
 setInterval(function(){ if(!document.hidden) refresh(); }, 300000);
+try{applyHC();}catch(e){} try{renderFavTeams();}catch(e){} try{renderFavBc();}catch(e){} try{updateFavBadge();}catch(e){}
 geoDetect().then(function(){ if(!DB.country){ var cs=$('#set-country'); if(cs&&cs._combo) cs._combo.setValue(COUNTRY); renderHighlights(); if($('#mm').classList.contains('open')) renderMM(); } });
 
 </script>

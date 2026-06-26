@@ -128,7 +128,9 @@ const videos = prev.videos || {};
 const detail = prev.detail || {};
 const afState = prev.afState || { date: '', used: 0, map: {}, tried: {} };
 const DEEP_FORCE = /^(1|true|yes)$/i.test(process.env.DEEP || '');
-const deep = DEEP_FORCE || !prev.lastDeep || (now - Date.parse(prev.lastDeep)) > DEEP_EVERY_MS;
+const DEEP_ONLY = (process.env.DEEP_ONLY || '').trim();   // deep-crawl just this one src; the others stay on the cheap regular crawl
+// A targeted DEEP_ONLY suppresses the global 6-hourly deep so the other feeds stay cheap; DEEP=1 still forces a full deep of everything.
+const deep = DEEP_FORCE || (!DEEP_ONLY && (!prev.lastDeep || (now - Date.parse(prev.lastDeep)) > DEEP_EVERY_MS));
 
 /* ---------- name matching ---------- */
 const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -211,8 +213,8 @@ try {
 /* ===================== 2) highlight videos (multi-source) ===================== */
 let added = 0;
 const unmatched = [];   // recap-looking titles we could not place, for the optional AI step
-async function ytPlaylist(playlistId, onItem) {
-  let pageToken = '', pages = 0; const MAXPAGES = deep ? 100 : 3;
+async function ytPlaylist(playlistId, onItem, deepThis) {
+  let pageToken = '', pages = 0; const MAXPAGES = (deepThis === undefined ? deep : deepThis) ? 100 : 3;
   do {
     const pl = await getJSON('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=' + playlistId + '&key=' + encodeURIComponent(KEY) + (pageToken ? '&pageToken=' + pageToken : ''));
     const items = pl.items || [];
@@ -232,6 +234,7 @@ if (KEY) {
     if (!playlistId) { console.log(`youtube: no playlist configured for ${feed.pl} — skipped`); continue; }
     try {
       let n = 0;
+      const feedDeep = deep || (!!DEEP_ONLY && feed.src === DEEP_ONLY);
       await ytPlaylist(playlistId, it => {
         const title = (it.snippet && it.snippet.title) || '';
         const dur = parseDur(it.contentDetails && it.contentDetails.duration);
@@ -239,8 +242,8 @@ if (KEY) {
         const teams = teamsInText(title); const round = roundOfTitle(title);
         if (teams.length === 2) { if (attach(keyFor(teams, round), feed.src, type, it.id)) { added++; n++; } }
         else if (/highlight|résum|resum/.test(norm(title))) unmatched.push({ id: it.id, title, src: feed.src, type, round });
-      });
-      console.log(`youtube[${feed.pl}->${feed.src}]: +${n} link(s)`);
+      }, feedDeep);
+      console.log(`youtube[${feed.pl}->${feed.src}]: +${n} link(s)` + (feedDeep && !deep ? '  [deep]' : ''));
     } catch (e) { console.error(`youtube[${feed.pl}] failed:`, e.message); }
   }
   console.log(`youtube: ${added} link(s) total; ${unmatched.length} recap title(s) unmatched`);
