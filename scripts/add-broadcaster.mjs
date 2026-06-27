@@ -54,7 +54,23 @@ const flag = n => opts[n] === true || opts[n] === 'true' || opts[n] === '';
 const opt  = n => (typeof opts[n] === 'string' ? opts[n] : undefined);
 const inputArg = positional[0];
 
-let name = opt('name'), id = opt('id'), lang = opt('lang'), tint = opt('tint');
+// Language-code hygiene. People (and YouTube metadata) often hand us a COUNTRY code where a
+// language code is meant — jp for Japanese (should be ja), gr for Greek (el), and so on. Those are
+// well-formed tags so Intl does not throw; it just silently yields English, which means zero aliases
+// and a missed broadcaster (this is exactly what happened to DAZN Japan with `jp`). fixLang maps the
+// common slips, and langHasData catches anything still without real locale data so we can warn loudly
+// instead of failing in silence.
+const LANG_FIX = { jp:'ja', gr:'el', cz:'cs', kr:'ko', cn:'zh', ua:'uk', ee:'et', si:'sl', dk:'da', gb:'en', us:'en', br:'pt', cl:'es', mx:'es', ar:'es' };
+const fixLang = c => { if (!c) return c; const lc = String(c).trim().toLowerCase(); const f = LANG_FIX[lc]; if (f && f !== lc) console.log(`Note: interpreting --lang "${lc}" as "${f}" (that looks like a country code; "${f}" is the matching language code).`); return f || lc; };
+const _EN_REGION = (() => { try { return new Intl.DisplayNames(['en'], { type: 'region' }); } catch { return null; } })();
+const langHasData = lang => {
+  if (lang === 'en') return true;
+  let DN; try { DN = new Intl.DisplayNames([lang], { type: 'region' }); } catch { return false; }
+  if (!_EN_REGION) return true;
+  return ['DE', 'JP', 'NL', 'CN', 'BR'].some(c => { try { return DN.of(c) !== _EN_REGION.of(c); } catch { return false; } });
+};
+
+let name = opt('name'), id = opt('id'), lang = fixLang(opt('lang')), tint = opt('tint');
 let ext = (opt('ext') || '').replace(/^\./, '');
 const noAi = flag('no-ai'), noBuild = flag('no-build'), force = flag('force');
 const linkoutFlag = flag('linkout') ? true : (flag('no-linkout') ? false : undefined);
@@ -300,6 +316,29 @@ let didFeeds = false;
 // ===== 3b) fold a flagged language's country names into the aliases BEFORE the build, so the
 // crawl below already matches titles in that language (e.g. --lang pt makes "Alemanha" match now).
 // An inferred-only language (no --lang) is handled by the idempotent pass after the build. =====
+// English-name -> ISO-code table for the 48 teams, used by foldLangAliases (defined further down).
+const TEAM_CC = {
+  "Mexico":"mx", "South Africa":"za", "South Korea":"kr", "Czechia":"cz", "Canada":"ca", "Bosnia and Herzegovina":"ba",
+  "Qatar":"qa", "Switzerland":"ch", "Brazil":"br", "Morocco":"ma", "Haiti":"ht", "Scotland":"gb-sct",
+  "United States":"us", "Paraguay":"py", "Australia":"au", "Türkiye":"tr", "Germany":"de", "Curaçao":"cw",
+  "Côte d'Ivoire":"ci", "Ecuador":"ec", "Netherlands":"nl", "Japan":"jp", "Sweden":"se", "Tunisia":"tn",
+  "Belgium":"be", "Egypt":"eg", "Iran":"ir", "New Zealand":"nz", "Spain":"es", "Cabo Verde":"cv",
+  "Saudi Arabia":"sa", "Uruguay":"uy", "France":"fr", "Senegal":"sn", "Iraq":"iq", "Norway":"no",
+  "Argentina":"ar", "Algeria":"dz", "Austria":"at", "Jordan":"jo", "Portugal":"pt", "DR Congo":"cd",
+  "Uzbekistan":"uz", "Colombia":"co", "England":"gb-eng", "Croatia":"hr", "Ghana":"gh", "Panama":"pa"
+};
+// England and Scotland are GB subdivisions with no ISO country code, so Intl.DisplayNames cannot
+// localise them. Their names are translated as text instead, from this curated table (lower-case, as
+// stored). A missing or wrong entry can only cause a miss, never a false match, so it is safe to extend.
+// DeepL (via translate-i18n) also translates these two, so this mainly serves the first-build match and
+// the no-DeepL languages.
+const SUBNATIONAL = {
+  "England":  { es:"inglaterra", fr:"angleterre", pt:"inglaterra", de:"england", it:"inghilterra", nl:"engeland", ja:"イングランド", ko:"잉글랜드", zh:"英格兰", id:"inggris", tr:"ingiltere", pl:"anglia", ru:"англия", uk:"англія", sv:"england", da:"england", nb:"england", no:"england", fi:"englanti", cs:"anglie", sk:"anglicko", el:"αγγλία", ro:"anglia", hu:"anglia", bg:"англия", ar:"إنجلترا" },
+  "Scotland": { es:"escocia", fr:"écosse", pt:"escócia", de:"schottland", it:"scozia", nl:"schotland", ja:"スコットランド", ko:"스코틀랜드", zh:"苏格兰", id:"skotlandia", tr:"iskoçya", pl:"szkocja", ru:"шотландия", uk:"шотландія", sv:"skottland", da:"skotland", nb:"skottland", no:"skottland", fi:"skotlanti", cs:"skotsko", sk:"škótsko", el:"σκωτία", ro:"scoția", hu:"skócia", bg:"шотландия", ar:"اسكتلندا" }
+};
+if (lang && lang !== 'en' && !langHasData(lang)) {
+  console.log(`\n⚠  "${lang}" has no locale data, so no team-name aliases can be generated for it and titles in that language will not match. This usually means the code is a country code rather than a language code. The feed will still be added; re-run with the correct language code to fold its aliases.`);
+}
 foldLangAliases(lang);
 
 // ===== 3) run the build, deep-crawling only this feed =====
@@ -341,7 +380,7 @@ if (ids.length && YT_KEY) {
     if (!lang) {
       let lg = s.language;
       for (let i = 1; i < ids.length && i < 6 && !lg; i++) { try { lg = (await videoStatus(ids[i], YT_KEY)).language; } catch {} }
-      if (lg) lang = lg;
+      if (lg) lang = fixLang(lg);
     }
   } catch (e) { console.error('\nCould not inspect the first highlight: ' + e.message); }
 } else {
@@ -355,16 +394,7 @@ if (!lang) lang = 'en';
 // the English-name -> ISO-code table below is embedded so this needs no external file. It is idempotent
 // (skips names already present) and runs every time, so existing languages are simply re-confirmed.
 // England and Scotland are GB subdivisions Intl cannot render, so they keep whatever aliases are curated.
-const TEAM_CC = {
-  "Mexico":"mx", "South Africa":"za", "South Korea":"kr", "Czechia":"cz", "Canada":"ca", "Bosnia and Herzegovina":"ba",
-  "Qatar":"qa", "Switzerland":"ch", "Brazil":"br", "Morocco":"ma", "Haiti":"ht", "Scotland":"gb-sct",
-  "United States":"us", "Paraguay":"py", "Australia":"au", "Türkiye":"tr", "Germany":"de", "Curaçao":"cw",
-  "Côte d'Ivoire":"ci", "Ecuador":"ec", "Netherlands":"nl", "Japan":"jp", "Sweden":"se", "Tunisia":"tn",
-  "Belgium":"be", "Egypt":"eg", "Iran":"ir", "New Zealand":"nz", "Spain":"es", "Cabo Verde":"cv",
-  "Saudi Arabia":"sa", "Uruguay":"uy", "France":"fr", "Senegal":"sn", "Iraq":"iq", "Norway":"no",
-  "Argentina":"ar", "Algeria":"dz", "Austria":"at", "Jordan":"jo", "Portugal":"pt", "DR Congo":"cd",
-  "Uzbekistan":"uz", "Colombia":"co", "England":"gb-eng", "Croatia":"hr", "Ghana":"gh", "Panama":"pa"
-};
+// (The TEAM_CC table is declared higher up, before this function is first called.)
 function foldLangAliases(lng) {
   if (!lng) return 0;
   let DN; try { DN = new Intl.DisplayNames([lng], { type: 'region' }); }
@@ -380,6 +410,12 @@ function foldLangAliases(lng) {
     nm = nm.toLowerCase();
     const have = new Set(aliases[team].map(nrm));
     if (!have.has(nrm(nm))) { aliases[team].push(nm); have.add(nrm(nm)); added++; log.push(`${team} → ${nm}`); }
+  }
+  for (const team of ['England', 'Scotland']) {                                   // the two GB subdivisions Intl can't do, via the curated table
+    if (!aliases[team]) continue;
+    const nm = (SUBNATIONAL[team] || {})[lng]; if (!nm) continue;
+    const have = new Set(aliases[team].map(nrm));
+    if (!have.has(nrm(nm))) { aliases[team].push(nm.toLowerCase()); added++; log.push(`${team} → ${nm}`); }
   }
   if (!added) return 0;
   cfg.aliases = aliases;

@@ -2473,6 +2473,13 @@ var SOURCES = {
   tudnmxico:{ name:'TUDN México', tint:'#42987f', regions:['MX'], lang:'es', logo:'./images/broadcasters/tudn_mexico-42987f.png' },
   livemodetv:{ name:'LiveModeTV', tint:'#000000', regions:['PT'], lang:'pt', logo:'./images/broadcasters/livemodetv-000000.png' },
   sporttv:{ name:'sport tv', tint:'#ffffff', regions:['PT'], lang:'pt', linkOut:true, logo:'./images/broadcasters/sport_tv-ffffff.png' },
+  dsports:{ name:'DSports', tint:'#ffffff', regions:['AR','CL','CO','EC','PE','UY','VE'], lang:'es', linkOut:true, logo:'./images/broadcasters/dsports-ffffff.png' },
+  daznitalia:{ name:'DAZN Italia', tint:'#000000', regions:['IT'], lang:'it', logo:'./images/broadcasters/dazn_italia-000000.png' },
+  supersport:{ name:'SuperSport', tint:'#2f5693', regions:['AO','BW','CV','ER','ET','GH','GM','GQ','GW','KE','LR','LS','MU','MW','MZ','NA','NG','RW','SL','ST','SZ','TZ','UG','ZA','ZM','ZW'], lang:'en', logo:'./images/broadcasters/supersport-2f5693.png' },
+  daznes:{ name:'DAZN ES', tint:'#000000', regions:['ES'], lang:'es', linkOut:true, logo:'./images/broadcasters/dazn_es-000000.png' },
+  tvri:{ name:'TVRI', tint:'#ffffff', regions:['ID'], lang:'id', logo:'./images/broadcasters/tvri-ffffff.svg' },
+  daznjapan:{ name:'DAZN Japan', tint:'#000000', lang:'jp', logo:'./images/broadcasters/dazn_japan-000000.png' },
+  trtspor:{ name:'TRT SPOR', tint:'#ffffff', lang:'tr', logo:'./images/broadcasters/trt_spor-ffffff.png' },
   fifa:{ name:'FIFA', tint:'#000000', lang:'en', linkOut:true, logo:'./images/broadcasters/fifa-000000.png' }
 };
 function srcInCountry(s, cc){ if(s.regions) return s.regions.indexOf(cc)>=0; if(s.blocked) return s.blocked.indexOf(cc)<0; if(s.country) return s.country===cc; return true; }
@@ -2499,7 +2506,7 @@ var COUNTRY_CODES=["AD","AE","AF","AG","AL","AM","AO","AR","AT","AU","AW","AZ","
 var COUNTRY_LANG={FR:'fr',MC:'fr',LU:'fr',CD:'fr',CG:'fr',CI:'fr',SN:'fr',ML:'fr',BF:'fr',NE:'fr',TG:'fr',BJ:'fr',GA:'fr',GN:'fr',CM:'fr',MG:'fr',TD:'fr',HT:'fr',DJ:'fr',KM:'fr',CF:'fr',ES:'es',MX:'es',AR:'es',CO:'es',PE:'es',VE:'es',CL:'es',EC:'es',GT:'es',CU:'es',BO:'es',DO:'es',HN:'es',PY:'es',SV:'es',NI:'es',CR:'es',PA:'es',UY:'es',GQ:'es',PR:'es',PT:'pt',BR:'pt',AO:'pt',MZ:'pt',GW:'pt',CV:'pt',ST:'pt',TL:'pt',DE:'de',AT:'de',CH:'de',LI:'de',IT:'it',SM:'it',VA:'it',PL:'pl',TR:'tr',RO:'ro',MD:'ro',NL:'nl',BE:'nl',SR:'nl',AW:'nl',CW:'nl'};
 function regionName(code, lang){ try{ return new Intl.DisplayNames([lang||LANG||'en'],{type:'region'}).of(code) || code; }catch(e){ return code; } }
 function countryOptions(){ return COUNTRY_CODES.map(function(c){ return [c, regionName(c, LANG)]; }); }
-var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch'],['nl','Nederlands'],['pt','Português']];
+var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch'],['nl','Nederlands'],['pt','Português'],['it','Italiano'],['id','Indonesia'],['ja','日本語'],['tr','Türkçe']];
 // Broadcaster region. navigator.language carries a *language* preference, not a
 // location (an English-Canadian may be on en-GB), so the default country comes
 // from the timezone, which actually tracks where the device is. ipwho.is (below)
@@ -2642,7 +2649,7 @@ function renderMM(){
   var s=$('#mm-sw'); if(s) s.onclick=function(){ setReveal(!isRevealed()); };
   if(MM.tab==='l'){ try{ requestAnimationFrame(function(){ fitLineupNames($('#mm-body')); }); }catch(_e){} }
 }
-var VTYPES=[{k:'x',i:'k_x',d:'d_x'},{k:'r',i:'k_r',d:'d_r'},{k:'g',i:'k_g',d:'d_g'},{k:'playerh',label:'Player Highlights'},{k:'full',label:'Full match'},{k:'minirec',label:'Mini Recap',desc:'~3 min'},{k:'recap',label:'Standard Recap',desc:'~10 min'},{k:'mini',label:'Mini Recap',desc:'~3 min'},{k:'goal',label:'Individual Goal',desc:'~1 min'},{k:'goals',label:'Goals',desc:'~3 min'}];
+var VTYPES=[{k:'x',i:'k_x',d:'d_x'},{k:'r',i:'k_r',d:'d_r'},{k:'g',i:'k_g',d:'d_g'},{k:'playerh',label:'Player Highlights'},{k:'full',label:'Full match'},{k:'minirec',label:'Mini Recap',desc:'~3 min'},{k:'recap',label:'Standard Recap',desc:'~10 min'},{k:'mini',label:'Mini Recap',desc:'~3 min'},{k:'goal',label:'Individual Goal',desc:'~1 min'},{k:'goals',label:'Goals',desc:'~3 min'},{k:'short',label:'Short Highlights',desc:'~3 min'},{k:'hilites',label:'Highlights',desc:'~5 min'},{k:'mylite',label:'My Highlights',desc:'~3 min'}];
 // the highlight kinds a source has for one match, in VTYPES order, with any extra (broadcaster-specific)
 // kinds appended. Canonical kinds carry i18n label/desc keys (i,d); extra kinds carry a plain label.
 function fmtDur(s){ s=Math.round(+s||0); if(s<1) return ''; var h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60; return (h? h+':'+(m<10?'0':'')+m : ''+m)+':'+(x<10?'0':'')+x; }
@@ -2659,7 +2666,7 @@ function hlKindsFor(sv, sk){
 // consistent language name for any source language: use the picker's own spelling (LANGS),
 // fall back to the browser's display name, then the raw code. Covers present and future languages.
 function langName(code){ if(!code) return ''; for(var i=0;i<LANGS.length;i++){ if(LANGS[i][0]===code) return LANGS[i][1]; } try{ var n=new Intl.DisplayNames([code],{type:'language'}).of(code); if(n&&n!==code) return n.charAt(0).toUpperCase()+n.slice(1); }catch(e){} return code; }
-var TYPE_MINS={r:10,x:20,g:30,goals:3,full:95,playerh:5,minirec:3,recap:10,mini:3,goal:1};   // nominal length per highlight kind, ordering only; unknown kinds use 15
+var TYPE_MINS={r:10,x:20,g:30,goals:3,full:95,playerh:5,minirec:3,recap:10,mini:3,goal:1,short:3,hilites:5,mylite:3};   // nominal length per highlight kind, ordering only; unknown kinds use 15
 function renderHL(c){
   if(!c.played) return '<div class="empty-soft">'+esc(t('not_played'))+'</div>';
   var v=VIDS[c.key], reg=regionSources(COUNTRY,LANG), hasReg=reg.some(function(sk){ var sv=v&&v[sk]; return sv&&Object.keys(sv).length>0; }), srcs=reg.slice(); if(SOURCES.fifa&&(LANG==='en'||!hasReg)) srcs.push('fifa'); srcs=favOrderSources(srcs);
@@ -3305,7 +3312,9 @@ var WARN_KEYS={ fifa:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_
                 nossport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
                 rtbfsport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
                 tvaztecadeportes:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'},
-                sporttv:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'} };
+                sporttv:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'},
+                dsports:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'},
+                daznes:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'} };
 function openFifaWarn(vid, source, type){
   var w=(type&&WARN_KEYS[source+':'+type])||WARN_KEYS[source]||WARN_KEYS.fifa;
   var go=$('#fifa-go'); if(go) go.href='https://www.youtube.com/watch?v='+encodeURIComponent(vid||'');

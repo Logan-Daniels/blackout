@@ -133,6 +133,13 @@ const FEEDS = [
   { pl: 'sporttv', src: 'sporttv', split: [{ kw: ['resumo'], type: 'r' }, { kw: ['golo'], type: 'g' }]  },
   { pl: 'sporza', src: 'sporza' },
   { pl: 'caztv_goals', src: 'caztv', type: 'goals' },
+  { pl: 'dsports', src: 'dsports' },
+  { pl: 'daznitalia', src: 'daznitalia' },
+  { pl: 'supersport', src: 'supersport' },
+  { pl: 'daznes', src: 'daznes' },
+  { pl: 'tvri', src: 'tvri' },
+  { pl: 'daznjapan', src: 'daznjapan', split: [{ kw: ['match recap'], type: 'recap' }, { kw: ['ハイライト'], type: 'short' }]  },
+  { pl: 'trtspor', src: 'trtspor' },
 ];
 
 /* ---------- load existing data.json (merge target so links persist) ---------- */
@@ -151,8 +158,14 @@ const deep = DEEP_FORCE || (!DEEP_ONLY && (!prev.lastDeep || (now - Date.parse(p
 const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 const ALIAS_RX = [];
 for (const team of Object.keys(ALIASES)) for (const a of ALIASES[team]) {
-  let n = norm(a).replace(/[.'’&]/g, ' ').trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
-  ALIAS_RX.push({ team, rx: new RegExp('\\b' + n + '\\b') });
+  const clean = norm(a).replace(/[.'’&]/g, ' ').trim();
+  if (!clean) continue;
+  const n = clean.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+  // \b is only meaningful next to [A-Za-z0-9_]; beside CJK it never fires, so a Japanese/Chinese
+  // alias wrapped in \b...\b can never match. Apply the boundary only where the alias edge is a
+  // Latin letter or digit; for a CJK edge, match as a substring. Latin aliases are unchanged.
+  const wb = c => (/[a-z0-9]/i.test(c) ? '\\b' : '');
+  ALIAS_RX.push({ team, rx: new RegExp(wb(clean[0]) + n + wb(clean[clean.length - 1])) });
 }
 function teamsInText(text) {
   const n = norm(text).replace(/[.'’&]/g, ' '); const found = [];

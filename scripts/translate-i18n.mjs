@@ -13,8 +13,10 @@
 // index.html so the picker lists exactly the languages that have a locale file.
 //
 // DeepL notes: a FREE key ends in ":fx" and automatically uses api-free.deepl.com. DeepL supports
-// about thirty target languages; a code it does not support is reported and skipped. A 456 means the
-// monthly character quota is spent. Set DEEPL_API_URL only if you need to point at a proxy.
+// about thirty target languages; for a code it does not support, this falls back to MyMemory (no key
+// needed; set MYMEMORY_EMAIL for a higher allowance) and then to an English copy, so the language is
+// still created and selectable rather than silently dropped. A 456 means the monthly character quota is
+// spent. Set DEEPL_API_URL only if you need to point at a proxy.
 //
 // Usage (run locally; the DeepL endpoint is not on the CI allowlist):
 //   DEEPL_API_KEY=xxxxxxxx:fx node scripts/translate-i18n.mjs de
@@ -46,7 +48,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = existsSync(join(here, '..', 'i18n')) ? join(here, '..') : process.cwd();
 const i18nDir = join(root, 'i18n');
 const indexPath = join(root, 'index.html');
-const fixturesPath = join(root, 'wc-fixtures.json');
+const fixturesPath = [join(root, 'data', 'wc-fixtures.json'), join(root, 'wc-fixtures.json')].find(existsSync) || join(root, 'data', 'wc-fixtures.json');
 const enPath = join(i18nDir, 'en.json');
 if (!existsSync(enPath)) { console.error('Cannot find ' + enPath); process.exit(1); }
 const en = JSON.parse(readFileSync(enPath, 'utf8'));
@@ -157,15 +159,105 @@ async function translateOne(lang, target) {
   return { called: true };
 }
 
+// Best-effort fallback translator for languages DeepL cannot do. MyMemory (api.mymemory.translated.net)
+// needs no key for modest volumes, which the UI strings fit. It translates one short string per request,
+// so to avoid corrupting them it leaves any string containing a {placeholder} or <markup> in English;
+// likewise any per-string failure, rate-limit, or timeout falls back to English. Set MYMEMORY_EMAIL for
+// a higher daily allowance. Returns texts aligned with the input plus a count actually translated.
+async function myMemoryTranslate(texts, lang) {
+  const out = []; let okCount = 0;
+  const email = process.env.MYMEMORY_EMAIL || '';
+  for (const t of texts) {
+    if (!t || /[{<]/.test(t)) { out.push(t); continue; }           // keep placeholders/markup as English
+    let translated = t;
+    try {
+      const u = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(t) +
+                '&langpair=' + encodeURIComponent('en|' + lang) + (email ? '&de=' + encodeURIComponent(email) : '');
+      const res = await fetch(u, { signal: AbortSignal.timeout(8000) });
+      if (res.ok) {
+        const j = await res.json();
+        const cand = j && j.responseData && j.responseData.translatedText;
+        const bad = !cand || (j.responseStatus && j.responseStatus !== 200) || /MYMEMORY WARNING|QUOTA|INVALID/i.test(cand + ' ' + (j.responseDetails || ''));
+        if (!bad && cand.toLowerCase() !== t.toLowerCase()) { translated = decode(cand); okCount++; }
+      }
+    } catch {}
+    out.push(translated);
+    await sleep(250);
+  }
+  return { texts: out, okCount };
+}
+
+// When DeepL cannot do a language, still create i18n/<lang>.json so the language is selectable and the
+// picker rebuild below includes it. Try MyMemory first, then fall back to English for anything it could
+// not translate. Respects an existing file and --force exactly like translateOne.
+async function fallbackCreate(lang) {
+  const outPath = join(i18nDir, lang + '.json');
+  const created = !existsSync(outPath);
+  const existing = created ? {} : JSON.parse(readFileSync(outPath, 'utf8'));
+  const keys = Object.keys(en);
+  const todo = keys.filter(k => force || !(k in existing));
+  if (!todo.length) { console.log('  ' + lang + '.json already complete (' + keys.length + ' keys).'); return { created: false }; }
+  console.log('  Falling back to MyMemory for ' + englishName(lang) + ' (' + todo.length + ' string(s); strings with placeholders or markup stay English)...');
+  let texts;
+  try { const r = await myMemoryTranslate(todo.map(k => en[k]), lang); texts = r.texts; console.log('    MyMemory translated ' + r.okCount + ' of ' + todo.length + '; the rest stay English.'); }
+  catch { texts = todo.map(k => en[k]); console.log('    MyMemory unavailable; using English for all strings.'); }
+  const map = {}; todo.forEach((k, i) => { map[k] = texts[i]; });
+  const out = {};
+  for (const k of keys) out[k] = (typeof map[k] === 'string' && map[k].trim()) ? map[k] : (k in existing ? existing[k] : en[k]);
+  if (!existsSync(i18nDir)) mkdirSync(i18nDir, { recursive: true });
+  writeFileSync(outPath, JSON.stringify(out, null, 2) + '\n');
+  console.log('  Wrote ' + outPath + ' (fallback). The language is now selectable; untranslated strings show in English.');
+  return { created };
+}
+
+// England and Scotland are GB subdivisions with no ISO country code, so Intl cannot localise them;
+// their names are translated as text from this curated table (lower-case). Safe to extend: a wrong or
+// missing entry only causes a miss, never a false match.
+const SUBNATIONAL = {
+  "England":  { es:"inglaterra", fr:"angleterre", pt:"inglaterra", de:"england", it:"inghilterra", nl:"engeland", ja:"イングランド", ko:"잉글랜드", zh:"英格兰", id:"inggris", tr:"ingiltere", pl:"anglia", ru:"англия", uk:"англія", sv:"england", da:"england", nb:"england", no:"england", fi:"englanti", cs:"anglie", sk:"anglicko", el:"αγγλία", ro:"anglia", hu:"anglia", bg:"англия", ar:"إنجلترا" },
+  "Scotland": { es:"escocia", fr:"écosse", pt:"escócia", de:"schottland", it:"scozia", nl:"schotland", ja:"スコットランド", ko:"스코틀랜드", zh:"苏格兰", id:"skotlandia", tr:"iskoçya", pl:"szkocja", ru:"шотландия", uk:"шотландія", sv:"skottland", da:"skotland", nb:"skottland", no:"skottland", fi:"skotlanti", cs:"skotsko", sk:"škótsko", el:"σκωτία", ro:"scoția", hu:"skócia", bg:"шотландия", ar:"اسكتلندا" }
+};
+// For a DeepL-unsupported language, fold the CLDR localized country names from Intl.DisplayNames plus
+// the curated England/Scotland names into wc-fixtures.json (DeepL's half of addAliases is unavailable).
+// Adds only, never removes.
+function foldIntlAliases(lang) {
+  if (noAliases || !existsSync(fixturesPath)) return;
+  let region; try { region = new Intl.DisplayNames([lang], { type: 'region' }); } catch { return; }
+  const cfg = JSON.parse(readFileSync(fixturesPath, 'utf8')); cfg.aliases = cfg.aliases || {};
+  let added = 0;
+  for (const team of Object.keys(cfg.aliases)) {
+    let cand = null;
+    const iso = ISO[team];
+    if (iso) { try { cand = region.of(iso); } catch {} }
+    else if (SUBNATIONAL[team]) cand = SUBNATIONAL[team][lang];   // England / Scotland: translated as text
+    if (!cand) continue;
+    const have = new Set(cfg.aliases[team].map(norm));
+    if (!have.has(norm(cand))) { cfg.aliases[team].push(String(cand).toLowerCase()); have.add(norm(cand)); added++; }
+  }
+  if (added) { writeFileSync(fixturesPath, JSON.stringify(cfg, null, 2) + '\n'); console.log('  Added ' + added + ' ' + lang + ' team-name alias(es) to wc-fixtures.json from Intl/table.'); }
+}
+
 // --- run ---
 for (let i = 0; i < langs.length; i++) {
   const lang = langs[i];
   if (lang === 'en') { console.log('Skipping en (it is the source language).'); continue; }
   const target = DEEPL[lang];
-  if (!target) { console.error('DeepL does not support "' + lang + '". Supported: ' + supportedList() + '. Skipping.'); continue; }
+  if (!target) {
+    console.error('DeepL does not support "' + lang + '" (supported: ' + supportedList() + ').');
+    const fb = await fallbackCreate(lang);
+    if (!noAliases && (fb.created || force)) foldIntlAliases(lang);
+    if (i < langs.length - 1) await sleep(delayMs);
+    continue;
+  }
   const created = !existsSync(join(i18nDir, lang + '.json'));
   const res = await translateOne(lang, target);
-  if (!noAliases && !res.failed && (created || force)) await addAliases(lang, target);
+  if (res.failed) {
+    console.log('  DeepL did not complete for "' + lang + '"; trying the fallback chain instead.');
+    const fb = await fallbackCreate(lang);
+    if (!noAliases && (fb.created || force)) foldIntlAliases(lang);
+  } else if (!noAliases && (created || force)) {
+    await addAliases(lang, target);
+  }
   if (i < langs.length - 1) await sleep(delayMs);
 }
 
