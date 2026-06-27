@@ -7,6 +7,9 @@
 //   2. reads the brand colour from the logo file you have dropped in
 //      images/broadcasters/<slug>-<hex>.png|svg (no --tint needed),
 //   3. wires the feed into data/wc-fixtures.json and build-data.mjs,
+//   3b. folds the broadcast language's country names (from Intl.DisplayNames,
+//      via an embedded English->ISO-code table) into the wc-fixtures aliases, so
+//      titles like "Alemanha" or "Hiszpania" match without hand-curated aliases,
 //   4. runs build-data.mjs, deep-crawling ONLY this feed (DEEP_ONLY) while the
 //      rest stay on the cheap regular crawl; the crawl already stops at the
 //      tournament start, so a channel's uploads playlist stays bounded,
@@ -154,37 +157,150 @@ function findLogo() {
   const re = new RegExp('^' + nameSlug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '-([0-9a-fA-F]{6})\\.(png|svg)$', 'i');
   return files.find(x => re.test(x)) || null;
 }
-if (!tint) {
-  const f = findLogo();
-  if (f) { const m = /-([0-9a-fA-F]{6})\.(png|svg)$/i.exec(f); tint = m[1].toLowerCase(); if (!ext) ext = m[2].toLowerCase(); }
+if (!tint || !ext) {                       // scan the folder to learn colour and/or extension from the real file
+  const f = findLogo();                    // matches <slug>-<hex>.png OR .svg (or whatever --logo points at)
+  if (f) { const m = /-([0-9a-fA-F]{6})\.(png|svg)$/i.exec(f); if (!tint) tint = m[1].toLowerCase(); if (!ext) ext = m[2].toLowerCase(); }
 }
-if (!ext) ext = 'png';
+if (!ext) ext = 'png';                      // last resort when only --tint was given and no matching file exists
 if (!tint || !/^[0-9a-f]{6}$/.test(tint)) {
   console.error(`No brand colour found. Drop the logo at images/broadcasters/${nameSlug}-<hex>.${ext} (the colour is read from the part after the dash), or pass --tint RRGGBB.`);
   process.exit(1);
 }
 const logo = `./images/broadcasters/${nameSlug}-${tint}.${ext}`;
 
-console.log(`${name}  (key "${id}")  ·  #${tint}  ·  ${fromChannel ? 'channel uploads ' : 'playlist '}${PL}`);
+// ===== resolve every playlist for this one source, and label each playlist's highlight type =====
+// One source (one logo) can be fed by several playlists, each a different KIND of highlight. With a
+// single input we keep the classic behaviour and let build-data's per-video classifier decide the
+// type. With several inputs we label each playlist once (Gemini on its titles, duration/keyword
+// fallback) and force that type for the whole playlist, so all of them show under the one logo.
+async function playlistTitles(plId, want) {
+  const out = []; let pageToken = '';
+  do {
+    const j = await ytGet('playlistItems?part=snippet&maxResults=50&playlistId=' + encodeURIComponent(plId) + (pageToken ? '&pageToken=' + pageToken : ''));
+    for (const it of (j.items || [])) { const tt = it.snippet && it.snippet.title; if (tt && !/^(Private|Deleted) video$/i.test(tt)) out.push(tt); }
+    pageToken = j.nextPageToken || '';
+  } while (pageToken && out.length < want);
+  return out.slice(0, want);
+}
+const CANON_TYPES = { r: 'Highlights', x: 'Extended highlights', g: 'Game in 30' };
+function heuristicType(titles) {
+  const j = (' ' + titles.join(' \n ') + ' ').toLowerCase();
+  if (/game in 30|\bin ?30\b/.test(j)) return { key: 'g', label: CANON_TYPES.g };
+  if (/condensed|compacto|condensado|kompakt/.test(j)) return { key: 'g', label: CANON_TYPES.g };
+  if (/full match|jogo completo|partido completo|match complet|ganzes spiel/.test(j)) return { key: 'full', label: 'Full match' };
+  if (/\bgoals?\b|\bgols?\b|\bgoles\b|\bbuts\b|\btore\b/.test(j) && !/highlight|melhores momentos|r[eé]sum|samenvatting/.test(j)) return { key: 'goals', label: 'Goals' };
+  if (/extended|estendid|prolongad|ausf[uü]hrlich/.test(j)) return { key: 'x', label: CANON_TYPES.x };
+  return { key: 'r', label: CANON_TYPES.r };
+}
+const TYPE_MINS_DEFAULT = { r: 10, x: 20, g: 30, goals: 3, full: 95, playerh: 5 };
+const minsFor = key => (TYPE_MINS_DEFAULT[key] != null ? TYPE_MINS_DEFAULT[key] : 15);
+
+// Look at one playlist's titles and decide whether its match highlights come in a single format or
+// several formats of the SAME matches (e.g. a short recap AND a longer highlights+goals per game).
+// Returns an array of kinds: length 1 = one format; length >= 2 = a split, each kind carrying keywords.
+async function analyzePlaylist(titles) {
+  const fb = heuristicType(titles);
+  const single = [{ key: fb.key, label: fb.label, mins: minsFor(fb.key) }];
+  if (noAi || !GEMINI_KEY || titles.length < 6) return single;
+  const prompt =
+    "These are video titles from ONE playlist on a football broadcaster's YouTube channel. " +
+    "Some are match highlights; others may be previews, interviews or studio shows — ignore those. " +
+    "Decide whether the match highlights come in MULTIPLE distinct FORMATS of the SAME matches " +
+    "(for example a short ~3 min recap AND a longer ~5 min highlights-and-goals for each game), or just ONE format. " +
+    "Tell formats apart by the same matchups appearing under different wordings. " +
+    "Return ONLY a JSON array: one element for a single format, one per format if several:\n" +
+    '[{"key":"<short lowercase id, max 8 letters>","label":"<short English label>","mins":<approx whole minutes>,"kw":["<lowercase word/phrase appearing in that format\'s titles that tells it apart>"]}]\n' +
+    "Use 'r' for a generic ~10 min recap, 'x' extended, 'g' game-in-30 when they fit. Each kw must actually appear in that format's titles. For a single format kw may be omitted.\n\n" +
+    titles.slice(0, 60).map((t, i) => (i + 1) + '. ' + t).join('\n');
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_KEY}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0, responseMimeType: 'application/json' } }) });
+    if (!res.ok) return single;
+    const data = await res.json();
+    const text = ((data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) || []).map(p => p.text || '').join('').trim();
+    let arr = JSON.parse(text.replace(/^```json\s*|\s*```$/g, ''));
+    if (!Array.isArray(arr)) arr = [arr];
+    const nrm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const nt = titles.map(nrm);
+    const kinds = [], seen = {};
+    for (const o of arr) {
+      let key = String((o && o.key) || '').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 8);
+      if (!key) continue;
+      while (seen[key]) key += '2';
+      seen[key] = 1;
+      const label = CANON_TYPES[key] || String((o && o.label) || '').trim().slice(0, 28) || key;
+      const mins = (o && Number.isFinite(+o.mins) && +o.mins > 0) ? Math.round(+o.mins) : minsFor(key);
+      const kw = Array.isArray(o && o.kw) ? o.kw.map(k => String(k).toLowerCase().trim()).filter(Boolean) : [];
+      kinds.push({ key, label, mins, kw });
+    }
+    if (kinds.length <= 1) return single;
+    const ok = kinds.filter(k => k.kw.length && k.kw.some(w => nt.filter(t => t.includes(nrm(w))).length >= 2));   // a split is only believable if each format's keywords really occur in the titles
+    return ok.length >= 2 ? ok : single;
+  } catch { return single; }
+}
+
+const extraInputs = positional.slice(1).map(parseInput);
+const feeds = [];
+const allInputs = [input, ...extraInputs.filter(Boolean)];
+{
+  const seenKey = {};
+  const uniq = k => { while (seenKey[k]) k += '2'; seenKey[k] = 1; return k; };
+  for (let i = 0; i < allInputs.length; i++) {
+    const inp = allInputs[i];
+    let plId;
+    if (i === 0) plId = PL;
+    else { try { plId = inp.kind === 'playlist' ? inp.id : (await resolveChannel(inp.ref)).uploads; } catch (e) { console.error(`  input ${i + 1}: ${e.message}; skipped`); continue; } }
+    let titles = []; try { titles = await playlistTitles(plId, 60); } catch {}
+    const kinds = await analyzePlaylist(titles);
+    if (kinds.length >= 2) {                                   // one playlist, several formats -> a split feed
+      for (const k of kinds) k.key = uniq(k.key);
+      feeds.push({ plKey: (allInputs.length === 1 ? id : id + '_' + i), plId, split: kinds.map(k => ({ kw: k.kw, type: k.key })), kinds, titles });
+      console.log(`\nplaylist ${i + 1} ${plId} -> ${kinds.length} formats: ` + kinds.map(k => `${k.key} "${k.label}" ~${k.mins}m [${k.kw.join('|')}]`).join(', '));
+    } else if (allInputs.length === 1) {                       // single playlist, single format -> let the classifier decide per video (classic)
+      feeds.push({ plKey: id, plId, type: null, label: null, titles });
+    } else {                                                   // one of several playlists, single format -> typed feed
+      const k = kinds[0]; const uk = uniq(k.key);
+      feeds.push({ plKey: id + '_' + uk, plId, type: uk, label: k.label, mins: k.mins, titles });
+      console.log(`  playlist ${i + 1} ${plId} -> ${uk} (${k.label})`);
+    }
+  }
+  if (!feeds.length) { console.error('No playlists resolved.'); process.exit(1); }
+}
+
+console.log(`\n${name}  (key "${id}")  ·  #${tint}  ·  ${feeds.length} playlist${feeds.length > 1 ? 's' : ''}`);
 
 // ===== 1) data/wc-fixtures.json — register the playlist =====
 let fixturesTxt = readFileSync(fixturesPath, 'utf8');
 try { JSON.parse(fixturesTxt); } catch (e) { console.error('wc-fixtures.json is not valid JSON: ' + e.message); process.exit(1); }
-const existingPl = (JSON.parse(fixturesTxt).playlists || {})[id];
 let didFixtures = false;
-if (existingPl && !force) {
-  console.log(`playlists["${id}"] already present (${existingPl}); left as is (use --force to overwrite).`);
-} else {
-  if (existingPl) fixturesTxt = fixturesTxt.replace(new RegExp('("' + id + '"\\s*:\\s*)"[^"]*"'), '$1"' + PL + '"');
-  else            fixturesTxt = fixturesTxt.replace(/("playlists"\s*:\s*\{)/, `$1\n    "${id}": "${PL}",`);
-  writeFileSync(fixturesPath, fixturesTxt); didFixtures = true;
+{
+  const existing = JSON.parse(fixturesTxt).playlists || {};
+  const toAdd = [], toUpd = [];
+  for (const f of feeds) {
+    if (existing[f.plKey]) { if (force && existing[f.plKey] !== f.plId) toUpd.push(f); else console.log(`playlists["${f.plKey}"] already present; left as is (use --force).`); }
+    else toAdd.push(f);
+  }
+  for (const f of toUpd) fixturesTxt = fixturesTxt.replace(new RegExp('("' + f.plKey + '"\\s*:\\s*)"[^"]*"'), '$1"' + f.plId + '"');
+  if (toAdd.length) fixturesTxt = fixturesTxt.replace(/("playlists"\s*:\s*\{)/, `$1\n` + toAdd.map(f => `    "${f.plKey}": "${f.plId}",`).join('\n'));
+  if (toAdd.length || toUpd.length) { writeFileSync(fixturesPath, fixturesTxt); didFixtures = true; }
 }
 
 // ===== 2) build-data.mjs — register the FEEDS entry =====
 let buildTxt = readFileSync(buildPath, 'utf8');
 let didFeeds = false;
-if (new RegExp(`pl:\\s*'${id}'`).test(buildTxt)) { console.log(`FEEDS already has pl:'${id}'.`); }
-else { buildTxt = buildTxt.replace(/(const FEEDS = \[[\s\S]*?)\n\];/, `$1\n  { pl: '${id}', src: '${id}' },\n];`); writeFileSync(buildPath, buildTxt); didFeeds = true; }
+{
+  const lines = [];
+  for (const f of feeds) {
+    if (new RegExp(`pl:\\s*'${f.plKey}'`).test(buildTxt)) { console.log(`FEEDS already has pl:'${f.plKey}'.`); continue; }
+    lines.push(`  { pl: '${f.plKey}', src: '${id}'${f.split ? `, split: [${f.split.map(r => `{ kw: [${r.kw.map(k => `'${String(k).replace(/'/g, "\\'")}'`).join(', ')}], type: '${r.type}' }`).join(', ')}] ` : f.type ? `, type: '${f.type}'` : ''} },`);
+  }
+  if (lines.length) { buildTxt = buildTxt.replace(/(const FEEDS = \[[\s\S]*?)\n\];/, `$1\n` + lines.join('\n') + `\n];`); writeFileSync(buildPath, buildTxt); didFeeds = true; }
+}
+
+// ===== 3b) fold a flagged language's country names into the aliases BEFORE the build, so the
+// crawl below already matches titles in that language (e.g. --lang pt makes "Alemanha" match now).
+// An inferred-only language (no --lang) is handled by the idempotent pass after the build. =====
+foldLangAliases(lang);
 
 // ===== 3) run the build, deep-crawling only this feed =====
 let built = false;
@@ -233,6 +349,48 @@ if (ids.length && YT_KEY) {
 }
 if (!lang) lang = 'en';
 
+// ===== 4b) auto-fold this language's country names into the matcher's aliases =====
+// So highlight titles written in `lang` (e.g. "Alemanha", "Países Baixos", "Coreia do Sul") match
+// straight away, with no hand-curated aliases and no DeepL. Localised names come from Intl.DisplayNames;
+// the English-name -> ISO-code table below is embedded so this needs no external file. It is idempotent
+// (skips names already present) and runs every time, so existing languages are simply re-confirmed.
+// England and Scotland are GB subdivisions Intl cannot render, so they keep whatever aliases are curated.
+const TEAM_CC = {
+  "Mexico":"mx", "South Africa":"za", "South Korea":"kr", "Czechia":"cz", "Canada":"ca", "Bosnia and Herzegovina":"ba",
+  "Qatar":"qa", "Switzerland":"ch", "Brazil":"br", "Morocco":"ma", "Haiti":"ht", "Scotland":"gb-sct",
+  "United States":"us", "Paraguay":"py", "Australia":"au", "Türkiye":"tr", "Germany":"de", "Curaçao":"cw",
+  "Côte d'Ivoire":"ci", "Ecuador":"ec", "Netherlands":"nl", "Japan":"jp", "Sweden":"se", "Tunisia":"tn",
+  "Belgium":"be", "Egypt":"eg", "Iran":"ir", "New Zealand":"nz", "Spain":"es", "Cabo Verde":"cv",
+  "Saudi Arabia":"sa", "Uruguay":"uy", "France":"fr", "Senegal":"sn", "Iraq":"iq", "Norway":"no",
+  "Argentina":"ar", "Algeria":"dz", "Austria":"at", "Jordan":"jo", "Portugal":"pt", "DR Congo":"cd",
+  "Uzbekistan":"uz", "Colombia":"co", "England":"gb-eng", "Croatia":"hr", "Ghana":"gh", "Panama":"pa"
+};
+function foldLangAliases(lng) {
+  if (!lng) return 0;
+  let DN; try { DN = new Intl.DisplayNames([lng], { type: 'region' }); }
+  catch { console.log(`\nNo Intl locale data for "${lng}"; skipping automatic team-name aliases.`); return 0; }
+  let cfg; try { cfg = JSON.parse(readFileSync(fixturesPath, 'utf8')); } catch { return 0; }
+  const aliases = cfg.aliases || {};
+  const nrm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  let added = 0; const log = [];
+  for (const team of Object.keys(aliases)) {
+    const code = TEAM_CC[team]; if (!code || code.includes('-')) continue;        // unknown team, or a GB subdivision Intl can't localise
+    let nm; try { nm = DN.of(code.toUpperCase()); } catch { continue; }
+    if (!nm || nm.toUpperCase() === code.toUpperCase()) continue;                  // no localisation for this code
+    nm = nm.toLowerCase();
+    const have = new Set(aliases[team].map(nrm));
+    if (!have.has(nrm(nm))) { aliases[team].push(nm); have.add(nrm(nm)); added++; log.push(`${team} → ${nm}`); }
+  }
+  if (!added) return 0;
+  cfg.aliases = aliases;
+  writeFileSync(fixturesPath, JSON.stringify(cfg, null, 1));
+  didFixtures = true;
+  console.log(`\nAdded ${added} "${lng}" team-name alias(es) to wc-fixtures.json so this feed's titles match: ${log.slice(0, 8).join(', ')}${log.length > 8 ? ', …' : ''}`);
+  return added;
+}
+const _lateAliases = foldLangAliases(lang);   // catches a language that was inferred (not flagged) after the build ran
+if (_lateAliases && !noBuild) console.log(`↻ Re-run the build so the "${lang}" titles match:  DEEP_ONLY=${id} node scripts/build-data.mjs`);
+
 // ===== 5) if it cannot be embedded, decide the warning style from the real titles =====
 async function titlesRevealScores(titles) {
   const prompt =
@@ -264,18 +422,45 @@ async function fetchTitles(vidIds) {
   return out.filter(Boolean);
 }
 if (linkOut) {
-  if (['rds', 'fifa'].includes(warnFlag)) { warnStyle = warnFlag; }
-  else if (!noAi && GEMINI_KEY && ids.length && YT_KEY) {
-    try {
-      const titles = await fetchTitles(ids.slice(0, 40));
-      if (titles.length) {
-        console.log(`\nAsking ${model} whether ${titles.length} of "${name}"'s titles reveal scores...`);
-        const reveals = await titlesRevealScores(titles);
-        warnStyle = reveals ? 'fifa' : 'rds';
-        console.log(`  titles ${reveals ? 'DO' : 'do not'} reveal scores -> ${warnStyle} warning`);
-      } else warnStyle = 'fifa';
-    } catch (e) { console.error('  title check failed (' + e.message + '); defaulting to fifa'); warnStyle = 'fifa'; }
-  } else { warnStyle = 'fifa'; }  // cannot check -> safer spoiler warning
+  for (const f of feeds) {
+    if (['rds', 'fifa'].includes(warnFlag)) { f.warnStyle = warnFlag; continue; }
+    let titles = (f.titles && f.titles.length) ? f.titles : [];
+    if (!noAi && GEMINI_KEY && !titles.length) { try { titles = await playlistTitles(f.plId, 40); } catch {} }
+    if (!noAi && GEMINI_KEY && titles.length) {
+      try {
+        console.log(`\nAsking ${model} whether ${f.plKey} titles reveal scores...`);
+        f.warnStyle = (await titlesRevealScores(titles)) ? 'fifa' : 'rds';
+        console.log(`  ${f.plKey}: ${f.warnStyle === 'fifa' ? 'reveals scores' : 'clean'} -> ${f.warnStyle} popup`);
+      } catch (e) { console.error('  title check failed (' + e.message + '); defaulting to fifa'); f.warnStyle = 'fifa'; }
+    } else f.warnStyle = 'fifa';   // cannot check -> safer spoiler warning
+  }
+  warnStyle = feeds[0].warnStyle;
+}
+
+// ===== 5c) new interface language — register it on the site via translate-i18n =====
+// A broadcaster in a language the interface does not have yet (NOS in Dutch was the first) should make
+// that language selectable. translate-i18n creates i18n/<lang>.json (via DeepL), folds the language's
+// team-name spellings into wc-fixtures.json, and rebuilds the LANGS picker. Right-to-left languages are
+// flagged rather than auto-added: the layout is left-to-right only, so they need manual mirroring work.
+if (lang && lang !== 'en') {
+  const RTL = ['ar', 'he', 'fa', 'ur', 'ps', 'sd', 'ug', 'yi'];
+  const uiExists = existsSync(join(ROOT, 'i18n', lang + '.json'));
+  if (RTL.includes(lang)) {
+    console.log(`\nNote: ${name} is in ${lang}, a right-to-left language; the interface is left-to-right only, so it was not auto-added. Adding ${lang} needs manual RTL layout work.`);
+  } else if (uiExists) {
+    console.log(`\nInterface language "${lang}" is already present; leaving it as is.`);
+  } else {
+    const ti = findIn('translate-i18n.mjs', [here, join(ROOT, 'scripts'), ROOT, process.cwd()]);
+    const deeplKey = process.env.DEEPL_API_KEY || process.env.DEEPL_AUTH_KEY || keyFile('deepl');
+    if (ti && deeplKey) {
+      console.log(`\nNew interface language "${lang}" — adding it to the site via translate-i18n (DeepL)...`);
+      const r = spawnSync('node', [ti, lang], { stdio: 'inherit', cwd: ROOT, env: process.env });
+      if (r.status !== 0) console.error(`  translate-i18n exited ${r.status}; add ${lang} later with:  node scripts/translate-i18n.mjs ${lang}`);
+      else console.log(`  re-run the build to pick up the new ${lang} team-name spellings:  DEEP=1 node scripts/build-data.mjs`);
+    } else {
+      console.log(`\nNote: ${name} broadcasts in "${lang}", which the interface does not support yet. Add it with:\n  node scripts/translate-i18n.mjs ${lang}    (needs a DeepL key in keys/deepl.txt or DEEPL_API_KEY; a free key ends in ":fx")`);
+    }
+  }
 }
 
 // ===== 6) index.html — SOURCES card, optional WARN_KEYS, COUNTRY_CODES top-up =====
@@ -293,13 +478,18 @@ if (new RegExp(`\\n\\s*${id}:\\{`).test(indexTxt)) {
 }
 if (linkOut) {
   const warnBlock = (indexTxt.match(/var WARN_KEYS=\{[\s\S]*?\};/) || [''])[0];
-  if (new RegExp(`\\b${id}:\\{`).test(warnBlock)) { console.log(`WARN_KEYS already has ${id}.`); }
-  else {
+  const entries = [];
+  for (const f of feeds) {
+    const wkey = f.split ? id : ((feeds.length === 1) ? id : (id + ':' + f.type));
+    const kq = /[^A-Za-z0-9_$]/.test(wkey) ? `'${wkey}'` : wkey;          // keys with ':' must be quoted
+    if (new RegExp(`(^|[,{\\s])'?${wkey.replace(/[.*+?^${}()|[\]\\:]/g, '\\$&')}'?\\s*:\\s*\\{`).test(warnBlock)) { console.log(`WARN_KEYS already has ${wkey}.`); continue; }
+    const style = (f.warnStyle === 'rds') ? 'rds' : 'fifa';
+    entries.push(`\n                ${kq}:{h:'${style}_h',b:'${style}_b',q:'${style}_q',no:'${style}_no',noSub:'${style}_no_sub',go:'${style}_go',goSub:'${style}_go_sub'}`);
+  }
+  if (entries.length) {
     const ANCHOR = /(var WARN_KEYS=\{[\s\S]*?)(\s\};)(\nfunction openFifaWarn)/;
     if (!ANCHOR.test(indexTxt)) { console.error('Could not find WARN_KEYS closing in index.html.'); process.exit(1); }
-    const style = warnStyle === 'rds' ? 'rds' : 'fifa';
-    const warnEntry = `\n                ${id}:{h:'${style}_h',b:'${style}_b',q:'${style}_q',no:'${style}_no',noSub:'${style}_no_sub',go:'${style}_go',goSub:'${style}_go_sub'}`;
-    indexTxt = indexTxt.replace(ANCHOR, `$1,${warnEntry} };$3`);
+    indexTxt = indexTxt.replace(ANCHOR, `$1,${entries.join(',')} };$3`);
     didWarnKeys = true;
   }
 }
@@ -312,12 +502,31 @@ if (regions && regions.length) {
     if (add.length) { const merged = [...have, ...add].sort(); indexTxt = indexTxt.replace(/var COUNTRY_CODES=\[[^\]]*\];/, 'var COUNTRY_CODES=[' + merged.map(c => `"${c}"`).join(',') + '];'); didCC = true; }
   }
 }
+{
+  const allKinds = [];
+  for (const f of feeds) { if (f.kinds) for (const k of f.kinds) allKinds.push(k); else if (f.type) allKinds.push({ key: f.type, label: f.label || f.type, mins: f.mins }); }
+  const vm = indexTxt.match(/var VTYPES=\[([\s\S]*?)\];/);
+  if (vm) {
+    const present = new Set([...vm[1].matchAll(/k\s*:\s*'([^']+)'/g)].map(x => x[1]));
+    const extra = [];
+    for (const k of allKinds) { if (['r', 'x', 'g'].includes(k.key) || present.has(k.key)) continue; present.add(k.key); const d = k.mins ? `~${k.mins} min` : ''; extra.push(`{k:'${k.key}',label:'${String(k.label || k.key).replace(/'/g, "\\'")}'${d ? `,desc:'${d}'` : ''}}`); }
+    if (extra.length) { indexTxt = indexTxt.replace(/(var VTYPES=\[[\s\S]*?)\];/, `$1,` + extra.join(',') + `];`); didSources = true; }
+  }
+  const tm = indexTxt.match(/var TYPE_MINS=\{([\s\S]*?)\};/);   // keep the ordering durations in step with new kinds
+  if (tm) {
+    const have = new Set([...tm[1].matchAll(/([A-Za-z0-9_]+)\s*:/g)].map(x => x[1]));
+    const adds = [];
+    for (const k of allKinds) { if (k.mins && !have.has(k.key)) { have.add(k.key); adds.push(`${k.key}:${k.mins}`); } }
+    if (adds.length) { indexTxt = indexTxt.replace(/(var TYPE_MINS=\{[\s\S]*?)\};/, `$1,` + adds.join(',') + `};`); didSources = true; }
+  }
+}
 if (didSources || didWarnKeys || didCC) writeFileSync(indexPath, indexTxt);
 
 // ===== summary =====
 const updated = [didFixtures && 'data/wc-fixtures.json', didFeeds && 'build-data.mjs', (didSources || didWarnKeys || didCC) && 'index.html'].filter(Boolean);
 console.log('\n' + '-'.repeat(56));
 console.log(name + '  (key "' + id + '")');
+{ const fmts = feeds.flatMap(f => f.split ? f.kinds.map(k => k.key + (linkOut ? '/' + (f.warnStyle || 'fifa') : '')) : (f.type ? [f.type + (linkOut ? '/' + (f.warnStyle || 'fifa') : '')] : [])); if (fmts.length > 1 || feeds.some(f => f.split)) console.log('  formats: ' + fmts.join(', ')); }
 const reach = regions && regions.length ? ('only ' + regions.join('/')) : (blocked && blocked.length ? ('all but ' + blocked.join('/')) : 'worldwide');
 console.log('  ' + reach + ' · ' + lang + ' · #' + tint + (linkOut ? ('  · opens on YouTube [' + warnStyle + ' popup]') : '  · embeds inline'));
 console.log('  logo ' + logo + (existsSync(join(ROOT, logo.replace('./', ''))) ? '' : '  (MISSING — drop the file here)'));

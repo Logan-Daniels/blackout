@@ -12,7 +12,7 @@
  *     and provider-agnostic: whatever is available is added, the rest is left
  *     blank and the site degrades gracefully. No betting odds.
  *
- * Optional: ANTHROPIC_API_KEY lets a model resolve recap titles the rules miss.
+ * Optional: GEMINI_API_KEY lets a model resolve recap titles the rules miss.
  *
  * Output schema (data.json):
  *   { generatedAt, lastDeep,
@@ -42,8 +42,8 @@ const PLAYLISTS = cfg.playlists || {};    // { fifa, tsn, fox_x, fox_r, itv, rds
 const KEY = process.env.YT_API_KEY || keyFile('youtube');
 const TSDB_KEY = process.env.TSDB_KEY || '123';
 let   TSDB_LEAGUE = process.env.TSDB_LEAGUE_ID || cfg.tsdbLeagueId || '';
-const AI_KEY = process.env.ANTHROPIC_API_KEY || keyFile('anthropic');
-const AI_MODEL = process.env.CLAUDE_MODEL || 'claude-haiku-4-5-20251001';
+const AI_KEY = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || keyFile('gemini');
+const AI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 // API-Football (api-sports.io): the detail source when a key is present.
 const AF_KEY = process.env.API_FOOTBALL_KEY || '';
 const AF_HOST = process.env.API_FOOTBALL_HOST || 'https://v3.football.api-sports.io';
@@ -119,12 +119,27 @@ const FEEDS = [
   { pl: 'fox_r', src: 'fox' },
   { pl: 'sportstudiofussball', src: 'sportstudiofussball' },
   { pl: 'rtesport', src: 'rtesport' },
+  { pl: 'sbssport', src: 'sbssport' },
+  { pl: 'tvnzsport', src: 'tvnzsport' },
+  { pl: 'nossport', src: 'nossport' },
+  { pl: 'orfsport', src: 'orfsport' },
+  { pl: 'caztv_g', src: 'caztv', type: 'g' },
+  { pl: 'caztv_r', src: 'caztv', type: 'r' },
+  { pl: 'caztv_full', src: 'caztv', type: 'full' },
+  { pl: 'tvaztecadeportes', src: 'tvaztecadeportes' },
+  { pl: 'tudnmxico', src: 'tudnmxico', split: [{ kw: ['mini resumen'], type: 'minirec' }, { kw: ['resumen y goles', 'resumen'], type: 'recap' }]  },
+  { pl: 'livemodetv_r', src: 'livemodetv', type: 'r' },
+  { pl: 'livemodetv_full', src: 'livemodetv', type: 'full' },
+  { pl: 'sporttv', src: 'sporttv', split: [{ kw: ['resumo'], type: 'r' }, { kw: ['golo'], type: 'g' }]  },
+  { pl: 'sporza', src: 'sporza' },
+  { pl: 'caztv_goals', src: 'caztv', type: 'goals' },
 ];
 
 /* ---------- load existing data.json (merge target so links persist) ---------- */
 let prev = {};
 if (existsSync(join(ROOT, 'data', 'data.json'))) { try { prev = JSON.parse(readFileSync(join(ROOT, 'data', 'data.json'), 'utf8')); } catch {} }
 const videos = prev.videos || {};
+const durations = prev.durations || {};   // real clip length in seconds, keyed by video id
 const detail = prev.detail || {};
 const afState = prev.afState || { date: '', used: 0, map: {}, tried: {} };
 const DEEP_FORCE = /^(1|true|yes)$/i.test(process.env.DEEP || '');
@@ -160,13 +175,17 @@ const fixtureFor = (t1, t2) => FIXTURES.find(m => (m[1] === t1 && m[2] === t2) |
 const groupPlayed = fx => { const t = Date.parse(fx[3]); return !isNaN(t) && (t + MATCH_END_BUFFER) <= now; };
 const koRoundStarted = r => { const t = Date.parse(KO_START[r]); return !isNaN(t) && (t + MATCH_END_BUFFER) <= now; };
 const pair = (a, b) => [a, b].sort().join('~');
+// recognises a "this is a match recap" title across languages (tested against norm()'d, diacritic-stripped text)
+const HL_RX = /highlight|résum|resum|faits saillants|temps forts|samenvatting|zusammenfassung|melhores momentos|destaques|gli highlights|sintesi/;
 
 function classify(feed, durSec, title) {
   const n = norm(title);
-  const isHL = /highlight|résum|resum|faits saillants|temps forts/.test(n);
+  const isHL = HL_RX.test(n);
   if (feed.pl === 'fifa') return 'r';   // curated FIFA highlights playlist: attach matches as recaps regardless of title wording
   if (feed.pl === 'tsn') { if (/game in 30|in\s?30/.test(n)) return 'g'; return isHL ? 'r' : null; }
-  if (feed.forceExtended) return isHL || durSec > 14 * 60 ? 'x' : null;   // Fox extended feed
+  if (feed.split) { for (const r of feed.split) if (r.kw.some(k => n.includes(norm(k)))) return r.type; return null; }   // mixed playlist: pick the type by title keyword (first rule wins); a video matching no rule is dropped, which filters out non-highlights
+  if (feed.type) return feed.type;   // a playlist declared to be one highlight type (multi-playlist broadcaster): attach matches as that type regardless of title wording, like the FIFA playlist
+  if (feed.forceExtended) return isHL || durSec > 14 * 60 ? 'x' : null;   // Fox extended feed (kept for back-compat; equivalent to type:'x')
   if (!isHL) return null;                                                  // everything else must look like a recap
   return (/extended/.test(n) || durSec > 16 * 60) ? 'x' : 'r';
 }
@@ -240,8 +259,8 @@ if (KEY) {
         const dur = parseDur(it.contentDetails && it.contentDetails.duration);
         const type = classify(feed, dur, title); if (!type) return;
         const teams = teamsInText(title); const round = roundOfTitle(title);
-        if (teams.length === 2) { if (attach(keyFor(teams, round), feed.src, type, it.id)) { added++; n++; } }
-        else if (/highlight|résum|resum/.test(norm(title))) unmatched.push({ id: it.id, title, src: feed.src, type, round });
+        if (teams.length === 2) { if (attach(keyFor(teams, round), feed.src, type, it.id)) { durations[it.id] = dur; added++; n++; } }
+        else if (HL_RX.test(norm(title))) unmatched.push({ id: it.id, title, src: feed.src, type, round });
       }, feedDeep);
       console.log(`youtube[${feed.pl}->${feed.src}]: +${n} link(s)` + (feedDeep && !deep ? '  [deep]' : ''));
     } catch (e) { console.error(`youtube[${feed.pl}] failed:`, e.message); }
@@ -259,13 +278,14 @@ if (AI_KEY && unmatched.length) {
     const prompt = 'These are YouTube titles that look like football match recaps. For each, identify the TWO teams playing, using EXACTLY these names: ' + JSON.stringify(teamList) +
       '. Return ONLY a JSON array like [{"i":0,"team1":"Mexico","team2":"South Africa"}]. If a title is not a single match between two of those teams, use null. No prose, no markdown.\n\nTitles:\n' +
       batch.map((u, i) => i + '. ' + u.title).join('\n');
-    const resp = await getJSON('https://api.anthropic.com/v1/messages', {
-      method: 'POST', headers: { 'content-type': 'application/json', 'x-api-key': AI_KEY, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: AI_MODEL, max_tokens: 1800, messages: [{ role: 'user', content: prompt }] })
+    const resp = await getJSON(`https://generativelanguage.googleapis.com/v1beta/models/${AI_MODEL}:generateContent?key=${encodeURIComponent(AI_KEY)}`, {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { temperature: 0, responseMimeType: 'application/json' } })
     });
-    const text = (resp.content || []).map(c => c.text || '').join('').replace(/```json|```/g, '').trim();
+    const text = ((resp.candidates && resp.candidates[0] && resp.candidates[0].content && resp.candidates[0].content.parts) || []).map(p => p.text || '').join('').replace(/```json|```/g, '').trim();
+    let parsed = JSON.parse(text); if (!Array.isArray(parsed)) parsed = parsed.results || parsed.items || parsed.matches || [];
     let aiAdded = 0;
-    for (const item of JSON.parse(text)) {
+    for (const item of parsed) {
       if (!item || item.team1 == null || item.team2 == null) continue;
       const u = batch[item.i]; if (!u) continue;
       if (attach(keyFor([item.team1, item.team2], u.round), u.src, u.type, u.id)) aiAdded++;
@@ -273,6 +293,61 @@ if (AI_KEY && unmatched.length) {
     added += aiAdded; console.log(`ai fallback: resolved ${aiAdded} extra link(s)`);
   } catch (e) { console.error('ai fallback skipped:', e.message); }
 }
+
+/* ===================== 3b) channel fallback: recover matches a deep source forgot to playlist ===================== */
+// Title-by-title matcher, reused for channel crawls (mirrors the per-feed loop above).
+function matchItem(feedLike, it) {
+  const title = (it.snippet && it.snippet.title) || '';
+  const dur = parseDur(it.contentDetails && it.contentDetails.duration);
+  const type = classify(feedLike, dur, title); if (!type) return false;
+  const teams = teamsInText(title); const round = roundOfTitle(title);
+  if (teams.length === 2) return attach(keyFor(teams, round), feedLike.src, type, it.id);
+  if (HL_RX.test(norm(title))) unmatched.push({ id: it.id, title, src: feedLike.src, type, round });
+  return false;
+}
+let channelUploads = (prev.channelUploads && typeof prev.channelUploads === 'object') ? { ...prev.channelUploads } : {};
+if (KEY) {
+  const kickoffOf = {};                                            // match key -> kickoff ms (group from fixtures, KO from openfootball)
+  for (const fx of FIXTURES) if (/^[A-L][1-9]$/.test(fx[0]) && fx[3]) kickoffOf[fx[0]] = Date.parse(fx[3]);
+  for (const m of ofMatches) if (m.num != null && m.date) kickoffOf[String(m.num)] = Date.parse(m.date);
+  const playedK = k => kickoffOf[k] != null && !isNaN(kickoffOf[k]) && (kickoffOf[k] + MATCH_END_BUFFER) <= now;
+  const srcFeed = {};
+  for (const f of FEEDS) if (!srcFeed[f.src]) srcFeed[f.src] = f;   // first feed per source (its playlist + forceExtended)
+  for (const src of Object.keys(srcFeed)) {
+    const srcDeep = deep || (!!DEEP_ONLY && src === DEEP_ONLY);     // only when this source is being deep-crawled
+    if (!srcDeep) continue;
+    let tMax = -Infinity;                                          // latest kickoff this source already has a clip for
+    for (const k of Object.keys(videos)) if (videos[k][src] && kickoffOf[k] != null && !isNaN(kickoffOf[k]) && kickoffOf[k] > tMax) tMax = kickoffOf[k];
+    if (tMax === -Infinity) continue;                              // nothing posted yet: cannot tell forgotten from not-yet-uploaded
+    const gaps = Object.keys(kickoffOf).filter(k => playedK(k) && kickoffOf[k] < tMax && !(videos[k] && videos[k][src]));
+    if (!gaps.length) continue;                                    // no earlier played match is missing
+    try {
+      let uploads = channelUploads[src];
+      if (!uploads) {
+        const plId = PLAYLISTS[srcFeed[src].pl];
+        const pj = await getJSON('https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=' + plId + '&key=' + encodeURIComponent(KEY));
+        const chId = pj.items && pj.items[0] && pj.items[0].snippet && pj.items[0].snippet.channelId;
+        if (!chId) { console.log(`channel fallback[${src}]: could not resolve channel; skipped`); continue; }
+        uploads = 'UU' + chId.slice(2); channelUploads[src] = uploads;     // uploads playlist id is the channel id with UC -> UU
+      }
+      let chN = 0;
+      await ytPlaylist(uploads, it => { if (matchItem({ src, forceExtended: srcFeed[src].forceExtended }, it)) { added++; chN++; } }, true);
+      console.log(`channel fallback[${src}]: ${gaps.length} expected gap(s) -> crawled channel uploads, +${chN} link(s)`);
+    } catch (e) { console.error(`channel fallback[${src}] failed:`, e.message); }
+  }
+}
+
+/* ===================== 3c) manual video overrides (data/video-overrides.json) ===================== */
+try {
+  const ovPath = join(ROOT, 'data', 'video-overrides.json');
+  if (existsSync(ovPath)) {
+    const ov = JSON.parse(readFileSync(ovPath, 'utf8'));
+    const list = Array.isArray(ov) ? ov : (ov.videos || []);
+    let ovN = 0, ovTotal = 0;
+    for (const e of list) { if (!e || !e.match || !e.src || !e.id) continue; ovTotal++; if (attach(String(e.match), e.src, e.type || 'r', e.id)) ovN++; }
+    if (ovTotal) console.log(`video-overrides: applied ${ovN} new of ${ovTotal} manual link(s)`);
+  }
+} catch (e) { console.error('video-overrides failed:', e.message); }
 
 /* ===================== 4) match detail from TheSportsDB (best effort) ===================== */
 const TSDB = p => `https://www.thesportsdb.com/api/v1/json/${TSDB_KEY}/${p}`;
@@ -700,10 +775,33 @@ for (const key of Object.keys(detail)) {
     dd.events = dd.events || []; dd.events.push(ev); dd.events.sort((a, b) => (a.min || 0) - (b.min || 0));
   });
 }
+// self-clean: drop stored clips of kinds no longer configured for a typed/split source,
+// so removing or relabelling a playlist takes effect next build instead of lingering.
+const _typedKinds = {};
+for (const f of FEEDS) { if (f.type) (_typedKinds[f.src]=_typedKinds[f.src]||new Set()).add(f.type); if (f.split) for (const r of f.split) (_typedKinds[f.src]=_typedKinds[f.src]||new Set()).add(r.type); }
+let _pruned = 0;
+for (const k of Object.keys(videos)) for (const s of Object.keys(videos[k])) { const keep=_typedKinds[s]; if(!keep) continue; for (const tp of Object.keys(videos[k][s])) if(!keep.has(tp)){ delete videos[k][s][tp]; _pruned++; } if(!Object.keys(videos[k][s]).length) delete videos[k][s]; }
+if (_pruned) console.log(`pruned ${_pruned} orphaned highlight link(s) from removed/relabelled playlists`);
+
+// measure real clip lengths (seconds) for any video not already timed, in one batched pass, so
+// cards can show actual durations instead of a per-kind guess; forget timings for vanished clips.
+if (KEY) {
+  const _ids = new Set();
+  for (const k of Object.keys(videos)) for (const sx of Object.keys(videos[k])) for (const tp of Object.keys(videos[k][sx])) { const vid = videos[k][sx][tp]; if (vid) _ids.add(vid); }
+  const _missing = [..._ids].filter(vid => durations[vid] == null);
+  let _timed = 0;
+  for (let i = 0; i < _missing.length; i += 50) {
+    try { const vj = await getJSON('https://www.googleapis.com/youtube/v3/videos?part=contentDetails&id=' + _missing.slice(i, i + 50).join(',') + '&key=' + encodeURIComponent(KEY)); for (const it of (vj.items || [])) { durations[it.id] = parseDur(it.contentDetails && it.contentDetails.duration); _timed++; } }
+    catch (e) { console.error('duration fetch failed:', e.message); break; }
+  }
+  for (const vid of Object.keys(durations)) if (!_ids.has(vid)) delete durations[vid];
+  if (_missing.length) console.log(`durations: measured ${_timed} new clip(s), ${_ids.size} total`);
+}
+
 const out = {
   generatedAt: new Date().toISOString(),
   lastDeep: deep ? new Date().toISOString() : (prev.lastDeep || null),
-  videos, detail, ofMatches, afState, espnMap: prev.espnMap || {}
+  videos, durations, detail, ofMatches, afState, espnMap: prev.espnMap || {}, channelUploads
 };
 writeFileSync(join(ROOT, 'data', 'data.json'), JSON.stringify(out));
 const nVid = Object.values(videos).reduce((a, v) => a + Object.keys(v).length, 0);

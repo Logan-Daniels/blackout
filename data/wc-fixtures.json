@@ -455,7 +455,8 @@
    "afrique du sud",
    "sudáfrica",
    "südafrika",
-   "áfrica do sul"
+   "áfrica do sul",
+   "zuid-afrika"
   ],
   "South Korea": [
    "south korea",
@@ -467,7 +468,8 @@
    "corea",
    "südkorea",
    "coreia do sul",
-   "coreia"
+   "coreia",
+   "zuid-korea"
   ],
   "Czechia": [
    "czechia",
@@ -476,7 +478,9 @@
    "tchéquie",
    "chequia",
    "república checa",
-   "tschechien"
+   "tschechien",
+   "tchéquia",
+   "tsjechië"
   ],
   "Canada": [
    "canada",
@@ -492,7 +496,8 @@
    "bosnie-herzégovine",
    "bosnia y herzegovina",
    "bosnien und herzegowina",
-   "bósnia e herzegovina"
+   "bósnia e herzegovina",
+   "bosnië en herzegovina"
   ],
   "Qatar": [
    "qatar",
@@ -506,13 +511,15 @@
    "suisse",
    "suiza",
    "schweiz",
-   "suíça"
+   "suíça",
+   "zwitserland"
   ],
   "Brazil": [
    "brazil",
    "brasil",
    "brésil",
-   "brasilien"
+   "brasilien",
+   "brazilië"
   ],
   "Morocco": [
    "morocco",
@@ -542,7 +549,8 @@
    "états-unis",
    "estados unidos",
    "vereinigte staaten",
-   "eua"
+   "eua",
+   "verenigde staten"
   ],
   "Paraguay": [
    "paraguay",
@@ -560,14 +568,16 @@
    "turkey",
    "turquie",
    "turquía",
-   "türkei"
+   "türkei",
+   "turkije"
   ],
   "Germany": [
    "germany",
    "deutschland",
    "allemagne",
    "alemania",
-   "alemanha"
+   "alemanha",
+   "duitsland"
   ],
   "Curaçao": [
    "curacao",
@@ -585,7 +595,8 @@
    "costa de marfil",
    "côte d’ivoire",
    "elfenbeinküste",
-   "costa do marfim"
+   "costa do marfim",
+   "ivoorkust"
   ],
   "Ecuador": [
    "ecuador",
@@ -600,7 +611,8 @@
    "países bajos",
    "holanda",
    "niederlande",
-   "países baixos"
+   "países baixos",
+   "nederland"
   ],
   "Japan": [
    "japan",
@@ -612,19 +624,22 @@
    "sweden",
    "suède",
    "suecia",
-   "schweden"
+   "schweden",
+   "zweden"
   ],
   "Tunisia": [
    "tunisia",
    "tunisie",
    "túnez",
-   "tunesien"
+   "tunesien",
+   "tunesië"
   ],
   "Belgium": [
    "belgium",
    "belgique",
    "bélgica",
-   "belgien"
+   "belgien",
+   "belgië"
   ],
   "Egypt": [
    "egypt",
@@ -647,7 +662,8 @@
    "nouvelle-zélande",
    "nueva zelanda",
    "neuseeland",
-   "nova zelândia"
+   "nova zelândia",
+   "nieuw-zeeland"
   ],
   "Spain": [
    "spain",
@@ -655,13 +671,15 @@
    "españa",
    "espagne",
    "spanien",
-   "espanha"
+   "espanha",
+   "spanje"
   ],
   "Cabo Verde": [
    "cabo verde",
    "cape verde",
    "cap-vert",
-   "kap verde"
+   "kap verde",
+   "kaapverdië"
   ],
   "Saudi Arabia": [
    "saudi arabia",
@@ -670,7 +688,8 @@
    "arabie saoudite",
    "arabia saudita",
    "arabia saudí",
-   "saudi-arabien"
+   "saudi-arabien",
+   "saoedi-arabië"
   ],
   "Uruguay": [
    "uruguay",
@@ -680,7 +699,8 @@
    "france",
    "francia",
    "frankreich",
-   "frança"
+   "frança",
+   "frankrijk"
   ],
   "Senegal": [
    "senegal",
@@ -695,23 +715,27 @@
    "norway",
    "norvège",
    "noruega",
-   "norwegen"
+   "norwegen",
+   "noorwegen"
   ],
   "Argentina": [
    "argentina",
    "argentine",
-   "argentinien"
+   "argentinien",
+   "argentinië"
   ],
   "Algeria": [
    "algeria",
    "algérie",
    "argelia",
-   "algerien"
+   "algerien",
+   "algerije"
   ],
   "Austria": [
    "austria",
    "autriche",
-   "österreich"
+   "österreich",
+   "oostenrijk"
   ],
   "Jordan": [
    "jordan",
@@ -734,14 +758,18 @@
    "república democrática del congo",
    "kongo-kinshasa",
    "demokratische republik kongo",
-   "república democrática do congo"
+   "república democrática do congo",
+   "congo - kinshasa",
+   "congo-kinshasa"
   ],
   "Uzbekistan": [
    "uzbekistan",
    "ouzbékistan",
    "uzbekistán",
    "usbekistan",
-   "usbequistão"
+   "usbequistão",
+   "uzbequistão",
+   "oezbekistan"
   ],
   "Colombia": [
    "colombia",
@@ -757,7 +785,8 @@
    "croatia",
    "croatie",
    "croacia",
-   "kroatien"
+   "kroatien",
+   "kroatië"
   ],
   "Ghana": [
    "ghana",
@@ -769,19 +798,19 @@
   ]
  },
  "playlists": {
-    "caztv_g": "PLGFqULpDYmR8",
-    "caztv_goals": "PLsFWLnYCEXEU2pNn2XXsXkft6qmkwpw8h",
-    "caztv_r": "PLsFWLnYCEXEVNzCnkQE-xOuMc8oLxSleC",
-    "caztv_full": "PLsFWLnYCEXEVWs5wf60vfwUU4FaOEre3D",
-    "sporttv": "PLduFOHgLE8HPxRdMOa3_v-ci_xRuteW2y",
-    "livemodetv_r": "PLsPTotcHEIS_WYg5IPo8QXk3DaAEwbTGy",
-    "livemodetv_full": "PLsPTotcHEIS-2JaFrY44lFD7Oi4jEa8kS",
-    "tvaztecadeportes": "PLTgJORKZTpUs",
-    "tudnmxico": "PLEw7maxCZrWlU0byCsY8DPo-8svjgZptj",
-    "sporza": "PLKVKrZWVdEWK6cl49pXMU2nWc_F-1ZcK0",
-    "orfsport": "PLiE0HRO1-PFSiQoUY2JbpV9qNQ-w27zAA",
-    "nossport": "PLnJJ42LOJsdHCqcsxa9fl9jZgmUqcMjbu",
-    "sbssport": "PLNuJDkj3zBvPVhoKC6Oq8j4w7AH9l-ejG",
+  "caztv_g": "PLGFqULpDYmR8",
+  "caztv_goals": "PLsFWLnYCEXEU2pNn2XXsXkft6qmkwpw8h",
+  "caztv_r": "PLsFWLnYCEXEVNzCnkQE-xOuMc8oLxSleC",
+  "caztv_full": "PLsFWLnYCEXEVWs5wf60vfwUU4FaOEre3D",
+  "sporttv": "PLduFOHgLE8HPxRdMOa3_v-ci_xRuteW2y",
+  "livemodetv_r": "PLsPTotcHEIS_WYg5IPo8QXk3DaAEwbTGy",
+  "livemodetv_full": "PLsPTotcHEIS-2JaFrY44lFD7Oi4jEa8kS",
+  "tvaztecadeportes": "PLTgJORKZTpUs",
+  "tudnmxico": "PLEw7maxCZrWlU0byCsY8DPo-8svjgZptj",
+  "sporza": "PLKVKrZWVdEWK6cl49pXMU2nWc_F-1ZcK0",
+  "orfsport": "PLiE0HRO1-PFSiQoUY2JbpV9qNQ-w27zAA",
+  "nossport": "PLnJJ42LOJsdHCqcsxa9fl9jZgmUqcMjbu",
+  "sbssport": "PLNuJDkj3zBvPVhoKC6Oq8j4w7AH9l-ejG",
   "rtesport": "PLJq_wJ4tVeXYVR4ET0FOl6IaOOUPZ8Ke8",
   "sportstudiofussball": "PL9YwjYP6jANWMVDEqMqEO3coktUVEHSvX",
   "fifa": "PLBRLtDhTHh5o",

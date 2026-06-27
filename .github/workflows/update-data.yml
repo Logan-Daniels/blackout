@@ -40,13 +40,13 @@ jobs:
       - name: Build data.json
         if: steps.guard.outputs.build == 'true'
         env:
-          # YT_API_KEY is the only one you need (highlight links). The others are
-          # optional: leave the secrets unset and results, lineups and stats still
-          # build. Set them later in Settings > Secrets and they take effect on the
-          # next run, no edit to this file required.
+          # YT_API_KEY is the only one you really need (highlight links). The rest are
+          # optional: leave a secret unset and results, lineups, stats and the recap
+          # fallback simply skip that part. Set them later in Settings > Secrets and they
+          # take effect on the next run, with no edit to this file.
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node scripts/build-data.mjs
 
       - name: Commit data.json if it changed

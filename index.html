@@ -271,17 +271,15 @@ table.lb td.lb-name .lb-plink:hover{text-decoration:underline}
 .legend span{display:inline-flex;align-items:center;gap:7px}
 .lrail{width:14px;height:4px;border-radius:2px}
 .bracket-wrap{overflow-x:auto;padding-bottom:10px;-webkit-overflow-scrolling:touch}
-.bracket{display:flex;gap:18px;min-width:min-content;align-items:stretch}
+.bracket{display:flex;gap:36px;min-width:min-content;align-items:flex-start;position:relative}
 .round{display:flex;flex-direction:column;min-width:208px;flex:1 0 208px}
 .round-h{font-family:var(--disp);font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);
   padding:0 0 12px;position:sticky;left:0}
 .round-body{display:flex;flex-direction:column;flex:1;gap:0}
 .ko-cell{display:flex;flex-direction:column;justify-content:center;padding:4px 0;box-sizing:border-box}
 .ko-cell>.node{flex:0 0 auto}
-/* True bracket geometry: each round's slot height doubles the one before it, so
-   every match sits centred between the two whose winners feed it. --u is one
-   first-round slot, measured from the tallest R32 node at render time
-   (sizeBracketTree); the fallbacks hold until that runs. */
+/* Fallback geometry only: these doubling slot heights hold for the brief moment before
+   layoutBracket() runs and adds .laid, after which exact JS-computed centres take over. */
 .round-R32 .ko-cell{height:var(--u,112px)}
 .round-R16 .ko-cell{height:calc(var(--u,112px)*2)}
 .round-QF .ko-cell{height:calc(var(--u,112px)*4)}
@@ -289,6 +287,15 @@ table.lb td.lb-name .lb-plink:hover{text-decoration:underline}
 .round-F .round-body{justify-content:center}
 .round-F .ko-cell{height:auto}
 .round-F .ko-cell-3p{margin-top:8px}
+/* Exact JS geometry: layoutBracket() positions every match on its own vertical centre (the mean of
+   its two feeders), so the tree stays aligned no matter how tall a node is, and an SVG overlay draws
+   the connectors between the right matches. The .laid class switches this on once layout has run. */
+.bracket>.round{position:relative;z-index:1}
+.bracket.laid .round-body{display:block;flex:0 0 auto}
+.bracket.laid .ko-cell{position:absolute;left:0;right:0;height:auto!important;margin:0;padding:0;transform:translateY(-50%)}
+.bk-links{position:absolute;top:0;left:0;pointer-events:none;z-index:0;overflow:visible}
+.bracket-hl .round{min-width:280px;flex:1 0 280px}
+.bk-links path{fill:none;stroke:var(--line2);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
 .node{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);padding:8px 12px 8px 16px;position:relative;overflow:hidden}
 .node::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--line2)}
 .node.mx::before{background:#1f9e57} .node.us::before{background:#3b82c4} .node.ca::before{background:#e0524d}
@@ -2024,6 +2031,7 @@ async function loadData(){
     const d=await fetchJSON(DATA_URL+'?t='+Date.now());
     if(d.videos){ Object.keys(d.videos).forEach(k=>{ VIDS[k]=Object.assign({}, VIDS[k], d.videos[k]); }); videosFromFeed=videosFromFeed||Object.keys(d.videos).length>0; }
     if(d.detail){ Object.keys(d.detail).forEach(k=>{ DETAIL[k]=d.detail[k]; }); }
+    if(d.durations){ Object.keys(d.durations).forEach(k=>{ DUR[k]=d.durations[k]; }); }
     buildAllDisc();
     if(d.ofMatches){ ingestResults(d.ofMatches); ACTUAL.generatedAt=Date.parse(d.generatedAt)||Date.now(); }
   }catch(e){ /* no data.json: fine, results still come from openfootball */ }
@@ -2454,6 +2462,17 @@ var SOURCES = {
   telemundo:{ name:'Telemundo Deportes', tint:'#ffffff', country:'US', lang:'es', logo:'./images/broadcasters/telemundo_deportes-ffffff.svg' },
   sportstudiofussball:{ name:'sportstudio fußball', tint:'#fb7d1a', country:'DE', lang:'de', logo:'./images/broadcasters/sportstudio_fussball-fb7d1a.png' },
   rtesport:{ name:'RTÉ Sport', tint:'#007ac3', country:'IE', lang:'en', linkOut:true, logo:'./images/broadcasters/rte_sport-007ac3.png' },
+  sbssport:{ name:'SBS Sport', tint:'#008001', regions:['AU'], lang:'en', logo:'./images/broadcasters/sbs_sport-008001.png' },
+  tvnzsport:{ name:'TVNZ Sport', tint:'#ffffff', regions:['NZ'], lang:'en', logo:'./images/broadcasters/tvnz_sport-ffffff.svg' },
+  orfsport:{ name:'ORF Sport', tint:'#265398', regions:['AT'], lang:'de', logo:'./images/broadcasters/orf_sport-265398.png' },
+  nossport:{ name:'NOS Sport', tint:'#ffffff', regions:['NL'], lang:'nl', linkOut:true, logo:'./images/broadcasters/nos_sport-ffffff.png' },
+  sporza:{ name:'Sporza', tint:'#ffffff', regions:['BE'], lang:'nl', logo:'./images/broadcasters/sporza-ffffff.png' },
+  rtbfsport:{ name:'RTBF Sport', tint:'#1900e0', regions:['BE'], lang:'fr', linkOut:true, logo:'./images/broadcasters/rtbf_sport-1900e0.png' },
+  caztv:{ name:'Cazé TV', tint:'#009c3b', regions:['BR'], lang:'pt', logo:'./images/broadcasters/caze_tv-009c3b.svg' },
+  tvaztecadeportes:{ name:'TV Azteca Deportes', tint:'#007cbe', regions:['MX'], lang:'es', linkOut:true, logo:'./images/broadcasters/tv_azteca_deportes-007cbe.png' },
+  tudnmxico:{ name:'TUDN México', tint:'#42987f', regions:['MX'], lang:'es', logo:'./images/broadcasters/tudn_mexico-42987f.png' },
+  livemodetv:{ name:'LiveModeTV', tint:'#000000', regions:['PT'], lang:'pt', logo:'./images/broadcasters/livemodetv-000000.png' },
+  sporttv:{ name:'sport tv', tint:'#ffffff', regions:['PT'], lang:'pt', linkOut:true, logo:'./images/broadcasters/sport_tv-ffffff.png' },
   fifa:{ name:'FIFA', tint:'#000000', lang:'en', linkOut:true, logo:'./images/broadcasters/fifa-000000.png' }
 };
 function srcInCountry(s, cc){ if(s.regions) return s.regions.indexOf(cc)>=0; if(s.blocked) return s.blocked.indexOf(cc)<0; if(s.country) return s.country===cc; return true; }
@@ -2480,7 +2499,7 @@ var COUNTRY_CODES=["AD","AE","AF","AG","AL","AM","AO","AR","AT","AU","AW","AZ","
 var COUNTRY_LANG={FR:'fr',MC:'fr',LU:'fr',CD:'fr',CG:'fr',CI:'fr',SN:'fr',ML:'fr',BF:'fr',NE:'fr',TG:'fr',BJ:'fr',GA:'fr',GN:'fr',CM:'fr',MG:'fr',TD:'fr',HT:'fr',DJ:'fr',KM:'fr',CF:'fr',ES:'es',MX:'es',AR:'es',CO:'es',PE:'es',VE:'es',CL:'es',EC:'es',GT:'es',CU:'es',BO:'es',DO:'es',HN:'es',PY:'es',SV:'es',NI:'es',CR:'es',PA:'es',UY:'es',GQ:'es',PR:'es',PT:'pt',BR:'pt',AO:'pt',MZ:'pt',GW:'pt',CV:'pt',ST:'pt',TL:'pt',DE:'de',AT:'de',CH:'de',LI:'de',IT:'it',SM:'it',VA:'it',PL:'pl',TR:'tr',RO:'ro',MD:'ro',NL:'nl',BE:'nl',SR:'nl',AW:'nl',CW:'nl'};
 function regionName(code, lang){ try{ return new Intl.DisplayNames([lang||LANG||'en'],{type:'region'}).of(code) || code; }catch(e){ return code; } }
 function countryOptions(){ return COUNTRY_CODES.map(function(c){ return [c, regionName(c, LANG)]; }); }
-var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch']];
+var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch'],['nl','Nederlands'],['pt','Português']];
 // Broadcaster region. navigator.language carries a *language* preference, not a
 // location (an English-Canadian may be on en-GB), so the default country comes
 // from the timezone, which actually tracks where the device is. ipwho.is (below)
@@ -2516,7 +2535,7 @@ function applyI18n(){
 }
 
 /* ---------- multi-source videos + provider-agnostic match detail ---------- */
-var VIDS={}, DETAIL={};
+var VIDS={}, DETAIL={}, DUR={};
 function initSeedVids(){ try{ if(typeof SEED_VIDEOS!=='undefined' && SEED_VIDEOS.B2){ VIDS['B2']=VIDS['B2']||{}; var v={}; if(SEED_VIDEOS.B2.highlights) v.r=SEED_VIDEOS.B2.highlights; if(SEED_VIDEOS.B2.in30) v.g=SEED_VIDEOS.B2.in30; VIDS['B2'].tsn=Object.assign({},VIDS['B2'].tsn,v); } }catch(e){} }
 function initials(n){ n=dispName(n); if(!n) return '?'; var p=String(n).trim().split(/\s+/); return (((p[0]||'')[0]||'')+(p.length>1?((p[p.length-1]||'')[0]||''):'')).toUpperCase(); }
 function ava(p){ var ph=p&&p.photo; return '<span class="ava">'+esc(initials(p&&p.name))+(ph?'<img src="'+esc(ph)+'" alt="" loading="lazy" onerror="this.remove()">':'')+'</span>'; }
@@ -2623,14 +2642,38 @@ function renderMM(){
   var s=$('#mm-sw'); if(s) s.onclick=function(){ setReveal(!isRevealed()); };
   if(MM.tab==='l'){ try{ requestAnimationFrame(function(){ fitLineupNames($('#mm-body')); }); }catch(_e){} }
 }
+var VTYPES=[{k:'x',i:'k_x',d:'d_x'},{k:'r',i:'k_r',d:'d_r'},{k:'g',i:'k_g',d:'d_g'},{k:'playerh',label:'Player Highlights'},{k:'full',label:'Full match'},{k:'minirec',label:'Mini Recap',desc:'~3 min'},{k:'recap',label:'Standard Recap',desc:'~10 min'},{k:'mini',label:'Mini Recap',desc:'~3 min'},{k:'goal',label:'Individual Goal',desc:'~1 min'},{k:'goals',label:'Goals',desc:'~3 min'}];
+// the highlight kinds a source has for one match, in VTYPES order, with any extra (broadcaster-specific)
+// kinds appended. Canonical kinds carry i18n label/desc keys (i,d); extra kinds carry a plain label.
+function fmtDur(s){ s=Math.round(+s||0); if(s<1) return ''; var h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60; return (h? h+':'+(m<10?'0':'')+m : ''+m)+':'+(x<10?'0':'')+x; }
+function hlKindsFor(sv, sk){
+  var out=[], seen={};
+  VTYPES.forEach(function(tp){ var vid=sv[tp.k]; if(!vid) return; seen[tp.k]=1;
+    var label = tp.i ? t(tp.i) : (tp.label||tp.k);
+    var secs = +DUR[vid]||0;
+    var desc = secs ? fmtDur(secs) : ((sk==='fifa') ? t('d_fifa') : (tp.i ? t(tp.d) : (tp.desc||label)));
+    out.push({k:tp.k, vid:vid, label:label, desc:desc, secs:secs}); });
+  Object.keys(sv).forEach(function(k){ if(seen[k]) return; var vid=sv[k]; if(!vid) return; var secs=+DUR[vid]||0; out.push({k:k, vid:vid, label:k, desc:(secs?fmtDur(secs):''), secs:secs}); });
+  return out;
+}
+// consistent language name for any source language: use the picker's own spelling (LANGS),
+// fall back to the browser's display name, then the raw code. Covers present and future languages.
+function langName(code){ if(!code) return ''; for(var i=0;i<LANGS.length;i++){ if(LANGS[i][0]===code) return LANGS[i][1]; } try{ var n=new Intl.DisplayNames([code],{type:'language'}).of(code); if(n&&n!==code) return n.charAt(0).toUpperCase()+n.slice(1); }catch(e){} return code; }
+var TYPE_MINS={r:10,x:20,g:30,goals:3,full:95,playerh:5,minirec:3,recap:10,mini:3,goal:1};   // nominal length per highlight kind, ordering only; unknown kinds use 15
 function renderHL(c){
   if(!c.played) return '<div class="empty-soft">'+esc(t('not_played'))+'</div>';
-  var v=VIDS[c.key], reg=regionSources(COUNTRY,LANG), hasReg=reg.some(function(sk){ var sv=v&&v[sk]; return sv&&(sv.x||sv.r||sv.g); }), srcs=reg.slice(); if(SOURCES.fifa&&(LANG==='en'||!hasReg)) srcs.push('fifa'); srcs=favOrderSources(srcs); var cards=[];
+  var v=VIDS[c.key], reg=regionSources(COUNTRY,LANG), hasReg=reg.some(function(sk){ var sv=v&&v[sk]; return sv&&Object.keys(sv).length>0; }), srcs=reg.slice(); if(SOURCES.fifa&&(LANG==='en'||!hasReg)) srcs.push('fifa'); srcs=favOrderSources(srcs);
+  var items=[];
   srcs.forEach(function(sk){ var sv=v&&v[sk]; if(!sv) return; var src=SOURCES[sk];
-    [['x','k_x','d_x'],['r','k_r','d_r'],['g','k_g','d_g']].forEach(function(tp){ var vid=sv[tp[0]]; if(!vid) return;
-      var llab=(src.lang&&src.lang!==LANG)?({en:'English',fr:'Français',es:'Español'}[src.lang]||src.lang):'';
-      cards.push('<button class="scard" data-src="'+esc(sk)+'" data-vid="'+esc(vid)+'" data-title="'+esc(src.name+' · '+t(tp[1]))+'"'+(src.linkOut?' data-linkout="1"':'')+'><div class="logo" style="background:'+src.tint+'"><img src="'+esc(src.logo||SRC_LOGOS[sk]||'')+'" alt="'+esc(src.name)+'" onerror="this.style.display=\'none\'"></div><div class="meta"><div class="kind">'+esc(t(tp[1]))+'</div><div class="dur">'+esc(src.name+' · '+t(sk==='fifa'?'d_fifa':tp[2])+(llab?(' · '+llab):''))+'</div></div><span class="play">▶</span></button>'); });
+    hlKindsFor(sv, sk).forEach(function(tp){
+      var bucket = !src.linkOut ? 0 : ((/^rds/.test((WARN_KEYS[sk+':'+tp.k]||WARN_KEYS[sk]||WARN_KEYS.fifa).h)) ? 1 : 2);
+      var mins = tp.secs ? tp.secs/60 : ((sk==='fifa') ? 2 : (TYPE_MINS[tp.k]!=null ? TYPE_MINS[tp.k] : 15));
+      items.push({sk:sk, src:src, tp:tp, bucket:bucket, langRank:(src.lang===LANG?0:1), lang:src.lang||'', mins:mins}); });
   });
+  items.sort(function(a,b){ return (a.bucket-b.bucket) || (a.langRank-b.langRank) || (a.lang<b.lang?-1:a.lang>b.lang?1:0) || (a.mins-b.mins); });
+  var cards=items.map(function(it){ var sk=it.sk, src=it.src, tp=it.tp;
+    var llab=(src.lang&&src.lang!==LANG)?langName(src.lang):'';
+    return '<button class="scard" data-src="'+esc(sk)+'" data-vid="'+esc(tp.vid)+'" data-type="'+esc(tp.k)+'" data-title="'+esc(src.name+' · '+tp.label)+'"'+(src.linkOut?' data-linkout="1"':'')+'><div class="logo" style="background:'+src.tint+'"><img src="'+esc(src.logo||SRC_LOGOS[sk]||'')+'" alt="'+esc(src.name)+'" onerror="this.style.display=\'none\'"></div><div class="meta"><div class="kind">'+esc(tp.label)+'</div><div class="dur">'+esc(src.name+' · '+tp.desc+(llab?(' · '+llab):''))+'</div></div><span class="play">▶</span></button>'; });
   if(!cards.length) return '<div class="empty-soft">'+esc(t('no_hl'))+'</div>';
   return '<div class="scards">'+cards.join('')+'</div>';
 }
@@ -2886,7 +2929,7 @@ $('#mm-close').addEventListener('click', mmClose);
 $('#mm').addEventListener('click', function(e){ if(e.target.id==='mm') mmClose(); });
 $('#mm-tabs').addEventListener('click', function(e){ var b=e.target.closest('.mm-tab'); if(!b) return; MM.tab=b.dataset.mt; renderMM(); });
 $('#mm-head').addEventListener('click', function(e){ var s=e.target.closest('.bx-slot-pop'); if(s&&s.dataset.cand){ e.stopPropagation(); openCandPop(s, s.dataset.cand); } });
-$('#mm-body').addEventListener('click', function(e){ var s=e.target.closest('.scard'); if(!s) return; if(s.dataset.linkout) openFifaWarn(s.dataset.vid, s.dataset.src); else openYT(s.dataset.vid, s.dataset.title, s.dataset.src); });
+$('#mm-body').addEventListener('click', function(e){ var s=e.target.closest('.scard'); if(!s) return; if(s.dataset.linkout) openFifaWarn(s.dataset.vid, s.dataset.src, s.dataset.type); else openYT(s.dataset.vid, s.dataset.title, s.dataset.src); });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ if($('#mm').classList.contains('open')) mmClose(); } });
 
 /* ---------- player card ---------- */
@@ -3258,9 +3301,13 @@ $('#ytmodal').addEventListener('click', e=>{ if(e.target.id==='ytmodal') closeYT
 // so they go through a spoiler warning instead of the inline player.
 var WARN_KEYS={ fifa:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'},
                 rds:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
-                rtesport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'} };
-function openFifaWarn(vid, source){
-  var w=WARN_KEYS[source]||WARN_KEYS.fifa;
+                rtesport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
+                nossport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
+                rtbfsport:{h:'rds_h',b:'rds_b',q:'rds_q',no:'rds_no',noSub:'rds_no_sub',go:'rds_go',goSub:'rds_go_sub'},
+                tvaztecadeportes:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'},
+                sporttv:{h:'fifa_h',b:'fifa_b',q:'fifa_q',no:'fifa_no',noSub:'fifa_no_sub',go:'fifa_go',goSub:'fifa_go_sub'} };
+function openFifaWarn(vid, source, type){
+  var w=(type&&WARN_KEYS[source+':'+type])||WARN_KEYS[source]||WARN_KEYS.fifa;
   var go=$('#fifa-go'); if(go) go.href='https://www.youtube.com/watch?v='+encodeURIComponent(vid||'');
   $('#fifa-h').textContent=t(w.h);
   var _canon = /^fifa/.test(w.b) ? 'FIFA' : 'RDS';
@@ -3306,7 +3353,7 @@ function groupTile(m){ var played=groupPlayed(m), w=whenParts(m[4]), key=m[0], n
   return '<button class="mt h'+hostOf(m[5])+'" data-k="g" data-id="'+key+'"><div class="mt-top"><span class="mt-rd">'+esc(t('group_word')+' '+m[1])+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+tTeam(m[2])+tTeam(m[3])+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 var _koClinch=null;
 function koTile(m){ var w=whenParts(m[4]), started=koRoundStarted(m[1]); var foot=started?'<span class="mt-watch">'+t('reveal_btn')+'</span>':'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
-  return '<button class="mt h'+hostOf(m[5])+'" data-k="k" data-id="'+m[0]+'"><div class="mt-top"><span class="mt-rd">'+esc(roundName(m[1]))+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].home)?tTeam(_koClinch[m[0]].home):tTeamAbs(srcLabel(m[2])))+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].away)?tTeam(_koClinch[m[0]].away):tTeamAbs(srcLabel(m[3])))+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
+  return '<button class="mt h'+hostOf(m[5])+'" data-k="k" data-id="'+m[0]+'" data-mid="'+m[0]+'"><div class="mt-top"><span class="mt-rd">'+esc(roundName(m[1]))+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].home)?tTeam(_koClinch[m[0]].home):tTeamAbs(srcLabel(m[2])))+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].away)?tTeam(_koClinch[m[0]].away):tTeamAbs(srcLabel(m[3])))+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 /* ---- Run 4: accessibility (high-contrast, focus management) ---- */
 function applyHC(){ try{ document.documentElement.classList.toggle('hc', !!(typeof DB!=='undefined'&&DB.hc)); var b=document.getElementById('hc-toggle'); if(b){ b.setAttribute('aria-checked',(typeof DB!=='undefined'&&DB.hc)?'true':'false'); b.classList.toggle('on', !!(typeof DB!=='undefined'&&DB.hc)); } }catch(e){} }
 function qfAria(){ var inp=document.getElementById('qf-input'); if(!inp) return; if(_qfActive>=0 && _qfActive<_qfItems.length){ inp.setAttribute('aria-activedescendant','qf-opt-'+_qfActive); } else { inp.removeAttribute('aria-activedescendant'); } }
@@ -3384,9 +3431,9 @@ function renderHighlights(){ var body=$('#hl-body'), html=''; if(body&&!DATA_LOA
     days.forEach(function(d){ d.items.sort(function(x,y){ return x.ts-y.ts; }); html+='<div class="dayhdr">'+esc(dayLabelLong(d.ts))+'</div><div class="mgrid">'+d.items.map(function(it){ return it.k==='g'?groupTile(it.m):koTile(it.m); }).join('')+'</div>'; });
   } else {
     if(hlFilter!=='ko'){ spotGroupOrder(Object.keys(GROUPS)).forEach(function(g){ var fx=GROUP_FIXTURES.filter(function(m){return m[1]===g;}); if(!fx.length) return; html+='<div class="dayhdr"><span class="glyph">'+esc(g)+'</span>'+esc(t('group_word')+' '+g)+'</div>'+tilesGrid(fx.map(function(m){return {k:'g',m:m};})); }); }
-    if(hlFilter!=='group'){ html+=_hlSlider; var cols=''; KO_ROUND_SEQ.forEach(function(rk){ var kl=KO.filter(function(m){return m[1]===rk;}); if(!kl.length) return; cols+='<div class="hlround"><div class="hlround-h">'+esc(roundName(rk))+'</div>'+kl.map(function(m){return koTile(m);}).join('')+'</div>'; }); if(cols) html+=hostLegend()+'<div class="hlbracket">'+cols+'</div>'; }
+    if(hlFilter!=='group'){ html+=_hlSlider; var cols=''; ['R32','R16','QF','SF','F'].forEach(function(rk){ cols+='<div class="round round-'+rk+'"><div class="round-h">'+esc(roundName(rk))+'</div><div class="round-body">'; if(rk==='F'){ cols+='<div class="ko-cell">'+koTile(koById('104'))+'</div>'; var _tp=koById('103'); if(_tp) cols+='<div class="ko-cell ko-cell-3p">'+koTile(_tp)+'</div>'; } else { bracketRound(rk).forEach(function(m){ cols+='<div class="ko-cell">'+koTile(m)+'</div>'; }); } cols+='</div></div>'; }); html+=hostLegend()+'<div class="bracket bracket-hl" id="hl-tree">'+cols+'</div>'; }
   }
-  if(!html) html='<div class="empty-soft">'+esc(t('no_hl'))+'</div>'; var _gb=$("#hl-view button[data-v='group']"); if(_gb) _gb.textContent=(hlFilter==='ko')?t('bracket_word'):t('by_group'); body.innerHTML=favBannerHTML()+spotBarHTML()+spotSectionHL()+html; try{ requestAnimationFrame(function(){ fitTeamNames(body); }); }catch(e){} }
+  if(!html) html='<div class="empty-soft">'+esc(t('no_hl'))+'</div>'; var _gb=$("#hl-view button[data-v='group']"); if(_gb) _gb.textContent=(hlFilter==='ko')?t('bracket_word'):t('by_group'); body.innerHTML=favBannerHTML()+spotBarHTML()+spotSectionHL()+html; try{ requestAnimationFrame(function(){ fitTeamNames(body); if($('#hl-tree')) layoutBracket('#hl-tree'); }); }catch(e){} }
 $('#hl-body').addEventListener('click', function(e){ var b=e.target.closest('.mt'); if(b) openMatch(b.dataset.k, b.dataset.id); });
 $('#hl-filter').addEventListener('click', function(e){ var b=e.target.closest('button'); if(!b) return; hlFilter=b.dataset.f; $$('#hl-filter button').forEach(function(x){x.classList.toggle('on',x===b);}); renderHighlights(); });
 (function(){ var hb=$('#hl-body'); if(!hb) return;
@@ -3840,16 +3887,56 @@ function koNodeActual(m, cutoff, clinchSlots){
   const meta='<div class="nodemeta">'+w.day+(city?' · '+esc(city):'')+'</div>';
   const penNote=(revealed&&k&&k.ft&&k.ft[0]===k.ft[1]&&k.pen)?
     '<div class="mno" style="margin-top:7px"><span style="color:var(--faint);font-weight:500">'+esc(t('pens'))+' '+k.pen[0]+'–'+k.pen[1]+' · '+esc(win||'')+'</span></div>':'';
-  return '<div class="node '+pcls+'" data-k="k" data-id="'+id+'" style="cursor:pointer"><div class="mno"><span>'+roundName(round)+'</span></div>'+meta+
+  return '<div class="node '+pcls+'" data-k="k" data-id="'+id+'" data-mid="'+id+'" style="cursor:pointer"><div class="mno"><span>'+roundName(round)+'</span></div>'+meta+
     '<div class="bx-fix">'+sideEl('h')+mid+sideEl('a')+'</div>'+penNote+'</div>';
 }
 
-function sizeBracketTree(sel){
+function layoutBracket(sel){
   var tree=$(sel); if(!tree) return;
-  tree.style.removeProperty('--u');
-  var cells=tree.querySelectorAll('.round-R32 .ko-cell'), max=0;
-  for(var i=0;i<cells.length;i++){ var n=cells[i].firstElementChild; var h=n?n.offsetHeight:0; if(h>max) max=h; }
-  if(max>0) tree.style.setProperty('--u',(max+16)+'px');
+  var bodies=tree.querySelectorAll('.round-body'); if(!bodies.length) return;
+  // Tallest node sets the slot pitch, so nothing overlaps even with a penalties line or a long
+  // placeholder. If everything is 0 the tree is hidden; try again once it is on screen.
+  var cells0=tree.querySelectorAll('.ko-cell'), maxH=0;
+  for(var i=0;i<cells0.length;i++){ var fc=cells0[i].firstElementChild; var h=fc?fc.offsetHeight:0; if(h>maxH) maxH=h; }
+  if(maxH===0){ requestAnimationFrame(function(){ layoutBracket(sel); }); return; }
+  tree.classList.add('laid');
+  var GAP=16, SLOT=Math.round(maxH+GAP);
+  // Vertical centre of every match: first round evenly spaced, every later match the mean of the two
+  // matches whose winners feed it (koFeeders), so each sits exactly between its feeders.
+  var y={}, r32=bracketRound('R32');
+  r32.forEach(function(m,i){ y[m[0]]=(i+0.5)*SLOT; });
+  ['R16','QF','SF','F'].forEach(function(rk){
+    (rk==='F'?[koById('104')]:bracketRound(rk)).forEach(function(m){
+      if(!m) return; var f=koFeeders(m);
+      if(f && y[f[0]]!=null && y[f[1]]!=null) y[m[0]]=(y[f[0]]+y[f[1]])/2;
+    });
+  });
+  var total=r32.length*SLOT;
+  if(koById('103')) y['103']=(y['104']!=null?y['104']:total/2)+maxH+16;   // 3rd place sits under the final
+  for(var b=0;b<bodies.length;b++){ bodies[b].style.position='relative'; bodies[b].style.height=total+'px'; }
+  var cells=tree.querySelectorAll('.ko-cell');
+  for(var c=0;c<cells.length;c++){ var nd=cells[c].firstElementChild; var id=nd&&nd.getAttribute('data-mid'); if(id!=null && y[id]!=null) cells[c].style.top=y[id]+'px'; }
+  drawBracketLinks(tree, total);
+}
+function drawBracketLinks(tree, total){
+  var NS='http://www.w3.org/2000/svg';
+  var svg=tree.querySelector('svg.bk-links');
+  if(!svg){ svg=document.createElementNS(NS,'svg'); svg.setAttribute('class','bk-links'); tree.insertBefore(svg, tree.firstChild); }
+  while(svg.firstChild) svg.removeChild(svg.firstChild);
+  var W=tree.scrollWidth, H=Math.max(tree.scrollHeight, total);
+  svg.setAttribute('width',W); svg.setAttribute('height',H); svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var tr=tree.getBoundingClientRect(), sx=tree.scrollLeft, sy=tree.scrollTop;
+  function rectOf(id){ var n=tree.querySelector('[data-mid="'+id+'"]'); if(!n) return null; var r=n.getBoundingClientRect(); return {left:r.left-tr.left+sx, right:r.right-tr.left+sx, midY:r.top-tr.top+sy+r.height/2}; }
+  function edge(aId,bId,pId){
+    var a=rectOf(aId), b=rectOf(bId), p=rectOf(pId); if(!a||!b||!p) return;
+    var fr=Math.max(a.right,b.right), x=Math.round(fr+(p.left-fr)/2)+0.5;
+    var ar=Math.round(a.right), br=Math.round(b.right), pl=Math.round(p.left);
+    var ya=Math.round(a.midY)+0.5, yb=Math.round(b.midY)+0.5, yp=Math.round(p.midY)+0.5;
+    var d='M'+ar+' '+ya+'H'+x+'M'+br+' '+yb+'H'+x+'M'+x+' '+ya+'V'+yb+'M'+x+' '+yp+'H'+pl;
+    var path=document.createElementNS(NS,'path'); path.setAttribute('d',d); svg.appendChild(path);
+  }
+  ['R16','QF','SF'].forEach(function(rk){ bracketRound(rk).forEach(function(m){ var f=koFeeders(m); if(f) edge(f[0],f[1],m[0]); }); });
+  var ff=koFeeders(koById('104')); if(ff) edge(ff[0],ff[1],'104');   // final, from the two semi-finals
 }
 function renderBracket(){
   const cutoff=revealCutoff();
@@ -3880,7 +3967,7 @@ function renderBracket(){
     }
     th+='</div></div>';
   });
-  $('#bk-tree').innerHTML=th; applyBkFilter(); sizeBracketTree('#bk-tree');
+  $('#bk-tree').innerHTML=th; applyBkFilter(); layoutBracket('#bk-tree');
   // champion
   const fm=koById('104'); const fk=ACTUAL.koByNum['104'];
   let champ='';
@@ -4143,6 +4230,9 @@ $('#bk-none').addEventListener('click', ()=>{ setRevealDay(0); });
 $('#bk-today').addEventListener('click', ()=>{ setRevealDay(todayIdx()); });
 $('#bk-prev').addEventListener('click', ()=>{ setRevealDay((DB.revealDayIdx|0)-1); });
 $('#bk-next').addEventListener('click', ()=>{ setRevealDay((DB.revealDayIdx|0)+1); });
+// Re-flow whichever bracket is on screen when the window resizes (node widths/heights can change),
+// so slot centres and the SVG connectors stay correct.
+var _bkResizeT; window.addEventListener('resize', function(){ clearTimeout(_bkResizeT); _bkResizeT=setTimeout(function(){ ['#bk-tree','#pr-tree','#hl-tree'].forEach(function(s){ var el=$(s); if(el && el.offsetParent!==null && el.querySelector('.ko-cell')) layoutBracket(s); }); }, 150); });
 function applyBkFilter(){ var grp=(bkFilter!=='ko'), ko=(bkFilter!=='group'); var st=$('#bk-standings'); if(st) st.style.display=grp?'':'none'; ['#bk-thirds-title','#bk-thirds','#bk-ko-title','#bk-legend','#bk-tree'].forEach(function(sel){ var el=$(sel); if(el) el.style.display=ko?'':'none'; }); }
 (function(){ var bf=$('#bk-filter'); if(bf) bf.addEventListener('click', function(e){ var b=e.target.closest('button'); if(!b) return; bkFilter=b.dataset.bf; $$('#bk-filter button').forEach(function(x){x.classList.toggle('on',x===b);}); applyBkFilter(); }); })();
 
@@ -4200,7 +4290,7 @@ function koNodePred(id, R){
       flag(team)+'<span class="name">'+esc(dispCountry(team))+'</span>'+(isWin?'<span class="sc" style="color:var(--gold)">▸</span>':'')+'</div>';
   }
   const w=whenParts(m[4]); const city=cityOf(m[5]);
-  return '<div class="node '+pcls+'"><div class="mno"><span>Match '+id+'</span><span>'+roundName(m[1])+'</span></div>'+
+  return '<div class="node '+pcls+'" data-mid="'+id+'"><div class="mno"><span>Match '+id+'</span><span>'+roundName(m[1])+'</span></div>'+
     '<div class="nodemeta">'+w.day+(city?' · '+esc(city):'')+'</div>'+
     side('home')+'<div class="ko-mid"></div>'+side('away')+'</div>';
 }
@@ -4221,7 +4311,7 @@ function renderPredictions(){
     }
     th+='</div></div>';
   });
-  $('#pr-tree').innerHTML=hostLegend()+th; sizeBracketTree('#pr-tree');
+  $('#pr-tree').innerHTML=hostLegend()+th; layoutBracket('#pr-tree');
   const fin=R.res['104'];
   $('#pr-champ').innerHTML = (fin&&fin.winner)? '<div class="champion">'+flag(fin.winner)+'<div><div class="lbl">Your predicted champion</div><div class="nm">'+esc(fin.winner)+'</div></div></div>' : '';
 }

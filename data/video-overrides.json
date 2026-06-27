@@ -1,0 +1,8 @@
+{
+  "_README": "Manually-added highlight links, applied on every build after crawling so they survive even if a broadcaster removes them from its playlist. Add with: node scripts/add-video.mjs <src> <youtube-url> ...  (it resolves the match from the title; pass --match KEY to force one). Each entry: { match (fixture id like B5 or knockout number), src, type (r recap / x extended / g game-in-30), id (11-char YouTube id) }.",
+  "videos": [
+    { "match": "B5", "src": "nossport", "type": "r", "id": "ZQ1IP0ZwewU" },
+    { "match": "G3", "src": "nossport", "type": "r", "id": "0MsdyTRus9s" },
+    { "match": "H3", "src": "nossport", "type": "r", "id": "neWwzD4PxrY" }
+  ]
+}
