@@ -2480,6 +2480,7 @@ var SOURCES = {
   tvri:{ name:'TVRI', tint:'#ffffff', regions:['ID'], lang:'id', logo:'./images/broadcasters/tvri-ffffff.svg' },
   daznjapan:{ name:'DAZN Japan', tint:'#000000', lang:'jp', logo:'./images/broadcasters/dazn_japan-000000.png' },
   trtspor:{ name:'TRT SPOR', tint:'#ffffff', lang:'tr', logo:'./images/broadcasters/trt_spor-ffffff.png' },
+  jtbcsports:{ name:'JTBC Sports', tint:'#ffffff', lang:'ko', logo:'./images/broadcasters/jtbc_sports-ffffff.png' },
   fifa:{ name:'FIFA', tint:'#000000', lang:'en', linkOut:true, logo:'./images/broadcasters/fifa-000000.png' }
 };
 function srcInCountry(s, cc){ if(s.regions) return s.regions.indexOf(cc)>=0; if(s.blocked) return s.blocked.indexOf(cc)<0; if(s.country) return s.country===cc; return true; }
@@ -2506,7 +2507,7 @@ var COUNTRY_CODES=["AD","AE","AF","AG","AL","AM","AO","AR","AT","AU","AW","AZ","
 var COUNTRY_LANG={FR:'fr',MC:'fr',LU:'fr',CD:'fr',CG:'fr',CI:'fr',SN:'fr',ML:'fr',BF:'fr',NE:'fr',TG:'fr',BJ:'fr',GA:'fr',GN:'fr',CM:'fr',MG:'fr',TD:'fr',HT:'fr',DJ:'fr',KM:'fr',CF:'fr',ES:'es',MX:'es',AR:'es',CO:'es',PE:'es',VE:'es',CL:'es',EC:'es',GT:'es',CU:'es',BO:'es',DO:'es',HN:'es',PY:'es',SV:'es',NI:'es',CR:'es',PA:'es',UY:'es',GQ:'es',PR:'es',PT:'pt',BR:'pt',AO:'pt',MZ:'pt',GW:'pt',CV:'pt',ST:'pt',TL:'pt',DE:'de',AT:'de',CH:'de',LI:'de',IT:'it',SM:'it',VA:'it',PL:'pl',TR:'tr',RO:'ro',MD:'ro',NL:'nl',BE:'nl',SR:'nl',AW:'nl',CW:'nl'};
 function regionName(code, lang){ try{ return new Intl.DisplayNames([lang||LANG||'en'],{type:'region'}).of(code) || code; }catch(e){ return code; } }
 function countryOptions(){ return COUNTRY_CODES.map(function(c){ return [c, regionName(c, LANG)]; }); }
-var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch'],['nl','Nederlands'],['pt','Português'],['it','Italiano'],['id','Indonesia'],['ja','日本語'],['tr','Türkçe']];
+var LANGS=[['en','English'],['fr','Français'],['es','Español'],['de','Deutsch'],['nl','Nederlands'],['pt','Português'],['it','Italiano'],['id','Indonesia'],['ja','日本語'],['tr','Türkçe'],['ko','한국어']];
 // Broadcaster region. navigator.language carries a *language* preference, not a
 // location (an English-Canadian may be on en-GB), so the default country comes
 // from the timezone, which actually tracks where the device is. ipwho.is (below)

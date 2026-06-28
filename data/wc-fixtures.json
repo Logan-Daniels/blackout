@@ -451,7 +451,8 @@
    "messico",
    "meksiko",
    "メキシコ",
-   "meksika"
+   "meksika",
+   "멕시코"
   ],
   "South Africa": [
    "south africa",
@@ -463,7 +464,9 @@
    "zuid-afrika",
    "afrika selatan",
    "南アフリカ",
-   "güney afrika"
+   "güney afrika",
+   "남아프리카",
+   "남아프리카 공화국"
   ],
   "South Korea": [
    "south korea",
@@ -480,7 +483,9 @@
    "corea del sud",
    "korea selatan",
    "韓国",
-   "güney kore"
+   "güney kore",
+   "대한민국",
+   "한국"
   ],
   "Czechia": [
    "czechia",
@@ -495,13 +500,15 @@
    "cechia",
    "ceko",
    "チェコ",
-   "çekya"
+   "çekya",
+   "체코"
   ],
   "Canada": [
    "canada",
    "canadá",
    "kanada",
-   "カナダ"
+   "カナダ",
+   "캐나다"
   ],
   "Bosnia and Herzegovina": [
    "bosnia and herzegovina",
@@ -517,14 +524,17 @@
    "bosnia ed erzegovina",
    "bosnia dan herzegovina",
    "ボスニア・ヘルツェゴビナ",
-   "bosna-hersek"
+   "bosna-hersek",
+   "보스니아 헤르체고비나"
   ],
   "Qatar": [
    "qatar",
    "catar",
    "katar",
    "welches?",
-   "カタール"
+   "カタール",
+   "카타르",
+   "어디서"
   ],
   "Switzerland": [
    "switzerland",
@@ -536,7 +546,8 @@
    "zwitserland",
    "svizzera",
    "スイス",
-   "i̇sviçre"
+   "i̇sviçre",
+   "스위스"
   ],
   "Brazil": [
    "brazil",
@@ -546,7 +557,8 @@
    "brazilië",
    "brasile",
    "ブラジル",
-   "brezilya"
+   "brezilya",
+   "브라질"
   ],
   "Morocco": [
    "morocco",
@@ -557,13 +569,15 @@
    "marocco",
    "maroko",
    "モロッコ",
-   "fas"
+   "fas",
+   "모로코"
   ],
   "Haiti": [
    "haiti",
    "haïti",
    "haití",
-   "ハイチ"
+   "ハイチ",
+   "아이티"
   ],
   "Scotland": [
    "scotland",
@@ -573,7 +587,8 @@
    "scozia",
    "schotland",
    "スコットランド",
-   "skotlandia"
+   "skotlandia",
+   "스코틀랜드"
   ],
   "United States": [
    "united states",
@@ -590,12 +605,14 @@
    "stati uniti",
    "amerika serikat",
    "アメリカ合衆国",
-   "amerika birleşik devletleri"
+   "amerika birleşik devletleri",
+   "미국"
   ],
   "Paraguay": [
    "paraguay",
    "paraguai",
-   "パラグアイ"
+   "パラグアイ",
+   "파라과이"
   ],
   "Australia": [
    "australia",
@@ -603,7 +620,9 @@
    "australie",
    "australien",
    "オーストラリア",
-   "avustralya"
+   "avustralya",
+   "오스트레일리아",
+   "호주"
   ],
   "Türkiye": [
    "turkiye",
@@ -615,7 +634,9 @@
    "turkije",
    "turchia",
    "turki",
-   "トルコ"
+   "トルコ",
+   "튀르키예",
+   "터키"
   ],
   "Germany": [
    "germany",
@@ -627,14 +648,17 @@
    "germania",
    "jerman",
    "ドイツ",
-   "almanya"
+   "almanya",
+   "독일"
   ],
   "Curaçao": [
    "curacao",
    "curaçao",
    "curazao",
    "curaçau",
-   "キュラソー"
+   "キュラソー",
+   "퀴라소",
+   "큐라소"
   ],
   "Côte d'Ivoire": [
    "cote d'ivoire",
@@ -649,7 +673,8 @@
    "costa do marfim",
    "ivoorkust",
    "costa d’avorio",
-   "コートジボワール"
+   "コートジボワール",
+   "코트디부아르"
   ],
   "Ecuador": [
    "ecuador",
@@ -657,7 +682,8 @@
    "equador",
    "ekuador",
    "エクアドル",
-   "ekvador"
+   "ekvador",
+   "에콰도르"
   ],
   "Netherlands": [
    "netherlands",
@@ -672,7 +698,8 @@
    "paesi bassi",
    "belanda",
    "オランダ",
-   "hollanda"
+   "hollanda",
+   "네덜란드"
   ],
   "Japan": [
    "japan",
@@ -682,7 +709,8 @@
    "giappone",
    "jepang",
    "日本",
-   "japonya"
+   "japonya",
+   "일본"
   ],
   "Sweden": [
    "sweden",
@@ -693,7 +721,8 @@
    "svezia",
    "swedia",
    "スウェーデン",
-   "i̇sveç"
+   "i̇sveç",
+   "스웨덴"
   ],
   "Tunisia": [
    "tunisia",
@@ -702,7 +731,8 @@
    "tunesien",
    "tunesië",
    "チュニジア",
-   "tunus"
+   "tunus",
+   "튀니지"
   ],
   "Belgium": [
    "belgium",
@@ -713,7 +743,8 @@
    "belgio",
    "belgia",
    "ベルギー",
-   "belçika"
+   "belçika",
+   "벨기에"
   ],
   "Egypt": [
    "egypt",
@@ -724,7 +755,8 @@
    "egitto",
    "mesir",
    "エジプト",
-   "mısır"
+   "mısır",
+   "이집트"
   ],
   "Iran": [
    "iran",
@@ -733,7 +765,8 @@
    "ich bin",
    "irão",
    "irã",
-   "イラン"
+   "イラン",
+   "이란"
   ],
   "New Zealand": [
    "new zealand",
@@ -746,7 +779,8 @@
    "nuova zelanda",
    "selandia baru",
    "ニュージーランド",
-   "yeni zelanda"
+   "yeni zelanda",
+   "뉴질랜드"
   ],
   "Spain": [
    "spain",
@@ -759,7 +793,8 @@
    "spagna",
    "spanyol",
    "スペイン",
-   "i̇spanya"
+   "i̇spanya",
+   "스페인"
   ],
   "Cabo Verde": [
    "cabo verde",
@@ -769,7 +804,8 @@
    "kaapverdië",
    "capo verde",
    "tanjung verde",
-   "カーボベルデ"
+   "カーボベルデ",
+   "카보베르데"
   ],
   "Saudi Arabia": [
    "saudi arabia",
@@ -782,12 +818,14 @@
    "saoedi-arabië",
    "arab saudi",
    "サウジアラビア",
-   "suudi arabistan"
+   "suudi arabistan",
+   "사우디아라비아"
   ],
   "Uruguay": [
    "uruguay",
    "uruguai",
-   "ウルグアイ"
+   "ウルグアイ",
+   "우루과이"
   ],
   "France": [
    "france",
@@ -797,18 +835,21 @@
    "frankrijk",
    "prancis",
    "フランス",
-   "fransa"
+   "fransa",
+   "프랑스"
   ],
   "Senegal": [
    "senegal",
    "sénégal",
-   "セネガル"
+   "セネガル",
+   "세네갈"
   ],
   "Iraq": [
    "iraq",
    "irak",
    "iraque",
-   "イラク"
+   "イラク",
+   "이라크"
   ],
   "Norway": [
    "norway",
@@ -819,7 +860,8 @@
    "norvegia",
    "norwegia",
    "ノルウェー",
-   "norveç"
+   "norveç",
+   "노르웨이"
   ],
   "Argentina": [
    "argentina",
@@ -827,7 +869,8 @@
    "argentinien",
    "argentinië",
    "アルゼンチン",
-   "arjantin"
+   "arjantin",
+   "아르헨티나"
   ],
   "Algeria": [
    "algeria",
@@ -837,7 +880,8 @@
    "algerije",
    "aljazair",
    "アルジェリア",
-   "cezayir"
+   "cezayir",
+   "알제리"
   ],
   "Austria": [
    "austria",
@@ -845,7 +889,8 @@
    "österreich",
    "oostenrijk",
    "オーストリア",
-   "avusturya"
+   "avusturya",
+   "오스트리아"
   ],
   "Jordan": [
    "jordan",
@@ -855,13 +900,15 @@
    "giordania",
    "yordania",
    "ヨルダン",
-   "ürdün"
+   "ürdün",
+   "요르단"
   ],
   "Portugal": [
    "portugal",
    "portogallo",
    "ポルトガル",
-   "portekiz"
+   "portekiz",
+   "포르투갈"
   ],
   "DR Congo": [
    "dr congo",
@@ -880,7 +927,9 @@
    "congo-kinshasa",
    "kongo - kinshasa",
    "コンゴ民主共和国(キンシャサ)",
-   "kongo - kinşasa"
+   "kongo - kinşasa",
+   "콩고-킨샤사",
+   "콩고 민주 공화국"
   ],
   "Uzbekistan": [
    "uzbekistan",
@@ -891,7 +940,8 @@
    "uzbequistão",
    "oezbekistan",
    "ウズベキスタン",
-   "özbekistan"
+   "özbekistan",
+   "우즈베키스탄"
   ],
   "Colombia": [
    "colombia",
@@ -899,7 +949,8 @@
    "kolumbien",
    "kolombia",
    "コロンビア",
-   "kolombiya"
+   "kolombiya",
+   "콜롬비아"
   ],
   "England": [
    "england",
@@ -908,7 +959,8 @@
    "inghilterra",
    "engeland",
    "イングランド",
-   "inggris"
+   "inggris",
+   "잉글랜드"
   ],
   "Croatia": [
    "croatia",
@@ -919,20 +971,24 @@
    "croazia",
    "kroasia",
    "クロアチア",
-   "hırvatistan"
+   "hırvatistan",
+   "크로아티아"
   ],
   "Ghana": [
    "ghana",
    "gana",
-   "ガーナ"
+   "ガーナ",
+   "가나"
   ],
   "Panama": [
    "panama",
    "panamá",
-   "パナマ"
+   "パナマ",
+   "파나마"
   ]
  },
  "playlists": {
+  "jtbcsports": "PLHKep42EA3W8",
   "trtspor": "PLA_JQAuwYFsTTihk0_1xcDJdxuowFAQWO",
   "daznjapan": "PLEfXwIkfHxL_1LqZ0gHvEUf8zL8l6LYWV",
   "tvri": "PLByJN6Lh6uaM5697jlv3FLidX4erlo1ZB",
