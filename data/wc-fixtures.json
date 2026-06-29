@@ -1,1027 +1,1062 @@
 {
- "uploadsPlaylist": "UU--i2rV5NCxiEIPefr3l-zQ",
- "fixtures": [
-  [
-   "A1",
-   "Mexico",
-   "South Africa",
-   "2026-06-11T15:00:00-04:00"
-  ],
-  [
-   "A2",
-   "South Korea",
-   "Czechia",
-   "2026-06-11T22:00:00-04:00"
-  ],
-  [
-   "A3",
-   "Czechia",
-   "South Africa",
-   "2026-06-18T12:00:00-04:00"
-  ],
-  [
-   "A4",
-   "Mexico",
-   "South Korea",
-   "2026-06-18T21:00:00-04:00"
-  ],
-  [
-   "A5",
-   "Czechia",
-   "Mexico",
-   "2026-06-24T21:00:00-04:00"
-  ],
-  [
-   "A6",
-   "South Africa",
-   "South Korea",
-   "2026-06-24T21:00:00-04:00"
-  ],
-  [
-   "B1",
-   "Canada",
-   "Bosnia and Herzegovina",
-   "2026-06-12T15:00:00-04:00"
-  ],
-  [
-   "B2",
-   "Qatar",
-   "Switzerland",
-   "2026-06-13T15:00:00-04:00"
-  ],
-  [
-   "B3",
-   "Switzerland",
-   "Bosnia and Herzegovina",
-   "2026-06-18T15:00:00-04:00"
-  ],
-  [
-   "B4",
-   "Canada",
-   "Qatar",
-   "2026-06-18T18:00:00-04:00"
-  ],
-  [
-   "B5",
-   "Switzerland",
-   "Canada",
-   "2026-06-24T15:00:00-04:00"
-  ],
-  [
-   "B6",
-   "Bosnia and Herzegovina",
-   "Qatar",
-   "2026-06-24T15:00:00-04:00"
-  ],
-  [
-   "C1",
-   "Brazil",
-   "Morocco",
-   "2026-06-13T18:00:00-04:00"
-  ],
-  [
-   "C2",
-   "Haiti",
-   "Scotland",
-   "2026-06-13T21:00:00-04:00"
-  ],
-  [
-   "C3",
-   "Scotland",
-   "Morocco",
-   "2026-06-19T18:00:00-04:00"
-  ],
-  [
-   "C4",
-   "Brazil",
-   "Haiti",
-   "2026-06-19T20:30:00-04:00"
-  ],
-  [
-   "C5",
-   "Scotland",
-   "Brazil",
-   "2026-06-24T18:00:00-04:00"
-  ],
-  [
-   "C6",
-   "Morocco",
-   "Haiti",
-   "2026-06-24T18:00:00-04:00"
-  ],
-  [
-   "D1",
-   "United States",
-   "Paraguay",
-   "2026-06-12T21:00:00-04:00"
-  ],
-  [
-   "D2",
-   "Australia",
-   "Türkiye",
-   "2026-06-13T00:00:00-04:00"
-  ],
-  [
-   "D3",
-   "United States",
-   "Australia",
-   "2026-06-19T15:00:00-04:00"
-  ],
-  [
-   "D4",
-   "Türkiye",
-   "Paraguay",
-   "2026-06-19T23:00:00-04:00"
-  ],
-  [
-   "D5",
-   "Türkiye",
-   "United States",
-   "2026-06-25T22:00:00-04:00"
-  ],
-  [
-   "D6",
-   "Paraguay",
-   "Australia",
-   "2026-06-25T22:00:00-04:00"
-  ],
-  [
-   "E1",
-   "Germany",
-   "Curaçao",
-   "2026-06-14T13:00:00-04:00"
-  ],
-  [
-   "E2",
-   "Côte d'Ivoire",
-   "Ecuador",
-   "2026-06-14T19:00:00-04:00"
-  ],
-  [
-   "E3",
-   "Germany",
-   "Côte d'Ivoire",
-   "2026-06-20T16:00:00-04:00"
-  ],
-  [
-   "E4",
-   "Ecuador",
-   "Curaçao",
-   "2026-06-20T20:00:00-04:00"
-  ],
-  [
-   "E5",
-   "Curaçao",
-   "Côte d'Ivoire",
-   "2026-06-25T16:00:00-04:00"
-  ],
-  [
-   "E6",
-   "Ecuador",
-   "Germany",
-   "2026-06-25T16:00:00-04:00"
-  ],
-  [
-   "F1",
-   "Netherlands",
-   "Japan",
-   "2026-06-14T16:00:00-04:00"
-  ],
-  [
-   "F2",
-   "Sweden",
-   "Tunisia",
-   "2026-06-14T22:00:00-04:00"
-  ],
-  [
-   "F3",
-   "Netherlands",
-   "Sweden",
-   "2026-06-20T13:00:00-04:00"
-  ],
-  [
-   "F4",
-   "Tunisia",
-   "Japan",
-   "2026-06-20T00:00:00-04:00"
-  ],
-  [
-   "F5",
-   "Japan",
-   "Sweden",
-   "2026-06-25T19:00:00-04:00"
-  ],
-  [
-   "F6",
-   "Tunisia",
-   "Netherlands",
-   "2026-06-25T19:00:00-04:00"
-  ],
-  [
-   "G1",
-   "Belgium",
-   "Egypt",
-   "2026-06-15T15:00:00-04:00"
-  ],
-  [
-   "G2",
-   "Iran",
-   "New Zealand",
-   "2026-06-15T21:00:00-04:00"
-  ],
-  [
-   "G3",
-   "Belgium",
-   "Iran",
-   "2026-06-21T15:00:00-04:00"
-  ],
-  [
-   "G4",
-   "New Zealand",
-   "Egypt",
-   "2026-06-21T21:00:00-04:00"
-  ],
-  [
-   "G5",
-   "Egypt",
-   "Iran",
-   "2026-06-26T23:00:00-04:00"
-  ],
-  [
-   "G6",
-   "New Zealand",
-   "Belgium",
-   "2026-06-26T23:00:00-04:00"
-  ],
-  [
-   "H1",
-   "Spain",
-   "Cabo Verde",
-   "2026-06-15T12:00:00-04:00"
-  ],
-  [
-   "H2",
-   "Saudi Arabia",
-   "Uruguay",
-   "2026-06-15T18:00:00-04:00"
-  ],
-  [
-   "H3",
-   "Spain",
-   "Saudi Arabia",
-   "2026-06-21T12:00:00-04:00"
-  ],
-  [
-   "H4",
-   "Uruguay",
-   "Cabo Verde",
-   "2026-06-21T18:00:00-04:00"
-  ],
-  [
-   "H5",
-   "Cabo Verde",
-   "Saudi Arabia",
-   "2026-06-26T20:00:00-04:00"
-  ],
-  [
-   "H6",
-   "Uruguay",
-   "Spain",
-   "2026-06-26T20:00:00-04:00"
-  ],
-  [
-   "I1",
-   "France",
-   "Senegal",
-   "2026-06-16T15:00:00-04:00"
-  ],
-  [
-   "I2",
-   "Iraq",
-   "Norway",
-   "2026-06-16T18:00:00-04:00"
-  ],
-  [
-   "I3",
-   "France",
-   "Iraq",
-   "2026-06-22T17:00:00-04:00"
-  ],
-  [
-   "I4",
-   "Norway",
-   "Senegal",
-   "2026-06-22T20:00:00-04:00"
-  ],
-  [
-   "I5",
-   "Norway",
-   "France",
-   "2026-06-26T15:00:00-04:00"
-  ],
-  [
-   "I6",
-   "Senegal",
-   "Iraq",
-   "2026-06-26T15:00:00-04:00"
-  ],
-  [
-   "J1",
-   "Argentina",
-   "Algeria",
-   "2026-06-16T21:00:00-04:00"
-  ],
-  [
-   "J2",
-   "Austria",
-   "Jordan",
-   "2026-06-17T00:00:00-04:00"
-  ],
-  [
-   "J3",
-   "Argentina",
-   "Austria",
-   "2026-06-22T13:00:00-04:00"
-  ],
-  [
-   "J4",
-   "Jordan",
-   "Algeria",
-   "2026-06-22T23:00:00-04:00"
-  ],
-  [
-   "J5",
-   "Jordan",
-   "Argentina",
-   "2026-06-27T22:00:00-04:00"
-  ],
-  [
-   "J6",
-   "Algeria",
-   "Austria",
-   "2026-06-27T22:00:00-04:00"
-  ],
-  [
-   "K1",
-   "Portugal",
-   "DR Congo",
-   "2026-06-17T13:00:00-04:00"
-  ],
-  [
-   "K2",
-   "Uzbekistan",
-   "Colombia",
-   "2026-06-17T22:00:00-04:00"
-  ],
-  [
-   "K3",
-   "Portugal",
-   "Uzbekistan",
-   "2026-06-23T13:00:00-04:00"
-  ],
-  [
-   "K4",
-   "Colombia",
-   "DR Congo",
-   "2026-06-23T22:00:00-04:00"
-  ],
-  [
-   "K5",
-   "Colombia",
-   "Portugal",
-   "2026-06-27T19:30:00-04:00"
-  ],
-  [
-   "K6",
-   "DR Congo",
-   "Uzbekistan",
-   "2026-06-27T19:30:00-04:00"
-  ],
-  [
-   "L1",
-   "England",
-   "Croatia",
-   "2026-06-17T16:00:00-04:00"
-  ],
-  [
-   "L2",
-   "Ghana",
-   "Panama",
-   "2026-06-17T19:00:00-04:00"
-  ],
-  [
-   "L3",
-   "England",
-   "Ghana",
-   "2026-06-23T16:00:00-04:00"
-  ],
-  [
-   "L4",
-   "Panama",
-   "Croatia",
-   "2026-06-23T19:00:00-04:00"
-  ],
-  [
-   "L5",
-   "Panama",
-   "England",
-   "2026-06-27T17:00:00-04:00"
-  ],
-  [
-   "L6",
-   "Croatia",
-   "Ghana",
-   "2026-06-27T17:00:00-04:00"
-  ]
- ],
- "koRoundStart": {
-  "R32": "2026-06-28T15:00:00-04:00",
-  "R16": "2026-07-04T13:00:00-04:00",
-  "QF": "2026-07-09T16:00:00-04:00",
-  "SF": "2026-07-14T15:00:00-04:00",
-  "3P": "2026-07-18T17:00:00-04:00",
-  "F": "2026-07-19T15:00:00-04:00"
- },
- "aliases": {
-  "Mexico": [
-   "mexico",
-   "mexique",
-   "méxico",
-   "mexiko",
-   "messico",
-   "meksiko",
-   "メキシコ",
-   "meksika",
-   "멕시코"
-  ],
-  "South Africa": [
-   "south africa",
-   "rsa",
-   "afrique du sud",
-   "sudáfrica",
-   "südafrika",
-   "áfrica do sul",
-   "zuid-afrika",
-   "afrika selatan",
-   "南アフリカ",
-   "güney afrika",
-   "남아프리카",
-   "남아프리카 공화국"
-  ],
-  "South Korea": [
-   "south korea",
-   "korea republic",
-   "korea",
-   "republic of korea",
-   "corée du sud",
-   "corea del sur",
-   "corea",
-   "südkorea",
-   "coreia do sul",
-   "coreia",
-   "zuid-korea",
-   "corea del sud",
-   "korea selatan",
-   "韓国",
-   "güney kore",
-   "대한민국",
-   "한국"
-  ],
-  "Czechia": [
-   "czechia",
-   "czech republic",
-   "czech",
-   "tchéquie",
-   "chequia",
-   "república checa",
-   "tschechien",
-   "tchéquia",
-   "tsjechië",
-   "cechia",
-   "ceko",
-   "チェコ",
-   "çekya",
-   "체코"
-  ],
-  "Canada": [
-   "canada",
-   "canadá",
-   "kanada",
-   "カナダ",
-   "캐나다"
-  ],
-  "Bosnia and Herzegovina": [
-   "bosnia and herzegovina",
-   "bosnia & herzegovina",
-   "bosnia",
-   "bih",
-   "bosnia herzegovina",
-   "bosnie-herzégovine",
-   "bosnia y herzegovina",
-   "bosnien und herzegowina",
-   "bósnia e herzegovina",
-   "bosnië en herzegovina",
-   "bosnia ed erzegovina",
-   "bosnia dan herzegovina",
-   "ボスニア・ヘルツェゴビナ",
-   "bosna-hersek",
-   "보스니아 헤르체고비나"
-  ],
-  "Qatar": [
-   "qatar",
-   "catar",
-   "katar",
-   "welches?",
-   "カタール",
-   "카타르",
-   "어디서"
-  ],
-  "Switzerland": [
-   "switzerland",
-   "swiss",
-   "suisse",
-   "suiza",
-   "schweiz",
-   "suíça",
-   "zwitserland",
-   "svizzera",
-   "スイス",
-   "i̇sviçre",
-   "스위스"
-  ],
-  "Brazil": [
-   "brazil",
-   "brasil",
-   "brésil",
-   "brasilien",
-   "brazilië",
-   "brasile",
-   "ブラジル",
-   "brezilya",
-   "브라질"
-  ],
-  "Morocco": [
-   "morocco",
-   "maroc",
-   "marruecos",
-   "marokko",
-   "marrocos",
-   "marocco",
-   "maroko",
-   "モロッコ",
-   "fas",
-   "모로코"
-  ],
-  "Haiti": [
-   "haiti",
-   "haïti",
-   "haití",
-   "ハイチ",
-   "아이티"
-  ],
-  "Scotland": [
-   "scotland",
-   "écosse",
-   "escocia",
-   "schottland",
-   "scozia",
-   "schotland",
-   "スコットランド",
-   "skotlandia",
-   "스코틀랜드"
-  ],
-  "United States": [
-   "united states",
-   "usa",
-   "u.s.",
-   "us men",
-   "usmnt",
-   "u s a",
-   "états-unis",
-   "estados unidos",
-   "vereinigte staaten",
-   "eua",
-   "verenigde staten",
-   "stati uniti",
-   "amerika serikat",
-   "アメリカ合衆国",
-   "amerika birleşik devletleri",
-   "미국"
-  ],
-  "Paraguay": [
-   "paraguay",
-   "paraguai",
-   "パラグアイ",
-   "파라과이"
-  ],
-  "Australia": [
-   "australia",
-   "socceroos",
-   "australie",
-   "australien",
-   "オーストラリア",
-   "avustralya",
-   "오스트레일리아",
-   "호주"
-  ],
-  "Türkiye": [
-   "turkiye",
-   "türkiye",
-   "turkey",
-   "turquie",
-   "turquía",
-   "türkei",
-   "turkije",
-   "turchia",
-   "turki",
-   "トルコ",
-   "튀르키예",
-   "터키"
-  ],
-  "Germany": [
-   "germany",
-   "deutschland",
-   "allemagne",
-   "alemania",
-   "alemanha",
-   "duitsland",
-   "germania",
-   "jerman",
-   "ドイツ",
-   "almanya",
-   "독일"
-  ],
-  "Curaçao": [
-   "curacao",
-   "curaçao",
-   "curazao",
-   "curaçau",
-   "キュラソー",
-   "퀴라소",
-   "큐라소"
-  ],
-  "Côte d'Ivoire": [
-   "cote d'ivoire",
-   "côte d'ivoire",
-   "ivory coast",
-   "cote divoire",
-   "cote d ivoire",
-   "ivorycoast",
-   "costa de marfil",
-   "côte d’ivoire",
-   "elfenbeinküste",
-   "costa do marfim",
-   "ivoorkust",
-   "costa d’avorio",
-   "コートジボワール",
-   "코트디부아르"
-  ],
-  "Ecuador": [
-   "ecuador",
-   "équateur",
-   "equador",
-   "ekuador",
-   "エクアドル",
-   "ekvador",
-   "에콰도르"
-  ],
-  "Netherlands": [
-   "netherlands",
-   "holland",
-   "dutch",
-   "pays-bas",
-   "países bajos",
-   "holanda",
-   "niederlande",
-   "países baixos",
-   "nederland",
-   "paesi bassi",
-   "belanda",
-   "オランダ",
-   "hollanda",
-   "네덜란드"
-  ],
-  "Japan": [
-   "japan",
-   "japon",
-   "japón",
-   "japão",
-   "giappone",
-   "jepang",
-   "日本",
-   "japonya",
-   "일본"
-  ],
-  "Sweden": [
-   "sweden",
-   "suède",
-   "suecia",
-   "schweden",
-   "zweden",
-   "svezia",
-   "swedia",
-   "スウェーデン",
-   "i̇sveç",
-   "스웨덴"
-  ],
-  "Tunisia": [
-   "tunisia",
-   "tunisie",
-   "túnez",
-   "tunesien",
-   "tunesië",
-   "チュニジア",
-   "tunus",
-   "튀니지"
-  ],
-  "Belgium": [
-   "belgium",
-   "belgique",
-   "bélgica",
-   "belgien",
-   "belgië",
-   "belgio",
-   "belgia",
-   "ベルギー",
-   "belçika",
-   "벨기에"
-  ],
-  "Egypt": [
-   "egypt",
-   "égypte",
-   "egipto",
-   "ägypten",
-   "egito",
-   "egitto",
-   "mesir",
-   "エジプト",
-   "mısır",
-   "이집트"
-  ],
-  "Iran": [
-   "iran",
-   "ir iran",
-   "irán",
-   "ich bin",
-   "irão",
-   "irã",
-   "イラン",
-   "이란"
-  ],
-  "New Zealand": [
-   "new zealand",
-   "nz",
-   "nouvelle-zélande",
-   "nueva zelanda",
-   "neuseeland",
-   "nova zelândia",
-   "nieuw-zeeland",
-   "nuova zelanda",
-   "selandia baru",
-   "ニュージーランド",
-   "yeni zelanda",
-   "뉴질랜드"
-  ],
-  "Spain": [
-   "spain",
-   "espana",
-   "españa",
-   "espagne",
-   "spanien",
-   "espanha",
-   "spanje",
-   "spagna",
-   "spanyol",
-   "スペイン",
-   "i̇spanya",
-   "스페인"
-  ],
-  "Cabo Verde": [
-   "cabo verde",
-   "cape verde",
-   "cap-vert",
-   "kap verde",
-   "kaapverdië",
-   "capo verde",
-   "tanjung verde",
-   "カーボベルデ",
-   "카보베르데"
-  ],
-  "Saudi Arabia": [
-   "saudi arabia",
-   "saudi",
-   "ksa",
-   "arabie saoudite",
-   "arabia saudita",
-   "arabia saudí",
-   "saudi-arabien",
-   "saoedi-arabië",
-   "arab saudi",
-   "サウジアラビア",
-   "suudi arabistan",
-   "사우디아라비아"
-  ],
-  "Uruguay": [
-   "uruguay",
-   "uruguai",
-   "ウルグアイ",
-   "우루과이"
-  ],
-  "France": [
-   "france",
-   "francia",
-   "frankreich",
-   "frança",
-   "frankrijk",
-   "prancis",
-   "フランス",
-   "fransa",
-   "프랑스"
-  ],
-  "Senegal": [
-   "senegal",
-   "sénégal",
-   "セネガル",
-   "세네갈"
-  ],
-  "Iraq": [
-   "iraq",
-   "irak",
-   "iraque",
-   "イラク",
-   "이라크"
-  ],
-  "Norway": [
-   "norway",
-   "norvège",
-   "noruega",
-   "norwegen",
-   "noorwegen",
-   "norvegia",
-   "norwegia",
-   "ノルウェー",
-   "norveç",
-   "노르웨이"
-  ],
-  "Argentina": [
-   "argentina",
-   "argentine",
-   "argentinien",
-   "argentinië",
-   "アルゼンチン",
-   "arjantin",
-   "아르헨티나"
-  ],
-  "Algeria": [
-   "algeria",
-   "algérie",
-   "argelia",
-   "algerien",
-   "algerije",
-   "aljazair",
-   "アルジェリア",
-   "cezayir",
-   "알제리"
-  ],
-  "Austria": [
-   "austria",
-   "autriche",
-   "österreich",
-   "oostenrijk",
-   "オーストリア",
-   "avusturya",
-   "오스트리아"
-  ],
-  "Jordan": [
-   "jordan",
-   "jordanie",
-   "jordania",
-   "jordanien",
-   "giordania",
-   "yordania",
-   "ヨルダン",
-   "ürdün",
-   "요르단"
-  ],
-  "Portugal": [
-   "portugal",
-   "portogallo",
-   "ポルトガル",
-   "portekiz",
-   "포르투갈"
-  ],
-  "DR Congo": [
-   "dr congo",
-   "congo dr",
-   "democratic republic of congo",
-   "drc",
-   "d.r. congo",
-   "congo",
-   "rd congo",
-   "rd del congo",
-   "república democrática del congo",
-   "kongo-kinshasa",
-   "demokratische republik kongo",
-   "república democrática do congo",
-   "congo - kinshasa",
-   "congo-kinshasa",
-   "kongo - kinshasa",
-   "コンゴ民主共和国(キンシャサ)",
-   "kongo - kinşasa",
-   "콩고-킨샤사",
-   "콩고 민주 공화국"
-  ],
-  "Uzbekistan": [
-   "uzbekistan",
-   "ouzbékistan",
-   "uzbekistán",
-   "usbekistan",
-   "usbequistão",
-   "uzbequistão",
-   "oezbekistan",
-   "ウズベキスタン",
-   "özbekistan",
-   "우즈베키스탄"
-  ],
-  "Colombia": [
-   "colombia",
-   "colombie",
-   "kolumbien",
-   "kolombia",
-   "コロンビア",
-   "kolombiya",
-   "콜롬비아"
-  ],
-  "England": [
-   "england",
-   "angleterre",
-   "inglaterra",
-   "inghilterra",
-   "engeland",
-   "イングランド",
-   "inggris",
-   "잉글랜드"
-  ],
-  "Croatia": [
-   "croatia",
-   "croatie",
-   "croacia",
-   "kroatien",
-   "kroatië",
-   "croazia",
-   "kroasia",
-   "クロアチア",
-   "hırvatistan",
-   "크로아티아"
-  ],
-  "Ghana": [
-   "ghana",
-   "gana",
-   "ガーナ",
-   "가나"
-  ],
-  "Panama": [
-   "panama",
-   "panamá",
-   "パナマ",
-   "파나마"
-  ]
- },
- "playlists": {
-  "jtbcsports": "PLHKep42EA3W8",
-  "trtspor": "PLA_JQAuwYFsTTihk0_1xcDJdxuowFAQWO",
-  "daznjapan": "PLEfXwIkfHxL_1LqZ0gHvEUf8zL8l6LYWV",
-  "tvri": "PLByJN6Lh6uaM5697jlv3FLidX4erlo1ZB",
-  "daznes": "PL8vYHFKv-YcqjDmrVZm-AghTsjCaMNNwi",
-  "supersport": "PLrknD2SRMNPkuMlrH-9bt6Djgxvyn2mib",
-  "daznitalia": "PLHiPhEWe5bhwNTGicMeHDbMWJyY7XWez-",
-  "dsports": "PLlDA_e1cBD7n5wCXuj7YXnuIp1s5YJDvd",
-  "tvnzsport": "PLazurifFZEcA",
-  "caztv_g": "PLGFqULpDYmR8",
-  "caztv_goals": "PLsFWLnYCEXEU2pNn2XXsXkft6qmkwpw8h",
-  "caztv_r": "PLsFWLnYCEXEVNzCnkQE-xOuMc8oLxSleC",
-  "caztv_full": "PLsFWLnYCEXEVWs5wf60vfwUU4FaOEre3D",
-  "sporttv": "PLduFOHgLE8HPxRdMOa3_v-ci_xRuteW2y",
-  "livemodetv_r": "PLsPTotcHEIS_WYg5IPo8QXk3DaAEwbTGy",
-  "livemodetv_full": "PLsPTotcHEIS-2JaFrY44lFD7Oi4jEa8kS",
-  "tvaztecadeportes": "PLTgJORKZTpUs",
-  "tudnmxico": "PLEw7maxCZrWlU0byCsY8DPo-8svjgZptj",
-  "sporza": "PLKVKrZWVdEWK6cl49pXMU2nWc_F-1ZcK0",
-  "orfsport": "PLiE0HRO1-PFSiQoUY2JbpV9qNQ-w27zAA",
-  "nossport": "PLnJJ42LOJsdHCqcsxa9fl9jZgmUqcMjbu",
-  "sbssport": "PLNuJDkj3zBvPVhoKC6Oq8j4w7AH9l-ejG",
-  "rtesport": "PLJq_wJ4tVeXYVR4ET0FOl6IaOOUPZ8Ke8",
-  "sportstudiofussball": "PL9YwjYP6jANWMVDEqMqEO3coktUVEHSvX",
-  "fifa": "PLBRLtDhTHh5o",
-  "tsn": "PL6ndzuHRRemBukiX6QofXpzq3QxGCtils",
-  "fox_x": "PLSoN6Th-EepMUaxmTobuR_SBwVkdkxdfO",
-  "fox_r": "PLSoN6Th-EepOFVmy3h3p9DufTZpD9C60E",
-  "itv": "PLRhC9EroPISmLz78Pne2Ekjii5fz0iVeD",
-  "rds": "PLZksgcDwQNGLDRj2OqvyV8TnosW5HVVj8",
-  "bein": "PLQLPXA3TgtrAAeKwxuzbIDwvfhHw3BymM",
-  "telemundo": "PLXHZm5xDlEdQ"
- },
- "tsdbLeagueId": "4429",
- "afLeagueId": "1",
- "afSeason": "2026"
+  "uploadsPlaylist": "UU--i2rV5NCxiEIPefr3l-zQ",
+  "fixtures": [
+    [
+      "A1",
+      "Mexico",
+      "South Africa",
+      "2026-06-11T15:00:00-04:00"
+    ],
+    [
+      "A2",
+      "South Korea",
+      "Czechia",
+      "2026-06-11T22:00:00-04:00"
+    ],
+    [
+      "A3",
+      "Czechia",
+      "South Africa",
+      "2026-06-18T12:00:00-04:00"
+    ],
+    [
+      "A4",
+      "Mexico",
+      "South Korea",
+      "2026-06-18T21:00:00-04:00"
+    ],
+    [
+      "A5",
+      "Czechia",
+      "Mexico",
+      "2026-06-24T21:00:00-04:00"
+    ],
+    [
+      "A6",
+      "South Africa",
+      "South Korea",
+      "2026-06-24T21:00:00-04:00"
+    ],
+    [
+      "B1",
+      "Canada",
+      "Bosnia and Herzegovina",
+      "2026-06-12T15:00:00-04:00"
+    ],
+    [
+      "B2",
+      "Qatar",
+      "Switzerland",
+      "2026-06-13T15:00:00-04:00"
+    ],
+    [
+      "B3",
+      "Switzerland",
+      "Bosnia and Herzegovina",
+      "2026-06-18T15:00:00-04:00"
+    ],
+    [
+      "B4",
+      "Canada",
+      "Qatar",
+      "2026-06-18T18:00:00-04:00"
+    ],
+    [
+      "B5",
+      "Switzerland",
+      "Canada",
+      "2026-06-24T15:00:00-04:00"
+    ],
+    [
+      "B6",
+      "Bosnia and Herzegovina",
+      "Qatar",
+      "2026-06-24T15:00:00-04:00"
+    ],
+    [
+      "C1",
+      "Brazil",
+      "Morocco",
+      "2026-06-13T18:00:00-04:00"
+    ],
+    [
+      "C2",
+      "Haiti",
+      "Scotland",
+      "2026-06-13T21:00:00-04:00"
+    ],
+    [
+      "C3",
+      "Scotland",
+      "Morocco",
+      "2026-06-19T18:00:00-04:00"
+    ],
+    [
+      "C4",
+      "Brazil",
+      "Haiti",
+      "2026-06-19T20:30:00-04:00"
+    ],
+    [
+      "C5",
+      "Scotland",
+      "Brazil",
+      "2026-06-24T18:00:00-04:00"
+    ],
+    [
+      "C6",
+      "Morocco",
+      "Haiti",
+      "2026-06-24T18:00:00-04:00"
+    ],
+    [
+      "D1",
+      "United States",
+      "Paraguay",
+      "2026-06-12T21:00:00-04:00"
+    ],
+    [
+      "D2",
+      "Australia",
+      "Türkiye",
+      "2026-06-13T00:00:00-04:00"
+    ],
+    [
+      "D3",
+      "United States",
+      "Australia",
+      "2026-06-19T15:00:00-04:00"
+    ],
+    [
+      "D4",
+      "Türkiye",
+      "Paraguay",
+      "2026-06-19T23:00:00-04:00"
+    ],
+    [
+      "D5",
+      "Türkiye",
+      "United States",
+      "2026-06-25T22:00:00-04:00"
+    ],
+    [
+      "D6",
+      "Paraguay",
+      "Australia",
+      "2026-06-25T22:00:00-04:00"
+    ],
+    [
+      "E1",
+      "Germany",
+      "Curaçao",
+      "2026-06-14T13:00:00-04:00"
+    ],
+    [
+      "E2",
+      "Côte d'Ivoire",
+      "Ecuador",
+      "2026-06-14T19:00:00-04:00"
+    ],
+    [
+      "E3",
+      "Germany",
+      "Côte d'Ivoire",
+      "2026-06-20T16:00:00-04:00"
+    ],
+    [
+      "E4",
+      "Ecuador",
+      "Curaçao",
+      "2026-06-20T20:00:00-04:00"
+    ],
+    [
+      "E5",
+      "Curaçao",
+      "Côte d'Ivoire",
+      "2026-06-25T16:00:00-04:00"
+    ],
+    [
+      "E6",
+      "Ecuador",
+      "Germany",
+      "2026-06-25T16:00:00-04:00"
+    ],
+    [
+      "F1",
+      "Netherlands",
+      "Japan",
+      "2026-06-14T16:00:00-04:00"
+    ],
+    [
+      "F2",
+      "Sweden",
+      "Tunisia",
+      "2026-06-14T22:00:00-04:00"
+    ],
+    [
+      "F3",
+      "Netherlands",
+      "Sweden",
+      "2026-06-20T13:00:00-04:00"
+    ],
+    [
+      "F4",
+      "Tunisia",
+      "Japan",
+      "2026-06-20T00:00:00-04:00"
+    ],
+    [
+      "F5",
+      "Japan",
+      "Sweden",
+      "2026-06-25T19:00:00-04:00"
+    ],
+    [
+      "F6",
+      "Tunisia",
+      "Netherlands",
+      "2026-06-25T19:00:00-04:00"
+    ],
+    [
+      "G1",
+      "Belgium",
+      "Egypt",
+      "2026-06-15T15:00:00-04:00"
+    ],
+    [
+      "G2",
+      "Iran",
+      "New Zealand",
+      "2026-06-15T21:00:00-04:00"
+    ],
+    [
+      "G3",
+      "Belgium",
+      "Iran",
+      "2026-06-21T15:00:00-04:00"
+    ],
+    [
+      "G4",
+      "New Zealand",
+      "Egypt",
+      "2026-06-21T21:00:00-04:00"
+    ],
+    [
+      "G5",
+      "Egypt",
+      "Iran",
+      "2026-06-26T23:00:00-04:00"
+    ],
+    [
+      "G6",
+      "New Zealand",
+      "Belgium",
+      "2026-06-26T23:00:00-04:00"
+    ],
+    [
+      "H1",
+      "Spain",
+      "Cabo Verde",
+      "2026-06-15T12:00:00-04:00"
+    ],
+    [
+      "H2",
+      "Saudi Arabia",
+      "Uruguay",
+      "2026-06-15T18:00:00-04:00"
+    ],
+    [
+      "H3",
+      "Spain",
+      "Saudi Arabia",
+      "2026-06-21T12:00:00-04:00"
+    ],
+    [
+      "H4",
+      "Uruguay",
+      "Cabo Verde",
+      "2026-06-21T18:00:00-04:00"
+    ],
+    [
+      "H5",
+      "Cabo Verde",
+      "Saudi Arabia",
+      "2026-06-26T20:00:00-04:00"
+    ],
+    [
+      "H6",
+      "Uruguay",
+      "Spain",
+      "2026-06-26T20:00:00-04:00"
+    ],
+    [
+      "I1",
+      "France",
+      "Senegal",
+      "2026-06-16T15:00:00-04:00"
+    ],
+    [
+      "I2",
+      "Iraq",
+      "Norway",
+      "2026-06-16T18:00:00-04:00"
+    ],
+    [
+      "I3",
+      "France",
+      "Iraq",
+      "2026-06-22T17:00:00-04:00"
+    ],
+    [
+      "I4",
+      "Norway",
+      "Senegal",
+      "2026-06-22T20:00:00-04:00"
+    ],
+    [
+      "I5",
+      "Norway",
+      "France",
+      "2026-06-26T15:00:00-04:00"
+    ],
+    [
+      "I6",
+      "Senegal",
+      "Iraq",
+      "2026-06-26T15:00:00-04:00"
+    ],
+    [
+      "J1",
+      "Argentina",
+      "Algeria",
+      "2026-06-16T21:00:00-04:00"
+    ],
+    [
+      "J2",
+      "Austria",
+      "Jordan",
+      "2026-06-17T00:00:00-04:00"
+    ],
+    [
+      "J3",
+      "Argentina",
+      "Austria",
+      "2026-06-22T13:00:00-04:00"
+    ],
+    [
+      "J4",
+      "Jordan",
+      "Algeria",
+      "2026-06-22T23:00:00-04:00"
+    ],
+    [
+      "J5",
+      "Jordan",
+      "Argentina",
+      "2026-06-27T22:00:00-04:00"
+    ],
+    [
+      "J6",
+      "Algeria",
+      "Austria",
+      "2026-06-27T22:00:00-04:00"
+    ],
+    [
+      "K1",
+      "Portugal",
+      "DR Congo",
+      "2026-06-17T13:00:00-04:00"
+    ],
+    [
+      "K2",
+      "Uzbekistan",
+      "Colombia",
+      "2026-06-17T22:00:00-04:00"
+    ],
+    [
+      "K3",
+      "Portugal",
+      "Uzbekistan",
+      "2026-06-23T13:00:00-04:00"
+    ],
+    [
+      "K4",
+      "Colombia",
+      "DR Congo",
+      "2026-06-23T22:00:00-04:00"
+    ],
+    [
+      "K5",
+      "Colombia",
+      "Portugal",
+      "2026-06-27T19:30:00-04:00"
+    ],
+    [
+      "K6",
+      "DR Congo",
+      "Uzbekistan",
+      "2026-06-27T19:30:00-04:00"
+    ],
+    [
+      "L1",
+      "England",
+      "Croatia",
+      "2026-06-17T16:00:00-04:00"
+    ],
+    [
+      "L2",
+      "Ghana",
+      "Panama",
+      "2026-06-17T19:00:00-04:00"
+    ],
+    [
+      "L3",
+      "England",
+      "Ghana",
+      "2026-06-23T16:00:00-04:00"
+    ],
+    [
+      "L4",
+      "Panama",
+      "Croatia",
+      "2026-06-23T19:00:00-04:00"
+    ],
+    [
+      "L5",
+      "Panama",
+      "England",
+      "2026-06-27T17:00:00-04:00"
+    ],
+    [
+      "L6",
+      "Croatia",
+      "Ghana",
+      "2026-06-27T17:00:00-04:00"
+    ]
+  ],
+  "koRoundStart": {
+    "R32": "2026-06-28T15:00:00-04:00",
+    "R16": "2026-07-04T13:00:00-04:00",
+    "QF": "2026-07-09T16:00:00-04:00",
+    "SF": "2026-07-14T15:00:00-04:00",
+    "3P": "2026-07-18T17:00:00-04:00",
+    "F": "2026-07-19T15:00:00-04:00"
+  },
+  "aliases": {
+    "Mexico": [
+      "mexico",
+      "mexique",
+      "méxico",
+      "mexiko",
+      "messico",
+      "meksiko",
+      "メキシコ",
+      "meksika",
+      "멕시코",
+      "meksyk"
+    ],
+    "South Africa": [
+      "south africa",
+      "rsa",
+      "afrique du sud",
+      "sudáfrica",
+      "südafrika",
+      "áfrica do sul",
+      "zuid-afrika",
+      "afrika selatan",
+      "南アフリカ",
+      "güney afrika",
+      "남아프리카",
+      "남아프리카 공화국",
+      "republika południowej afryki"
+    ],
+    "South Korea": [
+      "south korea",
+      "korea republic",
+      "korea",
+      "republic of korea",
+      "corée du sud",
+      "corea del sur",
+      "corea",
+      "südkorea",
+      "coreia do sul",
+      "coreia",
+      "zuid-korea",
+      "corea del sud",
+      "korea selatan",
+      "韓国",
+      "güney kore",
+      "대한민국",
+      "한국",
+      "korea południowa"
+    ],
+    "Czechia": [
+      "czechia",
+      "czech republic",
+      "czech",
+      "tchéquie",
+      "chequia",
+      "república checa",
+      "tschechien",
+      "tchéquia",
+      "tsjechië",
+      "cechia",
+      "ceko",
+      "チェコ",
+      "çekya",
+      "체코",
+      "czechy"
+    ],
+    "Canada": [
+      "canada",
+      "canadá",
+      "kanada",
+      "カナダ",
+      "캐나다"
+    ],
+    "Bosnia and Herzegovina": [
+      "bosnia and herzegovina",
+      "bosnia & herzegovina",
+      "bosnia",
+      "bih",
+      "bosnia herzegovina",
+      "bosnie-herzégovine",
+      "bosnia y herzegovina",
+      "bosnien und herzegowina",
+      "bósnia e herzegovina",
+      "bosnië en herzegovina",
+      "bosnia ed erzegovina",
+      "bosnia dan herzegovina",
+      "ボスニア・ヘルツェゴビナ",
+      "bosna-hersek",
+      "보스니아 헤르체고비나",
+      "bośnia i hercegowina"
+    ],
+    "Qatar": [
+      "qatar",
+      "catar",
+      "katar",
+      "welches?",
+      "カタール",
+      "카타르",
+      "어디서",
+      "gdzie"
+    ],
+    "Switzerland": [
+      "switzerland",
+      "swiss",
+      "suisse",
+      "suiza",
+      "schweiz",
+      "suíça",
+      "zwitserland",
+      "svizzera",
+      "スイス",
+      "i̇sviçre",
+      "스위스",
+      "szwajcaria"
+    ],
+    "Brazil": [
+      "brazil",
+      "brasil",
+      "brésil",
+      "brasilien",
+      "brazilië",
+      "brasile",
+      "ブラジル",
+      "brezilya",
+      "브라질",
+      "brazylia"
+    ],
+    "Morocco": [
+      "morocco",
+      "maroc",
+      "marruecos",
+      "marokko",
+      "marrocos",
+      "marocco",
+      "maroko",
+      "モロッコ",
+      "fas",
+      "모로코"
+    ],
+    "Haiti": [
+      "haiti",
+      "haïti",
+      "haití",
+      "ハイチ",
+      "아이티"
+    ],
+    "Scotland": [
+      "scotland",
+      "écosse",
+      "escocia",
+      "schottland",
+      "scozia",
+      "schotland",
+      "スコットランド",
+      "skotlandia",
+      "스코틀랜드",
+      "szkocja"
+    ],
+    "United States": [
+      "united states",
+      "usa",
+      "u.s.",
+      "us men",
+      "usmnt",
+      "u s a",
+      "états-unis",
+      "estados unidos",
+      "vereinigte staaten",
+      "eua",
+      "verenigde staten",
+      "stati uniti",
+      "amerika serikat",
+      "アメリカ合衆国",
+      "amerika birleşik devletleri",
+      "미국",
+      "stany zjednoczone"
+    ],
+    "Paraguay": [
+      "paraguay",
+      "paraguai",
+      "パラグアイ",
+      "파라과이",
+      "paragwaj"
+    ],
+    "Australia": [
+      "australia",
+      "socceroos",
+      "australie",
+      "australien",
+      "オーストラリア",
+      "avustralya",
+      "오스트레일리아",
+      "호주"
+    ],
+    "Türkiye": [
+      "turkiye",
+      "türkiye",
+      "turkey",
+      "turquie",
+      "turquía",
+      "türkei",
+      "turkije",
+      "turchia",
+      "turki",
+      "トルコ",
+      "튀르키예",
+      "터키",
+      "turcja"
+    ],
+    "Germany": [
+      "germany",
+      "deutschland",
+      "allemagne",
+      "alemania",
+      "alemanha",
+      "duitsland",
+      "germania",
+      "jerman",
+      "ドイツ",
+      "almanya",
+      "독일",
+      "niemcy"
+    ],
+    "Curaçao": [
+      "curacao",
+      "curaçao",
+      "curazao",
+      "curaçau",
+      "キュラソー",
+      "퀴라소",
+      "큐라소"
+    ],
+    "Côte d'Ivoire": [
+      "cote d'ivoire",
+      "côte d'ivoire",
+      "ivory coast",
+      "cote divoire",
+      "cote d ivoire",
+      "ivorycoast",
+      "costa de marfil",
+      "côte d’ivoire",
+      "elfenbeinküste",
+      "costa do marfim",
+      "ivoorkust",
+      "costa d’avorio",
+      "コートジボワール",
+      "코트디부아르",
+      "wybrzeże kości słoniowej"
+    ],
+    "Ecuador": [
+      "ecuador",
+      "équateur",
+      "equador",
+      "ekuador",
+      "エクアドル",
+      "ekvador",
+      "에콰도르",
+      "ekwador"
+    ],
+    "Netherlands": [
+      "netherlands",
+      "holland",
+      "dutch",
+      "pays-bas",
+      "países bajos",
+      "holanda",
+      "niederlande",
+      "países baixos",
+      "nederland",
+      "paesi bassi",
+      "belanda",
+      "オランダ",
+      "hollanda",
+      "네덜란드",
+      "holandia"
+    ],
+    "Japan": [
+      "japan",
+      "japon",
+      "japón",
+      "japão",
+      "giappone",
+      "jepang",
+      "日本",
+      "japonya",
+      "일본",
+      "japonia"
+    ],
+    "Sweden": [
+      "sweden",
+      "suède",
+      "suecia",
+      "schweden",
+      "zweden",
+      "svezia",
+      "swedia",
+      "スウェーデン",
+      "i̇sveç",
+      "스웨덴",
+      "szwecja"
+    ],
+    "Tunisia": [
+      "tunisia",
+      "tunisie",
+      "túnez",
+      "tunesien",
+      "tunesië",
+      "チュニジア",
+      "tunus",
+      "튀니지",
+      "tunezja"
+    ],
+    "Belgium": [
+      "belgium",
+      "belgique",
+      "bélgica",
+      "belgien",
+      "belgië",
+      "belgio",
+      "belgia",
+      "ベルギー",
+      "belçika",
+      "벨기에"
+    ],
+    "Egypt": [
+      "egypt",
+      "égypte",
+      "egipto",
+      "ägypten",
+      "egito",
+      "egitto",
+      "mesir",
+      "エジプト",
+      "mısır",
+      "이집트",
+      "egipt"
+    ],
+    "Iran": [
+      "iran",
+      "ir iran",
+      "irán",
+      "ich bin",
+      "irão",
+      "irã",
+      "イラン",
+      "이란"
+    ],
+    "New Zealand": [
+      "new zealand",
+      "nz",
+      "nouvelle-zélande",
+      "nueva zelanda",
+      "neuseeland",
+      "nova zelândia",
+      "nieuw-zeeland",
+      "nuova zelanda",
+      "selandia baru",
+      "ニュージーランド",
+      "yeni zelanda",
+      "뉴질랜드",
+      "nowa zelandia"
+    ],
+    "Spain": [
+      "spain",
+      "espana",
+      "españa",
+      "espagne",
+      "spanien",
+      "espanha",
+      "spanje",
+      "spagna",
+      "spanyol",
+      "スペイン",
+      "i̇spanya",
+      "스페인",
+      "hiszpania"
+    ],
+    "Cabo Verde": [
+      "cabo verde",
+      "cape verde",
+      "cap-vert",
+      "kap verde",
+      "kaapverdië",
+      "capo verde",
+      "tanjung verde",
+      "カーボベルデ",
+      "카보베르데",
+      "republika zielonego przylądka",
+      "wyspy zielonego przylądka"
+    ],
+    "Saudi Arabia": [
+      "saudi arabia",
+      "saudi",
+      "ksa",
+      "arabie saoudite",
+      "arabia saudita",
+      "arabia saudí",
+      "saudi-arabien",
+      "saoedi-arabië",
+      "arab saudi",
+      "サウジアラビア",
+      "suudi arabistan",
+      "사우디아라비아",
+      "arabia saudyjska"
+    ],
+    "Uruguay": [
+      "uruguay",
+      "uruguai",
+      "ウルグアイ",
+      "우루과이",
+      "urugwaj"
+    ],
+    "France": [
+      "france",
+      "francia",
+      "frankreich",
+      "frança",
+      "frankrijk",
+      "prancis",
+      "フランス",
+      "fransa",
+      "프랑스",
+      "francja"
+    ],
+    "Senegal": [
+      "senegal",
+      "sénégal",
+      "セネガル",
+      "세네갈"
+    ],
+    "Iraq": [
+      "iraq",
+      "irak",
+      "iraque",
+      "イラク",
+      "이라크"
+    ],
+    "Norway": [
+      "norway",
+      "norvège",
+      "noruega",
+      "norwegen",
+      "noorwegen",
+      "norvegia",
+      "norwegia",
+      "ノルウェー",
+      "norveç",
+      "노르웨이"
+    ],
+    "Argentina": [
+      "argentina",
+      "argentine",
+      "argentinien",
+      "argentinië",
+      "アルゼンチン",
+      "arjantin",
+      "아르헨티나",
+      "argentyna"
+    ],
+    "Algeria": [
+      "algeria",
+      "algérie",
+      "argelia",
+      "algerien",
+      "algerije",
+      "aljazair",
+      "アルジェリア",
+      "cezayir",
+      "알제리",
+      "algieria"
+    ],
+    "Austria": [
+      "austria",
+      "autriche",
+      "österreich",
+      "oostenrijk",
+      "オーストリア",
+      "avusturya",
+      "오스트리아"
+    ],
+    "Jordan": [
+      "jordan",
+      "jordanie",
+      "jordania",
+      "jordanien",
+      "giordania",
+      "yordania",
+      "ヨルダン",
+      "ürdün",
+      "요르단"
+    ],
+    "Portugal": [
+      "portugal",
+      "portogallo",
+      "ポルトガル",
+      "portekiz",
+      "포르투갈",
+      "portugalia"
+    ],
+    "DR Congo": [
+      "dr congo",
+      "congo dr",
+      "democratic republic of congo",
+      "drc",
+      "d.r. congo",
+      "congo",
+      "rd congo",
+      "rd del congo",
+      "república democrática del congo",
+      "kongo-kinshasa",
+      "demokratische republik kongo",
+      "república democrática do congo",
+      "congo - kinshasa",
+      "congo-kinshasa",
+      "kongo - kinshasa",
+      "コンゴ民主共和国(キンシャサ)",
+      "kongo - kinşasa",
+      "콩고-킨샤사",
+      "콩고 민주 공화국",
+      "demokratyczna republika konga"
+    ],
+    "Uzbekistan": [
+      "uzbekistan",
+      "ouzbékistan",
+      "uzbekistán",
+      "usbekistan",
+      "usbequistão",
+      "uzbequistão",
+      "oezbekistan",
+      "ウズベキスタン",
+      "özbekistan",
+      "우즈베키스탄"
+    ],
+    "Colombia": [
+      "colombia",
+      "colombie",
+      "kolumbien",
+      "kolombia",
+      "コロンビア",
+      "kolombiya",
+      "콜롬비아",
+      "kolumbia"
+    ],
+    "England": [
+      "england",
+      "angleterre",
+      "inglaterra",
+      "inghilterra",
+      "engeland",
+      "イングランド",
+      "inggris",
+      "잉글랜드",
+      "anglia"
+    ],
+    "Croatia": [
+      "croatia",
+      "croatie",
+      "croacia",
+      "kroatien",
+      "kroatië",
+      "croazia",
+      "kroasia",
+      "クロアチア",
+      "hırvatistan",
+      "크로아티아",
+      "chorwacja"
+    ],
+    "Ghana": [
+      "ghana",
+      "gana",
+      "ガーナ",
+      "가나"
+    ],
+    "Panama": [
+      "panama",
+      "panamá",
+      "パナマ",
+      "파나마"
+    ]
+  },
+  "playlists": {
+    "tvpsport": "PLuXbnezpDJFivfaPD7rhlo2j3SQY9WwU-",
+    "jtbcsports": "PLHKep42EA3W8",
+    "trtspor": "PLA_JQAuwYFsTTihk0_1xcDJdxuowFAQWO",
+    "daznjapan": "PLEfXwIkfHxL_1LqZ0gHvEUf8zL8l6LYWV",
+    "tvri": "PLByJN6Lh6uaM5697jlv3FLidX4erlo1ZB",
+    "daznes": "PL8vYHFKv-YcqjDmrVZm-AghTsjCaMNNwi",
+    "supersport": "PLrknD2SRMNPkuMlrH-9bt6Djgxvyn2mib",
+    "daznitalia": "PLHiPhEWe5bhwNTGicMeHDbMWJyY7XWez-",
+    "dsports": "PLlDA_e1cBD7n5wCXuj7YXnuIp1s5YJDvd",
+    "tvnzsport": "PLazurifFZEcA",
+    "caztv_g": "PLGFqULpDYmR8",
+    "caztv_goals": "PLsFWLnYCEXEU2pNn2XXsXkft6qmkwpw8h",
+    "caztv_r": "PLsFWLnYCEXEVNzCnkQE-xOuMc8oLxSleC",
+    "caztv_full": "PLsFWLnYCEXEVWs5wf60vfwUU4FaOEre3D",
+    "sporttv": "PLduFOHgLE8HPxRdMOa3_v-ci_xRuteW2y",
+    "livemodetv_r": "PLsPTotcHEIS_WYg5IPo8QXk3DaAEwbTGy",
+    "livemodetv_full": "PLsPTotcHEIS-2JaFrY44lFD7Oi4jEa8kS",
+    "tvaztecadeportes": "PLTgJORKZTpUs",
+    "tudnmxico": "PLEw7maxCZrWlU0byCsY8DPo-8svjgZptj",
+    "sporza": "PLKVKrZWVdEWK6cl49pXMU2nWc_F-1ZcK0",
+    "orfsport": "PLiE0HRO1-PFSiQoUY2JbpV9qNQ-w27zAA",
+    "nossport": "PLnJJ42LOJsdHCqcsxa9fl9jZgmUqcMjbu",
+    "sbssport": "PLNuJDkj3zBvPVhoKC6Oq8j4w7AH9l-ejG",
+    "rtesport": "PLJq_wJ4tVeXYVR4ET0FOl6IaOOUPZ8Ke8",
+    "sportstudiofussball": "PL9YwjYP6jANWMVDEqMqEO3coktUVEHSvX",
+    "fifa": "PLBRLtDhTHh5o",
+    "tsn": "PL6ndzuHRRemBukiX6QofXpzq3QxGCtils",
+    "fox_x": "PLSoN6Th-EepMUaxmTobuR_SBwVkdkxdfO",
+    "fox_r": "PLSoN6Th-EepOFVmy3h3p9DufTZpD9C60E",
+    "itv": "PLRhC9EroPISmLz78Pne2Ekjii5fz0iVeD",
+    "rds": "PLZksgcDwQNGLDRj2OqvyV8TnosW5HVVj8",
+    "bein": "PLQLPXA3TgtrAAeKwxuzbIDwvfhHw3BymM",
+    "telemundo": "PLXHZm5xDlEdQ"
+  },
+  "tsdbLeagueId": "4429",
+  "afLeagueId": "1",
+  "afSeason": "2026"
 }

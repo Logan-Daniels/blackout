@@ -141,6 +141,7 @@ const FEEDS = [
   { pl: 'daznjapan', src: 'daznjapan', split: [{ kw: ['match recap'], type: 'recap' }, { kw: ['ハイライト'], type: 'short' }]  },
   { pl: 'trtspor', src: 'trtspor' },
   { pl: 'jtbcsports', src: 'jtbcsports', type: 'r' },
+  { pl: 'tvpsport', src: 'tvpsport' },
 ];
 
 /* ---------- load existing data.json (merge target so links persist) ---------- */

@@ -364,7 +364,31 @@ function myVideoIds() {
   for (const mk of Object.keys(vids)) { const o = vids[mk]; if (o && o[id]) for (const tp of Object.keys(o[id])) { const v = o[id][tp]; if (/^[A-Za-z0-9_-]{11}$/.test(v) && !out.includes(v)) out.push(v); } }
   return out;
 }
-const ids = myVideoIds();
+let ids = myVideoIds();
+// Auto-type rescue. A single-playlist feed that matched zero clips on its first crawl is almost
+// always a non-Latin broadcaster (Korean, Polish, Turkish, …): the alias matcher DID find both
+// teams, but classify() then dropped every clip because the feed has no declared type and the title's
+// highlight wording is not in build-data's HL_RX recap heuristic (which only covers Latin-script
+// languages, and cannot be extended to e.g. Korean because HL_RX is tested against the NFD-normalised
+// title). Declaring type:'r' makes classify short-circuit and attach each matched clip as a recap
+// regardless of title language. We only do this when zero clips matched, so a working feed whose titles
+// HL_RX already understands (and where it distinguishes recap vs extended) is never touched.
+if (built && !noBuild && ids.length === 0 && feeds.length === 1 && !feeds[0].split && !feeds[0].type) {
+  const fk = feeds[0].plKey;
+  let bt = readFileSync(buildPath, 'utf8');
+  const bare = new RegExp(`\\{\\s*pl:\\s*'${fk}',\\s*src:\\s*'${id}'\\s*\\}`);
+  const alreadyTyped = new RegExp(`pl:\\s*'${fk}'[^}]*\\btype:`);
+  if (bare.test(bt) && !alreadyTyped.test(bt)) {
+    bt = bt.replace(bare, `{ pl: '${fk}', src: '${id}', type: 'r' }`);
+    writeFileSync(buildPath, bt);
+    feeds[0].type = 'r';
+    didFeeds = true;
+    console.log(`\n↻ "${id}" matched zero clips on the first crawl. Its titles' highlight wording is not in build-data's recap heuristic, so the clips were found and then dropped for lack of a feed type. Declaring type:'r' and rebuilding...\n`);
+    const res2 = spawnSync('node', [buildPath], { stdio: 'inherit', cwd: ROOT, env: { ...process.env, DEEP_ONLY: id } });
+    if (res2.status === 0) { ids = myVideoIds(); console.log(`\n"${id}" now matches ${ids.length} clip(s).`); }
+    else console.error(`\nRebuild after declaring type:'r' exited with status ${res2.status}; the type is written, so just run  DEEP_ONLY=${id} node scripts/build-data.mjs  yourself.`);
+  }
+}
 const regionName = cc => { try { return new Intl.DisplayNames(['en'], { type: 'region' }).of(cc) || cc; } catch { return cc; } };
 if (ids.length && YT_KEY) {
   try {
