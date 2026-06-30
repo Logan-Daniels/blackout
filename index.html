@@ -532,6 +532,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .round{min-width:170px;flex-basis:170px}
   .node{padding:7px 10px 7px 13px}
   .bx-fix{gap:6px} .bx-side{gap:4px} .bx-side .flag{height:auto} .bx-side .flag img,.bx-side .flag svg{max-height:14px;max-width:21px} .bx-code{font-size:12.5px} .bx-sc{min-width:36px}
+  .mt-team{grid-template-columns:44px 30px minmax(0,1fr);column-gap:7px} .mt-team .flag{height:19px}
 }
 /* ===== redesign: match grid + tiles ===== */
 .hl-note{color:var(--dim);font-size:13.5px;margin:2px 0 18px}
@@ -549,7 +550,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .daygroup{margin:0 0 8px}
 .dayhdr{font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin:32px 2px 15px;display:flex;align-items:center;gap:10px}
 .dayhdr::after{content:"";flex:1;height:1px;background:var(--line)}
-.mt{position:relative;text-align:left;width:100%;background:linear-gradient(180deg,#13161e,#0f1219);border:1px solid var(--line);border-radius:16px;padding:16px 17px;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;color:inherit;font:inherit;display:flex;flex-direction:column;gap:11px;box-shadow:inset 4px 0 0 0 var(--strip)}
+.mt{position:relative;text-align:left;width:100%;background:linear-gradient(180deg,#13161e,#0f1219);border:1px solid var(--line);border-radius:16px;padding:16px 17px;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease;color:inherit;font:inherit;display:flex;flex-direction:column;gap:11px;box-shadow:inset 4px 0 0 0 var(--strip);overflow:hidden}
 .mt:hover{transform:translateY(-2px);border-color:#33404f;box-shadow:inset 4px 0 0 0 var(--strip),0 10px 26px -14px rgba(0,0,0,.7)}
 .mt:focus-visible{outline:2px solid var(--a);outline-offset:2px}
 .mt-top{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--dim);min-width:0}
@@ -557,7 +558,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .mt-when{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mt-city{margin-left:auto;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46%;flex:none}
 .mt-team{display:grid;grid-template-columns:54px 34px minmax(0,1fr);align-items:center;column-gap:8px;min-width:0}
-.mt-team .flag{height:21px;width:auto;justify-self:center;border-radius:4px}
+.mt-team .flag{height:21px;width:auto;max-width:100%;justify-self:center;border-radius:4px;overflow:hidden}
 .mt-team .flag svg,.mt-team .flag img{height:100%;width:auto;border-radius:4px;object-fit:contain}
 .mt-code{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--text);justify-self:center;text-align:center;letter-spacing:.02em}
 .mt-name{font-weight:600;font-size:15px;color:var(--text);justify-self:start;text-align:left;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -3366,7 +3367,7 @@ function groupTile(m){ var played=groupPlayed(m), w=whenParts(m[4]), key=m[0], n
   else foot='<span class="mt-soon">'+t('soon')+' '+w.day+' · '+w.time+'</span>';
   return '<button class="mt h'+hostOf(m[5])+'" data-k="g" data-id="'+key+'"><div class="mt-top"><span class="mt-rd">'+esc(t('group_word')+' '+m[1])+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+tTeam(m[2])+tTeam(m[3])+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 var _koClinch=null;
-function koTile(m){ var w=whenParts(m[4]); var _kc=(typeof revealCutoff==='function')?revealCutoff():null; var _kshown=!!(_kc && m[4].slice(0,10)<=_kc); var foot=_kshown?'<span class="mt-watch">'+t('watch')+'</span>':'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
+function koTile(m){ var w=whenParts(m[4]); var _kc=(typeof revealCutoff==='function')?revealCutoff():null; var _kshown=!!(_kc && m[4].slice(0,10)<=_kc); var foot=_kshown?(favHasVids(m[0])?'<span class="mt-watch">▶ '+t('watch')+'</span>':'<span class="mt-soon">'+t('awaiting')+'</span>'):'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
   return '<button class="mt h'+hostOf(m[5])+'" data-k="k" data-id="'+m[0]+'" data-mid="'+m[0]+'"><div class="mt-top"><span class="mt-rd">'+esc(roundName(m[1]))+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].home)?tTeam(_koClinch[m[0]].home):tTeamAbs(srcLabel(m[2])))+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].away)?tTeam(_koClinch[m[0]].away):tTeamAbs(srcLabel(m[3])))+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 /* ---- Run 4: accessibility (high-contrast, focus management) ---- */
 function applyHC(){ try{ document.documentElement.classList.toggle('hc', !!(typeof DB!=='undefined'&&DB.hc)); var b=document.getElementById('hc-toggle'); if(b){ b.setAttribute('aria-checked',(typeof DB!=='undefined'&&DB.hc)?'true':'false'); b.classList.toggle('on', !!(typeof DB!=='undefined'&&DB.hc)); } }catch(e){} }
