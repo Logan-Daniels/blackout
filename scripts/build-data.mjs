@@ -209,7 +209,7 @@ function classify(feed, durSec, title) {
 const koNumByPair = {};   // "TeamA~TeamB" (canonical, sorted) -> "73"
 
 function keyFor(teams, round) {
-  if (round === 'GROUP') { const m = fixtureFor(teams[0], teams[1]); return (m && groupPlayed(m)) ? m[0] : null; }
+  if (round === 'GROUP') { const m = fixtureFor(teams[0], teams[1]); if (m) return groupPlayed(m) ? m[0] : null; return koNumByPair[pair(teams[0], teams[1])] || null; }
   if (!koRoundStarted(round)) return null;
   return koNumByPair[pair(teams[0], teams[1])] || null;
 }
