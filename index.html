@@ -1963,7 +1963,7 @@ function ingestResults(matches){
   const gScore={}, koByNum={}, infoByPair={};
   (matches||[]).forEach(m=>{
     const t1=canonName(m.team1), t2=canonName(m.team2);
-    const ft=m.score&&m.score.ft;
+    const ft=(m.score&&(m.score.et||m.score.ft))||null;   // a knockout decided in extra time carries its real result in score.et; score.ft alone is only the 90-minute figure, so it must not be used as the final score
     const pen=(m.score&&(m.score.p||m.score.pen||m.score.pens))||null;
     if(t1&&t2){ infoByPair[[t1,t2].sort().join('~')]={date:m.date||null, ground:m.ground||null}; }
     if(m.group && t1 && t2){
@@ -2623,32 +2623,27 @@ function fitTeamNames(root){
 var _fitLuT=null;
 window.addEventListener('resize', function(){ if(_fitLuT)clearTimeout(_fitLuT); _fitLuT=setTimeout(function(){ var mm=$('#mm'); if(mm&&mm.classList.contains('open')){ fitLineupNames($('#mm-body')); fitTeamNames($('#mm-head')); } fitTeamNames($('#hl-body')); }, 120); });
 function renderMM(){
-  var c=MM.ctx, koShown=(!c.isKO)||matchRevealedBySlider(c), rev=koShown&&isRevealed(), koLocked=c.isKO&&!koShown;
-  var head;
-  if(koLocked){
-    var lhTeam=c.clinchHome, laTeam=c.clinchAway;
-    var lhSide = mmSideHTML(lhTeam, blankFlag(1)+'<div class="mm-tname" style="color:var(--dim)">'+mmSlotLabel(c.srcHome,c.slotHome)+'</div>', 'l');
-    var laSide = mmSideHTML(laTeam, blankFlag(1)+'<div class="mm-tname" style="color:var(--dim)">'+mmSlotLabel(c.srcAway,c.slotAway)+'</div>', 'r');
-    head='<div class="mm-rd">'+esc(c.round)+'</div><div class="mm-fix">'+
-      '<div class="mm-side">'+lhSide+'</div>'+
-      '<div class="mm-vs">vs</div>'+
-      '<div class="mm-side">'+laSide+'</div></div>'+
-      '<div class="mm-meta">'+c.when.day+' · '+c.when.time+(c.city?' · '+esc(c.city):'')+'</div>';
+  var c=MM.ctx, rev=isRevealed();
+  // KO team names stay masked until the revealed results determine who is playing (clinch). This match's own
+  // reveal toggle overrides that for this match and also surfaces the score. Highlights are never gated here. Group matchups are public.
+  var lhSide, laSide;
+  if(c.isKO){
+    var hT = rev ? (c.home||c.clinchHome) : c.clinchHome;
+    var aT = rev ? (c.away||c.clinchAway) : c.clinchAway;
+    lhSide = mmSideHTML(hT, blankFlag(1)+'<div class="mm-tname" style="color:var(--dim)">'+mmSlotLabel(c.srcHome,c.slotHome)+'</div>', 'l');
+    laSide = mmSideHTML(aT, blankFlag(1)+'<div class="mm-tname" style="color:var(--dim)">'+mmSlotLabel(c.srcAway,c.slotAway)+'</div>', 'r');
   } else {
-    var hN=c.home||c.slotHome, aN=c.away||c.slotAway;
-    var mid=(rev&&c.score)?('<div class="mm-score">'+c.score[0]+' – '+c.score[1]+(c.pen?'<span class="pen">'+t('pens')+' '+c.pen[0]+'–'+c.pen[1]+'</span>':'')+'</div>'):'<div class="mm-vs">vs</div>';
-    head='<div class="mm-rd">'+esc(c.round)+'</div><div class="mm-fix">'+
-      '<div class="mm-side">'+mmSideHTML(hN,'','l')+'</div>'+mid+
-      '<div class="mm-side">'+mmSideHTML(aN,'','r')+'</div></div>'+
-      '<div class="mm-meta">'+c.when.day+' · '+c.when.time+(c.city?' · '+esc(c.city):'')+'</div>';
+    lhSide = mmSideHTML(c.home,'','l');
+    laSide = mmSideHTML(c.away,'','r');
   }
+  var mid=(rev&&c.score)?('<div class="mm-score">'+c.score[0]+' – '+c.score[1]+(c.pen?'<span class="pen">'+t('pens')+' '+c.pen[0]+'–'+c.pen[1]+'</span>':'')+'</div>'):'<div class="mm-vs">vs</div>';
+  var head='<div class="mm-rd">'+esc(c.round)+'</div><div class="mm-fix">'+
+    '<div class="mm-side">'+lhSide+'</div>'+mid+
+    '<div class="mm-side">'+laSide+'</div></div>'+
+    '<div class="mm-meta">'+c.when.day+' · '+c.when.time+(c.city?' · '+esc(c.city):'')+'</div>';
   $('#mm-head').innerHTML=head; try{ requestAnimationFrame(function(){ fitTeamNames($('#mm-head')); }); }catch(e){}
   var tabs=[['h',t('t_highlights')],['l',t('t_lineups')],['r',t('t_result')]];
   $('#mm-tabs').innerHTML=tabs.map(function(x){ return '<button class="mm-tab'+(MM.tab===x[0]?' on':'')+'" data-mt="'+x[0]+'">'+esc(x[1])+'</button>'; }).join('');
-  if(koLocked){
-    $('#mm-body').innerHTML='<div class="empty-soft" style="padding:14px 8px"><div style="font-family:var(--disp);font-weight:700;font-size:17px;color:var(--text);margin-bottom:8px">'+esc(t('ko_locked_h'))+'</div><p style="max-width:440px;margin:0 auto">'+esc(t('ko_locked_p'))+'</p></div>';
-    return;
-  }
   var sw='<div class="reveal-row"><div><div class="rl-t">'+esc(t('reveal_h'))+'</div><div class="rl-s">'+esc(t('reveal_p'))+'</div></div><button class="sw'+(rev?' on':'')+'" id="mm-sw" role="switch" aria-checked="'+rev+'"></button></div>';
   var body = MM.tab==='h'?renderHL(c) : MM.tab==='l'?renderLU(c,rev) : renderRes(c,rev);
   $('#mm-body').innerHTML=sw+body;
@@ -3367,7 +3362,7 @@ function groupTile(m){ var played=groupPlayed(m), w=whenParts(m[4]), key=m[0], n
   else foot='<span class="mt-soon">'+t('soon')+' '+w.day+' · '+w.time+'</span>';
   return '<button class="mt h'+hostOf(m[5])+'" data-k="g" data-id="'+key+'"><div class="mt-top"><span class="mt-rd">'+esc(t('group_word')+' '+m[1])+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+tTeam(m[2])+tTeam(m[3])+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 var _koClinch=null;
-function koTile(m){ var w=whenParts(m[4]); var _kc=(typeof revealCutoff==='function')?revealCutoff():null; var _kshown=!!(_kc && m[4].slice(0,10)<=_kc); var _kk=ACTUAL.koByNum[m[0]]; var _kplayed=(_kk&&_kk.ft)?true:((w.ts+MATCH_END_BUFFER)<=Date.now()); var foot=(_kshown&&_kplayed)?(favHasVids(m[0])?'<span class="mt-watch">▶ '+t('watch')+'</span>':'<span class="mt-soon">'+t('awaiting')+'</span>'):'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
+function koTile(m){ var w=whenParts(m[4]); var _kk=ACTUAL.koByNum[m[0]]; var _kplayed=(_kk&&_kk.ft)?true:((w.ts+MATCH_END_BUFFER)<=Date.now()); var foot=_kplayed?(favHasVids(m[0])?'<span class="mt-watch">▶ '+t('watch')+'</span>':'<span class="mt-soon">'+t('awaiting')+'</span>'):'<span class="mt-soon">'+t('soon')+' '+w.day+'</span>';
   return '<button class="mt h'+hostOf(m[5])+'" data-k="k" data-id="'+m[0]+'" data-mid="'+m[0]+'"><div class="mt-top"><span class="mt-rd">'+esc(roundName(m[1]))+'</span><span class="mt-when">'+w.day+' · '+w.time+'</span><span class="mt-city">'+esc(cityOf(m[5]))+'</span></div>'+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].home)?tTeam(_koClinch[m[0]].home):tTeamAbs(srcLabel(m[2])))+((_koClinch&&_koClinch[m[0]]&&_koClinch[m[0]].away)?tTeam(_koClinch[m[0]].away):tTeamAbs(srcLabel(m[3])))+'<div class="mt-foot">'+foot+'<span class="chev">›</span></div></button>'; }
 /* ---- Run 4: accessibility (high-contrast, focus management) ---- */
 function applyHC(){ try{ document.documentElement.classList.toggle('hc', !!(typeof DB!=='undefined'&&DB.hc)); var b=document.getElementById('hc-toggle'); if(b){ b.setAttribute('aria-checked',(typeof DB!=='undefined'&&DB.hc)?'true':'false'); b.classList.toggle('on', !!(typeof DB!=='undefined'&&DB.hc)); } }catch(e){} }

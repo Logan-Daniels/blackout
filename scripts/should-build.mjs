@@ -35,8 +35,6 @@ import process from 'node:process';
 const OFFSET_MIN     = 110;        // start polling this long after kickoff
 const PHASE2_MIN     = 22 * 60;    // 1320: switch from coarse polling to the FIFA chase
 const GIVEUP_MIN     = 48 * 60;    // 2880: stop polling a group match entirely
-const KO_GIVEUP_MIN  = 96 * 60;    // 5760: knockout matches span ~2 days per round, so a
-                                   // round stays pollable longer (round-start is the proxy)
 const COARSE_GATE    = 115;        // phase 1: roughly every 2h on a 5-min cron
 const FINE_GATE      = 9;          // phase 2: roughly every 10min on a 5-min cron
 
@@ -91,31 +89,33 @@ for (const f of (fx.fixtures || [])) {
   }
 }
 
-// KNOCKOUT STAGE -- only round-start is known, so cadence follows what is still missing.
+// KNOCKOUT STAGE -- window each match off its own kickoff, exactly like the group stage.
+// openfootball carries per-match knockout dates, so a whole round is no longer gated off a
+// single round-start proxy. The Round of 32 alone spans ~6 days (16 matches, Jun 28 to Jul 3),
+// so the old fixed 96h round-start give-up cut its later matches off more than two days early.
 const ROUND_KEY = { 'Round of 32':'R32', 'Round of 16':'R16', 'Quarter-final':'QF', 'Semi-final':'SF', 'Match for third place':'3P', 'Final':'F' };
-const koStart = fx.koRoundStart || {};
-const byRound = {};
-for (const m of ofMatches) { const k = ROUND_KEY[m.round]; if (k) (byRound[k] = byRound[k] || []).push(m); }
-for (const rk of Object.keys(byRound)) {
-  const startIso = koStart[rk];
-  if (!startIso) continue;
-  const since = minsSince(startIso);
-  if (since < OFFSET_MIN || since > KO_GIVEUP_MIN) continue;
-  for (const mm of byRound[rk]) {
-    const vk = (mm.num != null) ? String(mm.num) : null;
-    const hasDetail = !!(mm.score && mm.score.ft);
-    // unmappable match (no video key) -> treat highlights as satisfied so the round is
-    // not held pending forever on it.
-    const hasBc = vk ? hasBroadcastHL(vk) : true;
-    const hasFifa = vk ? hasFifaHL(vk) : true;
-    if (hasDetail && hasBc && hasFifa) continue;
-    const num = (mm.num != null) ? mm.num : '?';
+for (const mm of ofMatches) {
+  const rk = ROUND_KEY[mm.round];
+  if (!rk || !mm.date) continue;                          // knockout matches only (group rounds are "Matchday N")
+  const mins = minsSince(mm.date);
+  if (mins < OFFSET_MIN || mins > GIVEUP_MIN) continue;   // same per-match window as the group stage
+  const vk = (mm.num != null) ? String(mm.num) : null;
+  const hasDetail = !!(mm.score && mm.score.ft);
+  // unmappable match (no video key) -> treat highlights as satisfied so it is not held pending forever.
+  const hasBc = vk ? hasBroadcastHL(vk) : true;
+  const hasFifa = vk ? hasFifaHL(vk) : true;
+  if (hasDetail && hasBc && hasFifa) continue;
+  const num = (mm.num != null) ? mm.num : '?';
+  if (mins < PHASE2_MIN) {
     if (!hasDetail || !hasBc) {
-      reasons.push(`${rk} #${num}: ${!hasDetail ? 'no result yet' : 'awaiting broadcaster highlights'} (~2h)`);
+      reasons.push(`${rk} #${num}: ${!hasDetail ? 'no result yet' : 'awaiting broadcaster highlights'} (+${Math.round(mins)}min, ~2h)`);
       demand(COARSE_GATE);
-    } else {
-      reasons.push(`${rk} #${num}: awaiting FIFA highlights (~10min)`);
-      demand(FINE_GATE);
+    }
+  } else {
+    if (!hasDetail || !hasBc || !hasFifa) {
+      const what = !hasDetail ? 'no result yet' : !hasBc ? 'awaiting broadcaster highlights' : 'awaiting FIFA highlights';
+      reasons.push(`${rk} #${num}: ${what} (+${Math.round(mins)}min, ~10min)`);
+      demand(!hasDetail || !hasBc ? COARSE_GATE : FINE_GATE);
     }
   }
 }

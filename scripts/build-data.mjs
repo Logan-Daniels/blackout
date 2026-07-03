@@ -237,7 +237,7 @@ try {
     if (m.num != null) o.num = m.num;
     if (m.group) o.group = m.group;
     if (m.ground) o.ground = m.ground;
-    if (m.score) { o.score = { ft: m.score.ft }; if (m.score.p || m.score.pen) o.score.p = m.score.p || m.score.pen; }
+    if (m.score) { o.score = { ft: m.score.ft }; if (m.score.et) o.score.et = m.score.et; if (m.score.p || m.score.pen) o.score.p = m.score.p || m.score.pen; }
     return o;
   });
   for (const m of ofMatches) if (m.num != null) koNumByPair[pair(canon(m.team1), canon(m.team2))] = String(m.num);
